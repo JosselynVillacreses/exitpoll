@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+</head>
+
+<body>
+
+<h1>Mode Analysis </h1>
+<p>At any given time, the displacement of the <i>i</i>-th particle y<sub>i</sub> at location x<sub>i</sub> on a lattice with fixed 
+ends can be written as a sum of modes &#981;<sub>m</sub>(x). </p>
+<p align="center"><img src="fourier_sum.gif"> </p>
+<p align="left">The expansion (Fourier) coefficients a<sub>k</sub> are related to the displacements y<sub>i</sub> by </p>
+<p align="center"><img src="fourier_coefficient.gif"> </p>
+<p align="left">We see that it easy to compute either {y<sub>i</sub>} from {a<sub>i</sub>} or {a<sub>i</sub>} from {y<sub>i</sub>}. 
+Both sets of numbers contain the same information and either can be used to describe the state of the crystal lattice. </p>
+<p align="left">The total mechanical energy of a system is the sum of the potential and kinetic energies of the system&#39;s particles. 
+For a simple one-dimensional Hooke&#39;s Law model with spring constant k, the kinetic energy of the <i>i</i>-th particle is K<sub>i</sub>= 
+(1/2)Mv<sub>i</sub><sup>2</sup> and potential energy of each spring is U<sub>i</sub>= (1/2) k&#916;y<sub>i</sub><sup>2</sup>. The total 
+energy E = U + K for a lattice of N molecules is the sum of these energies. </p>
+<p align="center"><img src="lattice_energy.gif"> </p>
+<p>This total energy can also be expressed in terms of the energy in each mode using the expansion coefficients a<sub>k</sub> and 
+their derivatives da<sub>k</sub>/dt </p>
+<p align="center"><img src="mode_energy.gif"> </p>
+<p>where &#969;<sub>m</sub> is again the normal mode angular frequency </p>
+<p align="center"><img src="fpu_frequency.gif"> . </p>
+
+</body>
+
+</html>

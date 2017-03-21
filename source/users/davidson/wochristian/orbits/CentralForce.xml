@@ -1,0 +1,328 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Central Force]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[orbits, central force, gravitation]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./centralforce/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./centralforce/centralforce.html;./centralforce/centralforce_activ.html;./centralforce/centralforce_model.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Central Force</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./centralforce/centralforce.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Central Force Model</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./centralforce/centralforce_model.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Modeling Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./centralforce/centralforce_activ.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamic Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[3.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[velocity in x directon]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[velocity in y direction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[increment of time between animation frames]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xInitial]]></Name>
+<Value><![CDATA[3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[inital radial postion on x axis]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vyInitial]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[initial tangential velocity]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[set the initial particle postion and velocity]]></Comment>
+<Code><![CDATA[
+y=0;
+vx=0;
+x = xInitial;
+vy = vyInitial;
+_view.resetTraces();
+_setStepsPerDisplay(20);
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Equations</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x">vx</Rate>
+<Rate state="vx">getFx(x,y)</Rate>
+<Rate state="y">vy</Rate>
+<Rate state="vy">getFy(x,y)</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>1.0e-6</Tolerance>
+<Comment><![CDATA[Newton's Law]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Custom</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void initMotion() {
+  _initialize();
+}
+
+public double getFx(double x, double y){
+    double r2=x*x+y*y;
+    return  -x/Math.sqrt(r2)/r2;
+}
+
+public double getFy(double x, double y){
+    double r2=x*x+y*y;
+    return  -y/Math.sqrt(r2)/r2;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainWindow</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Central Force]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["8,7"]]></Property>
+<Property name="size"><![CDATA["376,458"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">orbitPanel</Property>
+<Property name="parent">mainWindow</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-5]]></Property>
+<Property name="maximumX"><![CDATA[5]]></Property>
+<Property name="minimumY"><![CDATA[-5]]></Property>
+<Property name="maximumY"><![CDATA[5]]></Property>
+<Property name="title"><![CDATA[Inverse Square Law Orbit]]></Property>
+<Property name="axesType"><![CDATA[Polar2]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="BRmessage"><![CDATA["time="+_format(t,"0.00")]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">particle</Property>
+<Property name="parent">orbitPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[0.2]]></Property>
+<Property name="sizey"><![CDATA[0.2]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">trajectory</Property>
+<Property name="parent">orbitPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="maxpoints"><![CDATA[1000]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">mainWindow</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[FLOW:left,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStop</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">step</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Advance the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">reset</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">xLabel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="text"><![CDATA["   x(0) ="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x0</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="variable"><![CDATA[xInitial]]></Property>
+<Property name="action"><![CDATA[initMotion()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">vyLabel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="text"><![CDATA["   vy(0) ="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">vy0</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="variable"><![CDATA[vyInitial]]></Property>
+<Property name="action"><![CDATA[initMotion()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

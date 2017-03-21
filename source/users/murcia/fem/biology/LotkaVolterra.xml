@@ -1,0 +1,351 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Lotka-Volterra predator-prey model]]></Title>
+<Author><![CDATA[Francisco Esquembre (Universidad de Murcia) and Wolfgang Christian (Davidson College)]]></Author>
+<Keywords><![CDATA[ODE, population models]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The famous Lotka-Volterra model describes the evolution of two species, one of which preys (feeds) on the other.
+The simulation plots 10 sample trajectories in phase-space, which start from different initial conditions, for the same values of the parameters.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./LotkaVolterra/LotkaVolterra.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>LotkaVolterra model</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Lotka-Volterra predator-prey model
+          </h1>
+          <p>
+            ODEs are frequently used in biology to model population dynamics. 
+            The famous Lotka-Volterra model describes the evolution of two 
+            species, one of which preys (feeds) on the other, using the ODEs:
+          </p>
+          <p align="center">
+            <i>x<sub>1</sub>' = a x<sub>1</sub> - b x<sub>1</sub> x<sub>2</sub><br>x<sub>2</sub>' 
+            = c x<sub>1</sub> x<sub>2</sub> - d x<sub>2 </sub>.</i>
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./LotkaVolterra/LotkaVolterra.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+      Here, <i>x<sub>1</sub></i> represents the number of prey and <i>x<sub>2</sub></i> 
+      is the number of predators (in appropriate units so that they take 
+      continuous values in the interval [0,1]), and <i>a</i>, <i>b</i>, <i>c</i>, 
+      and <i>d</i> are parameters. The terms <i>a x<sub>1</sub></i> and <i>-d x<sub>2</sub></i> 
+      account for the reproduction rate of each species in the absence of 
+      interaction with the other and the nonlinear terms represent the effects 
+      of predation on the reduction of preys and the reproduction of the 
+      predators.
+    </p>
+    <p>
+      The simulation plots 10 sample trajectories in phase-space, which start 
+      from different initial conditions, for the same values of the parameters.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Basic Variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The increment for the time in each evolution step]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[coefficient for prey reproduction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[coefficient for prey predation]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[c]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[coefficient for predator reproduction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[coefficient for predator mortality]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[max]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[expected maximum value]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[n*n is the number of sample trajectories to compute]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[population of preys]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[population of predators]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double x1Max=1.0, x2Max=1.0;
+// Compute the fixed point
+if (c!=0.0) x1Max = d/c;
+if (b!=0.0) x2Max = a/b;
+// Take sample trajectories around the fixed point
+for (int i=0; i<n; i++) {
+  x1[i] = x1Max;
+  x2[i] = i*x2Max/(n-1);
+}
+_resetView();
+_setStepsPerDisplay(10);
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evol Page</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x1[i]">a*x1[i] - b*x1[i]*x2[i]</Rate>
+<Rate state="x2[i]">c*x1[i]*x2[i] - d*x2[i]</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Lotka-Volterra model"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,22"]]></Property>
+<Property name="size"><![CDATA["300,340"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[max]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[max]]></Property>
+<Property name="title"><![CDATA["Lotka-Volterra phase space"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">traceSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[x2]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">fieldsPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:2,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">aPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">aLabel</Property>
+<Property name="parent">aPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" a = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">aField</Property>
+<Property name="parent">aPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">bLabel</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" b = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">bField</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">cPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">cLabel</Property>
+<Property name="parent">cPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" c = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">cField</Property>
+<Property name="parent">cPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[c]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">dPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">dLabel</Property>
+<Property name="parent">dPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" d = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">dField</Property>
+<Property name="parent">dPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[d]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

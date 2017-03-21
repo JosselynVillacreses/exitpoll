@@ -1,0 +1,1123 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Relative motion]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[central force;relative motion;center of mass;Kepler's problem;Newtonian orbit]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This simulation solves Kepler's problem for a 2-body system with Newtonian forces and displays the relative motion of one particle around the other, as well as the orbits of both particles in the center-of-mass frame or in another inertial reference frame.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Center of mass and relative motion</title>
+    
+  </head>
+  <body>
+    <h1>
+      Center of mass and relative motion
+    </h1>
+    This simulation solves Kepler's problem for the Newtonian potential <i>V</i>(<i>r</i>) 
+    = -<i>k</i>/<i>r</i>, mechanical energy <i>E</i> and angular momentum <i>L</i> 
+    &gt; 0, in dimensionless variables:
+
+    <ul>
+      <li>
+        Unit mass is 2-body system's reduced mass <i>m</i>.
+      </li>
+      <li>
+        Unit length is the position of the minimum of the effective potential 
+        energy in the attractive case (i.e., the radius of the circular 
+        orbit): <i>r</i><sub>0</sub> = <i>L</i><sup>2</sup>/<i>m</i>|<i>k</i>|.
+      </li>
+      <li>
+        Time unit is <i>L</i><sup>3</sup>/<i>mk</i><sup>2</sup>.
+      </li>
+      <li>
+        In these unit we have <i>m</i> = <i>L</i> = |<i>k</i>| = 1, the orbit 
+        equation is 1/<i>r</i> = <i>&#949;</i> cos(<i>&#966;</i>-<i>&#966;</i><sub>0</sub>) 
+        + <i>&#951;</i> with <i>&#951;</i> = |<i>k</i>|/<i>k</i>. The 
+        eccentricity is <i>&#949;</i> = (1+2<i>E</i>)<sup>1/2</sup>, the 
+        effective potential energy <i>V</i><sub>e</sub>(<i>r</i>) = -<i>&#951;</i>/<i>r</i>+1/2<i>r</i><sup>2</sup> 
+        and its minimum is at point (1,-1/2) for attractive forces.
+      </li>
+    </ul>
+    <ul>
+      <li>
+        If <b>Orbits</b> is selected, along with the orbit one can see the 
+        conserved Laplace-Runge-Lenz vector, which goes through the 
+        pericentron.
+      </li>
+      <li>
+        To get information on one element, put over it the mouse pointer to 
+        see the corresponding tooltip.<br>
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Use the mouse on the right figure or the corresponding numerical 
+        entries to change the mechanical energy <i>E</i> and the initial value 
+        of the polar distance <i>r</i> and polar angle <i>&#966;</i>.
+      </li>
+      <li>
+        Discuss the relationship (for different energies and in the cases of 
+        both attracting and repulsive forces) between the orbits around the 
+        center of mass (displayed on the left figure) and the relative motion 
+        of one particle around the other, as displayed on the right.
+      </li>
+      <li>
+        Discuss the influence of the quotient of masses <i>m</i><sub>1</sub>/<i>m</i><sub>2</sub> 
+        = <b>m1/m2</b>.
+      </li>
+      <li>
+        Now, let us assume the motion is analyzed from another inertial 
+        reference frame in which the center of mass moves with a velocity 
+        whose components <b>Vx</b> and <b>Vy</b> you have to choose. Which 
+        kind of orbits do you get now?
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>15</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[r]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Polar distance]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Polar angle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[E]]></Name>
+<Value><![CDATA[-0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Energy]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Pericentron direction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ecc]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Eccentricity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Constant in -k/r^2 force]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[attractive]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[k > 0?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[away]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initially moving away?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[m1/m2 <= 1]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Vx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x component on the center-of-mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Vy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y component on the center-of-mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[X]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Center-of-mass abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Center-of-mass ordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[orbits]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show orbits?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phimax]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum value of angle phi]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[rmax]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum value of r]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[rmin]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Pericentron distance]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[4.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum displayed abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[zr]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Puntuen erradioa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vectors]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display position vectors?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Npoints]]></Name>
+<Value><![CDATA[1000]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Points in orbit traces]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Start</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Initial values]]></Comment>
+<Code><![CDATA[
+putphixy();		// Set phi, x and y
+
+X = Y = 0.0;		// Center-of-mass position
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("Bdt").setProperty("format","\u0394t = 0.###");
+_view.getElement("Becc").setProperty("format","\u03B5 = 0.###");
+_view.getElement("Bphi").setProperty("format","\u03C6 = 0.###");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update coordinates]]></Comment>
+<Code><![CDATA[
+phi += dt/r/r;			// Use angular momentum conservation
+if (phi > Math.PI)		// -pi < phi <= pi
+  phi -= 2*Math.PI;
+
+r = 1/(ecc*Math.cos(phi-phi0)+k); 	//Orbit equation
+
+putxy();				// Cartesian coordinates
+
+X += dt*Vx;			// Center-of-mass
+Y += dt*Vy;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Energy</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Check energy and set eccentricity]]></Comment>
+<Code><![CDATA[
+if (!attractive && E <= 0)		// Minimum energy
+  E = 0.01;
+else if (E < -.5)
+  E = -.5;                 		
+
+ecc = Math.sqrt(1.+2.*E);     	// Eccentricity
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Apsis</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set pericentron and apocenter]]></Comment>
+<Code><![CDATA[
+k = (attractive) ? 1. : -1.;     		// Set constant in F = -k/r^2
+
+rmin = 1./(ecc+k);			// Pericentron
+if (r < rmin)	r = rmin;
+
+if (E < 0) {				// Apocenter
+  rmax =   1./(1.-ecc) ;
+  if ( r > rmax)  r = rmax;
+}
+else
+  rmax = 5.0;
+
+while (phi0 >   Math.PI) phi0 -= 2*Math.PI;  // -pi < phi0 < pi
+while (phi0 <= -Math.PI) phi0 += 2*Math.PI;
+
+if (attractive)  {			// Maximum phi
+  if      (E < 0)  phimax = Math.PI;
+  else if (E == 0) phimax = 3.;
+  else             phimax = Math.acos(-1./ecc)-0.01;
+}
+else
+  phimax = Math.acos(1./ecc)-0.01;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Cartesian</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set Cartesian coordinates]]></Comment>
+<Code><![CDATA[
+public void putxy() {
+  x = r*Math.cos(phi);
+  y = r*Math.sin(phi);
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Erase</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Reset orbits]]></Comment>
+<Code><![CDATA[
+public void eraseOrbits() {
+  _view.getElement("Orb1").reset();
+  _view.getElement("Orb2").reset();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Both</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set polar and Cartesian coordinates]]></Comment>
+<Code><![CDATA[
+public void putphixy() {
+  putphi();
+  putxy();
+}
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Polar</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set polar coordinates]]></Comment>
+<Code><![CDATA[
+public void putphir() {
+  r = hypot(x,y);
+  phi = Math.atan2(y,x);
+  if (r < rmin || (attractive && r > rmax)) {
+    E = -k/r+.5/r/r;
+    E = Math.max(E,-0.5);
+    ecc = Math.sqrt(1+2*E);
+  }
+  if (E == -0.5 || r <= rmin) {
+    phi0 = phi;
+  }
+  else {
+    double f = Math.max(-1.0,(Math.min(1.0,(1/r-k)/ecc)));
+    f = Math.acos(f);
+    if (away)
+      phi0 = phi-f;
+    else
+      phi0 = phi+f;
+  }
+  eraseOrbits() ;
+}
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Pause</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Pause simulation and set away]]></Comment>
+<Code><![CDATA[
+public void pause() {
+  _pause();
+  away = phi > phi0 || phi < phi0-Math.PI;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Angle</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set phi]]></Comment>
+<Code><![CDATA[
+public void putphi() {
+  if (r <= 0) r = 1;
+  if (r < rmin || (attractive && r > rmax)) {
+    E = -k/r+.5/r/r;
+    E = Math.max(E,-0.5);
+    ecc = Math.sqrt(1+2*E);
+  }
+  if (E == -0.5 || r <= rmin) {
+    phi = phi0;
+  }
+  else {
+    double f = Math.max(-1.0,(Math.min(1.0,(1/r-k)/ecc)));
+    f = Math.acos(f);
+    if (away)
+      phi0 = phi+f;
+    else
+      phi0 = phi-f;
+  }
+  eraseOrbits() ;
+}
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Supply hypot function for Java 1.4--]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Relative motion and center-of-mass]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["720,480"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Up</Property>
+<Property name="parent">Main</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Zoom</Property>
+<Property name="parent">Up</Property>
+<Property name="position">north</Property>
+<Property name="variable"><![CDATA[xmax]]></Property>
+<Property name="minimum"><![CDATA[.1]]></Property>
+<Property name="maximum"><![CDATA[10]]></Property>
+<Property name="tooltip"><![CDATA[Zoom]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Labels</Property>
+<Property name="parent">Up</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,2,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">cm</Property>
+<Property name="parent">Labels</Property>
+<Property name="text"><![CDATA[Inertial frame]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">rel</Property>
+<Property name="parent">Labels</Property>
+<Property name="text"><![CDATA[Relative motion]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+<Property name="foreground"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Graphics</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">CM</Property>
+<Property name="parent">Graphics</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-xmax]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-xmax]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="pressaction"><![CDATA[eraseOrbits()]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="tooltip"><![CDATA[Click to erase]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Runge2</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[-rmax*a/(1.+a)*Math.cos(phi0)]]></Property>
+<Property name="y"><![CDATA[-rmax*a/(1.+a)*Math.sin(phi0)]]></Property>
+<Property name="sizex"><![CDATA[(rmin+rmax+.5)*Math.cos(phi0)]]></Property>
+<Property name="sizey"><![CDATA[(rmin+rmax+.5)*Math.sin(phi0)]]></Property>
+<Property name="visible"><![CDATA[orbits && Vx == 0.0 && Vy == 0.0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+<Property name="secondaryColor"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">PolarOrbit1</Property>
+<Property name="parent">CM</Property>
+<Property name="points"><![CDATA[100]]></Property>
+<Property name="min"><![CDATA[phi0-phimax]]></Property>
+<Property name="max"><![CDATA[phi0+phimax]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[a/(1.+a)*Math.cos(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="functiony"><![CDATA[a/(1.+a)*Math.sin(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[255,128,0,255]]></Property>
+<Property name="visible"><![CDATA[orbits && Vx == 0.0 && Vy == 0.0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">PolarOrbit2</Property>
+<Property name="parent">CM</Property>
+<Property name="points"><![CDATA[100]]></Property>
+<Property name="min"><![CDATA[phi0-phimax]]></Property>
+<Property name="max"><![CDATA[phi0+phimax]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[-1./(1.+a)*Math.cos(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="functiony"><![CDATA[-1./(1.+a)*Math.sin(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="visible"><![CDATA[orbits && Vx == 0.0 && Vy == 0.0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Center2</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X]]></Property>
+<Property name="y"><![CDATA[Y]]></Property>
+<Property name="enabled"><![CDATA[Vx != 0.0 || Vy != 0.0]]></Property>
+<Property name="dragaction"><![CDATA[eraseOrbits()]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Pos2</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X]]></Property>
+<Property name="y"><![CDATA[Y]]></Property>
+<Property name="sizex"><![CDATA[a*x/(1.+a)]]></Property>
+<Property name="sizey"><![CDATA[a*y/(1.+a)]]></Property>
+<Property name="visible"><![CDATA[vectors]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[255,128,0,255]]></Property>
+<Property name="secondaryColor"><![CDATA[255,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Particle2</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X+a*x/(1.+a)]]></Property>
+<Property name="y"><![CDATA[Y+a*y/(1.+a)]]></Property>
+<Property name="sizex"><![CDATA[zr]]></Property>
+<Property name="sizey"><![CDATA[zr]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="dragaction"><![CDATA[putphir()]]></Property>
+<Property name="action"><![CDATA[putphir()]]></Property>
+<Property name="secondaryColor"><![CDATA[255,128,0,255]]></Property>
+<Property name="color"><![CDATA[255,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Orb2</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X+a*x/(1.+a)]]></Property>
+<Property name="y"><![CDATA[Y+a*y/(1.+a)]]></Property>
+<Property name="maxpoints"><![CDATA[Npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[orbits && (Vx != 0.0 || Vy != 0.0)]]></Property>
+<Property name="color"><![CDATA[255,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Pos1</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X]]></Property>
+<Property name="y"><![CDATA[Y]]></Property>
+<Property name="sizex"><![CDATA[-x/(1.+a)]]></Property>
+<Property name="sizey"><![CDATA[-y/(1.+a)]]></Property>
+<Property name="visible"><![CDATA[vectors]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Particle1</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X-x/(1.+a)]]></Property>
+<Property name="y"><![CDATA[Y-y/(1.+a)]]></Property>
+<Property name="sizex"><![CDATA[zr]]></Property>
+<Property name="sizey"><![CDATA[zr]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="dragaction"><![CDATA[putphir()]]></Property>
+<Property name="action"><![CDATA[putphir()]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Orb1</Property>
+<Property name="parent">CM</Property>
+<Property name="x"><![CDATA[X-x/(1.+a)]]></Property>
+<Property name="y"><![CDATA[Y-y/(1.+a)]]></Property>
+<Property name="maxpoints"><![CDATA[Npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[orbits && (Vx != 0.0 || Vy != 0.0)]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Separator</Type>
+<Property name="name">Separator</Property>
+<Property name="parent">Graphics</Property>
+<Property name="orientation"><![CDATA[VERTICAL]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Relative</Property>
+<Property name="parent">Graphics</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-xmax]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-xmax]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="pressaction"><![CDATA[pause()]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="tooltip"><![CDATA[Use mouse to choose relative position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Runge</Property>
+<Property name="parent">Relative</Property>
+<Property name="x"><![CDATA[-rmax*Math.cos(phi0)]]></Property>
+<Property name="y"><![CDATA[-rmax*Math.sin(phi0)]]></Property>
+<Property name="sizex"><![CDATA[(rmin+rmax+.5)*Math.cos(phi0)]]></Property>
+<Property name="sizey"><![CDATA[(rmin+rmax+.5)*Math.sin(phi0)]]></Property>
+<Property name="visible"><![CDATA[orbits]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+<Property name="secondaryColor"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">PolarOrbit</Property>
+<Property name="parent">Relative</Property>
+<Property name="points"><![CDATA[100]]></Property>
+<Property name="min"><![CDATA[phi0-phimax]]></Property>
+<Property name="max"><![CDATA[phi0+phimax]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[Math.cos(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="functiony"><![CDATA[Math.sin(s)/(ecc*Math.cos(s-phi0)+k)]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="visible"><![CDATA[orbits]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">RelativePos</Property>
+<Property name="parent">Relative</Property>
+<Property name="sizex"><![CDATA[x]]></Property>
+<Property name="sizey"><![CDATA[y]]></Property>
+<Property name="visible"><![CDATA[vectors]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Particle</Property>
+<Property name="parent">Relative</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[zr]]></Property>
+<Property name="sizey"><![CDATA[zr]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[pause()]]></Property>
+<Property name="dragaction"><![CDATA[putphir()]]></Property>
+<Property name="action"><![CDATA[putphir()]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Center</Property>
+<Property name="parent">Relative</Property>
+<Property name="sizex"><![CDATA[zr]]></Property>
+<Property name="sizey"><![CDATA[zr]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[255,128,0,255]]></Property>
+<Property name="color"><![CDATA[255,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">CoM</Property>
+<Property name="parent">Relative</Property>
+<Property name="x"><![CDATA[a*x/(1.+a)]]></Property>
+<Property name="y"><![CDATA[a*y/(1.+a)]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Left</Property>
+<Property name="parent">Down</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Buttons</Property>
+<Property name="parent">Left</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,7,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">BE</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[E]]></Property>
+<Property name="format"><![CDATA[E = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[putphixy()]]></Property>
+<Property name="tooltip"><![CDATA[Mechanical energy]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Br</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[r]]></Property>
+<Property name="format"><![CDATA[r = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[putphixy()]]></Property>
+<Property name="tooltip"><![CDATA[Polar distance]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bphi</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[phi]]></Property>
+<Property name="format"><![CDATA["$\phi$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="tooltip"><![CDATA[Polar angle]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">VVx</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[Vx]]></Property>
+<Property name="format"><![CDATA[Vx = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[eraseOrbits()]]></Property>
+<Property name="tooltip"><![CDATA[x component of the center-of-mass velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Battractive</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[attractive]]></Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[Attractive]]></Property>
+<Property name="mnemonic"><![CDATA[a]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[putphixy()]]></Property>
+<Property name="tooltip"><![CDATA[Is force attractive?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Baway</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[vectors]]></Property>
+<Property name="text"><![CDATA[Vectors]]></Property>
+<Property name="mnemonic"><![CDATA[v]]></Property>
+<Property name="tooltip"><![CDATA[Draw position vectors?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Borbits</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[orbits]]></Property>
+<Property name="text"><![CDATA[Orbit]]></Property>
+<Property name="mnemonic"><![CDATA[o]]></Property>
+<Property name="tooltip"><![CDATA[Show orbit?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Becc</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[ecc]]></Property>
+<Property name="format"><![CDATA["$\epsilon$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="tooltip"><![CDATA[Eccentricity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bdt</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.###"]]></Property>
+<Property name="tooltip"><![CDATA[Integration step]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bphi0</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[phi0]]></Property>
+<Property name="format"><![CDATA[per = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[putphixy()]]></Property>
+<Property name="tooltip"><![CDATA[Pericentron direction]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">VVy</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[Vy]]></Property>
+<Property name="format"><![CDATA[Vy = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[eraseOrbits()]]></Property>
+<Property name="tooltip"><![CDATA[y component of the center-of-mass velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Single step the simulation"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the initial conditions.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Right</Property>
+<Property name="parent">Down</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="size"><![CDATA[100,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">alpha</Property>
+<Property name="parent">Right</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[m2/m1 = 0.##]]></Property>
+<Property name="ticks"><![CDATA[9]]></Property>
+<Property name="tooltip"><![CDATA[Quotient of masses in the range [0,1]]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

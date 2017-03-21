@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Free Fall Ejs Model</title>
+  </head>
+  <body> 
+    <h1 align="left">Free Fall Model</h1>
+    <p align="center"><img border="0" src="freefall_vars.gif"></p>
+    <p>The Free Fall model uses 6 variables having their usual meaning.&nbsp; The variable g is the acceleration new Earth's surface 
+    due to gravity in m/s<sup>2</sup>.&nbsp; The coefficient of restitution is 
+    used to reduce the speed of the falling object at each bounce. </p>
+    <p><span style="font-weight: 400">Numerical algorithms for solving second order differential equations, such as Newton's 
+    Second Law, usually require that the differential equation be rewritten as a system of first ordinary differential equations.&nbsp;&nbsp; 
+    This is a straightforward process if we introduce a variable for each velocity component.&nbsp; Because the ball's motion 
+    occurs only along the y (vertical) axis, we introduce the variable v<sub>y</sub>.&nbsp; For the simple Free Fall 
+    example the differential equations for vertical position y and velocity v<sub>y</sub> can be written as:</span></p>
+    <h4 align="center"><span style="font-weight: 400">dy/dt = v<sub>y</sub><br>
+    dv<sub>y</sub>/dt =-9.8 .</span></h4>
+    <p align="left">Differential equations for position y and the velocity v<sub>y</sub><b> </b>are entered on the Ejs 
+	Evolution page.</p>
+    <h4 align="center"><img border="0" src="freefall_ode.gif"></h4>
+    <p align="left">Modeling the bounce requires an Ejs event that is triggered when the ball passes through the table top.&nbsp;An 
+    Ejs event occurs when the event's zero condition becomes negative.&nbsp; Because the table is located at y=0, we can use the 
+    y-position of the ball to trigger the event.</p><p align="center">&nbsp;<img border="0" src="freefallaction.jpg"></p>
+    <p align="left">If the ball is below the floor and if the velocity is downward, the zero condition is negative and the event's action 
+    takes place.&nbsp; Note that Ejs automatically determines the time of the event (to within the given tolerance) before applying the 
+    action. The time evolution will then continue unless the <i>Stop at event</i> box is selected.&nbsp; In the Simple Free Fall model, the 
+    event's action diminishes the speed of 
+    the ball and causes the ball to move upward.</p>
+</body>
+</html>

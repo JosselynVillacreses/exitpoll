@@ -1,0 +1,48 @@
+<% include menu %>
+<br>
+<br>
+ <div class="contenedorCrud">
+  <input type="button" name="" value="Crear" onclick="mostrarCreate()">
+<br>
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Partido</th>
+      <th>Cédula</th>
+      <th colspan='2'>Presidente</th>
+      <th>Edad</th>
+      <th>Campaña</th>
+      <th colspan='2'>Vicepresidente</th>
+      <th colspan='2'>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% 
+        var arrPresi = db.candidato.presidente;
+        var arrPartido = db.partido;
+
+        for(var i in arrPresi){%>
+            <tr>
+              <td><img class="foto" src="<%= arrPartido[arrPresi[i].id_partido].logo %>"></td>
+              <td name="<%=arrPresi[i].id_presidente%>"><%=arrPresi[i].cedula%></td>
+              <td><img class="foto" src="<%=arrPresi[i].foto%>"></td>
+              <td><%= arrPresi[i].nombre + " " + arrPresi[i].apellido%></td>
+              <td><%=arrPresi[i].edad%></td>
+              <td><%=arrPresi[i].campaña%></td>
+              <td><img class="foto" src="<%=arrPresi[i].vicepresidente.foto%>"></td>
+              <td><%= arrPresi[i].vicepresidente.nombre + " " + arrPresi[i].vicepresidente.apellido%></td>
+            
+    
+              <td><input type="button" name="" value="Borrar" onclick="eliminarPresi('<%= arrPresi[i].id_presidente %>')"></td>
+
+              <td><input type="button" name="" value="Actualizar" onclick="act_pres('<%= arrPresi[i].id_presidente %>')"></td>
+              
+
+            </tr>
+
+        <% }%> 
+  </tbody>
+</table>
+</div>
+
+<% include create_presidente %>

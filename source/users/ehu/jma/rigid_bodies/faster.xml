@@ -1,0 +1,797 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Faster than g]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[rigid body;conservation law;faster than g]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[An articulated rod and a point particle are dropped from the same height over a table. Friction is neglected. The simulation allows computing fall times and trajectories.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Faster than g</title>
+    
+  </head>
+  <body>
+    <h1>
+      Faster than <i>g</i>
+    </h1>
+    An articulated rod and a point particle are dropped from the same height 
+    over a table. Friction is neglected. The simulation allows computing fall 
+    times and trajectories.
+
+    <ul>
+      <li>
+        You can select below the initial position of rod and particle by using 
+        the slider or entering the initial rod slope as given by its initial 
+        angle <i>&#966;</i> with the horizontal.
+      </li>
+      <li>
+        Unit length is the rod length <i>L</i>.
+      </li>
+      <li>
+        Unit time is (<i>L</i>/<i>g</i>)<sup>1/2</sup>.
+      </li>
+      <li>
+        Put the mouse pointer over an element to get information about it.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ol>
+      <li>
+        Compute the rod free end's vertical velocity when its height is <i>z</i> 
+        and compare it when particle's velocity at same height. Show that the 
+        latter will be smaller for all heights 0 &#8804; <i>z</i> &lt; <i>h</i> 
+        &#8801; <i>L</i> sin <i>&#966;</i> if and only if <i>&#966;</i> &lt; 
+        arcsin 3<sup>-1/2</sup> = 35.26&#176;.
+      </li>
+      <li>
+        Use the simulation (after selecting <b>Velocities</b>) to check the 
+        result. Start lowering <i>&#966;</i>: what happens initially, when the 
+        heights are still near their initial value?
+      </li>
+      <li>
+        Check numerically that the rod will reach the table faster than the 
+        particle if <i>&#966;</i> &lt; 47.9&#176;.
+      </li>
+      <li>
+        Explain why those two results are not contradictory.
+      </li>
+      <li>
+        You can see the video of the experiment <a href="http://tp.lc.ehu.es/jma/mekanika/solidoa/fasterg.html">here</a>
+      </li>
+    </ol>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[ANgle between rod and horizontal]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phid]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time derivative of phi]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[z]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Particle height]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi0]]></Name>
+<Value><![CDATA[89.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial orientation]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[z0]]></Name>
+<Value><![CDATA[0.99]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial end height]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[First rod reaches horizontal]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Second rod reaches horizontal]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Numerical</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[1e-6]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Tolerance for numerical method]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[eps]]></Name>
+<Value><![CDATA[1e-6]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Tolerance for events]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[stopEvents]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Stop when a rod reaches horizontal]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showVelocities]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show velocities of particle and rod end]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[-.75]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position of left rod]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[.75]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position of right rod]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t1Label]]></Name>
+<Value><![CDATA[" "]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time the rod needs to reach horizontal]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t2Label]]></Name>
+<Value><![CDATA[" "]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time the particle needs to reach table]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[formatString]]></Name>
+<Value><![CDATA["0.0000"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Format for times of arrival]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Initial values]]></Comment>
+<Code><![CDATA[
+t = t1 = t2 = phid = 0.0;
+if (phi0 < 0.0) phi0 = 0.0;
+else if (phi0 >= 89.9) phi0 = 89.9;
+z = z0 = Math.sin(phi = Math.toRadians(phi0));
+_view.resetTraces();
+t1Label = t2Label = " ";
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters and symbols]]></Comment>
+<Code><![CDATA[
+_view.getElement("z0").setProperty("format","\u03C6 = 0.##");
+_view.getElement("dt").setProperty("format","\u0394t = 0.####");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Rod</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="phi">phid</Rate>
+<Rate state="phid">-1.5*Math.cos(phi)</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[Equations of motion for rod]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Rod horizontal</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[First rod reaches horizontal]]></Comment>
+<ZeroCondition><![CDATA[
+return (t1 > 0.0) ? 1.0 : phi;
+]]></ZeroCondition>
+<Tolerance><![CDATA[eps]]></Tolerance>
+<Action><![CDATA[
+t1 = t;
+phi = phid = 0.0;
+t1Label = "t = "+_format(t1,formatString);
+if (stopEvents || t2 != 0.0) _pause();
+]]></Action>
+<StopAtEvent>true</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Particle</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Particle height]]></Comment>
+<Code><![CDATA[
+z = z0-.5*t*t;
+if (z < 0 && t2 == 0.0) {
+  t2 = Math.sqrt(2.0*z0);
+  if (stopEvents || t1 != 0.0) _pause();
+  t2Label = "t = "+_format(t2,formatString);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Positions</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Position of both rods]]></Comment>
+<Code><![CDATA[
+if (phi < 0.0) phi = 0.0;
+if (z < 0.0) z = 0.0;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Faster than g]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,-4"]]></Property>
+<Property name="size"><![CDATA["640,460"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Left</Property>
+<Property name="parent">Main</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Panel</Type>
+<Property name="name">Void</Property>
+<Property name="parent">Left</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="background"><![CDATA[239,239,255,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Height</Property>
+<Property name="parent">Left</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[phi0]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[89.9]]></Property>
+<Property name="orientation"><![CDATA[VERTICAL]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="dragaction"><![CDATA[_initialize()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="background"><![CDATA[239,239,255,255]]></Property>
+<Property name="tooltip"><![CDATA[Initial height]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Center</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Graph</Property>
+<Property name="parent">Center</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Heights</Property>
+<Property name="parent">Graph</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[-.1]]></Property>
+<Property name="maximumY"><![CDATA[1.1]]></Property>
+<Property name="title"><![CDATA[Heights]]></Property>
+<Property name="titleX"><![CDATA[t]]></Property>
+<Property name="titleY"><![CDATA[z]]></Property>
+<Property name="xFormat"><![CDATA[t = 0.###]]></Property>
+<Property name="yFormat"><![CDATA[z = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Height evolution]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">LeftHeight</Property>
+<Property name="parent">Heights</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[Math.sin(phi)]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">RightHeight</Property>
+<Property name="parent">Heights</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[z]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Space</Property>
+<Property name="parent">Graph</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.]]></Property>
+<Property name="maximumX"><![CDATA[1.]]></Property>
+<Property name="minimumY"><![CDATA[-.05]]></Property>
+<Property name="maximumY"><![CDATA[1.05]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="showCoordinates"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Rod</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[Math.cos(phi)]]></Property>
+<Property name="sizey"><![CDATA[Math.sin(phi)]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Articulation</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="sizex"><![CDATA[.1]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Axis</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="sizex"><![CDATA[.05]]></Property>
+<Property name="sizey"><![CDATA[.05]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Particle</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[z]]></Property>
+<Property name="sizex"><![CDATA[.05]]></Property>
+<Property name="sizey"><![CDATA[.05]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Table</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[-2]]></Property>
+<Property name="y"><![CDATA[-.03]]></Property>
+<Property name="sizex"><![CDATA[5]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[green]]></Property>
+<Property name="stroke"><![CDATA[9]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">RodTrace</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x1+Math.cos(phi)]]></Property>
+<Property name="y"><![CDATA[Math.sin(phi)]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[255,128,128,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">ParticleTrace</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[z]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[128,128,255,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Times</Property>
+<Property name="parent">Center</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:1,2,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">t1</Property>
+<Property name="parent">Times</Property>
+<Property name="text"><![CDATA[%t1Label%]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Time the rod needs to reach the horizontal]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">t2</Property>
+<Property name="parent">Times</Property>
+<Property name="text"><![CDATA[%t2Label%]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="foreground"><![CDATA[blue]]></Property>
+<Property name="tooltip"><![CDATA[Time the particle needs to reach the table]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Bottom</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Bottom</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Display</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">z0</Property>
+<Property name="parent">Display</Property>
+<Property name="variable"><![CDATA[phi0]]></Property>
+<Property name="format"><![CDATA["$\phi$ = 0.##"]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Initial angle (in degrees)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">dt</Property>
+<Property name="parent">Display</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.####"]]></Property>
+<Property name="tooltip"><![CDATA[Integration step]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowVelocities</Property>
+<Property name="parent">Display</Property>
+<Property name="variable"><![CDATA[showVelocities]]></Property>
+<Property name="text"><![CDATA[Velocities]]></Property>
+<Property name="mnemonic"><![CDATA[v]]></Property>
+<Property name="tooltip"><![CDATA[Show the velocities of particle and rod free end]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Pause</Property>
+<Property name="parent">Display</Property>
+<Property name="variable"><![CDATA[stopEvents]]></Property>
+<Property name="text"><![CDATA[Events]]></Property>
+<Property name="mnemonic"><![CDATA[e]]></Property>
+<Property name="tooltip"><![CDATA[Pause when the rod or the particle reaches the table]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Buttons</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[grid:1,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_initialize();
+_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">continueButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/continue.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["c"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+<Property name="tooltip"><![CDATA["Continue previous simualtion"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">VelocitiesDialog</Property>
+<Property name="title"><![CDATA[Velocities]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showVelocities]]></Property>
+<Property name="location"><![CDATA["648,0"]]></Property>
+<Property name="size"><![CDATA["300,300"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Velocities</Property>
+<Property name="parent">VelocitiesDialog</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_view.getElement("vel1").reset();
+_view.getElement("vel2").reset();]]></Property>
+<Property name="title"><![CDATA[Velocities vs height]]></Property>
+<Property name="titleX"><![CDATA[z]]></Property>
+<Property name="titleY"><![CDATA[v]]></Property>
+<Property name="xFormat"><![CDATA[z = 0.###]]></Property>
+<Property name="yFormat"><![CDATA[v = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Click to clear]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">vel1</Property>
+<Property name="parent">Velocities</Property>
+<Property name="x"><![CDATA[Math.sin(phi)]]></Property>
+<Property name="y"><![CDATA[(phi > 0.0) ? -phid*Math.cos(phi) : Math.sqrt(3.0*z0)]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[t1 == 0.0]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">vel2</Property>
+<Property name="parent">Velocities</Property>
+<Property name="x"><![CDATA[z]]></Property>
+<Property name="y"><![CDATA[Math.sqrt(2.0*(z0-z))]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[t2 == 0.0]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

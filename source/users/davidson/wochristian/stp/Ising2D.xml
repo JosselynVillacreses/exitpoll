@@ -1,0 +1,501 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0beta">
+<Osejs.Information>
+<Title><![CDATA[Ising Model]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[Ising Model, statistical physics, feromagnetism]]></Keywords>
+<Level><![CDATA[advanced]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[he Ising Ejs model is based on an Open Source Physics program by Harvey Gould, Jan Tobochnik, and Wolfgang Christian in "An Introduction to Computer Simulation Methods."]]></Abstract>
+<AuxiliaryFiles><![CDATA[./ising/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./ising/Ising.html;./ising/Ising2D.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Ising Model</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./ising/Ising.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>2D Ising Model</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./ising/Ising2D.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Ising Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[32]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[size of Ising lattice]]></Comment>
+</Variable>
+<Variable>
+<Name>spins</Name>
+<Value><![CDATA[-1]]></Value>
+<Type>int</Type>
+<Dimension>[n][n]</Dimension>
+<Comment><![CDATA[spins array; array elements can be 0 (down) or 1 (up)]]></Comment>
+</Variable>
+<Variable>
+<Name>T</Name>
+<Value><![CDATA[2.30005]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[temperature]]></Comment>
+</Variable>
+<Variable>
+<Name>M</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[magnetization]]></Comment>
+</Variable>
+<Variable>
+<Name>E</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[energy]]></Comment>
+</Variable>
+<Variable>
+<Name>B</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[external field]]></Comment>
+</Variable>
+<Variable>
+<Name>J</Name>
+<Value><![CDATA[1]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[interaction strength]]></Comment>
+</Variable>
+<Variable>
+<Name>steps</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of Monte Carlo steps]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initialize Spins</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+randomize();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Monte Carlo Step</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+for (int i = 0; i < n*n; i++) {
+    flip ();
+}
+steps++;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>flip spins</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public boolean flip() {
+  int x = (int) (Math.random()*n);
+  int y = (int) (Math.random()*n);
+  int delta_M = -2*spins[x][y];
+  int delta_nn_sum = spins[(x-1+n)%n][y]+spins[(x+1)%n][y]+spins[x][(y-1+n)%n]+spins[x][(y+1)%n];
+  delta_nn_sum = -2*spins[x][y]*delta_nn_sum;
+  double delta_E = -J*delta_nn_sum-B*delta_M;
+  if((delta_E<=0)||(Math.random()<Math.exp(-delta_E/T))) {
+     spins[x][y] *= -1;
+     M += delta_M;
+     E += delta_E;
+     return true;
+  } else {
+     return false;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>randomize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void randomize () {
+  for(int i=0; i<n; i++){
+    for(int j=0; j<n; j++){
+      spins[i][j]=(Math.random()<0.5)?-1:1;
+    }
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>change n</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// change the size of the lattice
+public void changeGrid() {
+  spins= new int[n][n];
+  randomize();
+  computeME();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>computeME</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+//Compute the total energy and magnetization by summing over all spin states.
+public void computeME() {
+  int nn_sum = 0;
+  M = 0;
+  for(int i = 0; i<n; i++) {
+     for(int j = 0; j<n; j++) {
+        M += spins[i][j];
+        if(spins[i][(j+1)%n]==spins[i][j]) {
+           nn_sum++;
+        } else {
+           nn_sum--;
+        }
+        if(spins[(i+1)%n][j]==spins[i][j]) {
+           nn_sum++;
+        } else {
+           nn_sum--;
+        }
+     }
+  }
+  E = -J*nn_sum-B*M;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">isingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Ising Model]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["44,-7"]]></Property>
+<Property name="size"><![CDATA["553,556"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">isingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">sliderPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[grid:1,2,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_BEVEL]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">temperaturePanel</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">temperatureSlider</Property>
+<Property name="parent">temperaturePanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[T]]></Property>
+<Property name="value"><![CDATA[2.30005]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[5]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[computeME()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">temperatureLabel</Property>
+<Property name="parent">temperaturePanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[T = ]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">temperatureField</Property>
+<Property name="parent">temperaturePanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[T]]></Property>
+<Property name="format"><![CDATA[0.000]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[computeME()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">BPanel</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">BSlider</Property>
+<Property name="parent">BPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[B]]></Property>
+<Property name="value"><![CDATA[0.0]]></Property>
+<Property name="minimum"><![CDATA[-2]]></Property>
+<Property name="maximum"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[computeME()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">BLabel</Property>
+<Property name="parent">BPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[  H = ]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">BField</Property>
+<Property name="parent">BPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[B]]></Property>
+<Property name="format"><![CDATA[0.000]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[computeME()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+<Property name="size"><![CDATA[0,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[""]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[""]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nPanel</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="layout"><![CDATA[flow:right,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nLabel</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["  n = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nField</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">north</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[changeGrid()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">isingPlottingPanel</Property>
+<Property name="parent">isingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA[Spins]]></Property>
+<Property name="BRmessage"><![CDATA["steps="+steps]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Lattice</Type>
+<Property name="name">lattice</Property>
+<Property name="parent">isingPlottingPanel</Property>
+<Property name="data"><![CDATA[spins]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[n]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[n]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">energyFrame</Property>
+<Property name="title"><![CDATA[Time Series]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["44,551"]]></Property>
+<Property name="size"><![CDATA["553,344"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">energyPlottingPanel</Property>
+<Property name="parent">energyFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[10]]></Property>
+<Property name="yMarginPercentage"><![CDATA[5]]></Property>
+<Property name="title"><![CDATA[Energy and Magnetization]]></Property>
+<Property name="titleX"><![CDATA[Monte Carlo steps]]></Property>
+<Property name="titleY"><![CDATA[E and M]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">energyTrace</Property>
+<Property name="parent">energyPlottingPanel</Property>
+<Property name="x"><![CDATA[steps]]></Property>
+<Property name="y"><![CDATA[E]]></Property>
+<Property name="maxpoints"><![CDATA[500]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">magnetizationTrace</Property>
+<Property name="parent">energyPlottingPanel</Property>
+<Property name="x"><![CDATA[steps]]></Property>
+<Property name="y"><![CDATA[M]]></Property>
+<Property name="maxpoints"><![CDATA[500]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">clearPanel</Property>
+<Property name="parent">energyFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">clearPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Clear]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces();
+steps=0;]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

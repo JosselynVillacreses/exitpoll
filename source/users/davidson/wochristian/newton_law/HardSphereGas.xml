@@ -1,0 +1,482 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Hard Sphere Gas]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[molecular dynamics, gas, hard disk model]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[Sphere Collisions models an ideal two dimensional gas using hard spheres.  Note the use of periodic boundary conditions.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./HardSphereGas/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./HardSphereGas/sphere_gas.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Hard Sphere Gas</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./HardSphereGas/sphere_gas.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>dynamic vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[24]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the number of particles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[array of particle x coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[array of particle y coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[z]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[array of particle x velocity components]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[array of particle x velocity components]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[array of particle y velocity components]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vz]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time step between animation frames]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>constants</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[TOLERANCE]]></Name>
+<Value><![CDATA[0.001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the diameter of a particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[accumulateData]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the diameter of a particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[diameter]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the diameter of a particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cellSize]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the size of a unit cell]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>auxiliary vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[collision1]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[index of first colliding particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[collision2]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[index of second colliding particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[speed]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[n]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initialize Particles</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double xi=diameter;
+double yi=diameter;
+double zi=diameter;
+for(int i=0; i<n; i++){
+  x[i]=xi;
+  y[i]=yi;
+  z[i]=zi;
+  vx[i]=-0.5+Math.random();
+  vy[i]=-0.5+Math.random();
+  vz[i]=-0.5+Math.random();
+  xi += 1.5*diameter;
+  if(xi+diameter>cellSize){
+   xi = diameter;
+   yi += 1.5*diameter;
+   if(yi+diameter>cellSize){
+     xi = diameter;
+     yi = diameter;
+     zi += 1.5*diameter;
+   }
+  }
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>particle motion</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x[i]">vx[i]</Rate>
+<Rate state="y[i]">vy[i]</Rate>
+<Rate state="z[i]">vz[i]</Rate>
+<Method>Euler</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[Euler method is exact because particles move with constant velocity between collisions.]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>collision</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[A collision occurs when two disks overlap.  Note the use of periodic boundary conditions.]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=i+1; j<n; j++) {
+    double deltax = separation(x[j]-x[i],cellSize);
+    double deltay = separation(y[j]-y[i],cellSize);
+    double deltaz = separation(z[j]-z[i],cellSize);
+    double distance = deltax*deltax+deltay*deltay+deltaz*deltaz-diameter*diameter;
+    if (distance<min) {
+      double deltaVx = vx[j]-vx[i], deltaVy = vy[j]-vy[i], deltaVz = vz[j]-vz[i];
+      if (deltax*deltaVx+deltay*deltaVy+deltaz*deltaVz<0) { 
+      collision1 = i; collision2 = j; min = distance; 
+  }}}
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+double vcmx = (vx[collision2]+vx[collision1])/2;  // vcm is center of mass velocity in laboratory
+double vcmy = (vy[collision2]+vy[collision1])/2;
+double vcmz = (vz[collision2]+vz[collision1])/2;
+double deltax = separation(x[collision2]-x[collision1],cellSize);
+double deltay = separation(y[collision2]-y[collision1],cellSize);
+double deltaz = separation(z[collision2]-z[collision1],cellSize);
+double r=Math.sqrt(deltax*deltax+deltay*deltay+deltaz*deltaz);  // separation
+deltax = deltax/r;  // normalized separation x component
+deltay = deltay/r;  // normalized separation y component
+deltaz = deltaz/r;  // normalized separation z component
+// transform into CM system
+vx[collision1]=vx[collision1]-vcmx;
+vy[collision1]=vy[collision1]-vcmy;
+vz[collision1]=vz[collision1]-vcmz;
+vx[collision2]=vx[collision2]-vcmx;
+vy[collision2]=vy[collision2]-vcmy;
+vz[collision2]=vz[collision2]-vcmz;
+// compute collisions
+double dot=deltax*vx[collision1]+deltay*vy[collision1]+deltaz*vz[collision1]; // particle i projection along line of centers
+vx[collision1]=vx[collision1]-2*dot*deltax;
+vy[collision1]=vy[collision1]-2*dot*deltay;
+vz[collision1]=vz[collision1]-2*dot*deltaz;
+dot=deltax*vx[collision2]+deltay*vy[collision2]+deltaz*vz[collision2];        // particle j projection along line of centers
+vx[collision2]=vx[collision2]-2*dot*deltax;
+vy[collision2]=vy[collision2]-2*dot*deltay;
+vz[collision2]=vz[collision2]-2*dot*deltaz;
+// transform into laboratory
+vx[collision1]=vx[collision1]+vcmx;
+vy[collision1]=vy[collision1]+vcmy;
+vz[collision1]=vz[collision1]+vcmz;
+vx[collision2]=vx[collision2]+vcmx;
+vy[collision2]=vy[collision2]+vcmy;
+vz[collision2]=vz[collision2]+vcmz;
+
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Constraints</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+periodicBoundary();
+
+for(int i=0; i<n; i++){
+  speed[i]=Math.sqrt(vx[i]*vx[i]+vy[i]*vy[i]);
+}
+if(!accumulateData) _view.speedHistogram.clear();
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>custom</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void periodicBoundary () {
+  for(int i=0; i<n; i++){
+    x[i]=position(x[i],cellSize);
+    y[i]=position(y[i],cellSize);
+    z[i]=position(z[i],cellSize);
+  }
+}
+
+// Adjusts the postion of a particle assuming peridoic boundary conditions.
+// The postion will be in the interval [0,size).
+public double position(final double r, final double size) {
+    return r<0 ? r%size+size : r%size;
+}
+
+//Computes the minimum separation using periodic boundary conditions.
+public double separation(final double dr, final double size) {
+    return dr-size*Math.floor(dr/size+0.5);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">framePendulum</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Particles]]></Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["3,3"]]></Property>
+<Property name="size"><![CDATA["367,363"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Display3DPanel</Type>
+<Property name="name">display3DPanel</Property>
+<Property name="parent">framePendulum</Property>
+<Property name="position">center</Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[cellSize]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[cellSize]]></Property>
+<Property name="minimumZ"><![CDATA[0]]></Property>
+<Property name="maximumZ"><![CDATA[cellSize]]></Property>
+<Property name="projectionMode"><![CDATA[NO_PERSPECTIVE]]></Property>
+<Property name="cameraAzimuth"><![CDATA[0.7000000000000002]]></Property>
+<Property name="cameraAltitude"><![CDATA[0.35500000000000015]]></Property>
+<Property name="cameraFocusX"><![CDATA[0.5]]></Property>
+<Property name="cameraFocusY"><![CDATA[0.5]]></Property>
+<Property name="cameraFocusZ"><![CDATA[0.5]]></Property>
+<Property name="cameraRotation"><![CDATA[0.0]]></Property>
+<Property name="cameraDistanceToScreen"><![CDATA[2.5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CircleSet3D</Type>
+<Property name="name">particles</Property>
+<Property name="parent">display3DPanel</Property>
+<Property name="numberOfElements"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="z"><![CDATA[z]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">framePendulum</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[BORDER:0,0]]></Property>
+<Property name="border"><![CDATA[8,2,2,2]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStop</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">step</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Advance the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">reset</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">accumulateBox</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[accumulateData]]></Property>
+<Property name="text"><![CDATA[Accumulate Data]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">histogramFrame</Property>
+<Property name="title"><![CDATA[histogramFrame]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["6,369"]]></Property>
+<Property name="size"><![CDATA["364,304"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">histogramPanel</Property>
+<Property name="parent">histogramFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[1.5]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[0.1]]></Property>
+<Property name="xMarginPercentage"><![CDATA[10]]></Property>
+<Property name="yMarginPercentage"><![CDATA[10]]></Property>
+<Property name="titleX"><![CDATA[speed]]></Property>
+<Property name="titleY"><![CDATA[Probability]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Histogram</Type>
+<Property name="name">speedHistogram</Property>
+<Property name="parent">histogramPanel</Property>
+<Property name="input"><![CDATA[speed]]></Property>
+<Property name="discrete"><![CDATA[false]]></Property>
+<Property name="normalized"><![CDATA[true]]></Property>
+<Property name="binWidth"><![CDATA[0.02]]></Property>
+<Property name="binStyle"><![CDATA[BIN]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

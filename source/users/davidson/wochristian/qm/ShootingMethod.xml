@@ -1,0 +1,458 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0beta">
+<Osejs.Information>
+<Title><![CDATA[Energy Eigenfunctions]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[energy eigenfunctions, shooting method, qunatum mechanics]]></Keywords>
+<Level><![CDATA[intermediate]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[./ShootingMethod/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./ShootingMethod/ShootingMethod.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Shooting Method</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./ShootingMethod/ShootingMethod.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1000</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Wave function vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[1000]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number integration steps]]></Comment>
+</Variable>
+<Variable>
+<Name>xmin</Name>
+<Value><![CDATA[-5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x axis minimum]]></Comment>
+</Variable>
+<Variable>
+<Name>xmax</Name>
+<Value><![CDATA[5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x axis maximum]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[xmin]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[position]]></Comment>
+</Variable>
+<Variable>
+<Name>dx</Name>
+<Value><![CDATA[(xmax-xmin)/(n-1)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[differential equation solver step]]></Comment>
+</Variable>
+<Variable>
+<Name>psi</Name>
+<Value><![CDATA[0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[wave function]]></Comment>
+</Variable>
+<Variable>
+<Name>psiPrime</Name>
+<Value><![CDATA[0.001]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[derivative of wave function]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Eigenstate vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>m</Name>
+<Value><![CDATA[1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[particle mass]]></Comment>
+</Variable>
+<Variable>
+<Name>hbar</Name>
+<Value><![CDATA[1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Plank's constant]]></Comment>
+</Variable>
+<Variable>
+<Name>E</Name>
+<Value><![CDATA[1.5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[wave function energy]]></Comment>
+</Variable>
+<Variable>
+<Name>potentialStr</Name>
+<Value><![CDATA["x*x/2"]]></Value>
+<Type>String</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Scale vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>minE</Name>
+<Value><![CDATA[0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>maxE</Name>
+<Value><![CDATA[10]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>scale</Name>
+<Value><![CDATA[0.1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>oldPsiPrime</Name>
+<Value><![CDATA[psiPrime]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>error</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>time independent Schroedinger equation</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>x</IndependentVariable>
+<Increment>dx</Increment>
+<Rate state="psi">psiPrime</Rate>
+<Rate state="psiPrime">-2*m*(E-_view.potentialFunction.evaluate(x))*psi/hbar/hbar</Rate>
+<Rate state=""></Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>divergence</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[stop the simulation if the solution diverges toward infinity]]></Comment>
+<ZeroCondition><![CDATA[
+if(psi==0) return 1;
+double logPsi=Math.log(Math.abs(psi));
+return Math.log(1.0e9)-logPsi;
+]]></ZeroCondition>
+<Tolerance><![CDATA[0.001]]></Tolerance>
+<Action><![CDATA[
+_pause();
+error=psi;
+]]></Action>
+<StopAtEvent>true</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+<Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>boundary</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[solver at boundary]]></Comment>
+<ZeroCondition><![CDATA[
+return xmax-x;
+]]></ZeroCondition>
+<Tolerance><![CDATA[0.0001]]></Tolerance>
+<Action><![CDATA[
+_pause();
+error=psi;
+]]></Action>
+<StopAtEvent>true</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>scale</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if(oldPsiPrime*psiPrime>0) return; // sign of derivative has not changed
+if(1.1*Math.abs(psi)>scale) scale=1.1*Math.abs(psi);
+oldPsiPrime=psiPrime;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>compute Psi</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void recompute() {
+  error=0;
+  scale=0.01;
+  x=xmin;
+  psi=0.0;
+  psiPrime=oldPsiPrime=0.001*E*E;
+  _view.wavefunctionTrace.clear();
+  _play();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>slider scale</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setSliderScale() {
+  minE=0;
+  maxE=10;
+  double x=xmin;
+  for(int i=0; i<n; i++){
+    double E=_view.potentialFunction.evaluate(x);
+    if(minE>E)minE=E;
+    x+=dx;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">wavefunctionFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Shooting Method]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["63,2"]]></Property>
+<Property name="size"><![CDATA["747,502"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">wavefunctionPlottingPanel</Property>
+<Property name="parent">wavefunctionFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-scale]]></Property>
+<Property name="maximumY"><![CDATA[scale]]></Property>
+<Property name="title"><![CDATA[Energy Eigenfunction]]></Property>
+<Property name="axesType"><![CDATA[CARTESIAN2]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="titleY"><![CDATA[$\Psi$]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">wavefunctionTrace</Property>
+<Property name="parent">wavefunctionPlottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[psi]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">error</Property>
+<Property name="parent">wavefunctionPlottingPanel</Property>
+<Property name="x"><![CDATA[xmax]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[error]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+<Property name="stroke"><![CDATA[5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">wavefunctionFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the calculation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">energyPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">sliderPanel</Property>
+<Property name="parent">energyPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">energySlider</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[E]]></Property>
+<Property name="minimum"><![CDATA[minE]]></Property>
+<Property name="maximum"><![CDATA[maxE]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[recompute()]]></Property>
+<Property name="tooltip"><![CDATA[Energy eigenvalue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">energyField</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[E]]></Property>
+<Property name="format"><![CDATA[0.0000]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[recompute()]]></Property>
+<Property name="size"><![CDATA[50,0]]></Property>
+<Property name="tooltip"><![CDATA[Energy eigenvalue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">energyLabel</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[  E = ]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[Energy eigenvalue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">potentialPanel</Property>
+<Property name="parent">energyPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Function</Type>
+<Property name="name">potentialFunction</Property>
+<Property name="parent">potentialPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[%potentialStr%]]></Property>
+<Property name="value"><![CDATA["x*x/2"]]></Property>
+<Property name="independent"><![CDATA[x]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="action"><![CDATA[setSliderScale();
+recompute();
+]]></Property>
+<Property name="size"><![CDATA[150,0]]></Property>
+<Property name="tooltip"><![CDATA[Potential energy]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">potentialLabel</Property>
+<Property name="parent">potentialPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[   V(x) = ]]></Property>
+<Property name="tooltip"><![CDATA[Potential energy]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

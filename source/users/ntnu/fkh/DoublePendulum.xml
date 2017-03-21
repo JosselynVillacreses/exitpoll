@@ -1,0 +1,828 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Double Pendulum]]></Title>
+<Author><![CDATA[Fu-Kwun Hwang, NTNU, Taiwan]]></Author>
+<Keywords><![CDATA[Double Pendulum]]></Keywords>
+<Level><![CDATA[Medium]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[A simulation of a double pendulum. The resulting motion can be very chaotic.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./DoublePendulum/DoublePendulum.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Double pendulum
+          </h1>
+          <p>
+            This is a simulation of a double pendulum.
+          </p>
+          <p>
+            The motion of such a system can be quite complicated.
+          </p>
+          <p>
+            This simulation was created by <a href="http://www.phy.ntnu.edu.tw/java/">Fu-Kwun 
+            Hwang, </a>NTNU, Taiwan.
+          </p>
+        </td>
+        <td>
+          <img src="./DoublePendulum/DoublePendulum.gif">
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>view</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-10.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ʵe�ϰ�X�b�̤p��]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[10.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ʵe�ϰ�X�b�̤j��]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[0.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ʵe�ϰ�Y�b�̤p��]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[20.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ʵe�ϰ�Y�b�̤j��]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ɶ�]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[�ʵe�C��ɶ��t]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[gravity]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[size]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[label]]></Name>
+<Value><![CDATA["play"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>plot</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[px]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[py]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[np]]></Name>
+<Value><![CDATA[600]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dn]]></Name>
+<Value><![CDATA[5]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[co]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cc]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[oo]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pxmin]]></Name>
+<Value><![CDATA[-1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pxmax]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pymin]]></Name>
+<Value><![CDATA[-1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pymax]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>pendulum1</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[m1]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[L1]]></Name>
+<Value><![CDATA[8.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cta1]]></Name>
+<Value><![CDATA[Math.PI/6.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega1]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cst1]]></Name>
+<Value><![CDATA[-gravity/L1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[size1]]></Name>
+<Value><![CDATA[size]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ya]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx1]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy1]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>pendulum2</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[m2]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[L2]]></Name>
+<Value><![CDATA[8.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cta2]]></Name>
+<Value><![CDATA[Math.PI/6.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega2]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cst12]]></Name>
+<Value><![CDATA[-m2*gravity/(m1*L1)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cst2]]></Name>
+<Value><![CDATA[-gravity/L2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[size2]]></Name>
+<Value><![CDATA[size]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xb]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yb]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx2]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy2]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>init</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t=0.;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>evolution</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Increment>dt</Increment>
+<Rate state="cta1">omega1</Rate>
+<Rate state="cta2">omega2</Rate>
+<Rate state="omega1">getA1(cta1,cta2,omega1,omega2)</Rate>
+<Rate state="omega2">getA2(cta1,cta2,omega1,omega2)</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>relation</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+x1=L1*Math.sin(cta1);
+y1=-L1*Math.cos(cta1);
+x2=L2*Math.sin(cta2);
+y2=-L2*Math.cos(cta2);
+ya=ymax+y1;
+xb=x1+x2;
+yb=ya+y2;
+if(co) { px=cta1;  py=omega1;}
+else if(cc){px=cta1; py=cta2;}
+else  {px=omega1; py=omega2;}
+
+vx1=-y1*omega1;
+vy1=x1*omega1;
+vx2=vx1-y2*omega2;
+vy2=vy1+x2*omega2;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>getA1</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double getA1 (double c1, double c2,double w1,double w2) {
+  return  -gravity*((m1+m2)*Math.sin(c1)-m2*Math.sin(c2)*Math.cos(c1-c2))/((m1+m2)-m2*Math.cos(c1-c2)*Math.cos(c1-c2))/L1;
+}
+public double getA2 (double c1,double c2,double w1,double w2) {
+  return -gravity*(m1+m2)*(Math.sin(c1)*Math.cos(c1-c2)-Math.sin(c2))/(m2*Math.cos(c1-c2)*Math.cos(c1-c2)-(m1+m2))/L2;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>setPendulum</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setPendulum () {
+ y1=ya-ymax;
+ x2=xb-x1;
+ y2=yb-ya;
+ L1=Math.sqrt(x1*x1+y1*y1);
+ L2=Math.sqrt(x2*x2+y2*y2);
+ cta1=Math.atan2(x1,-y1);
+ cta2=Math.atan2(x2,-y2);
+ cst1=-gravity/L1;
+ cst2=-gravity/L2;
+ cst12=-m2*gravity/(m1*L1);
+ omega1=0.;
+ omega2=0.;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>other</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void clear(){
+  _view.resetTraces();
+  _initialize();
+}
+
+public void drag () {
+  omega1=0.;
+  omega2=0.;
+  clear();
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Double pendulum]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["4,22"]]></Property>
+<Property name="size"><![CDATA["598,307"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">centerPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="background"><![CDATA[LIGHTGRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">L2Segment</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[ya]]></Property>
+<Property name="sizeX"><![CDATA[x2]]></Property>
+<Property name="sizeY"><![CDATA[y2]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">L1Segment</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[ymax]]></Property>
+<Property name="sizeX"><![CDATA[x1]]></Property>
+<Property name="sizeY"><![CDATA[y1]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape1</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[ya]]></Property>
+<Property name="sizeX"><![CDATA[size1]]></Property>
+<Property name="sizeY"><![CDATA[size1]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[setPendulum()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xb]]></Property>
+<Property name="y"><![CDATA[yb]]></Property>
+<Property name="sizeX"><![CDATA[size2]]></Property>
+<Property name="sizeY"><![CDATA[size2]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[setPendulum()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">v1Arrow</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[ya]]></Property>
+<Property name="sizeX"><![CDATA[vx1]]></Property>
+<Property name="sizeY"><![CDATA[vy1]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+<Property name="fillColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">v2Arrow</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xb]]></Property>
+<Property name="y"><![CDATA[yb]]></Property>
+<Property name="sizeX"><![CDATA[vx2]]></Property>
+<Property name="sizeY"><![CDATA[vy2]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+<Property name="fillColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trail</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="inputX"><![CDATA[xb]]></Property>
+<Property name="inputY"><![CDATA[yb]]></Property>
+<Property name="maximumPoints"><![CDATA[np]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA["phase diagram"]]></Property>
+<Property name="titleX"><![CDATA["$\\theta$_2"]]></Property>
+<Property name="titleY"><![CDATA["$\omega$_2"]]></Property>
+<Property name="background"><![CDATA[LIGHTGRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trailPxPy</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[px]]></Property>
+<Property name="inputY"><![CDATA[py]]></Property>
+<Property name="maximumPoints"><![CDATA[np]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trailCta2Omega2</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[cta2]]></Property>
+<Property name="inputY"><![CDATA[omega2]]></Property>
+<Property name="maximumPoints"><![CDATA[np]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:1,2,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">slidersPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[GRID:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">slidercta1</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[cta1]]></Property>
+<Property name="minimum"><![CDATA[-Math.PI/2]]></Property>
+<Property name="maximum"><![CDATA[Math.PI/2]]></Property>
+<Property name="format"><![CDATA["$\theta$1=0.0"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[drag();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">slidercta2</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="variable"><![CDATA[cta2]]></Property>
+<Property name="minimum"><![CDATA[-Math.PI]]></Property>
+<Property name="maximum"><![CDATA[Math.PI]]></Property>
+<Property name="format"><![CDATA["$\theta$2=0.0"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[drag();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:0,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">radioPanel</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="layout"><![CDATA[GRID:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">radioButton1</Property>
+<Property name="parent">radioPanel</Property>
+<Property name="variable"><![CDATA[co]]></Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA["$\theta$1/$\omega$1"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">radioButton2</Property>
+<Property name="parent">radioPanel</Property>
+<Property name="variable"><![CDATA[cc]]></Property>
+<Property name="text"><![CDATA["$\\theta$1/$\\theta$2"]]></Property>
+<Property name="action"><![CDATA[clear()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">radioButton3</Property>
+<Property name="parent">radioPanel</Property>
+<Property name="variable"><![CDATA[oo]]></Property>
+<Property name="text"><![CDATA["$\omega$1/$\omega$2"]]></Property>
+<Property name="action"><![CDATA[clear()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">commandPanel</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">commandPanel</Property>
+<Property name="text"><![CDATA[reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initializeButton</Property>
+<Property name="parent">commandPanel</Property>
+<Property name="text"><![CDATA[init]]></Property>
+<Property name="action"><![CDATA[clear()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">commandPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA["play"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA["pause"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

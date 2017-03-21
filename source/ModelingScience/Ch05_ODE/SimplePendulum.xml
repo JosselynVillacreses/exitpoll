@@ -1,0 +1,445 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[Driven Pendulum Phase Space]]></Title>
+<Author><![CDATA[W. Christian]]></Author>
+<Keywords><![CDATA[pendulum, oscillation, chaos, Poincare section, phase space]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[A driven pendulum model with a phase space and Poincare section.]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Physical description</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <link rel="STYLESHEET" type="text/css" href="ejs_mechanics.css">
+    <title>Welcome</title>
+    
+  </head>
+  <body>
+    <h2 align="left">
+      Simple Pendulum
+    </h2>
+    <p>
+      A simple pendulum is constructed by placing a mass <i>m</i> at the end 
+      of a rod of length <i>L</i> with negligible mass.&#160; The system oscillates 
+      about the lower vertical position due to a torque <font face="Times New Roman">&#964;</font> 
+      about the pivot produced by gravity acting on the mass.&#160; Although a 
+      pendulum oscillates, the angle cannot be described by simple 
+      trigonometric functions except for small angles.&#160; Newton's Law for 
+      planar rotation states that the angular acceleration <font face="Times New Roman">&#945;</font> 
+      of an object is proportional to the torque <font face="Times New Roman">&#964;</font> 
+      applied to that object<span>&#160;</span>
+    </p>
+    <p align="center">
+      <font face="Times New Roman">&#964;</font> = I<font face="Times New Roman"> 
+      &#945;</font> .
+    </p>
+    <p>
+      The constant of proportionality I is known as the moment of inertia and 
+      can be shown to be I = mL<sup>2</sup> for a mass that is a distance L 
+      from the point of rotation.&#160; Applying Newton's Second Law for rotation 
+      to the pendulum leads to the following second-order differential equation
+    </p>
+    <p align="center">
+      d<sup>2</sup> <font face="Times New Roman">&#952; </font>/ dt<sup>2</sup> 
+      = -(g/L) sin( <font face="Times New Roman">&#952;</font> ) .
+    </p>
+    <p>
+      Comparing this dynamical equation to the simple harmonic oscillator 
+      differential equation, we see that the pendulum&#160; equation undergoes 
+      simple harmonic motion for small angles when the approximation&#160; <font face="Times New Roman">&#952; 
+      ~ </font>sin( <font face="Times New Roman">&#952;</font> ) is valid.&#160; 
+      The angular frequency <font face="Times New Roman">&#969;</font>= 2<font face="Times New Roman">&#960;</font>f&#160; 
+      for this small angle motion is&#160; <font face="Times New Roman">&#969;</font>= 
+      (g/L)<sup>1/2</sup>.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>20</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Constants</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[parameters that determine the motion]]></PageComment>
+<Variable>
+<Name>m</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[mass of pendulum bob]]></Comment>
+</Variable>
+<Variable>
+<Name>g</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[acceleration of gravity (set to 1 to normalize the motion)]]></Comment>
+</Variable>
+<Variable>
+<Name>L</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[length of pendulum (set to 1 to normalize units)]]></Comment>
+</Variable>
+<Variable>
+<Name>THETA_MAX</Name>
+<Value><![CDATA[2*Math.PI]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Display the angular position in the range [-THETA_MAX,THETA_MAX]]]></Comment>
+</Variable>
+<Variable>
+<Name>OMEGA_MAX</Name>
+<Value><![CDATA[5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Display the angular velocity in the range [-THETA_MAX,THETA_MAX]]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamic Vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[Dynamic variables of the system]]></PageComment>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name>dt</Name>
+<Value><![CDATA[0.01]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[time increment in each evolution step]]></Comment>
+</Variable>
+<Variable>
+<Name>theta</Name>
+<Value><![CDATA[0.75]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[angle formed with the vertical]]></Comment>
+</Variable>
+<Variable>
+<Name>omega</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[angular velocity]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary Vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[Auxiliary variables used to draw the pendulum model]]></PageComment>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[L*Math.sin(theta)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x-position of the body center]]></Comment>
+</Variable>
+<Variable>
+<Name>y</Name>
+<Value><![CDATA[-L*Math.cos(theta)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[y-position of the body center]]></Comment>
+</Variable>
+<Variable>
+<Name>vx</Name>
+<Value><![CDATA[omega*L*Math.cos(theta)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x-velocity of the body]]></Comment>
+</Variable>
+<Variable>
+<Name>vy</Name>
+<Value><![CDATA[omega*L*Math.sin(theta)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[y-velocity of the body]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Pendulum ODE</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="theta">omega</Rate>
+<Rate state="omega">-g/L*Math.sin(theta)</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>0.00001</Tolerance>
+<Comment><![CDATA[pendulum equation of motion]]></Comment>
+<Events></Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Compute derived variables</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[translate (angle, omega) into (x,y) coordinates]]></Comment>
+<Code><![CDATA[
+x= L*Math.sin(theta);
+y = -L*Math.cos(theta);
+vx = omega*L*Math.cos(theta);
+vy = omega*L*Math.sin(theta);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>periodic display</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[respond to actions within the phase space frame]]></Comment>
+<Code><![CDATA[
+public void clearPhaseSpace() {
+  _view.dataRaster.clear();
+  _view.resetTraces();
+}
+
+// Makes the angle periodic in the range [-MAXIMUM,MAXIMUM]
+public double periodicAngle(double angle) {
+  while (angle>THETA_MAX)  angle -= 2*THETA_MAX;
+  while (angle<-THETA_MAX) angle += 2*THETA_MAX;
+  return angle;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">pendulumFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Simple Pendulum]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,0"]]></Property>
+<Property name="size"><![CDATA["653,337"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">centerPanel</Property>
+<Property name="parent">pendulumFrame</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">pendulumPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-L*1.2]]></Property>
+<Property name="maximumX"><![CDATA[L*1.2]]></Property>
+<Property name="minimumY"><![CDATA[-L*1.2]]></Property>
+<Property name="maximumY"><![CDATA[L*1.2]]></Property>
+<Property name="axesType"><![CDATA[Polar1]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="showCoordinates"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">line</Property>
+<Property name="parent">pendulumPanel</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[0.0]]></Property>
+<Property name="sizex"><![CDATA[x]]></Property>
+<Property name="sizey"><![CDATA[y]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">bob</Property>
+<Property name="parent">pendulumPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[20]]></Property>
+<Property name="sizey"><![CDATA[20]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause();]]></Property>
+<Property name="dragaction"><![CDATA[theta = Math.atan2(x,-y);
+// length is constant
+omega = 0.0;
+t = 0.0;]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">velocity</Property>
+<Property name="parent">pendulumPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[vx]]></Property>
+<Property name="sizey"><![CDATA[vy]]></Property>
+<Property name="scalex"><![CDATA[0.1]]></Property>
+<Property name="scaley"><![CDATA[0.1]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[ARROW]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="action"><![CDATA[theta = _view.plottingPanel.getMouseX();
+omega = _view.plottingPanel.getMouseY();
+t = 0;
+]]></Property>
+<Property name="title"><![CDATA[Theta vs. Omega]]></Property>
+<Property name="titleX"><![CDATA[theta]]></Property>
+<Property name="titleY"><![CDATA[omega]]></Property>
+<Property name="xFormat"><![CDATA[theta = 0.000]]></Property>
+<Property name="yFormat"><![CDATA[omega = 0.000]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.DataRaster</Type>
+<Property name="name">dataRaster</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[periodicAngle(theta)]]></Property>
+<Property name="y"><![CDATA[omega]]></Property>
+<Property name="minimumX"><![CDATA[-THETA_MAX]]></Property>
+<Property name="maximumX"><![CDATA[THETA_MAX]]></Property>
+<Property name="minimumY"><![CDATA[-OMEGA_MAX]]></Property>
+<Property name="maximumY"><![CDATA[OMEGA_MAX]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">pendulumFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="border"><![CDATA[8,2,2,2]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Play]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">highSpeed</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="text"><![CDATA[High Speed]]></Property>
+<Property name="actionon"><![CDATA[_setStepsPerDisplay(200);]]></Property>
+<Property name="actionoff"><![CDATA[_setStepsPerDisplay(20);]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">plotControls</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">plotControls</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Clear]]></Property>
+<Property name="action"><![CDATA[clearPhaseSpace();]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css" />
+<title>Simulations for Statistical and Thermal Physics</title>
+</head>
+
+<body>
+<h1>Approach to Equilibrium: Molecular Dynamics </h1>
+<p>The program implements a molecular dynamics simulation of a Lennard-Jones fluid 
+in two dimensions. The particles are initialized in the middle third of the simulation 
+cell. The number of particles in each of the three cells is plotted. </p>
+<center></center>
+<h2>Algorithm </h2>
+<p>The algorithm for simulating the evolution of the model can be summarized by 
+the following steps: </p>
+<ol>
+	<li>The particles are placed at random in the center of the box with the constraint 
+	that no two particles can be closer than the length σ = 1 in the Lennard-Jones 
+	potential. This constraint prevents the initial force between any two particles 
+	from being too big, which would lead to the breakdown of the numerical method 
+	used to solve the differential equations. The velocity of each particle is assigned 
+	at random and then the velocity of the center of mass is set to zero. </li>
+	<li>The total force on each particle is computed and the positions and velocities 
+	are updated according to the Verlet algorithm. </li>
+	<li>The time is increased by the time step Δt. </li>
+</ol>
+<h2>Reference: </h2>
+<p>Gould and Tobochnik <i>Statistic and Thermal Physics </i>to be published by Princeton 
+University Press (2010).&nbsp; Draft chapters are available online at &lt;<b>http://stp.clarku.edu/</b>&gt;.</p>
+<h3>Note: </h3>
+<p>This simulation was created by Wolfgang Christian using the Easy Java Simulations 
+(Ejs) modeling tool.&nbsp; It is based on a Java program from the Statistical and 
+Thermal Physics Project. You can modify this simulation if you have Ejs installed 
+by right-clicking within a plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu 
+item. Information about Ejs is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+
+</body>
+
+</html>

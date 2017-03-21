@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Driven SHO</title>
+    <style type="text/css">
+	.style1 {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+	}
+	</style>
+  </head>
+  <body> 
+    <h1>Driven Harmonic Oscillator</h1><p align="center"><img border="0" src="driven_sho.jpg"></p>
+    <p>Adding an external sinusoidal driving force to the Simple Harmonic Oscillator model gives rise to the Driven Harmonic 
+	Oscillator model.&nbsp; If we include a viscous drag force (friction), the net force on the mass m is now the sum of 
+	three forces.</p>
+	<p align="center">F<sub><i>net</i></sub><i><sub> = </sub></i>F<i><sub>spring + </sub></i>F<sub><i>drag</i></sub><i><sub> 
+	+ </sub></i>F<sub><i>external</i></sub></p>
+	<p>where F<i><sub>spring</sub> 
+    =</i> -k x, F<sub><i>drag</i></sub><i> 
+    =</i> -b v, and F<sub><i>external</i></sub><i> 
+    =</i> F<sub>D</sub> sin ( <font face="Times New Roman">&#969;<sub>D</sub> t ).&nbsp; </font>The spring 
+	constant k, the damping constant b, the drive amplitude F<sub>D</sub><font class="style1">, and the drive frequency &#969;<sub>D</sub> 
+    along with the initial conditions x(t=0) and v(t=0) are inputs into the model.&nbsp; </font></p><p>
+    <font class="style1">Substituting the net force into Newton's Second Law gives the dynamical equation for the 
+    sinusoidally driven oscillator</font></p><p align="center">d<sup>2</sup>x / dt<sup>2</sup> = - <font face="Times New Roman">
+    (k/m) </font>x - (b/m) dx / dt + (F<sub>D </sub>/m) sin ( <font face="Times New Roman">&#969;<sub>D</sub> t ) .</font> </p><p>
+    <span class="style1">Note that the drive frequency &#969;<sub>D</sub> is not the natural frequency </span>
+    <font face="Times New Roman">&#969;<sub>0</sub></font> = (k/m)<sup>1/2&nbsp; </sup>of the 
+    undriven simple harmonic 
+	motion.&nbsp; As shown in the activities, the oscillator's displacement x is a maximum when it is driven at it natural 
+    frequency&nbsp; <font face="Times New Roman">&#969;<sub>D</sub> = &#969;<sub>0</sub> .&nbsp; </font>The analytic solution the differential equation is well know and consists of two parts.&nbsp; 
+    The first part, known as the homogeneous or transient solution, is the solution without a driving force.&nbsp; The solution is 
+    a damped sinusoidal oscillation if&nbsp; the damping constant b &lt; 4 m k is</p><p align="center">x<sub>H</sub>(t) = A<sub>0
+    </sub>e<sup>-bt/2m</sup> cos( <font face="Times New Roman">&#969;<sub>0</sub></font>t + <font face="Times New Roman">&#966;</font>) .</p>
+    <p>Note that the homogenous solution will not be sinusoidal if b <font face="Times New Roman">&#8805;</font> 4 m k.&nbsp; One 
+    modeling activity is to set the drive amplitude F<sub>D</sub> to zero and to vary the damping constant b in order to observe 
+    sinusoidal and non-sinusoidal&nbsp; homogeneous solutions.</p><p>The second part of the solution is known as the inhomogeneous 
+    or steady state solution.&nbsp; The inhomogeneous solution is a constant-amplitude sinusoidal function with frequency equal to 
+    the drive frequency <font face="Times New Roman">&#969;<sub>D </sub></font></p><p align="center">x<sub>I</sub>(t) = A(<font face="Times New Roman">&#969;<sub>D</sub></font>)<sub>
+    </sub>cos( <font face="Times New Roman">&#969;<sub>D</sub></font>t + <font face="Times New Roman">&#947;</font>) .</p>
+    <p align="left">Although the amplitude is constant, its value A(<font face="Times New Roman">&#969;<sub>D</sub></font>) 
+    depends on the drive frequency <font face="Times New Roman">&#969;<sub>D </sub></font>&nbsp;and other parameters.&nbsp; The 
+    phase shift&nbsp; <font face="Times New Roman">&#947;</font> between the external force and the steady state solution is also 
+    function of <font face="Times New Roman">&#969;<sub>D </sub> </font>.&nbsp; The complete solution to the dynamical equations 
+    is the sum of the homogenous and inhomogeneous solutions.</p>
+    <p align="center">x(t) = x<sub>H</sub>(t)&nbsp; + x<sub>I</sub>(t) </p>
+    <h2>
+      References:
+    </h2>
+	<p>
+      The Driven Harmonic Oscillator (SHO) model is designed to teach Ejs modeling.&nbsp; Right 
+	  click within the simulation to examine this model in the Ejs modeling and 
+	  authoring tool.&nbsp; See:
+    </p><ul>
+      <li>&quot;Modeling Physics with Easy Java Simulations&quot; by Wolfgang Christian and Francisco Esquembre, The Physics Teacher, 
+      November 2007, <b>45</b> (8), pp. 475-480.</li>
+    </ul><p>The Easy Java Simulations (EJS) documentation can be downloaded from the ComPADRE Open Source Physics collection and from the Ejs website.</p>
+    <h3>
+      Note:
+    </h3>
+    <p>
+      This simulation was created by Wolfgang Christian and Francisco Esquembre using the Easy Java 
+		Simulations (Ejs) modeling tool.&nbsp;You can examine and modify this 
+		simulation if you have Ejs installed by right-clicking within a plot and 
+		selecting &quot;Open Ejs Model&quot; from the pop-up menu. Information about Ejs 
+		is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+	</body>
+
+    </body>
+</html>

@@ -1,0 +1,587 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[Mini solar system]]></Title>
+<Author><![CDATA[Francisco Esquembre and WOlfgang CHristian]]></Author>
+<Keywords><![CDATA[N-body problem]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This is a simulation of a planar N-body problem with initial conditions similar to those of the solar system]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Solar System</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      <b>A mini solar system </b>
+    </h1>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Constants</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>G</Name>
+<Value><![CDATA[6.67428e-11]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Gravitational constant in m^3  Kg^-1 s^-2]]></Comment>
+</Variable>
+<Variable>
+<Name>AU</Name>
+<Value><![CDATA[149.597e9]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Astronomical unit (distance Sun-Earth) in meters]]></Comment>
+</Variable>
+<Variable>
+<Name>EARTH_MASS</Name>
+<Value><![CDATA[5.9736e24]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Mass of the Earth in Kg]]></Comment>
+</Variable>
+<Variable>
+<Name>DAY</Name>
+<Value><![CDATA[24*60*60]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Length of one day in seconds]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamic Vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>nBodies</Name>
+<Value><![CDATA[4]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>dt</Name>
+<Value><![CDATA[7]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>mass</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>state</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[4*nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary Vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>rate</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[4*nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>ZEROS</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[2*nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>force</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[2*nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>y</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xRel</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>yRel</Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>size</Name>
+<Value><![CDATA[0.1]]></Value>
+<Type>double</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>color</Name>
+<Value><![CDATA[java.awt.Color.BLUE]]></Value>
+<Type>Object</Type>
+<Dimension>[nBodies]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Solar System</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Astronomical data taken from Wikipedia
+// Mass in EARTH_MASS units, Aphelion in AU, Mean Orbital Velocity in Km/s
+int i;
+// Sun
+i = 0; mass[i] = 332946; state[4*i] = 0.0;      state[4*i+3] = 0; 
+color[i] = java.awt.Color.YELLOW; size[i] = 0.6;
+// Venus year = 224.70
+i = 1; mass[i] = 0.815;  state[4*i] = 0.72823;  state[4*i+3] = 35020;
+color[i] = java.awt.Color.ORANGE; size[i] = 0.25;
+// Earth year = 365.25
+i = 2; mass[i] = 1.0;    state[4*i] = 1.01671;  state[4*i+3] = 29783; 
+color[i] = java.awt.Color.BLUE; size[i] = 0.25;
+// Mars: year = 779.96
+i = 3; mass[i] = 0.107;  state[4*i] = 1.66599;  state[4*i+3] = 24077; 
+color[i] = java.awt.Color.RED; size[i] = 0.2;
+// Jupiter: year = 4334.50
+i = 4; 
+if (i<nBodies) {
+  mass[i] = 317.8;  state[4*i] = 5.45810;  state[4*i+3] = 13070;
+  color[i] = java.awt.Color.CYAN; size[i] = 0.4;
+}
+// Saturn: year = 29657.296
+i = 5; 
+if (i<nBodies) {
+  mass[i] = 95.152; state[4*i] = 10.11595; state[4*i+3] = 9690;
+  color[i] = new java.awt.Color(255,192,0); size[i] = 0.35;
+}
+
+// Convert everything so that
+//   unit of mass = 1 EARTH_MASS
+//   unit of distance = 1 AU
+//   unit of time = 1 DAY
+G = 6.67428e-11 / (AU*AU*AU) * EARTH_MASS * (DAY*DAY);
+dt = 7; // seven days
+
+for (i=0; i<nBodies; i++) { 
+  state[4*i+1] = 0; // y = 0
+  state[4*i+2] = 0; // vx = 0
+  state[4*i+3] = state[4*i+3]/AU * DAY; // Convert velocities from Km/s to AU/DAY
+}
+
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Binary Star</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// make Mars as massive as the Sun
+mass[3] = mass[0];  size[3] = size[0];
+
+// Venus to the left
+int i = 1; 
+state[4*i] = -1.5*state[3*4];  
+state[4*i+3] = 31000/AU * DAY;
+// The Earth to the right
+i = 2; 
+state[4*i] = 3*state[3*4];
+state[4*i+3] = -10000/AU * DAY;
+
+dt = 25;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Center of Masses</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Compute the center of masses and its velocity
+double xc = 0, yc = 0;
+double vxc = 0, vyc = 0;
+double totalMass = 0;
+for (int i=0,ic=0; i<nBodies; i++,ic+=4) {
+  xc += mass[i]*state[ic];
+  yc += mass[i]*state[ic+2];
+  vxc += mass[i]*state[ic+1];
+  vyc += mass[i]*state[ic+3];
+  totalMass += mass[i];
+}
+xc /= totalMass; yc /= totalMass;
+vxc /= totalMass; vyc /= totalMass;
+_println ("Center of masses is at ("+xc+","+yc+")");
+
+// Make everything relative to the center of masses
+for (int i=0,ic=0; i<nBodies; i++,ic+=4) {
+  state[ic  ] -= xc;
+  state[ic+2] -= yc;
+  state[ic+1] -= vxc;
+  state[ic+3] -= vyc;
+}
+
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init time</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t=0;
+_view.resetTraces();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>ODEs</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="state[]">acc(state)</Rate>
+<Method>Dopri853</Method>
+<Tolerance>1.0e-15</Tolerance>
+<Comment><![CDATA[ODEs for the n-body problem using a single state array]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Cons Page</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {
+  x[i] = state[iindex  ];
+  y[i] = state[iindex+2];
+}
+int earthIndex = 2;
+for (int i=0; i<nBodies; i++) {
+  xRel[i] = x[i] - x[earthIndex]; 
+  yRel[i] = y[i] - y[earthIndex];
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Forces and Accelerations</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void computeForces(double[] state) {
+  System.arraycopy(ZEROS,0,force,0,force.length); // clears the force array
+  for(int i=0,i2=0,i4=0; i<nBodies; i++,i2+=2,i4+=4) { // for each body
+    for(int j=i+1,j2=2*j,j4=4*j; j<nBodies; j++,j2+=2,j4+=4) { // against other bodies
+      double dx = state[i4  ] - state[j4  ];
+      double dy = state[i4+2] - state[j4+2];
+      double r2=dx*dx+dy*dy;
+      double r3=r2*Math.sqrt(r2);
+      double fx=G*mass[i]*mass[j]*dx/r3;
+      double fy=G*mass[i]*mass[j]*dy/r3;
+      force[i2]   -= fx; // force array alternates fx and fy
+      force[i2+1] -= fy;
+      force[j2]   += fx;
+      force[j2+1] += fy;
+    }
+  }
+}
+
+public double[] acc (double state[]) {
+  computeForces(state);
+  for (int i=0,i2=0,i4=0; i<nBodies; i++,i2+=2,i4+=4) {
+    rate[i4  ] = state[i4+1];         // x rate is vx
+    rate[i4+1] = force[i2]/mass[i];   // vx rate is fx
+    rate[i4+2] = state[i4+3];         // y rate is vy
+    rate[i4+3] = force[i2+1]/mass[i]; // vy rate is fy
+  }
+  return rate;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Mini Solar System]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["747,420"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,5,0]]></Property>
+<Property name="border"><![CDATA[3,0,3,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Play]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">dayLabel</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Day =]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">tField</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="format"><![CDATA[0.#####]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">dtLabel</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[dt =]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">dtField</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA[0.###]]></Property>
+<Property name="size"><![CDATA[30,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">centerPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-2.5]]></Property>
+<Property name="maximumX"><![CDATA[2.5]]></Property>
+<Property name="minimumY"><![CDATA[-2.5]]></Property>
+<Property name="maximumY"><![CDATA[2.5]]></Property>
+<Property name="title"><![CDATA[Center of mass view]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">TraceSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="maxpoints"><![CDATA[500]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">Bodies</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[size]]></Property>
+<Property name="sizey"><![CDATA[size]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause();]]></Property>
+<Property name="dragaction"><![CDATA[for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {
+  state[iindex  ] = x[i];  // x
+  state[iindex+2] = y[i];  // y
+}
+_resetSolvers();]]></Property>
+<Property name="action"><![CDATA[_play();]]></Property>
+<Property name="color"><![CDATA[color]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel2</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-2.5]]></Property>
+<Property name="maximumX"><![CDATA[2.5]]></Property>
+<Property name="minimumY"><![CDATA[-2.5]]></Property>
+<Property name="maximumY"><![CDATA[2.5]]></Property>
+<Property name="title"><![CDATA[Earth's view]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">TraceSet2</Property>
+<Property name="parent">plottingPanel2</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[xRel]]></Property>
+<Property name="y"><![CDATA[yRel]]></Property>
+<Property name="maxpoints"><![CDATA[500]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">Bodies2</Property>
+<Property name="parent">plottingPanel2</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[xRel]]></Property>
+<Property name="y"><![CDATA[yRel]]></Property>
+<Property name="sizex"><![CDATA[size]]></Property>
+<Property name="sizey"><![CDATA[size]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[color]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

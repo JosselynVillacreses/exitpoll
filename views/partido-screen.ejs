@@ -1,0 +1,41 @@
+<% include menu %>
+<br>
+<br>
+ <div class="contenedorCrud">
+  <input type="button" name="" value="Crear" onclick="mostrarCreate()">
+<br>
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Lista</th>
+      <th>Nombre</th>
+      <th colspan='2'>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% 
+        var ArrPrt = partido;
+
+        for(var i in ArrPrt){%>
+            <tr>
+              <td><%=ArrPrt[i].lista%></td>
+
+              <td><%=ArrPrt[i].nombre%></td>
+
+    <!-- ELIMINAR PARTIDO: Asignación de función-->          
+              <td><input type="button" name="" value="Borrar" onclick="eliminarPartido('<%= ArrPrt[i].id_partido %>')"></td>
+
+             <!-- Abre la pantalla para actualizar .ejs -->
+              <td><input type="button" name="" value="Actualizar" onclick="act_prt('<%= ArrPrt[i].id_partido %>')"></td>
+              
+
+            </tr>
+
+        <% }%> 
+  </tbody>
+</table>
+
+
+</div>
+
+<% include create_partido %>

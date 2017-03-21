@@ -1,0 +1,1125 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Waveguide]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[waveguide;node;wave]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The first few modes in a rectangular waveguide are displayed. One can see the instantaneous wave values at nine equal spaced points as well as a contour plot for that value or the instantaneous intensity or its average value. It is also possible to display the lines of nodes.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Waveguide</title>
+    
+  </head>
+  <body>
+    <h1>
+      Waveguide
+    </h1>
+    A wave is moving along the <i>OX</i> axis between two walls located at <i>y</i> 
+    = 0, <i>a</i>, so that its normal modes are<br><i>u</i>(<i>t</i>,<i>x</i>) 
+    =<i> A</i> sin(<i>n </i>&#960; <i>y</i>/<i>a)</i> cos(<i>k x</i> - <i>&#969; t</i>),&#160;&#160;&#160;&#160; 
+    <i>n</i> = 1, 2, ...
+
+    <ul>
+      <li>
+        The unit time is 2&#960;/<i>&#969;</i>.
+      </li>
+      <li>
+        The unit length is <i>a</i>.
+      </li>
+      <li>
+        Below you may choose the effective phase velocity <i>v</i> = <i>&#969;</i>/<i>k</i>, 
+        as well as the animation step &#916;t.
+      </li>
+      <li>
+        The upper animation shows <i>u</i>(<i>t</i>,<i>x</i>) for nine values 
+        of <i>x</i>.
+      </li>
+      <li>
+        In the lower animation you may see a contour plot of <i>u</i>(<i>t</i>,<i>x</i>) 
+        (black for -<i>A</i> and white for <i>A</i>), or the instantaneous 
+        intensity <i>I</i> &#8733; <i>u</i><sup>2</sup>, or its time average 
+        value &lt;<i>I</i>&gt; (in the last two cases black for 0 and white for 
+        the maximum value)<i>. </i>
+      </li>
+      <li>
+        You may also change the displayed interval 0 &#8804; <i>x</i> &#8804; xmax.
+      </li>
+      <li>
+        Optionally one can see in the upper display the null values at the 
+        selected nine points and in both displays the nodes where the wave 
+        vanishes at all times.
+      </li>
+      <li>
+        Put the mouse point over an element to get the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Compute the position of the nodes for mode number <i>n</i>.
+      </li>
+      <li>
+        Use the simulation to check your calculation.
+      </li>
+      <li>
+        Can you guess from the upper display of the wave values how would look 
+        a contour plot of those values or of the instantaneous/average wave 
+        intensity?
+      </li>
+      <li>
+        Check it by selecting <b>u(t,x) / I(t,x) / &lt;I&gt;</b>!
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Wave]]></PageComment>
+<Variable>
+<Name><![CDATA[A]]></Name>
+<Value><![CDATA[0.025]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Amplitude]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Wave number in the propagation direction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[2.0*Math.PI]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Frequency]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Mode]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Phase velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Display amplitudes</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Upper display]]></PageComment>
+<Variable>
+<Name><![CDATA[nLines]]></Name>
+<Value><![CDATA[9]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Actual number of lines]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showZero]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show zero value]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showNodes]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show lines of nodes]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Display values</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Lower display]]></PageComment>
+<Variable>
+<Name><![CDATA[nx]]></Name>
+<Value><![CDATA[180]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of horizontal points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ny]]></Name>
+<Value><![CDATA[60]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of vertical points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[space]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nx][ny]]]></Dimension>
+<Comment><![CDATA[Values]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Display parameters</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Presentation]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Animation step]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum x on display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum x on display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[playImage]]></Name>
+<Value><![CDATA["images/play.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pauseImage]]></Name>
+<Value><![CDATA["images/pause.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[startImage]]></Name>
+<Value><![CDATA["images/pause.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Imin]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum intensity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Imax]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum intensity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wave]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display wave values]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[intensity]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display instantaneous intensity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[average]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display average intensity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Reset everything]]></Comment>
+<Code><![CDATA[
+t = 0.0;
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters and symbols]]></Comment>
+<Code><![CDATA[
+_view.getElement("step").setProperty("format","\u0394t = 0.######");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update time]]></Comment>
+<Code><![CDATA[
+t += dt;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Ranges</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Check everything is in range]]></Comment>
+<Code><![CDATA[
+if (n < 1) n = 1;			// Mode
+
+//if (A < 0.0) A = -A;		
+A = xmax/20.0;			// Amplitude
+
+Imin = (intensity || average) ? 0.0 : -1.0;	// Range in lower display
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Wave number</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set wave number]]></Comment>
+<Code><![CDATA[
+k = omega/v;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Update values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set current values]]></Comment>
+<Code><![CDATA[
+double dx = xmax/(nx-1),
+            dy = 1.0/(ny-1);
+for (int i = 0; i < nx; i++) {
+   double x = i*dx;
+   for (int j = 0; j < ny; j++) {
+      double y = (wave || intensity || average) ? Math.sin(n*Math.PI*j*dy) : 0.0;
+      if (wave || intensity)
+       y *= Math.cos(k*x-omega*t);
+      space[i][j] = (intensity || average) ? y*y : y;
+  } 
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Start/Stop</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Select Start/Stop]]></Comment>
+<Code><![CDATA[
+public void startstop () {
+  if (_isPlaying()) {
+//    _view.getElement("Start").setProperty("text","Jarraitu");
+   startImage = playImage; 
+    _pause();
+  }
+  else {
+//    _view.getElement("Start").setProperty("text","Gelditu");
+   startImage = pauseImage; 
+    _play();
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Waveguide]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["640,480"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Main</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Modes</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Mode</Property>
+<Property name="parent">Modes</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="minimum"><![CDATA[1]]></Property>
+<Property name="maximum"><![CDATA[5]]></Property>
+<Property name="format"><![CDATA[Mode '#'0]]></Property>
+<Property name="orientation"><![CDATA[VERTICAL]]></Property>
+<Property name="ticks"><![CDATA[5]]></Property>
+<Property name="closest"><![CDATA[true]]></Property>
+<Property name="tooltip"><![CDATA[Mode]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Parameters</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:11,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">vvalue</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[v]]></Property>
+<Property name="format"><![CDATA[v = 0.##]]></Property>
+<Property name="tooltip"><![CDATA[Horizontal phase velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">step</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.######"]]></Property>
+<Property name="tooltip"><![CDATA[Animation step]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">showZero</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[showZero]]></Property>
+<Property name="text"><![CDATA[0]]></Property>
+<Property name="mnemonic"><![CDATA[0]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[Show 0 values?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">showNodes</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[showNodes]]></Property>
+<Property name="text"><![CDATA[Nodes]]></Property>
+<Property name="mnemonic"><![CDATA[n]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Show nodes?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">BelowLabel</Property>
+<Property name="parent">Parameters</Property>
+<Property name="text"><![CDATA[Below:]]></Property>
+<Property name="tooltip"><![CDATA[Choose below the contour-plot meaning]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">ShowWave</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[wave]]></Property>
+<Property name="text"><![CDATA[u(t,x)]]></Property>
+<Property name="mnemonic"><![CDATA[u]]></Property>
+<Property name="tooltip"><![CDATA[Show wave values]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">ShowIntensity</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[intensity]]></Property>
+<Property name="text"><![CDATA[I(t,x)]]></Property>
+<Property name="mnemonic"><![CDATA[i]]></Property>
+<Property name="tooltip"><![CDATA[Show instantaneous intensity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">ShowAverage</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[average]]></Property>
+<Property name="text"><![CDATA[<I>]]></Property>
+<Property name="tooltip"><![CDATA[Show average intensity at each point]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Parameters</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Parameters</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Parameters</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Display</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Xrange</Property>
+<Property name="parent">Display</Property>
+<Property name="position">north</Property>
+<Property name="variable"><![CDATA[xmax]]></Property>
+<Property name="minimum"><![CDATA[1.0]]></Property>
+<Property name="maximum"><![CDATA[10.0]]></Property>
+<Property name="format"><![CDATA[xmax = 0.##]]></Property>
+<Property name="ticks"><![CDATA[10]]></Property>
+<Property name="closest"><![CDATA[true]]></Property>
+<Property name="tooltip"><![CDATA[Length of x axis on display]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Guides</Property>
+<Property name="parent">Display</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Amplitudes</Property>
+<Property name="parent">Guides</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.5*A]]></Property>
+<Property name="maximumX"><![CDATA[xmax+1.5*A]]></Property>
+<Property name="minimumY"><![CDATA[-.1]]></Property>
+<Property name="maximumY"><![CDATA[1.1]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero0</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[0.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero1</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[1.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero2</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[2.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero3</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[3.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero4</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[4.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero5</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[5.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero6</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[6.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero7</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[7.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">zero8</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[8.0*xmax/8.0]]></Property>
+<Property name="sizex"><![CDATA[0.0]]></Property>
+<Property name="sizey"><![CDATA[1.0]]></Property>
+<Property name="visible"><![CDATA[showZero]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node1</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="y"><![CDATA[1.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 1]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node2</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="y"><![CDATA[2.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 2]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node3</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="y"><![CDATA[3.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 3]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node4</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="y"><![CDATA[4.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 4]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp0</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[0.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*0.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp1</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[1.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*1.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp2</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[2.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*2.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp3</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[3.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*3.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp4</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[4.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*4.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp5</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[5.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*5.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp6</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[6.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*6.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp7</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[7.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*7.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">amp8</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="points"><![CDATA[ny]]></Property>
+<Property name="min"><![CDATA[0.0]]></Property>
+<Property name="max"><![CDATA[1.0]]></Property>
+<Property name="variable"><![CDATA[s]]></Property>
+<Property name="functionx"><![CDATA[8.0*xmax/8.0+A*Math.sin(n*Math.PI*s)*Math.cos(k*8.0*xmax/8.0-omega*t)]]></Property>
+<Property name="functiony"><![CDATA[s]]></Property>
+<Property name="javaSyntax"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">upperWall1</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[1.0]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0.0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">lowerWall1</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[0.0]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0.0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Values</Property>
+<Property name="parent">Guides</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.5*A]]></Property>
+<Property name="maximumX"><![CDATA[xmax+1.5*A]]></Property>
+<Property name="minimumY"><![CDATA[-0.1]]></Property>
+<Property name="maximumY"><![CDATA[1.1]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ZInterpolatedPlot</Type>
+<Property name="name">Colors</Property>
+<Property name="parent">Values</Property>
+<Property name="z"><![CDATA[space]]></Property>
+<Property name="autoscaleZ"><![CDATA[false]]></Property>
+<Property name="minimumZ"><![CDATA[Imin]]></Property>
+<Property name="maximumZ"><![CDATA[Imax]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="colormode"><![CDATA[GRAYSCALE]]></Property>
+<Property name="showgrid"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node1b</Property>
+<Property name="parent">Values</Property>
+<Property name="y"><![CDATA[1.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 1 && (wave || intensity || average)]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node2b</Property>
+<Property name="parent">Values</Property>
+<Property name="y"><![CDATA[2.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 2 && (wave || intensity || average)]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node3b</Property>
+<Property name="parent">Values</Property>
+<Property name="y"><![CDATA[3.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 3 && (wave || intensity || average)]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">node4b</Property>
+<Property name="parent">Values</Property>
+<Property name="y"><![CDATA[4.0/n]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showNodes && n > 4 && (wave || intensity || average)]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">upperWall2</Property>
+<Property name="parent">Values</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[1.0]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0.0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">lowerWall2</Property>
+<Property name="parent">Values</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[0.0]]></Property>
+<Property name="sizex"><![CDATA[xmax]]></Property>
+<Property name="sizey"><![CDATA[0.0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

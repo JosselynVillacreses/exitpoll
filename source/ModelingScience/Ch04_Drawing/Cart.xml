@@ -1,0 +1,150 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Intro Page</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Cart
+    </h2>
+    <p style="margin-top: 0">
+      
+    </p>
+    <p style="margin-top: 0">
+      A view-only simulation to show how to create a cart as a group of other 
+      drawables.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Frame"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["320,220"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1]]></Property>
+<Property name="maximumX"><![CDATA[1]]></Property>
+<Property name="minimumY"><![CDATA[-1]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="aliasing"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Group2D</Type>
+<Property name="name">group2D_cart</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="sizeX"><![CDATA[1]]></Property>
+<Property name="sizeY"><![CDATA[1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape2D_cartBody</Property>
+<Property name="parent">group2D_cart</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.5]]></Property>
+<Property name="sizeX"><![CDATA[1]]></Property>
+<Property name="sizeY"><![CDATA[0.5]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="movesGroup"><![CDATA[true]]></Property>
+<Property name="sensitivity"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="fillColor"><![CDATA[128,192,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape2D_rearWheel</Property>
+<Property name="parent">group2D_cart</Property>
+<Property name="x"><![CDATA[-0.25]]></Property>
+<Property name="y"><![CDATA[0.20]]></Property>
+<Property name="sizeX"><![CDATA[0.40]]></Property>
+<Property name="sizeY"><![CDATA[0.40]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="fillColor"><![CDATA[ORANGE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape2D_frontWheel</Property>
+<Property name="parent">group2D_cart</Property>
+<Property name="x"><![CDATA[0.30]]></Property>
+<Property name="y"><![CDATA[0.15]]></Property>
+<Property name="sizeX"><![CDATA[0.30]]></Property>
+<Property name="sizeY"><![CDATA[0.30]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="fillColor"><![CDATA[ORANGE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape2D_windShield</Property>
+<Property name="parent">group2D_cart</Property>
+<Property name="x"><![CDATA[0.35]]></Property>
+<Property name="y"><![CDATA[0.60]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+<Property name="fillColor"><![CDATA[LIGHTGRAY]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

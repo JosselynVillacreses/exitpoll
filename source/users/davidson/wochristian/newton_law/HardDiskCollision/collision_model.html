@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Collision Model</title>
+  </head>
+  <body> 
+    <h1>Hard Disk Collision Model</h1>
+    <p align="center"><img border="0" src="collission_init.jpg"></p>
+	<p>Ejs supports arrays and we have chosen to use this capability to model the position and velocity because arrays make it 
+	easy to generalize the model to an arbitrary number of particles.&nbsp; (See the the Hard Disk Gas model in the advanced modeling section.)&nbsp;&nbsp; The 
+	array of all x values is named x and the coordinates of the first and second particles are x[0] and x[1], respectively.&nbsp; Note how the x and y 
+	values are used to compute the center of mass (CM) coordinates in the model's initialization.&nbsp; The <font face="Courier">_setStepsPerDisplay</font> 
+	method is predefined in Ejs.&nbsp; Its purpose is to perform multiple evolution steps during a single screen refresh cycle.&nbsp; Small time steps are 
+	needed because the evolution algorithm advances in discrete steps.&nbsp; Ejs will not detect an event if the system passes through an illegal 
+	state as it advances from one allowed state to another allowed state in a single step.</p>
+	<p align="center"><img border="0" src="collision_evolution.jpg"></p>
+	<p align="left">The Ejs differential equation editor automatically creates an equation for each array element.&nbsp; Because the 
+	model's particles travel with constant velocity between collisions, the Euler method is exact and we have chosen to use this simple ODE solver for our 
+	model.</p><p align="left">Load the Collision model into Ejs and click the events button to examine how the Ejs event is triggered when the particles overlap.&nbsp; The 
+	physics of the hard disk collision is contained in the event's action.</p>
+</body>
+</html>

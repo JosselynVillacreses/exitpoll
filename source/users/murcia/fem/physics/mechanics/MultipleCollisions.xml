@@ -1,0 +1,699 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Multiple collisions]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia, Spain]]></Author>
+<Keywords><![CDATA[ODE, collisions, conservation laws]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This is a simulation of the collisions among a large number of planar disks. The event-handler of the ODE solvers are used for the detection and treatment of the collisions.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./MultipleCollisions/MultipleCol.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Multiple Collisions</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Multiple collisions
+    </h1>
+    <p>
+      This is a simulation of the collisions among a large number of planar 
+      disks. The event-handler of the ODE solvers are used for the detection 
+      and treatment of the collisions.
+    </p>
+    <p align="center">
+      <img src="./MultipleCollisions/MultipleCol.gif">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Box</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Balls</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[diameter]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mass]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Parameters</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[experiment]]></Name>
+<Value><![CDATA["Random"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[energy]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Events</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[TOLERANCE]]></Name>
+<Value><![CDATA[0.001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[horizontalRebound]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ballRebounded]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[collision1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[collision2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if         (experiment.equals("Experiment 1")) experiment1();
+else if (experiment.equals("Experiment 2")) experiment2();
+else if (experiment.equals("Experiment 3")) experiment3();
+else if (experiment.equals("Experiment 4")) experiment4();
+else randomize();
+t = 0;
+_clearView();
+//_setDelay(1); // Max speed but limited
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Free fall</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.03</Increment>
+<Rate state="x[i]">vx[i]</Rate>
+<Rate state="vx[i]">0</Rate>
+<Rate state="y[i]">vy[i]</Rate>
+<Rate state="vy[i]">force (y,vy,i);</Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Bouncing</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Bouncing with the walls]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  double radius = diameter[i]/2;
+  double d = y[i]-ymin-radius;
+  if (vy[i]<0 && d<min) {
+    horizontalRebound = false;
+    ballRebounded = i;
+    min=d;
+  }
+  d = ymax-radius-y[i];
+  if (vy[i]>0 && d<min) {
+    horizontalRebound = false;
+    ballRebounded = i;
+    min=d;
+  }
+  d = x[i]-xmin-radius;
+  if (vx[i]<0 && d<min) {
+    horizontalRebound = true;
+    ballRebounded = i;
+    min=d;
+  }
+  d = xmax-radius-x[i];
+  if (vx[i]>0 && d<min) {
+    horizontalRebound = true;
+    ballRebounded = i;
+    min=d;
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+if (horizontalRebound) vx[ballRebounded] = -k*vx[ballRebounded];
+else {
+  vy[ballRebounded] = -k*vy[ballRebounded];
+  if (Math.abs(vy[ballRebounded])<TOLERANCE) vy[ballRebounded] = 0.0;
+}
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+<Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Collision</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Collision among balls]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=i+1; j<n; j++) {
+    double deltax = x[j]-x[i], deltay = y[j]-y[i];
+    double allowed = (diameter[i]+diameter[j])/2;
+    double distance = deltax*deltax+deltay*deltay-allowed*allowed;
+    if (distance<min) {
+      double deltaVx = vx[j]-vx[i], deltaVy = vy[j]-vy[i];
+      if (deltax*deltaVx+deltay*deltaVy<0) {
+        collision1 = i; collision2 = j; min = distance;
+//        System.out.println ("Collision DETECTED between "+collision1 +" and "+collision2);
+//        System.out.println ("at x[1]= "+x[collision1] +" and x[2] = "+x[collision2]);
+      }
+    }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+//System.out.println ("Collision between "+collision1 +" and "+collision2);
+//System.out.println ("at x[1]= "+x[collision1] +" and x[2] = "+x[collision2]);
+double deltax = x[collision2]-x[collision1];
+double deltay = y[collision2]-y[collision1];
+double distance = Math.sqrt(deltax*deltax+deltay*deltay);
+
+double rx=deltax/distance, ry=deltay/distance; // Unit vector joining centers
+double sx=-ry, sy=rx; // Vector ortogonal to the previous one
+
+double vr1=(vx[collision1]*rx+vy[collision1]*ry), vs1=(vx[collision1]*sx+vy[collision1]*sy); // Projections for disk 1
+double vr2=(vx[collision2]*rx+vy[collision2]*ry), vs2=(vx[collision2]*sx+vy[collision2]*sy); // Projections for disk 2
+
+double vr1d=( 2*mass[collision2]*vr2 + (mass[collision1]-mass[collision2])*vr1 )/(mass[collision1]+mass[collision2]); // New velocity for disk 1
+double vr2d=( 2*mass[collision1]*vr1 + (mass[collision2]-mass[collision1])*vr2 )/(mass[collision1]+mass[collision2]); // New velocity for disk 2
+// Undo the projections
+vx[collision1]=vr1d*rx+vs1*sx; vy[collision1]=vr1d*ry+vs1*sy;
+vx[collision2]=vr2d*rx+vs2*sx; vy[collision2]=vr2d*ry+vs2*sy;
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Energy</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double ke = 0.0, pe=0.0;
+for (int i=0; i<n; i++) {
+  ke = ke + 0.5*mass[i]*(vx[i]*vx[i] + vy[i]*vy[i]);
+  pe = pe - mass[i]*g*y[i];
+}
+energy = ke + pe;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Force</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double force (double[] h, double vh[], int i) {
+  if (h[i]-ymin-0.5*diameter[i]<TOLERANCE && vh[i]==0) return 0; // Already on the floor
+  return g;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Randomize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+  public void randomize () {
+    for (int i=0; i<n; i++) {
+      x[i]  = xmin+0.5*diameter[i] + (xmax-xmin-diameter[i] )*Math.random();
+      vx[i] = (xmax-xmin)*(Math.random()-0.5);
+      y[i]  = ymin+0.5*diameter[i]  + (ymax-ymin-diameter[i] )*Math.random();
+      vy[i] = (ymax-ymin)*(Math.random()-0.5);
+    }
+    // Check for illegal states
+    for (int i=0; i<n; i++) {
+      for (int j=i+1; j<n; j++) {
+        double d1 = x[j]-x[i];
+        double d2 = y[j]-y[i];
+        double result = d1*d1+d2*d2-(diameter[i]+diameter[j])*(diameter[i]+diameter[j])/4;
+        if (result<0) { randomize(); return; }
+      }
+    }
+  }
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Experiment 1</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void experiment1() { //  *  ******   *
+  double posL = (xmax+xmin)/2, posR = posL;
+  for (int i = 0; i < n; i++) {
+    if (i%2==0) { x[i] = posL-diameter[i]/2; posL -= diameter[i]; }
+    else { x[i] = posR+diameter[i]/2; posR += diameter[i]; }
+    vx[i] = 0.0;
+    y[i] = (ymin + ymax) * 0.5;
+    vy[i] = 0.0;
+    }
+  x[n-2] = xmin+diameter[n-2];
+  vx[n-2] = 1.0;
+  x[n-1] = xmax-diameter[n-1];
+  vx[n-1] = -1.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Experiment 2</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void experiment2() { //  |*******   *
+  double pos = xmin;
+  for (int i = 0; i < n; i++) {
+    x[i] = pos+0.5*diameter[i];
+    pos += diameter[i];
+    vx[i] = 1.0;
+    y[i] = (ymin + ymax) * 0.5;
+    vy[i] = 0.0;
+    }
+//  x[n-1] = xmax-diameter[n-1];
+//  vx[n-1] = -1.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Experiment 3</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void experiment3() { //   *******   *
+  double posL = (xmax+xmin)/2, posR = posL;
+  for (int i = 0; i < n; i++) {
+    if (i%2==0) { x[i] = posL-0.5*diameter[i]; posL -= diameter[i]; }
+    else { x[i] = posR+0.5*diameter[i]; posR += diameter[i]; }
+    vx[i] = 0.0;
+    y[i] = (ymin + ymax) * 0.5;
+    vy[i] = 0.0;
+    }
+  x[n-1] = xmax-diameter[n-1];
+  vx[n-1] = -1.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Experiment 4</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void experiment4() {
+  double pos = (ymin + ymax)/4;
+  for (int i = 0; i < n; i++) {
+    x[i] = (xmin + xmax) * 0.5;
+    vx[i] = 0.0;
+    y[i] = pos + diameter[i]*0.5;
+    vy[i] = 0.0;
+    pos += diameter[i];
+    }
+//  mass[0] = 2*mass[1];
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Balls in a box"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["420,438"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="aliasing"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">particleSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[diameter]]></Property>
+<Property name="sizey"><![CDATA[diameter]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="dragaction"><![CDATA[_resetSolvers();]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,5,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">panel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">panel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initializeButton</Property>
+<Property name="parent">panel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">energyLabel</Property>
+<Property name="parent">panel</Property>
+<Property name="text"><![CDATA["Energy ="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">energyField</Property>
+<Property name="parent">panel</Property>
+<Property name="variable"><![CDATA[energy]]></Property>
+<Property name="format"><![CDATA["0.000000000"]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="size"><![CDATA["110,20"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">gPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">gLabel</Property>
+<Property name="parent">gPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" g = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">gField</Property>
+<Property name="parent">gPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[g]]></Property>
+<Property name="format"><![CDATA["0.00"]]></Property>
+<Property name="action"><![CDATA[_resetSolvers();]]></Property>
+<Property name="size"><![CDATA["40,20"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComboBox</Type>
+<Property name="name">experiment</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">center</Property>
+<Property name="options"><![CDATA[Random;Experiment 1;Experiment 2;Experiment 3;Experiment 4]]></Property>
+<Property name="variable"><![CDATA[%experiment%]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">kPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">kLabel</Property>
+<Property name="parent">kPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" k = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">kField</Property>
+<Property name="parent">kPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[k]]></Property>
+<Property name="format"><![CDATA["0.00"]]></Property>
+<Property name="action"><![CDATA[_resetSolvers();]]></Property>
+<Property name="size"><![CDATA["40,20"]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

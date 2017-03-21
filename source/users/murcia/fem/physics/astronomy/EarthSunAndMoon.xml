@@ -1,0 +1,513 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Earth, Sun, and Moon]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia]]></Author>
+<Keywords><![CDATA[Gravitation, three-body problem]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Earth, Sun, and Moon</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Earth, Sun, and Moon
+    </h2>
+    A particular case of the <b>three-body problem</b>, this is a simulation 
+    of three bodies interacting according to the universal gravitational law.
+
+    <p>
+      We have taken the unscaled data for the <b>Sun</b>, the <b>Earth</b> and 
+      the <b>Moon</b> in order to make it more attractive. However, from the 
+      point of view of the numerics, it is preferable to rescale so that 
+      variables take values near one.
+    </p>
+    <p>
+      The difficult part is to set up initial conditions so that the Moon is 
+      captured by the Earth in its translation orbit around the Sun. In the 
+      initialization page, we approximate the real initial position for the 
+      Sun, the Earth and the Moon, which produces the situation we are 
+      familiar with.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <nl>
+    
+
+    <ul>
+      <li>
+        As an exercise for your students, delete the initialization page (the 
+        one with the real situation of the Sun, Earth and Moon) and ask your 
+        students to try to reproduce it!
+      </li>
+      <li>
+        Another interesting activity is to pause the simulation, drag the Sun 
+        to a different position and play the simulation again to see how this 
+        causes the Moon to scape the trajectory.
+      </li>
+      <li>
+        Now that we dragged a body, why not dragging any of the other ones? 
+        (Please recall to pause the simulation <u>before</u> dragging any of 
+        the bodies, otherwise the simulation may become unstable) </nl>
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>24</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>10</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Bodies</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[numBodies]]></Name>
+<Value><![CDATA[3]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Three bodies: Sun, Earth and Moon]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mass]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The masses of the bodies]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[radius]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The radii (in real coordinates)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The X positions]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The Y positions]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The X component of the velocities]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[The Y component of the velocities]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[color]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[Object]]></Type>
+<Dimension><![CDATA[[numBodies]]]></Dimension>
+<Comment><![CDATA[A different color for each body]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Common</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[time]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The time (in seconds)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[7200.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The increment for the time in each evolution step (in seconds)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[G]]></Name>
+<Value><![CDATA[6.673e-11]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The universal gravitational constant]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[minimum]]></Name>
+<Value><![CDATA[-2.0e11]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The minimum expected coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maximum]]></Name>
+<Value><![CDATA[2.0e11]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The maximum expected coordinate]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Trace of the Moon</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[traceLength]]></Name>
+<Value><![CDATA[600]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The number of points for the trace to be left by the planets]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[skip]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[magnify]]></Name>
+<Value><![CDATA[50]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The magnification scale for the orbit of the Moon]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xMoon]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[A utility variable]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yMoon]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[A utility variable]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Sun Earth and Moon</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[This appoximates the real situation of the Sun, Earth and Moon]]></Comment>
+<Code><![CDATA[
+// The Sun
+mass[0] = 1.99e30; 
+radius[0] = 2.0e10; // radius is ficticious
+color[0] = java.awt.Color.YELLOW;
+// The Earth
+mass[1] = 5.97e24; 
+radius[1] = 1.0e10; // radius is ficticious
+color[1] = java.awt.Color.BLUE;
+// The Moon
+mass[2] = 7.35e22; 
+radius[2] = 4.0e9; // radius is ficticious
+// Not used color[2] = java.awt.Color.GRAY;
+
+double massEplusM = mass[1]+mass[2];
+
+// Positions of the Earth and the Moon  with respect to its center of masses
+double semiaxisEM = 3.84e8;
+x[1] = - mass[2]*semiaxisEM/(mass[1]+mass[2]);
+y[1] = 0.0;
+x[2] = mass[1]*semiaxisEM/(mass[1]+mass[2]);
+y[2] = 0.0;
+
+// Position of the Earth+Moon center of mass
+double semiaxisEplusM = 1.50e11-x[1];
+x[0] = -massEplusM*semiaxisEplusM/(massEplusM+mass[0]);
+x[1] += mass[0]*semiaxisEplusM/(massEplusM+mass[0]);
+x[2] += mass[0]*semiaxisEplusM/(massEplusM+mass[0]);
+
+// velocities of the Earh and the Moon with respect to its center of masses
+double epsilonEM = 0.0550;
+double KEM = G*mass[1]*mass[2];
+double muEM = mass[1]*mass[2]/(mass[1]+mass[2]);
+double velEM = Math.sqrt (((1-epsilonEM*epsilonEM)*KEM)/(muEM*semiaxisEM));
+vx[1] = 0.0;
+vy[1] = - mass[2]*velEM/(mass[1]+mass[2]);
+vx[2] = 0.0;
+vy[2] =  mass[1]*velEM/(mass[1]+mass[2]);
+
+// Velocity of the Earth+Moon center of mass
+double epsilonEplusM = 0.0167;
+double KEplusM = G*mass[0]*massEplusM;
+double muEplusM = mass[0]*massEplusM/(mass[0]+massEplusM);
+double velEplusM = Math.sqrt (((1-epsilonEplusM*epsilonEplusM)*KEplusM)/(muEplusM*semiaxisEplusM));
+vy[0] = - massEplusM*velEplusM/(mass[0]+massEplusM);
+vy[1] +=  mass[0]*velEplusM/(mass[0]+massEplusM);
+vy[2] +=  mass[0]*velEplusM/(mass[0]+massEplusM);
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Equations</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>time</IndependentVariable>
+<Increment>dt</Increment>
+<Increment>dt</Increment>
+<Rate state="x[i]">vx[i]</Rate>
+<Rate state="y[i]">vy[i]</Rate>
+<Rate state="vx[i]">forceX(i,x,y)/mass[i]</Rate>
+<Rate state="vy[i]">forceY(i,x,y)/mass[i]</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[Newton second law]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Trace</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Magnify the position of the Moon relative to the Earth, so that it is visible]]></Comment>
+<Code><![CDATA[
+xMoon = x[1]+(x[2]-x[1])*magnify;
+yMoon = y[1]+(y[2]-y[1])*magnify;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Forces</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Universal gravitational law]]></Comment>
+<Code><![CDATA[
+// I know. This way of formulating the forces is repetitive and can
+// be done better. But it is very easy to undersatnd, too.
+ 
+public double forceX (int body, double[] x, double[] y) {
+  double force = 0.0;
+  double d;
+  for (int i=0; i<numBodies; i++) {
+    if (i==body) continue;
+    d = Math.pow ((x[i]-x[body])*(x[i]-x[body]) + (y[i]-y[body])*(y[i]-y[body]),1.5);
+    force += G*mass[i]*mass[body]*(x[i]-x[body])/d;
+  }
+  return force;
+}
+
+public double forceY (int body, double[] x, double[] y) {
+  double force = 0.0;
+  double d;
+  for (int i=0; i<numBodies; i++) {
+    if (i==body) continue;
+    d = Math.pow ((x[i]-x[body])*(x[i]-x[body]) + (y[i]-y[body])*(y[i]-y[body]),1.5);
+    force += G*mass[i]*mass[body]*(y[i]-y[body])/d;
+  }
+  return force;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Adjust user interaction</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void adjust () {
+  x[2] = x[1] + (xMoon-x[1])/magnify;
+  y[2] = y[1] + (yMoon-y[1])/magnify;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[mainFrame]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["397,342"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelButtons</Property>
+<Property name="parent">panel</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[grid:0,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">panelButtons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">panelButtons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[minimum]]></Property>
+<Property name="maximumX"><![CDATA[maximum]]></Property>
+<Property name="minimumY"><![CDATA[minimum]]></Property>
+<Property name="maximumY"><![CDATA[maximum]]></Property>
+<Property name="TRmessage"><![CDATA["Moon orbit has been exagerated"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trailMoon</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="inputX"><![CDATA[xMoon]]></Property>
+<Property name="inputY"><![CDATA[yMoon]]></Property>
+<Property name="maximumPoints"><![CDATA[traceLength]]></Property>
+<Property name="skippoints"><![CDATA[skip]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ShapeSet2D</Type>
+<Property name="name">shapeSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="numberOfElements"><![CDATA[2]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizeX"><![CDATA[radius]]></Property>
+<Property name="sizeY"><![CDATA[radius]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[adjust () ]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="fillColor"><![CDATA[color]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shapeMoon</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xMoon]]></Property>
+<Property name="y"><![CDATA[yMoon]]></Property>
+<Property name="sizeX"><![CDATA[1.74e6]]></Property>
+<Property name="sizeY"><![CDATA[1.74e6]]></Property>
+<Property name="scalex"><![CDATA[3.0e3]]></Property>
+<Property name="scaley"><![CDATA[3.0e3]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[adjust () ]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

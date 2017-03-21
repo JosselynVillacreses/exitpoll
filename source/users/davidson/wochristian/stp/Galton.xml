@@ -1,0 +1,442 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0beta">
+<Osejs.Information>
+<Title><![CDATA[Galton Board]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[binominal distribution, Galton board, statistics]]></Keywords>
+<Level><![CDATA[intermediate]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[./galton/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./galton/Galton.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Galton Board</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./galton/Galton.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Board Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>N</Name>
+<Value><![CDATA[25]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of rows in Galton board]]></Comment>
+</Variable>
+<Variable>
+<Name>npegs</Name>
+<Value><![CDATA[N*(N+1)/2]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[0]]></Value>
+<Type>double</Type>
+<Dimension>[npegs]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>y</Name>
+<Value><![CDATA[0]]></Value>
+<Type>double</Type>
+<Dimension>[npegs]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>p</Name>
+<Value><![CDATA[0.5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Ball Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>highSpeed</Name>
+<Value><![CDATA[false]]></Value>
+<Type>boolean</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xball</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>yball</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Galton pegs</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+positionPegs();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Ball Bounce</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if(highSpeed){
+  int n=10*N;
+  do{
+    _view.trace.addPoint(xball,yball);
+    bounce();
+    n--;
+  }while(n>0 || yball!=N-1);
+}else{
+  bounce();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>bounce</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void bounce () {
+  yball++;
+  if(yball<N){
+    if(Math.random()<p){
+      xball++;
+    }else{
+      xball--;
+    }
+  }else{
+    _view.histogram.append(xball);
+    xball=0;
+    yball=0;
+    _view.trace.clear();
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>positionPegs</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void positionPegs() {
+  for(int r=0, i=0; r<N; r++){  // iterate over the rows
+    for(int c=0; c<=r; c++, i++){
+      x[i]=2*c-r;
+      y[i]=r;
+    }
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>changeN</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void changeN () {
+  N=Math.max(100,N);
+  npegs=N*(N+1)/2;
+  x= new double[npegs];
+  y= new double[npegs];
+  xball=0;
+  yball=0;
+  _view.trace.clear();
+  _view.histogram.clear();
+  positionPegs();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>changP</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void changP () {
+  p=Math.max(0,p);
+  p=Math.min(1,p);
+  xball=0;
+  yball=0;
+  _view.trace.clear();
+  _view.histogram.clear();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">galtonFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Galton Board]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["7,0"]]></Property>
+<Property name="size"><![CDATA["561,401"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">galtonPanel</Property>
+<Property name="parent">galtonFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-N]]></Property>
+<Property name="maximumX"><![CDATA[N]]></Property>
+<Property name="minimumY"><![CDATA[N]]></Property>
+<Property name="maximumY"><![CDATA[-1]]></Property>
+<Property name="title"><![CDATA[Galton Board]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">pegSet</Property>
+<Property name="parent">galtonPanel</Property>
+<Property name="elementnumber"><![CDATA[npegs]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[8]]></Property>
+<Property name="sizey"><![CDATA[8]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">trace</Property>
+<Property name="parent">galtonPanel</Property>
+<Property name="x"><![CDATA[xball]]></Property>
+<Property name="y"><![CDATA[yball]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[GREEN]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">ball</Property>
+<Property name="parent">galtonPanel</Property>
+<Property name="x"><![CDATA[xball]]></Property>
+<Property name="y"><![CDATA[yball]]></Property>
+<Property name="sizex"><![CDATA[8]]></Property>
+<Property name="sizey"><![CDATA[8]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">paramPanel</Property>
+<Property name="parent">galtonFrame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">NPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">NLabel</Property>
+<Property name="parent">NPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["  N= "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">NField</Property>
+<Property name="parent">NPanel</Property>
+<Property name="variable"><![CDATA[N]]></Property>
+<Property name="format"><![CDATA[0]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[changeN()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">pPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">pLabel</Property>
+<Property name="parent">pPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["    p= "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">pField</Property>
+<Property name="parent">pPanel</Property>
+<Property name="variable"><![CDATA[p]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[changP()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">galtonFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,3,0,0]]></Property>
+<Property name="size"><![CDATA[220,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepBtn</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="position">north</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">highSpeedCheckBox</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="variable"><![CDATA[highSpeed]]></Property>
+<Property name="text"><![CDATA[High Speed]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">histogramFrame</Property>
+<Property name="title"><![CDATA[Results Histogram]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["10,402"]]></Property>
+<Property name="size"><![CDATA["559,400"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">histogramFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-N]]></Property>
+<Property name="maximumX"><![CDATA[N]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Histogram</Type>
+<Property name="name">histogram</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="normalized"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,465 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0beta">
+<Osejs.Information>
+<Title><![CDATA[Oscillator Chain]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[mechanics, coupled oscillators]]></Keywords>
+<Level><![CDATA[intermediate]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./OscillatorRing/OscillatorRing.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>OscillatorRing</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./OscillatorRing/OscillatorRing.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamic Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[32]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>y</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>v</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>a</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>dt</Name>
+<Value><![CDATA[0.5]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Constants</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>dx</Name>
+<Value><![CDATA[2*Math.PI/(n-1);]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>k</Name>
+<Value><![CDATA[1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>functionString</Name>
+<Value><![CDATA["sin(x)"]]></Value>
+<Type>String</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>velocityString</Name>
+<Value><![CDATA["-cos(x)*pi/16"]]></Value>
+<Type>String</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>springDy</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>n-1</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// need at least two particles
+n=Math.max(2,n);
+dx=2*Math.PI/(n);
+// allocate arrays because n may change
+if(n!=x.length){
+  x = new double[n];
+  y = new double[n];
+  v = new double[n];
+  a = new double[n];
+  springDy =new double[n-1]; 
+}
+setFunction();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Oscillator ODE</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="y[]">v</Rate>
+<Rate state="v[]">acc(y)</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Spring Size</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+for(int i=0; i<n-1; i++){
+  springDy[i]=y[i+1]-y[i];
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>acceleration</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double[] acc(double[] y) {
+  for(int i=1, ni=n-1; i<ni; i++){
+    a[i]=k*(y[i-1]+y[i+1]-2*y[i]);
+  }
+  a[0]=k*(y[n-1]+y[1]-2*y[0]);
+  a[n-1]=k*(y[n-2]+y[0]-2*y[n-1]);
+  return a;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>setFunction</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setFunction() {
+  double x0=0;
+  for(int i=0; i<n; i++){
+    x[i]=x0;
+    y[i] = _view.function.evaluate(x0);
+    v[i]=_view.velocity.evaluate(x0);
+    x0+=dx;
+  }
+  t=0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">plottingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Coupled Oscillators]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["9,15"]]></Property>
+<Property name="size"><![CDATA["710,276"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[2*Math.PI-dx]]></Property>
+<Property name="minimumY"><![CDATA[-1.1]]></Property>
+<Property name="maximumY"><![CDATA[1.1]]></Property>
+<Property name="title"><![CDATA[Ring of Oscillators]]></Property>
+<Property name="BRmessage"><![CDATA["time="+_format(t,"0.00")]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">analyticCurve</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[2*Math.PI]]></Property>
+<Property name="variable"><![CDATA[x]]></Property>
+<Property name="functionx"><![CDATA[x]]></Property>
+<Property name="functiony"><![CDATA[%functionString%]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[200,220,208]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.SpringSet</Type>
+<Property name="name">springSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n-1]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[dx]]></Property>
+<Property name="sizey"><![CDATA[springDy]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="radius"><![CDATA[0.05]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">particles</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[10]]></Property>
+<Property name="sizey"><![CDATA[10]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="dragaction"><![CDATA[double xp=0;
+for (int i=0; i<n; i++) {
+  x[i] = xp;
+  xp+=dx;
+}
+_resetSolvers();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[GRID:1,3,0,0]]></Property>
+<Property name="size"><![CDATA[250,0]]></Property>
+<Property name="border"><![CDATA[0,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_pause();
+_step();]]></Property>
+<Property name="tooltip"><![CDATA[Single step the simulation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset();
+_initialize();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">functionPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[GRID:1,2,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">fxPanel</Property>
+<Property name="parent">functionPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">fxLabel</Property>
+<Property name="parent">fxPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["   y(x,0) = "]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[initial displacement]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Function</Type>
+<Property name="name">function</Property>
+<Property name="parent">fxPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[%functionString%]]></Property>
+<Property name="independent"><![CDATA[x]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="action"><![CDATA[_pause();
+setFunction();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">fvPanel</Property>
+<Property name="parent">functionPanel</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">vxLabel</Property>
+<Property name="parent">fvPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["   v(x,t) = "]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[initial displacement derivative]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Function</Type>
+<Property name="name">velocity</Property>
+<Property name="parent">fvPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[%velocityString%]]></Property>
+<Property name="independent"><![CDATA[x]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="action"><![CDATA[_pause();
+setFunction();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nLabel</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["  # particles = "]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="action"><![CDATA[_pause();
+_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nField</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[30,20]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

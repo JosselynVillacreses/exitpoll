@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Free Fall XY Model</title>
+  </head>
+  <body> 
+    <h1 align="left">Free Fall in Cartesian Coordinates Model</h1>
+    <div align="center">
+      <table border="1" id="table1">
+        <tr>
+          <td><img border="0" src="freefallxy_dynamic_vars.gif" width="224" height="150"></td>
+          <td><img border="0" src="freefallxy_params.gif" width="277" height="150"></td>
+        </tr>
+      </table>
+    </div>
+    <p>Because the Free Fall 2D model uses 9 variables we have chosen to create two variable tables in Ejs.&nbsp; The table of 
+    dynamic variables contains values that evolve in time while the table of constant parameters contains values that remain fixed.&nbsp; Creating separate tables to group variables is an effective way to organize data in Ejs models.</p>
+    <p align="left">Horizontal motion adds a third differential equation to the Ejs evolution page.&nbsp; We do not include a 
+    differential equation for v<sub>x</sub> because there is no force in the x direction.</p>
+    <h4 align="center"><img border="0" src="freefallxy_ode.gif" width="222" height="177"></h4>
+    <p align="left">Modeling the bounce on a finite table requires that we modify the previous Ejs collision event so that it 
+    occurs only when the the ball's x-position is between the table top corners.&nbsp; As in the Free Fall event, a 
+    collision occurs only if the ball is moving downward.</p>
+    <p align="center"><img border="0" src="freefallxy_events.jpg" width="719" height="263"></p>
+    <p align="left">Ejs supports multiple events and we have added a corner collision event (Event 2 is not shown here) to the 
+    model.&nbsp; If the time evolution produces one or more event triggers, Ejs automatically attempts a smaller time step until 
+    it finds a time when the zero condition is satisfied for all events.&nbsp; It is therefore <i>very important </i>that Ejs 
+    models be initialized in such a way that all events return positive values when testing the zero condition.&nbsp; Otherwise, 
+    Ejs cannot find a valid starting time and the time evolution algorithm will fail.</p><p align="left">Tip: You can temporarily 
+    disable an event by right clicking on the tab near the top of the events page.&nbsp; Right-clicking within the coding text 
+    areas provides context-sensitive help.</p>
+</body>
+</html>

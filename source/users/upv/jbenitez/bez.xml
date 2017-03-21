@@ -1,0 +1,516 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./bezier1.jpg;./segmento.png;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Curvas de Bézier</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p style="margin-top: 0" align="center">
+      <big><font face="SansSerif">Dibuja curvas de B&#233;zier de grado 2 
+      (par&#225;bolas) </font></big>
+    </p>
+    <p style="margin-top: 0" align="center">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif"><b>1. Breve teor&#237;a </b></font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif">Dados dos puntos <b>p</b> y <b>q</b>, 
+      los puntos del segmento entre <b>p</b> y <b>q</b> se puede parametrizar 
+      mediante la expresi&#243;n <b>r</b>(<i>t</i>) = (1 - <i>t</i>) <b>p </b>+ 
+      <i>t </i><b>q</b>, siendo<b> </b><i>t</i> &#8714;[0,1]. </font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <img src="./segmento.png">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif">Obs&#233;rvese que <b>r</b>(0) = <b>p</b>, 
+      <b>r</b>(1) = <b>q</b>. Adem&#225;s a medida que si <i>t</i> decrece a 
+      0, entonces <b>r</b>(<i>t</i>) se acerca a <b>p</b>; mientras que si <i>t</i> 
+      crece a 1, entonces <b>r</b>(<i>t</i>) se acerca a <b>q</b>. </font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif"><b>2. Par&#225;bolas de B&#233;zier</b></font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">Dados los puntos <b>p</b><sub>1</sub>, <b>p</b><sub>2</sub> 
+      y <b>p</b><sub>3</sub> (llamados <u>puntos de control</u>) y </font><big><i><font size="4" face="SansSerif">t</font></i><font size="4" face="SansSerif"> 
+      &#8714;[0,1]; </font></big><font face="SansSerif">se construyen </font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif"><b>b</b><sub>1,1</sub>(<i>t</i>) := </font><big><font size="4" face="SansSerif">(1 
+      - <i>t</i>) <b>p</b><sub>1</sub><b> </b>+ <i>t </i><b>p</b><sub>2, </sub></font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif"><b>b</b><sub>1,2</sub>(<i>t</i>) := </font><big><font size="4" face="SansSerif">(1 
+      - <i>t</i>) <b>p</b><sub>2</sub><b> </b>+ <i>t </i><b>p</b><sub>3. </sub></font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">Por &#250;ltimo se construye </font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">B[<b>p</b><sub>1</sub>,<b>p</b><sub>2</sub>,<b>p</b><sub>3</sub>](<i>t</i>) 
+      := </font><big><font size="4" face="SansSerif">(1 - <i>t</i>) </font></big><font face="SansSerif"><b>b</b><sub>1,1</sub>(<i>t</i>)</font><big><font size="4" face="SansSerif"><b> 
+      </b>+ <i>t </i></font></big><font face="SansSerif"><b>b</b><sub>1,2</sub>(<i>t</i>). 
+      </font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">A medida que <i>t</i> va variando en [0,1], el 
+      punto B[<b>p</b><sub>1</sub>,<b>p</b><sub>2</sub>,<b>p</b><sub>3</sub>](<i>t</i>) 
+      describe una curva llamada <u>curva de B&#233;zier asociada a los puntos</u> 
+      <b>p</b><sub>1</sub>, <b>p</b><sub>2</sub> y <b>p</b><sub>3.<sup> </sup></sub></font>
+    </p>
+    <img src="./bezier1.jpg">
+    
+
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">Se puede probar que </font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">B[<b>p</b><sub>1</sub>,<b>p</b><sub>2</sub>,<b>p</b><sub>3</sub>](<i>t</i>) 
+      := </font><big><font size="4" face="SansSerif">(1 - <i>t</i>)<sup>2</sup> 
+      </font></big><font face="SansSerif"><b>p</b></font><big><sub><font size="4" face="SansSerif">1</font></sub><font size="4" face="SansSerif"><b> 
+      </b>+ 2<i>t </i>(1 - <i>t</i>)<i> </i></font></big><font face="SansSerif"><b>p</b><sub>2<sup> 
+      </sup></sub></font><big><font size="4" face="SansSerif">+<i> t</i><sup>2</sup> 
+      <b>p</b><sub>3</sub>, </font></big>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif">lo que justifica que </font></big><font face="SansSerif">B[<b>p</b><sub>1</sub>,<b>p</b><sub>2</sub>,<b>p</b><sub>3</sub>](<i>t</i>) 
+      es una par&#225;bola. Por eso, a </font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <font face="SansSerif">B[<b>p</b><sub>1</sub>,<b>p</b><sub>2</sub>,<b>p</b><sub>3</sub>](<i>t</i>)</font>
+    </p>
+    <p style="margin-top: 0" align="left">
+      <big><font size="4" face="SansSerif">se la llame tambi&#233;n par&#225;bola de 
+      B&#233;zier. El algoritmo descrito se debe a Casteljau.</font></big>
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>1</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Básico</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[bola1x]]></Name>
+<Value><![CDATA[-1.4716981132075473]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bola1y]]></Name>
+<Value><![CDATA[0.1864951768488745]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bola2x]]></Name>
+<Value><![CDATA[0.691823899371069]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bola2y]]></Name>
+<Value><![CDATA[-0.9067524115755625]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bola3x]]></Name>
+<Value><![CDATA[1.0943396226415096]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bola3y]]></Name>
+<Value><![CDATA[0.41800643086816724]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.76866]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Casteljau</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[aux1x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[aux1y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[aux2x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[aux2y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>salida</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[bezierx]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[beziery]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Página Inicio</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Esto inhibe la posibilidad de hacer clic 
+// con el botón derecho sobre la curva
+_view.Curva_de_Bézier.setAllowTable(false);
+
+bola1x=-1; bola1y=0; bola2x=0; bola2y=1; bola3x=1; bola3y=0; t=0.5;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Página Evolución</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Página RelFijas</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+aux1x = (1-t)*bola1x+t*bola2x;
+aux1y = (1-t)*bola1y+t*bola2y;
+aux2x = (1-t)*bola2x+t*bola3x;
+aux2y = (1-t)*bola2y+t*bola3y;
+bezierx = (1-t)*aux1x+t*aux2x;
+beziery = (1-t)*aux1y+t*aux2y;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">drawingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Curva de Bézier de orden 2"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="resizeAction"><![CDATA[_clearView()]]></Property>
+<Property name="onClosing"><![CDATA[_resetView()]]></Property>
+<Property name="location"><![CDATA["10,10"]]></Property>
+<Property name="size"><![CDATA["400,500"]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+<Property name="foreground"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Valor_de_t</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">north</Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="value"><![CDATA[0.76866]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[t=0.00]]></Property>
+<Property name="orientation"><![CDATA[HORIZONTAL]]></Property>
+<Property name="ticks"><![CDATA[10]]></Property>
+<Property name="foreground"><![CDATA[BLACK]]></Property>
+<Property name="font"><![CDATA[MS Reference Sans Serif,PLAIN,12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-2.0]]></Property>
+<Property name="maximumX"><![CDATA[2.0]]></Property>
+<Property name="minimumY"><![CDATA[-2]]></Property>
+<Property name="maximumY"><![CDATA[2]]></Property>
+<Property name="pressaction"><![CDATA[_isPaused()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">bola1</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bola1x]]></Property>
+<Property name="y"><![CDATA[bola1y]]></Property>
+<Property name="scalex"><![CDATA[3]]></Property>
+<Property name="scaley"><![CDATA[3]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="sensitivity"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">bola2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bola2x]]></Property>
+<Property name="y"><![CDATA[bola2y]]></Property>
+<Property name="scalex"><![CDATA[3]]></Property>
+<Property name="scaley"><![CDATA[3]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="sensitivity"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">bola3</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bola3x]]></Property>
+<Property name="y"><![CDATA[bola3y]]></Property>
+<Property name="pixelSize"><![CDATA[false]]></Property>
+<Property name="scalex"><![CDATA[3]]></Property>
+<Property name="scaley"><![CDATA[3]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="sensitivity"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">aux1</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[aux1x]]></Property>
+<Property name="y"><![CDATA[aux1y]]></Property>
+<Property name="scalex"><![CDATA[1]]></Property>
+<Property name="scaley"><![CDATA[1]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="sensitivity"><![CDATA[1]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">aux2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[aux2x]]></Property>
+<Property name="y"><![CDATA[aux2y]]></Property>
+<Property name="scalex"><![CDATA[1]]></Property>
+<Property name="scaley"><![CDATA[1]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="sensitivity"><![CDATA[1]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">uno_dos</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bola1x]]></Property>
+<Property name="y"><![CDATA[bola1y]]></Property>
+<Property name="sizex"><![CDATA[bola2x-bola1x]]></Property>
+<Property name="sizey"><![CDATA[bola2y-bola1y]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">bezier</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bezierx]]></Property>
+<Property name="y"><![CDATA[beziery]]></Property>
+<Property name="scalex"><![CDATA[2]]></Property>
+<Property name="scaley"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="sensitivity"><![CDATA[1]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="secondaryColor"><![CDATA[BLACK]]></Property>
+<Property name="color"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">dos_tres</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[bola2x]]></Property>
+<Property name="y"><![CDATA[bola2y]]></Property>
+<Property name="sizex"><![CDATA[bola3x-bola2x]]></Property>
+<Property name="sizey"><![CDATA[bola3y-bola2y]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">aux1_aux2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[aux1x]]></Property>
+<Property name="y"><![CDATA[aux1y]]></Property>
+<Property name="sizex"><![CDATA[aux2x-aux1x]]></Property>
+<Property name="sizey"><![CDATA[aux2y-aux1y]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">Curva_de_Bézier</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="points"><![CDATA[50]]></Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[1]]></Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="functionx"><![CDATA["((1-t)^2)*bola1x+2*t*(1-t)*bola2x+(t^2)*bola3x"]]></Property>
+<Property name="functiony"><![CDATA["((1-t)^2)*bola1y+2*t*(1-t)*bola2y+(t^2)*bola3y"]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

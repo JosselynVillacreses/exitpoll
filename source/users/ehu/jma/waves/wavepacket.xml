@@ -1,0 +1,734 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Wave packet]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[wave;wave packet;dispersive medium;dispersion;phase velocity;group velocity;packet width]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[An approximation to a wave packet is constructed by summing up harmonic waves. One can choose the dispersion relation and see the dispersion of the packet. It is also possible to check the dependence of the packet width on the length of the frequency interval.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Wave packet</title>
+    
+  </head>
+  <body>
+    <h1>
+      Wave packet
+    </h1>
+    An approximation to a wave packet with wave numbers in the interval <i>k</i><sub>1</sub> 
+    &#8804; <i>k</i> &#8804; <i>k</i><sub>2</sub>,<br><i>u</i>(<i>t</i>,<i>x</i>) 
+    = <i>A</i>/(<i>k</i><sub>2</sub>-<i>k</i><sub>1</sub>) &#8747; cos(<i>k x </i>- 
+    <i>&#969; t</i>) <i>dk</i>,<br>is constructed by summing up <i>N</i> 
+    harmonic waves:<br><i>u</i>(<i>t</i>,<i>x</i>) = <i>A</i>/(<i>N</i>-1) &#8721; 
+    cos(<i>k<sub>i </sub>x </i>- <i>&#969;<sub>i </sub>t</i>),&#160;&#160;&#160;&#160;(<i>i</i> 
+    = 0, 1, ..., <i>N</i>-1),<br>where <i>k<sub>i</sub></i> = <i>k</i><sub>1</sub> 
+    + <i>i</i> (<i>k</i><sub>2</sub>-<i>k</i><sub>1</sub>)/(<i>N</i>-1) and <i>&#969;<sub>i</sub></i> 
+    = <i>&#969;</i>(<i>k<sub>i</sub></i>).
+
+    <ul>
+      <li>
+        Below one can choose in the first row of values the minimum and 
+        maximum wave numbers <i>k</i><sub>1</sub> and <i>k</i><sub>2</sub> and 
+        the number <i>N</i> of waves, as well as the constants <i>a</i> and <i>b</i> 
+        in dispersion relation <i>&#969;</i>(<i>k</i>) = <i>a</i> <i>k<sup>b</sup></i> 
+        and the amplitude <i>A</i>.
+      </li>
+      <li>
+        In the second row one may select the time interval <i>t</i><sub>1</sub> 
+        &#8804; <i>t</i> &#8804; <i>t</i><sub>2</sub> and the animation step &#916;<i>t</i>, 
+        as well as the space interval <i>x</i><sub>1</sub> &#8804; <i>x</i> &#8804; <i>x</i><sub>2</sub> 
+        and the number of points to compute and display.
+      </li>
+      <li>
+        Put the mouse pointer over an element to see the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Compute the phase velocity <i>v</i> = <i>&#969;</i>/<i>k</i> and the 
+        group velocity <i>v</i><sub>g</sub> = <i>d&#969;</i>/<i>dk</i> in 
+        terms of the constants <i>a</i> and <i>b</i>.
+      </li>
+      <li>
+        Check that when <i>b</i> = 1 we have <i>v</i> = <i>v</i><sub>g</sub> = 
+        const., i.e., the medium is not dispersive and all harmonic components 
+        propagate at the same velocity. The packet width will be constant and 
+        each points one will have beats with constant frequency (which one?). 
+        Use the simulation to check your conclusions.
+      </li>
+      <li>
+        What would change if you select an higher (lower) value for <i>k</i><sub>2</sub>-<i>k</i><sub>1</sub>? 
+        Check your answer.
+      </li>
+      <li>
+        What about decreasing (increasing) the number <i>N</i> of waves?
+      </li>
+      <li>
+        What would happen in the limit <i>N</i> &#8594; &#8734;?
+      </li>
+      <li>
+        If now <i>b</i> &lt; 1, what would you expect? Use the simulation to 
+        check your answer.
+      </li>
+      <li>
+        What happens if <i>b</i> &gt; 1?
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Storage</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[nMaxPoints]]></Name>
+<Value><![CDATA[2000]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum number of points in display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nPoints]]></Name>
+<Value><![CDATA[1000]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of points to display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nMaxPoints]]]></Dimension>
+<Comment><![CDATA[x coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nMaxPoints]]]></Dimension>
+<Comment><![CDATA[Wave values]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k1]]></Name>
+<Value><![CDATA[5.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum wave number]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k2]]></Name>
+<Value><![CDATA[10.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum wave number]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nHarmonics]]></Name>
+<Value><![CDATA[100]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of harmonic waves to sum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Coefficient in omega = a k^b]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Exponent in omega = a k^b]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[A]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Amplitude]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-5.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum value of x on display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[50.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum value of x on display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tmin]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tmax]]></Name>
+<Value><![CDATA[50.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Last time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time interval]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[time]]></Name>
+<Value><![CDATA["time"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time string]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[playImage]]></Name>
+<Value><![CDATA["images/play.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Image for Continue]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pauseImage]]></Name>
+<Value><![CDATA["images/pause.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Image for Pause]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[startImage]]></Name>
+<Value><![CDATA["images/play.gif"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Image for Continue/Pause]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[repeat]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Repeat simulation?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showTime]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show time evolution]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Reset time]]></Comment>
+<Code><![CDATA[
+t = tmin;
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters and symbols]]></Comment>
+<Code><![CDATA[
+_view.getElement("dT").setProperty("format","\u0394t = 0.######");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update time]]></Comment>
+<Code><![CDATA[
+if (t+.00001 >= tmax) {
+  if (repeat) t = tmin;
+  else _pause();
+}
+else
+  t += dt;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Ranges</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Check everything is in range]]></Comment>
+<Code><![CDATA[
+if (nPoints > nMaxPoints) nPoints = nMaxPoints;	// Points
+else if (nPoints < 2) nPoints = 2;
+
+if (nHarmonics < 2) nHarmonics = 2;		// Number of waves to sum
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>x coordinates</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute x coordinates]]></Comment>
+<Code><![CDATA[
+double dx = (xmax-xmin)/(nPoints-1);
+for (int i = 0; i < nPoints; i++)
+  x[i] = xmin+dx*i;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Wave values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute wave values]]></Comment>
+<Code><![CDATA[
+double dk = (k2-k1)/(nHarmonics-1);
+for (int i = 0; i < nPoints; i++) {
+  double xx = x[i], v = 0.0, k;
+  for (int j = 0; j < nHarmonics; j++) {
+    k = k1+dk*j;
+    v += Math.cos(k*xx-a*Math.pow(k,b)*t);
+  }
+  y[i] = A*v/nHarmonics;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Display scale and time fomat]]></Comment>
+<Code><![CDATA[
+ymax = A;
+
+time = _format(t,"t = 0.00");
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Start/Stop</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void startstop () {
+  if (_isPlaying()) {
+//    _view.getElement("Start").setProperty("text","Jarraitu");
+   startImage = playImage; 
+    _pause();
+  }
+  else {
+//    _view.getElement("Start").setProperty("text","Gelditu");
+   startImage = pauseImage; 
+    _play();
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Wave packet]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,0"]]></Property>
+<Property name="size"><![CDATA["1054,345"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Plot</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-ymax]]></Property>
+<Property name="maximumY"><![CDATA[ymax+.001]]></Property>
+<Property name="title"><![CDATA[Wave packet]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="titleY"><![CDATA[u(t,x)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">timeLabel</Property>
+<Property name="parent">Plot</Property>
+<Property name="x"><![CDATA[xmax]]></Property>
+<Property name="y"><![CDATA[-ymax]]></Property>
+<Property name="visible"><![CDATA[showTime]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[%time%]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH_EAST]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Poligon</Type>
+<Property name="name">Wave</Property>
+<Property name="parent">Plot</Property>
+<Property name="maxpoints"><![CDATA[nPoints]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="closed"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Bottom</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Bottom</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,9,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">kMin</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[k1]]></Property>
+<Property name="format"><![CDATA[k1 = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Minimum wave number]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">kMax</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[k2]]></Property>
+<Property name="format"><![CDATA[k2 = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Maximum wave number]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">numHarmonics</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[nHarmonics]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Number of harmonic waves]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">aValue</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="format"><![CDATA[a = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[a coefficient in the dispersion relation omega = a k^b]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">bValue</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="format"><![CDATA[b = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[b exponent in the dispersion relation omega = a k^b]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Amplitude</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[A]]></Property>
+<Property name="format"><![CDATA[A = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Amplitude]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">tMin</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[tmin]]></Property>
+<Property name="format"><![CDATA[t1 = 0.###]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Initial time]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">tMax</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[tmax]]></Property>
+<Property name="format"><![CDATA[t2 = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Last time]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">dT</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.#######"]]></Property>
+<Property name="tooltip"><![CDATA[Animation step]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">xMin</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[xmin]]></Property>
+<Property name="format"><![CDATA[x1 = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Minimum x]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">xMax</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[xmax]]></Property>
+<Property name="format"><![CDATA[x2 = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Maximum x]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">numPoints</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[nPoints]]></Property>
+<Property name="format"><![CDATA[0 points]]></Property>
+<Property name="tooltip"><![CDATA[Number of points]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Repeat</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[repeat]]></Property>
+<Property name="text"><![CDATA["Repeat"]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="tooltip"><![CDATA[Start again when t2 is reached?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowTime</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[showTime]]></Property>
+<Property name="text"><![CDATA["Time"]]></Property>
+<Property name="mnemonic"><![CDATA[d]]></Property>
+<Property name="tooltip"><![CDATA[Show time values?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/initial.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["i"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA["Set t = 0"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

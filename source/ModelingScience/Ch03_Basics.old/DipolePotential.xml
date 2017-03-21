@@ -1,0 +1,83 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Dipole Potential"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,0"]]></Property>
+<Property name="size"><![CDATA["455,500"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="titleX"><![CDATA["x"]]></Property>
+<Property name="titleY"><![CDATA["y"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticScalarField2D</Type>
+<Property name="name">analyticScalarField</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="variable1"><![CDATA["r"]]></Property>
+<Property name="points1"><![CDATA[50]]></Property>
+<Property name="variable2"><![CDATA["theta"]]></Property>
+<Property name="points2"><![CDATA[50]]></Property>
+<Property name="z"><![CDATA["cos(theta)/r^2"]]></Property>
+<Property name="autoscaleZ"><![CDATA[false]]></Property>
+<Property name="minimumZ"><![CDATA[-10]]></Property>
+<Property name="maximumZ"><![CDATA[10]]></Property>
+<Property name="expandedZ"><![CDATA[10]]></Property>
+<Property name="coordinateSystem"><![CDATA[POLAR]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="plotType"><![CDATA[CONTOUR]]></Property>
+<Property name="colormode"><![CDATA[REDBLUESHADE]]></Property>
+<Property name="floorcolor"><![CDATA[BLUE]]></Property>
+<Property name="ceilingcolor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

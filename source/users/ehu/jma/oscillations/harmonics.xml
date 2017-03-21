@@ -1,0 +1,851 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Save the file to your hard disk on Ejs' Simulations directory and open it with Ejs. -->
+<Osejs version="3.47">
+<Osejs.Information>
+<Title><![CDATA[Harmonics]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[oscillation;Fourier series;harmonic;Gibbs phenomenon]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The simulation displays a full period of an oscillation, as well as some amplitudes and phases of the corresponding Fourier series. The sum of the displayed harmonics is also shown.]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Harmonics and Fourier analysis</title>
+    
+  </head>
+  <body>
+    <h1>
+      Harmonics and Fourier analysis
+    </h1>
+    A full period (T = 2&#960;/&#969;) of an oscillation is shown below, as well as the <b>amplitudes</b> 
+    <i>A<sub>k</sub></i> = 2|<i>c<sub>k</sub></i>| = 2|<i>c</i><sub>-<i>k</i></sub>| 
+    and <b>phases</b> <i>&#966;<sub>k</sub></i> = arg <i>c<sub>k</sub></i> = 
+    -arg <i>c</i><sub>-<i>k</i></sub> of the corresponding Fourier series:<br><br><i>x</i>(<i>t</i>) 
+    = <big>&#8721;</big> <i>c<sub>n</sub></i> <i>e<sup>in&#969;t</sup></i> = <big>&#8721;</big> 
+    <i><font color="#ff00ff">A<sub>k</sub></font></i> cos(<i>k&#969;t</i>+<i><font color="#008000">&#966;<sub>k</sub></font></i>), 
+    &#160;&#160;&#160;&#160;&#160;&#160; (<i>n </i>= ...-1,0,1,...; <i>k </i>= 
+    0,1,...).
+
+    <ul>
+      <li>
+        One can choose below the oscillation profile and the number of 
+        harmonics: <i>N</i>. The sum of the latter is displayed in blue.
+      </li>
+      <li>
+        From there one can change <b>amplitudes</b> and <b>phases</b> by 
+        moving the sliders with the mouse.
+      </li>
+      <li>
+        If <b>Full series?</b> is selected, the sum of the infinite series is 
+        displayed in red. This graph does not change when you change 
+        amplitudes or phases, for it corresponds to the exact selected profile.
+      </li>
+      <li>
+        To get information on an element, put over it the mouse pointer to see 
+        the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Select different oscillation profiles and discuss what happens when an 
+        amplitude or a phase is changed.
+      </li>
+    </ul>
+    <ul>
+      <li>
+        Use <b>Linear</b> or <b>Square</b> profiles to analyze the Gibbs 
+        phenomenon for different values of <i>N</i>: the convergence is 
+        clearly slower near the discontinuity points.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>nmax</Name>
+<Value><![CDATA[1000]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Maximum number of points]]></Comment>
+</Variable>
+<Variable>
+<Name>N</Name>
+<Value><![CDATA[1000]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Current  number of points]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[nmax+1]</Dimension>
+<Comment><![CDATA[Series sum]]></Comment>
+</Variable>
+<Variable>
+<Name>xf</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[nmax+1]</Dimension>
+<Comment><![CDATA[Full series]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[nmax+1]</Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name>kmaxx</Name>
+<Value><![CDATA[1000]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Maximum number of harmonics]]></Comment>
+</Variable>
+<Variable>
+<Name>kmax</Name>
+<Value><![CDATA[50]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Current number of harmonics]]></Comment>
+</Variable>
+<Variable>
+<Name>kk</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[kmaxx+1]</Dimension>
+<Comment><![CDATA[Position in screen of harmonics]]></Comment>
+</Variable>
+<Variable>
+<Name>A</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[kmaxx+1]</Dimension>
+<Comment><![CDATA[Amplitudes]]></Comment>
+</Variable>
+<Variable>
+<Name>f</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[kmaxx+1]</Dimension>
+<Comment><![CDATA[Phases]]></Comment>
+</Variable>
+<Variable>
+<Name></Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>xmin</Name>
+<Value><![CDATA[-.25]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Minimum abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name>xmax</Name>
+<Value><![CDATA[2.0*Math.PI-xmin]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Maximum abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name>ymin</Name>
+<Value><![CDATA[-2.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Minimum ordinate]]></Comment>
+</Variable>
+<Variable>
+<Name>ymax</Name>
+<Value><![CDATA[2.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Maximum ordinate]]></Comment>
+</Variable>
+<Variable>
+<Name>type</Name>
+<Value><![CDATA["0"]]></Value>
+<Type>String</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Oscillation profile]]></Comment>
+</Variable>
+<Variable>
+<Name>nA</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Currently modified amplitude]]></Comment>
+</Variable>
+<Variable>
+<Name>nf</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Currently modified phase]]></Comment>
+</Variable>
+<Variable>
+<Name>full</Name>
+<Value><![CDATA[false]]></Value>
+<Type>boolean</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Show sum of full series?]]></Comment>
+</Variable>
+<Variable>
+<Name></Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>PI</Name>
+<Value><![CDATA[Math.PI]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Circular constant]]></Comment>
+</Variable>
+<Variable>
+<Name>PI2</Name>
+<Value><![CDATA[2.0*Math.PI]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[2 pi]]></Comment>
+</Variable>
+<Variable>
+<Name>dt</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Time step]]></Comment>
+</Variable>
+<Variable>
+<Name>dk</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Distance between harmonics in screen]]></Comment>
+</Variable>
+<Variable>
+<Name></Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Start</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set default values]]></Comment>
+<Code><![CDATA[
+chooseType();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Phase scale</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Check everything is in the right interval]]></Comment>
+<Code><![CDATA[
+if (kmax < 1)  kmax = 1;			// Number of harmonics
+else if (kmax > kmaxx) kmax = kmaxx;
+
+dt = PI2/N;				// Time step
+dk = PI2/kmax;				// Distance between harmonics
+
+for (int k = 0; k <= kmax; k++) {		// Harmonics
+  kk[k] = k*dk;				// Position
+  A[k] = Math.max(0.0,A[k]);		// Amplitudes
+  f[k] = Math.max(0.0,Math.min(1.0,f[k]));	// Phases
+}
+
+f[0] = 0.0;				// Constant term
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Wave</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setx() {
+dt = PI2/N;
+for (int i = 0; i <= N; i++) {
+  t[i] = i*dt;
+  x[i] = A[0];
+  for (int k = 1; k <= kmax; k++)
+    x[i] += A[k]*Math.cos(k*t[i]+PI2*f[k]);
+}}
+
+public void setA(boolean update) {
+  if (update) A[nA] = Math.min(1.0,Math.max(0.0,A[nA]));
+ _view.getElement("InfoA").setProperty("text","A["+nA+"] = "+_format(A[nA],"0.##"));
+  if (update) setx();
+}
+
+public void setf(boolean update) {
+  if (update) f[nf] = Math.min(1.0,Math.max(0.0,f[nf]));
+ _view.getElement("InfoF").setProperty("text","f["+nf+"] = "+_format(f[nf]*360.,"0.##"));
+  if (update) setx();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Saw</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setSaw () {
+   for (int i = 0; i <= kmax; i++) {
+     A[i] = (i % 2 == 0) ? 0.0 : 4.0/PI/i/i;
+     f[i] = (i % 2 == 0) ? 0.0 : (i % 4 == 1) ? 0.75 : 0.25;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = ((i < N/4) ? i  : (i < 3*N/4) ? (N/2-i) : (i-N))*dt;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Choose type</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void chooseType() {
+  if      (type.equals("0")          ) set0();
+  else if (type.equals("Fundamental")) setFundamental();
+  else if (type.equals("Linear")     ) sett();
+  else if (type.equals("Triangle")   ) setTriangle();
+  else if (type.equals("Saw")        ) setSaw();
+  else if (type.equals("Square")     ) setSquare();
+  else if (type.equals("Parabola")   ) setParabola();
+  else if (type.equals("Direct")     ) setDirect();
+  else if (type.equals("Half cycle") ) setHalfCycle();
+  setx();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set half cycle</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Retain only non-negative values]]></Comment>
+<Code><![CDATA[
+public void setHalfCycle() {
+  A[0] = 1.5/PI;
+   f[0] = 0.0;
+   for (int i = 1; i <= kmax; i++) {
+     A[i] = (i % 2 == 0) ? 3.0/PI/(i-1)/(i+1) : 0.0;
+     f[i] = (i % 2 == 0) ? 0.5 : 0.0;
+  }
+  A[1] = 0.75;
+  f[1] = 0.75;
+  for (int i = 0; i <= N; i++)
+    xf[i] = (i < N/2) ? 1.5*Math.abs(Math.sin(i*dt)) : 0.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set direct</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Rectify harmonic oscillation]]></Comment>
+<Code><![CDATA[
+public void setDirect () {
+  A[0] = 3.0/PI;
+   f[0] = 0.0;
+   for (int i = 1; i <= kmax; i++) {
+     A[i] = (i % 2 == 0) ? 6.0/PI/(i-1)/(i+1) : 0.0;
+     f[i] = (i % 2 == 0) ? 0.5 : 0.0;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = 1.5*Math.abs(Math.sin(i*dt));
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set triangle</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Triangular profile]]></Comment>
+<Code><![CDATA[
+public void setTriangle () {
+  A[0] = 0.75;
+   f[0] = 0.0;
+   for (int i = 1; i <= kmax; i++) {
+     A[i] = (i % 2 == 1) ? 6.0/PI/PI/i/i : 0.0;
+     f[i] = (i % 2 == 1) ? 0.5 : 0.0;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = ((i < N/2) ? i  : (N-i))*dt/PI*1.5;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set parabola</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Parabolic profile]]></Comment>
+<Code><![CDATA[
+public void setParabola() {
+   A[0] = PI/6.0;
+   f[0] = 0.0;
+   for (int i = 1; i <= kmax; i++) {
+     A[i] = 2.0/PI/i/i;
+     f[i] = (i % 2 == 1) ? 0.5 : 0.0;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = ((i < N/2) ? i*i  : (N-i)*(N-i))*dt*dt/PI2;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set square</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Parabolic profile]]></Comment>
+<Code><![CDATA[
+public void setSquare() {
+   for (int i = 0; i <= kmax; i++) {
+     A[i] = (i % 2 == 0) ? 0.0 : 4.0/PI/i;
+     f[i] =  0.75;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = (i < N/2) ? 1.0 : -1.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set linear profile</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Linear profile]]></Comment>
+<Code><![CDATA[
+public void sett() {
+  A[0] = 0.0;
+   for (int i = 1; i <= kmax; i++) {
+     A[i] = 1.0/i;
+     f[i] = (i % 2 == 0) ? 0.25 : 0.75;
+  }
+  for (int i = 0; i <= N; i++)
+    xf[i] = 0.5*((i < N/2) ? i*dt  : (i-N)*dt);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set fundamental harmonic</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Fundamental harmonic]]></Comment>
+<Code><![CDATA[
+public void setFundamental () {
+  set0();
+  A[1] = 1.0;
+  for (int i = 0; i <= N; i++)
+    xf[i] = Math.cos(i*dt);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set 0</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Null value]]></Comment>
+<Code><![CDATA[
+public void set0 () {
+   for (int i = 0; i <= kmax; i++) 
+     A[i] = f[i] = 0;
+  for (int i = 0; i <= N; i++)
+    xf[i] = 0.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Harmonics</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Harmonics]]></Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["640,400"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Series</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="xFormat"><![CDATA[t=0.###]]></Property>
+<Property name="yFormat"><![CDATA[x=0.###]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">Axis</Property>
+<Property name="parent">Series</Property>
+<Property name="points"><![CDATA[2]]></Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[PI2]]></Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="functionx"><![CDATA[t]]></Property>
+<Property name="functiony"><![CDATA[0.0]]></Property>
+<Property name="color"><![CDATA[0,128,128,255]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Poligon</Type>
+<Property name="name">xgraf</Property>
+<Property name="parent">Series</Property>
+<Property name="maxpoints"><![CDATA[N+1]]></Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="closed"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Poligon</Type>
+<Property name="name">gFull</Property>
+<Property name="parent">Series</Property>
+<Property name="maxpoints"><![CDATA[N+1]]></Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[xf]]></Property>
+<Property name="visible"><![CDATA[full]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="closed"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Separator</Type>
+<Property name="name">Separator</Property>
+<Property name="parent">Harmonics</Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">LabelAmp</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="text"><![CDATA[Amplitude of each harmonic]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Amplitudes</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-.2]]></Property>
+<Property name="maximumY"><![CDATA[1.7]]></Property>
+<Property name="showCoordinates"><![CDATA[false]]></Property>
+<Property name="background"><![CDATA[224,255,224,255]]></Property>
+<Property name="tooltip"><![CDATA[Move point to change amplitudes]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">amp</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="elementnumber"><![CDATA[kmax+1]]></Property>
+<Property name="x"><![CDATA[kk]]></Property>
+<Property name="y"><![CDATA[A]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="elementSelected"><![CDATA[nA]]></Property>
+<Property name="action"><![CDATA[setA(true)]]></Property>
+<Property name="style"><![CDATA[ROUND_RECTANGLE]]></Property>
+<Property name="secondaryColor"><![CDATA[null]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">avect</Property>
+<Property name="parent">Amplitudes</Property>
+<Property name="elementnumber"><![CDATA[kmax+1]]></Property>
+<Property name="x"><![CDATA[kk]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[1.5]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">LabelPhase</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="text"><![CDATA[Phase for each harmonic]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Phases</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-.2]]></Property>
+<Property name="maximumY"><![CDATA[1.2]]></Property>
+<Property name="showCoordinates"><![CDATA[false]]></Property>
+<Property name="background"><![CDATA[255,224,224,255]]></Property>
+<Property name="tooltip"><![CDATA[Move points to change phases]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">phas</Property>
+<Property name="parent">Phases</Property>
+<Property name="elementnumber"><![CDATA[kmax+1]]></Property>
+<Property name="x"><![CDATA[kk]]></Property>
+<Property name="y"><![CDATA[f]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="elementSelected"><![CDATA[nf]]></Property>
+<Property name="action"><![CDATA[setf(true)]]></Property>
+<Property name="style"><![CDATA[ROUND_RECTANGLE]]></Property>
+<Property name="secondaryColor"><![CDATA[null]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">phasvect</Property>
+<Property name="parent">Phases</Property>
+<Property name="elementnumber"><![CDATA[kmax+1]]></Property>
+<Property name="x"><![CDATA[kk]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[1]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Separator</Type>
+<Property name="name">Separator2</Property>
+<Property name="parent">Harmonics</Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.ToolBar</Type>
+<Property name="name">Other</Property>
+<Property name="parent">Harmonics</Property>
+<Property name="layout"><![CDATA[GRID:1,5,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComboBox</Type>
+<Property name="name">Type</Property>
+<Property name="parent">Other</Property>
+<Property name="position">center</Property>
+<Property name="options"><![CDATA[0;Fundamental;Linear;Triangle;Saw;Square;Parabola;Direct;Half cycle]]></Property>
+<Property name="variable"><![CDATA[%type%]]></Property>
+<Property name="action"><![CDATA[chooseType()]]></Property>
+<Property name="tooltip"><![CDATA[Choose a profile]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">bkmax</Property>
+<Property name="parent">Other</Property>
+<Property name="variable"><![CDATA[kmax]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="action"><![CDATA[chooseType()]]></Property>
+<Property name="size"><![CDATA[100,0]]></Property>
+<Property name="tooltip"><![CDATA[Number of harmonics]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">bFull</Property>
+<Property name="parent">Other</Property>
+<Property name="variable"><![CDATA[full]]></Property>
+<Property name="text"><![CDATA[Full series?]]></Property>
+<Property name="mnemonic"><![CDATA[f]]></Property>
+<Property name="size"><![CDATA[100,0]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Show the sum of the infinite series?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">InfoA</Property>
+<Property name="parent">Other</Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="size"><![CDATA[100,0]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+<Property name="tooltip"><![CDATA[One amplitude value]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">InfoF</Property>
+<Property name="parent">Other</Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="size"><![CDATA[100,0]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[A phase value (in degrees)]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

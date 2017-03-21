@@ -1,0 +1,632 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Simple Pendulum]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia, Spain]]></Author>
+<Keywords><![CDATA[ODE, simple pendulum, oscillations]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[A simple pendulum is a physical abstraction that considers a point mass m that oscillates in a vertical plane at the end of a rod of length L and negligible mass.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./SimplePendulum/Pendulum.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Simple pendulum</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Pendulum
+          </h1>
+          <p>
+            A simple pendulum is a physical abstraction that considers a point 
+            mass <i>m</i> that oscillates in a vertical plane at the end of a 
+            rod of length <i>L</i> and negligible mass.
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./SimplePendulum/Pendulum.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+      If we consider the force exerted by gravity on the mass as constant, <i>g</i>, 
+      the motion of a simple pendulum can be modeled by a second order 
+      ordinary differential equation.
+    </p>
+    <p>
+      The equation includes a friction force, with <i>b</i> as friction 
+      coefficient, and a time-dependent external torque of the form <i>A*sin(F*t)</i>, 
+      which drives the motion. Typically, the pendulum starts oscillating at 
+      time <i>t=0</i>, from a given angle with zero initial angular velocity.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>24</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Parameters</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Constants and parameters of the motion]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The increment for the time in each evolution step]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[m]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The mass of the pendulum bob]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[L]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The length of the pendulum arm]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The acceleration caused by gravity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The friction coefficient]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[amplitude]]></Name>
+<Value><![CDATA[0.3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The amplitude of the driving torque]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[frequency]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The frequency of the driving torque]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[displayVelocity]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showPlots]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamic and output variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Dynamic variables and output (dependent) variables]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[theta]]></Name>
+<Value><![CDATA[0.4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The angle formed by the string and the vertical]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The angular velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[L*Math.sin(theta)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The x position of the body center]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[-L*Math.cos(theta)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The Y position of the body center]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[omega*L*Math.cos(theta)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The x coordinate of the velocity of the body]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[omega*L*Math.sin(theta)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The y coordinate of the velocity of the body]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evol Page</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Increment>dt</Increment>
+<Rate state="theta">omega</Rate>
+<Rate state="omega">-g/L * Math.sin(theta) + (-b*omega+torque(t))/(m*L*L)</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Compute derived variables</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute the output cartesian variables from the dynamic angular ones]]></Comment>
+<Code><![CDATA[
+x= L*Math.sin(theta);
+y = -L*Math.cos(theta);
+vx = omega*L*Math.cos(theta);
+vy = omega*L*Math.sin(theta);
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Torque</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute the external driving torque]]></Comment>
+<Code><![CDATA[
+public double torque (double time) {
+  return amplitude*Math.sin(frequency*time);
+}
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Simple pendulum"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,22"]]></Property>
+<Property name="size"><![CDATA["348,387"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.2]]></Property>
+<Property name="maximumX"><![CDATA[1.2]]></Property>
+<Property name="minimumY"><![CDATA[-1.2]]></Property>
+<Property name="maximumY"><![CDATA[1.2]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">armSegment</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[0.0]]></Property>
+<Property name="sizeX"><![CDATA[x]]></Property>
+<Property name="sizeY"><![CDATA[y]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">bobShape</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="pressAction"><![CDATA[_pause()]]></Property>
+<Property name="dragAction"><![CDATA[theta = Math.atan2 (x,-y);
+L = Math.sqrt (x*x + y*y);
+omega = 0.0;]]></Property>
+<Property name="releaseAction"><![CDATA[t = 0.0;
+_resetView();
+]]></Property>
+<Property name="style"><![CDATA[ELLIPSE]]></Property>
+<Property name="fillColor"><![CDATA[CYAN]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">velocityArrow</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizeX"><![CDATA[vx]]></Property>
+<Property name="sizeY"><![CDATA[vy]]></Property>
+<Property name="scalex"><![CDATA[0.1]]></Property>
+<Property name="scaley"><![CDATA[0.1]]></Property>
+<Property name="visible"><![CDATA[displayVelocity]]></Property>
+<Property name="enabledSize"><![CDATA[true]]></Property>
+<Property name="pressAction"><![CDATA[_pause()]]></Property>
+<Property name="dragAction"><![CDATA[if (Math.abs(Math.cos(theta))>0.01)
+  omega = vx/(L*Math.cos(theta));
+else
+  omega = vy/(L*Math.sin(theta));
+]]></Property>
+<Property name="releaseAction"><![CDATA[t = 0.0;
+_resetView();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelDown</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">fieldsPanel</Property>
+<Property name="parent">panelDown</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">mPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">mLabel</Property>
+<Property name="parent">mPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["m="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">mField</Property>
+<Property name="parent">mPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[m]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">gPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">gLabel</Property>
+<Property name="parent">gPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["g="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">gField</Property>
+<Property name="parent">gPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[g]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">LPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">LLabel</Property>
+<Property name="parent">LPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["L="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">LField</Property>
+<Property name="parent">LPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[L]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">bLabel</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["b="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">bField</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">APanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">ALabel</Property>
+<Property name="parent">APanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["A="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">AField</Property>
+<Property name="parent">APanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[amplitude]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">FPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">FLabel</Property>
+<Property name="parent">FPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["F="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">FField</Property>
+<Property name="parent">FPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[frequency]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">panelDown</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+<Property name="border"><![CDATA[0,10,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playPauseButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">checkboxPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">displayVCheckbox</Property>
+<Property name="parent">checkboxPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[displayVelocity]]></Property>
+<Property name="text"><![CDATA["Display velocity"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">plotsCheckbox</Property>
+<Property name="parent">checkboxPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[showPlots]]></Property>
+<Property name="text"><![CDATA["Show plots"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">dialogPlot</Property>
+<Property name="title"><![CDATA["Plots dialog window"]]></Property>
+<Property name="layout"><![CDATA[grid:0,1,0,0]]></Property>
+<Property name="visible"><![CDATA[showPlots]]></Property>
+<Property name="location"><![CDATA["351,22"]]></Property>
+<Property name="size"><![CDATA["400,500"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">timeSpacePlottingPanel</Property>
+<Property name="parent">dialogPlot</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA["$\theta$ and $\omega$ vs. time"]]></Property>
+<Property name="titleX"><![CDATA[time]]></Property>
+<Property name="titleY"><![CDATA["$\theta$ (blue), $\omega$ (red)"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">angleTrail</Property>
+<Property name="parent">timeSpacePlottingPanel</Property>
+<Property name="inputX"><![CDATA[t]]></Property>
+<Property name="inputY"><![CDATA[theta]]></Property>
+<Property name="maximumPoints"><![CDATA[200]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">omegaTrail</Property>
+<Property name="parent">timeSpacePlottingPanel</Property>
+<Property name="inputX"><![CDATA[t]]></Property>
+<Property name="inputY"><![CDATA[omega]]></Property>
+<Property name="maximumPoints"><![CDATA[200]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">phaseSpacePlottingPanel</Property>
+<Property name="parent">dialogPlot</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA["Phase space plot"]]></Property>
+<Property name="titleX"><![CDATA["$\theta"]]></Property>
+<Property name="titleY"><![CDATA["$\omega"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">phaseSpaceTrail</Property>
+<Property name="parent">phaseSpacePlottingPanel</Property>
+<Property name="inputX"><![CDATA[theta]]></Property>
+<Property name="inputY"><![CDATA[omega]]></Property>
+<Property name="maximumPoints"><![CDATA[400]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

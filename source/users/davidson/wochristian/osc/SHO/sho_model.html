@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>SHO Model</title>
+  </head>
+  <body> 
+    <h1>Simple Harmonic Oscillator Model</h1>
+    <p><span style="font-weight: 400">In the Simple Harmonic Oscillator model motion takes place along the x (horizontal) coordinate 
+    axis but the location of the ball is not the displacement from equilibrium.&nbsp; The easiest way to specify the location of 
+    the ball is to define auxiliary variables <font face="Courier">xball</font> and <font face="Courier">yball</font> that are computed 
+    using the spring length <font face="Courier">L</font>&nbsp;and the displacement <font face="Courier">x. </font></span>
+	</p>
+    <h4 align="center"><img border="0" src="sho_vars.jpg"></h4>
+    <p><span style="font-weight: 400">Newton's Second Law can be written as a system of first order differential equations in 
+    terms of displacement <font face="Courier">x</font> and the mass is positioned using the auxiliary variable
+    <font face="Courier">xball.</font>&nbsp; (See the 
+    Free Fall model for a description of how to input differential equations into Ejs.)</span></p>
+    <p align="center">dx/dt = v<sub>x</sub><br>
+    dv<sub>x</sub>/dt =-(k/m) x<b> .</b></p>
+    <p>Variables, such as the ball's position <span style="font-weight: 400">or kinetic energy,</span> that depend on 
+    dynamical variables, such as the ball's displacement, must be recomputed after ever time step.&nbsp; This computation is done 
+    by creating a Constraints page within the model.</p>
+    <p align="center"><img border="0" src="sho_constraints.jpg"></p>
+    <p>Although Constraints are trivial for the mass-spring model, they become more important in advanced models.&nbsp; 
+    For example, the Pendulum model computes the angular displacement of pendulum, but the pendulum bob (mass) is positioned 
+    within the view using Cartesian coordinates.</p>
+</body>
+</html>

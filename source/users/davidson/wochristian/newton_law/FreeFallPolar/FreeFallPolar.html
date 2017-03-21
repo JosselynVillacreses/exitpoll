@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Coupled Oscillator Chain</title>
+</head>
+
+<body>
+    <h1>
+      &nbsp;Free Fall in Polar Coordinates
+    </h1>
+
+    <p>
+      In order to solve for the trajectory of a particle undergoing constant acceleration, we express Newton's second law&nbsp; <b>F</b>=m<b>a</b> 
+      in component form.&nbsp; Near Earth's surface, the force of gravity is constant and produces a constant downward 
+      acceleration g of 9.8 m/s<sup>2</sup>.&nbsp; In polar coordinates the acceleration vector <b>g</b> can be expressed in terms 
+      of the angle coordinate <font face="Symbol">q</font> and the polar coordinate unit vectors <b>e</b><sub>r</sub> and <b>e</b><sub><font face="Symbol">q</font></sub> 
+      as</p><p align="center">
+      &nbsp;<img border="0" src="acceleration.gif" width="205" height="30">.</p><p>
+      Setting the acceleration components equal to the kinematic radial and tangential acceleration expressions produces two 
+      coupled second order differential equations</p><p align="center"><img border="0" src="ode.gif" width="165" height="63">.</p>
+    <p align="left">These second order differential equations are easy to solve by defining v<sub>r</sub> and <font face="Symbol">
+    w</font> variables for the first derivatives of r and <font face="Symbol">q</font>, respectively.&nbsp; The equations can now 
+    be written a system of four coupled first order differential equations.</p>
+    <p align="center"><img border="0" src="rate_eqn.gif" width="196" height="123"></p>
+    <p align="left">These equations are expressed as code on the Ejs Evolution workpanel.</p>
+
+</body>
+
+</html>

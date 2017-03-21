@@ -1,0 +1,414 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Planetary motion]]></Title>
+<Author><![CDATA[Francisco Esquembre (Universidad de Murcia) and Wolfgang Christian (Davidson College)]]></Author>
+<Keywords><![CDATA[ODE, planetary motion, Kepler laws]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[Kepler discovered his three laws of planetary motion after a titanic analysis of years of astronomical observations by Tycho Brahe.
+Newton's inverse-law of gravitation allows us to reformulate this motion in modern terms using the equations for a massless test particle about a particle of mass M located at the origin.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./PlanetaryMotion/Planet.gif;./PlanetaryMotion/PlanetEqn.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Planetary motion</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Planetary motion
+          </h1>
+          <p>
+            Kepler discovered his three laws of planetary motion after a 
+            titanic analysis of years of astronomical observations by Tycho 
+            Brahe.
+          </p>
+          <p>
+            Newton's inverse-law of gravitation allows us to reformulate this 
+            motion in modern terms using the equations for a massless test 
+            particle about a particle of mass <i>M</i> located at the origin:
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./PlanetaryMotion/Planet.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p align="center">
+      <img src="./PlanetaryMotion/PlanetEqn.gif">
+      
+    </p>
+    <p>
+      where <i>M</i> is the combined mass of the Sun and the planet and <i>G</i> 
+      is the universal gravitational constant. The <i>xy</i>-coordinates for 
+      the massless test particle are the relative position of the planet with 
+      respect to the Sun in this two-body approximation of the solar system.
+    </p>
+    <p>
+      The initial values for <i>x</i> and <i>y</i> and its derivatives must be 
+      taken from direct astronomical observation.In this simulation, they are 
+      chosen arbitrarily.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Variables for the two-body problem]]></PageComment>
+<Variable>
+<Name><![CDATA[connected]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.9]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[0.7]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[G]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[M]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ext]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[h]]></Name>
+<Value><![CDATA[0.02]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[0.001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xR]]></Name>
+<Value><![CDATA[x]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yR]]></Name>
+<Value><![CDATA[y]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>ODEs</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>h</Increment>
+<Rate state="x">vx</Rate>
+<Rate state="vx">- G * M * x / Math.pow(x*x+y*y,1.5)</Rate>
+<Rate state="y">vy</Rate>
+<Rate state="vy">- G * M * y / Math.pow(x*x+y*y,1.5)</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[Differential equations for the motion]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Radii</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Update the vector radii
+for (int i=1; i<n; i++) {
+  xR[i-1] = xR[i];
+  yR[i-1] = yR[i];
+}
+xR[n-1] = x;
+yR[n-1] = y;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Planetary Motion"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA[300,340]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">playButton</Property>
+<Property name="parent">panel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Play]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">pauseButton</Property>
+<Property name="parent">panel</Property>
+<Property name="text"><![CDATA[Pause]]></Property>
+<Property name="enabled"><![CDATA[_isPlaying]]></Property>
+<Property name="action"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">panel</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-ext]]></Property>
+<Property name="maximumX"><![CDATA[ext]]></Property>
+<Property name="minimumY"><![CDATA[-ext]]></Property>
+<Property name="maximumY"><![CDATA[ext]]></Property>
+<Property name="title"><![CDATA["Planetary Motion"]]></Property>
+<Property name="TLmessage"><![CDATA["Drag the planet to change the orbit"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">sunParticle</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[0.3]]></Property>
+<Property name="sizey"><![CDATA[0.3]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[yellow]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">trajectory</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[connected]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">planetParticle</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[0.1]]></Property>
+<Property name="sizey"><![CDATA[0.1]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause();
+connected = false;]]></Property>
+<Property name="action"><![CDATA[t = 0;
+connected = true;
+_play();]]></Property>
+<Property name="color"><![CDATA[pink]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">radiiArrows</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[xR]]></Property>
+<Property name="sizey"><![CDATA[yR]]></Property>
+<Property name="visible"><![CDATA[showArea]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[HBOX]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">hPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">hLabel</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" h="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">hField</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[h]]></Property>
+<Property name="format"><![CDATA[0.########]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">tolPanel</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">tolLabel</Property>
+<Property name="parent">tolPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["Tol="]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">tolField</Property>
+<Property name="parent">tolPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[tol]]></Property>
+<Property name="format"><![CDATA[0.########]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">showAreaCB</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="variable"><![CDATA[showArea]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["Show area"]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

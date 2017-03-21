@@ -1,0 +1,471 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Video pendulum]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia]]></Author>
+<Keywords><![CDATA[video, pendulum]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./VideoPendulum/Pendulum.mov;./VideoPendulum/VideoPendulum.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Video Pendulum
+    </h1>
+    <p>
+      In this simulation, we superimpose the motion of a pendulum computed by 
+      solving the equations of motion with a video of a real such motion.
+    </p>
+    <p>
+      The user must adjust the initial conditions and the parameters so that 
+      both motions, the computed and the one displayed by the video, match 
+      closely.
+    </p>
+    <p align="center">
+       <img src="./VideoPendulum/VideoPendulum.gif">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[Ox]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[X center of the pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Oy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Y center of the pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[angleinit]]></Name>
+<Value><![CDATA[-0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial angle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omegainit]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[initial angular velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[1.0/30.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[increment of time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[length]]></Name>
+<Value><![CDATA[1.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[length of the pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[acceleration due to gravity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[angle]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[current value of the angle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[angular velocity]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Video</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[startframe]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the initial frame of the video that we want to display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[endframe]]></Name>
+<Value><![CDATA[61]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the final frame of the video that we want to display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[frame]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the current frame displayed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[firsttime]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[a boolean used to display the initial alert window]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initialization</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if (firsttime) { // display a window with instructions
+  _alert ("mainFrame","Assignment",
+    "Adjust the parameters so that the trajectory of the\n"+
+    "red pendulum matches the one shown in the video.");
+  firsttime = false;
+}
+// Reset initial conditions
+angle = angleinit;
+omega = omegainit;
+t = 0;
+frame = startframe;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Motion</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Increment>dt</Increment>
+<Rate state="angle">omega</Rate>
+<Rate state="omega">-g/length * Math.sin(angle)</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>End</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+frame++;
+if (frame>endframe) _pause();
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Video pendulum"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["400,340"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.0]]></Property>
+<Property name="maximumX"><![CDATA[1.0]]></Property>
+<Property name="minimumY"><![CDATA[-1.0]]></Property>
+<Property name="maximumY"><![CDATA[0.5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Video</Type>
+<Property name="name">video</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-1]]></Property>
+<Property name="y"><![CDATA[0.5]]></Property>
+<Property name="sizex"><![CDATA[2]]></Property>
+<Property name="videofile"><![CDATA["./VideoPendulum/Pendulum.mov"]]></Property>
+<Property name="frame"><![CDATA[frame]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[Ox]]></Property>
+<Property name="y"><![CDATA[Oy]]></Property>
+<Property name="sizeX"><![CDATA[length*Math.sin(angle)]]></Property>
+<Property name="sizeY"><![CDATA[-length*Math.cos(angle)]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+<Property name="lineWidth"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[Ox+length*Math.sin(angle)]]></Property>
+<Property name="y"><![CDATA[Oy-length*Math.cos(angle)]]></Property>
+<Property name="sizeX"><![CDATA[0.07]]></Property>
+<Property name="sizeY"><![CDATA[0.07]]></Property>
+<Property name="fillColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bottomPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelOx</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">labelOx</Property>
+<Property name="parent">panelOx</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["Ox="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">OxField</Property>
+<Property name="parent">panelOx</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[Ox]]></Property>
+<Property name="format"><![CDATA["0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelOy</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">labelOy</Property>
+<Property name="parent">panelOy</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["Oy="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">OyField</Property>
+<Property name="parent">panelOy</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[Oy]]></Property>
+<Property name="format"><![CDATA["0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelL</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">labelL</Property>
+<Property name="parent">panelL</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["L="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">lengthField</Property>
+<Property name="parent">panelL</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[length]]></Property>
+<Property name="format"><![CDATA["0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelAngle</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">labelAngle</Property>
+<Property name="parent">panelAngle</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["$\alpha$="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">angleField</Property>
+<Property name="parent">panelAngle</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[angle]]></Property>
+<Property name="format"><![CDATA["0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelG</Property>
+<Property name="parent">bottomPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">labelG</Property>
+<Property name="parent">panelG</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["g="]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">gField</Property>
+<Property name="parent">panelG</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[g]]></Property>
+<Property name="format"><![CDATA["0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">topPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">topPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">topPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/stepforward.gif"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initializeButton</Property>
+<Property name="parent">topPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset1.gif"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">topPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">solutionButton</Property>
+<Property name="parent">topPanel</Property>
+<Property name="text"><![CDATA[Solution]]></Property>
+<Property name="action"><![CDATA[Ox = -0.036;
+Oy = 0.27;
+angleinit = -0.64;
+length = 1.075;
+g = 10.98;
+_initialize();]]></Property>
+<Property name="background"><![CDATA[pink]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

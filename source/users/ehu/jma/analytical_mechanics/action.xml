@@ -1,0 +1,649 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Action]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[analytical mechanics;Hamilton's principle;least action principle,action integral;harmonic oscillator]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The simulation draws a trajectory in the configuration space for the harmonic oscillator. The user can choose the start and end points, as well as some intermediary points. One can check that the value of the action integral reaches its minimum precisely along the physical trajectory, which the program can be instructed to compute.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Action for the harmonic oscillator</title>
+    
+  </head>
+  <body>
+    <h1>
+      Action for the harmonic oscillator
+    </h1>
+    In the figure you can choose different mathematical trajectories in the 
+    configuration space for the harmonic oscillator:<br><i>d</i><sup>2</sup><i>x</i>/<i>dt</i><sup>2</sup> 
+    + <i>&#969;</i><sup>2</sup> x = 0.<br>
+
+    <ul>
+      <li>
+        Unit mass is that of the oscillator.
+      </li>
+      <li>
+        In the left panel you can choose the frequency <i>&#969;</i>, the 
+        starting and ending configurations (<b>t1</b>,<b>x1</b>) = (<i>t</i><sub>1</sub>,<i>x</i><sub>1</sub>) 
+        and (<b>t2</b>,<b>x2</b>) = (<i>t</i><sub>2</sub>,<i>x</i><sub>2</sub>), 
+        as well as the number of points <i>N</i> in the polygonal trajectory 
+        and. The trajectory points, including the end points, can be moved 
+        with the mouse.
+      </li>
+      <li>
+        To get information on the other elements, put over them the mouse 
+        pointer to see the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Use the mouse to move around trajectory points, including end points.
+      </li>
+      <li>
+        At each time the action along the current trajectory is shown in blue 
+        and, if <b>Physical</b> is selected, the minimal action along the 
+        physical trajectory between the two end points in red.
+      </li>
+      <li>
+        You should be able to check <b>Hamilton's principle of least action</b>: 
+        <em>the value of the action along the trajectories joining two 
+        configurations reaches its minimum precisely along the physical 
+        trajectory</em>.
+      </li>
+      <li>
+        The physical trajectory corresponding to the current two end points is 
+        recovered when pressing <b>Set solution</b>.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physical parameters</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[N]]></Name>
+<Value><![CDATA[15]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of segments in the trajectory]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[N+1]]]></Dimension>
+<Comment><![CDATA[Time coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[N+1]]]></Dimension>
+<Comment><![CDATA[Positions]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Frequency]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[action]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Action integral]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[actionmin]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum value]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t2]]></Name>
+<Value><![CDATA[Math.PI/2./omega]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Final time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Final position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mov]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[[N+1]]]></Dimension>
+<Comment><![CDATA[Whether the point is movable]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Display parameters</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[tmin]]></Name>
+<Value><![CDATA[-1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum value of time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tmax]]></Name>
+<Value><![CDATA[2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum value of time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum value of position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum value of position]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cur]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Current point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[eps]]></Name>
+<Value><![CDATA[0.0001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Smallest value between time coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[physical]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display (in red) physical solution]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Start all]]></Comment>
+<Code><![CDATA[
+mov[0] = true;  // Only the two end points are movable
+mov[N] = true;
+
+putphys();      // Display the physical trajectory
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("Bomega").setProperty("format","\u03C9 = 0.##");
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>End points</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set end points]]></Comment>
+<Code><![CDATA[
+t[0] = t1;
+t[N] = t2;
+x[0] = x1;
+x[N] = x2;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Action</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute current and minimum action]]></Comment>
+<Code><![CDATA[
+actionmin = -(omega*(-2*x1*x2 + (x1*x1 + x2*x2)*Math.cos((t1 - t2)*omega))/ Math.sin((t1 - t2)*omega))/2;
+
+action = computeAction();
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Intermediary</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Enforce the order]]></Comment>
+<Code><![CDATA[
+for (int i = 1; i< N; i++)
+  if (t[i] <= t[i-1]) t[i] = t[i-1]+eps;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Action</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute an approximation to the action along the current trajectory]]></Comment>
+<Code><![CDATA[
+public double computeAction() {
+  double t1, t2, x1, x2, ac;
+  ac = 0.;
+  for (int i = 0; i < N; i++) {
+     t1 = t[i];
+     t2 = t[i+1];
+     x1 = x[i];
+     x2 = x[i+1];
+     ac += -(x1 - x2)*(x1 - x2)/(2*(t1 - t2)) + 
+              ((t1 - t2)*(x1*x1 + x1*x2 + x2*x2)*omega*omega)/6;
+  }
+  return ac;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Order points</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set points in increasing order of t]]></Comment>
+<Code><![CDATA[
+public void setPoints() {
+  for (int i = N-1; i >= 0; i--)
+    if (t[i] >= t[i+1]) t[i] = t[i+1]-eps;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Physical solution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Compute physical solution]]></Comment>
+<Code><![CDATA[
+public double phsol(double t) {
+  return  -(1./Math.sin((t1 - t2)*omega)*(x2*Math.sin((t - t1)*omega) - 
+              x1*Math.sin((t - t2)*omega)));
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Physical trajectory</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Display the points along the physical trajectory]]></Comment>
+<Code><![CDATA[
+public void putphys() {
+t[0] = t1;
+t[N] = t2;
+x[0] = x1;
+x[N] = x2;
+  for (int i = 1; i < N; i++) {
+    t[i] = (t2-t1)/N*i+t1;
+    x[i] = phsol(t[i]);
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Action of the harmonic oscillator]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["640,440"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Left</Property>
+<Property name="parent">Main</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[grid:11,1,0,0]]></Property>
+<Property name="size"><![CDATA[104,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bomega</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[omega]]></Property>
+<Property name="value"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA["$\omega$ = 0.##"]]></Property>
+<Property name="tooltip"><![CDATA[Frequency]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bt1</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[t1]]></Property>
+<Property name="format"><![CDATA[t1 = 0.##]]></Property>
+<Property name="action"><![CDATA[setPoints()]]></Property>
+<Property name="tooltip"><![CDATA[Initial time]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bt2</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[t2]]></Property>
+<Property name="format"><![CDATA[t2  = 0.##]]></Property>
+<Property name="action"><![CDATA[setPoints()]]></Property>
+<Property name="tooltip"><![CDATA[Final time]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bx1</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[x1]]></Property>
+<Property name="format"><![CDATA[x1  = 0.##]]></Property>
+<Property name="action"><![CDATA[setPoints()]]></Property>
+<Property name="tooltip"><![CDATA[Initial position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bx2</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[x2]]></Property>
+<Property name="format"><![CDATA[x2 = 0.##]]></Property>
+<Property name="action"><![CDATA[setPoints()]]></Property>
+<Property name="tooltip"><![CDATA[Final position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">BN</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[N]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="action"><![CDATA[putphys()]]></Property>
+<Property name="tooltip"><![CDATA[Number of points in the mathematical trajectory]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Baction</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[action]]></Property>
+<Property name="format"><![CDATA[I = 0.##]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="foreground"><![CDATA[blue]]></Property>
+<Property name="font"><![CDATA[Dialog,BOLD,12]]></Property>
+<Property name="tooltip"><![CDATA[Action]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Bmin</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[actionmin]]></Property>
+<Property name="format"><![CDATA[Imin  = 0.##]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="font"><![CDATA[Dialog,BOLD,12]]></Property>
+<Property name="tooltip"><![CDATA[Action along the physical solution]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Bphysical</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[physical]]></Property>
+<Property name="text"><![CDATA[Physical]]></Property>
+<Property name="mnemonic"><![CDATA[p]]></Property>
+<Property name="tooltip"><![CDATA["Always show the physical solution (in red)."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Physical</Property>
+<Property name="parent">Left</Property>
+<Property name="text"><![CDATA["Solution"]]></Property>
+<Property name="mnemonic"><![CDATA[s]]></Property>
+<Property name="action"><![CDATA[putphys()]]></Property>
+<Property name="tooltip"><![CDATA[Show the physical trajectory.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Start</Property>
+<Property name="parent">Left</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset the initial conditions."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Configuration</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[tmin]]></Property>
+<Property name="maximumX"><![CDATA[tmax]]></Property>
+<Property name="minimumY"><![CDATA[xmin]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="title"><![CDATA[Configuration]]></Property>
+<Property name="titleX"><![CDATA[t]]></Property>
+<Property name="titleY"><![CDATA[x]]></Property>
+<Property name="xFormat"><![CDATA[t=0.### /]]></Property>
+<Property name="yFormat"><![CDATA[x=0.###]]></Property>
+<Property name="tooltip"><![CDATA[Use mouse to move trajectory points]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">PhysicalSol</Property>
+<Property name="parent">Configuration</Property>
+<Property name="points"><![CDATA[100]]></Property>
+<Property name="min"><![CDATA[t1]]></Property>
+<Property name="max"><![CDATA[t2]]></Property>
+<Property name="variable"><![CDATA[tt]]></Property>
+<Property name="functionx"><![CDATA[tt]]></Property>
+<Property name="functiony"><![CDATA[-(1./Math.sin((t1 - t2)*omega)*(x2*Math.sin((tt - t1)*omega) - x1*Math.sin((tt - t2)*omega)))]]></Property>
+<Property name="functionz"><![CDATA[0]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="visible"><![CDATA[physical]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Poligon</Type>
+<Property name="name">Trajectory</Property>
+<Property name="parent">Configuration</Property>
+<Property name="maxpoints"><![CDATA[N+1]]></Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="enabledSecondary"><![CDATA[true]]></Property>
+<Property name="indexSelected"><![CDATA[cur]]></Property>
+<Property name="fixed"><![CDATA[mov]]></Property>
+<Property name="closed"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">LeftEnd</Property>
+<Property name="parent">Configuration</Property>
+<Property name="x"><![CDATA[t1]]></Property>
+<Property name="y"><![CDATA[x1]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">RightEnd</Property>
+<Property name="parent">Configuration</Property>
+<Property name="x"><![CDATA[t2]]></Property>
+<Property name="y"><![CDATA[x2]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="dragaction"><![CDATA[setPoints()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

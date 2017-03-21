@@ -1,0 +1,74 @@
+    <% include menu %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+
+            <h2>Actualizar Presidente</h2>
+                <form method="POST" action="/user">
+                    <div class="form-group">
+                    <label>Subir la imagen (localmente)</label>
+                    <input type="text" id="id_img_act_pres"><br>
+                    <image id="imagen_actualizar_presidente" />
+                     <br>
+                    <label>Cedula:</label>
+                    <input class="form-control" type="text" value="<%=perfil.cedula%>" name="cedula"><br>
+                    <label>Nombre:</label>
+                    <input class="form-control" id="act_name_pres" value="<%=perfil.nombre%>" name="nombre"><br>
+                    <label>Apellidos:</label>
+                    <input class="form-control" id="act_last_pres" value="<%=perfil.apellido%>" name="apellido"><br>
+                    <label>Edad:</label>
+                    <input class="form-control" id="act_age_pres" value="<%=perfil.edad%>" name="edad"><br>
+                    <label>Campaña:</label>
+                    <textarea class="form-control" id="act_camp_pres" rows="5" value="<%=perfil.campaña%>" name="campaña"></textarea><br>
+                    
+               <!--     <label>Partido:</label>
+               
+                    
+                      var lista = ""; %>
+                        
+                <select name="part" id="act_select_pres" class="form-control">   
+                <   for (i = 0; i < datos.length; i++) {%>
+                    
+                  <option value=""> <= datos[i].nombre %> </option>
+               
+                       
+                <  } %> 
+                    
+                        
+                   
+                    </select>     
+                            -->
+                            
+                           
+                        
+                
+                
+           
+             
+                    </div>
+               
+
+           <h2>Actualizar VicePresidente</h2>
+
+                    <div class="form-group">
+                        <label>Subir la imagen (localmente)</label>
+                        <input type="text" id="id_img_act_vice"><br>
+                        <image id="imagen_actualizar_vice" /><br>
+                        <label>Cedula:</label>
+                        <input class="form-control" id="act_vice_id" value="<%=perfil.vicepresidente.cedula%>" name="cedulaV"><br>
+                        <label>Nombre:</label>
+                        <input class="form-control" id="act_vice_name" value="<%=perfil.vicepresidente.nombre%>" name="nombreV"><br>
+                        <label>Apellido:</label>
+                        <input class="form-control" id="act_vice_ap" value="<%=perfil.vicepresidente.apellido%>" name="apellidoV"><br>
+                        <label>Edad:</label>
+                        <input class="form-control" id="act_vice_edad" value="<%=perfil.vicepresidente.edad%>" name="edadV"><br>
+                
+             
+                    </div>
+            
+                    <input type="button" class="btn btn-default" id="modificar_president" value="Actualizar Presidente" onclick="ActualizarPresidente('<%=perfil.id_presidente%>')">
+             </form>
+            </div>
+            </div>
+            </div>

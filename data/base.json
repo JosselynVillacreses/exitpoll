@@ -1,0 +1,365 @@
+{
+   "usuarios": [
+      {
+         "cedula": "097382917410",
+         "nombre": "Carlos",
+         "apellido": "Perez",
+         "edad": 28,
+         "usuario": "admin",
+         "clave": "123",
+         "tipo": "admin"
+      },
+      {
+         "cedula": "0989898760",
+         "nombre": "Daniela",
+         "apellido": "Velez",
+         "edad": "30",
+         "usuario": "enc1",
+         "clave": "enc1",
+         "tipo": "encuestador"
+      },
+      {
+         "cedula": "0987654321",
+         "nombre": "Beto",
+         "apellido": "Piguave",
+         "edad": "32",
+         "usuario": "enc2",
+         "clave": "enc2",
+         "tipo": "encuestador"
+      }
+   ],
+   "partido": [
+      {
+         "id_partido": 1,
+         "logo": "/image/2.jpg",
+         "lista": "2-12-18",
+         "nombre": "Acuerdo Nacional por el Cambio",
+         "id_presidente": 1,
+         "asambleista": 0,
+         "parlamento_andino": 5
+      },
+      {
+         "id_partido": 2,
+         "logo": "/image/6.jpg",
+         "lista": "6",
+         "nombre": "Partido Social Cristiano",
+         "id_presidente": 2,
+         "asambleista": 0,
+         "parlamento_andino": 5
+      },
+      {
+         "id_partido": 3,
+         "logo": "/image/35.jpg",
+         "lista": "35",
+         "nombre": "Alianza país",
+         "id_presidente": 3,
+         "asambleista": 0,
+         "parlamento_andino": 5
+      },
+      {
+         "id_partido": 4,
+         "logo": "/image/19.jpg",
+         "lista": "19",
+         "nombre": "Movimiento Union ecuatoriana",
+         "id_presidente": 4,
+         "asambleista": 0,
+         "paralamento_andino": 0
+      },
+      {
+         "id_partido": 5,
+         "logo": "/image/10.jpg",
+         "lista": "10",
+         "nombre": "Partido Fuerza EC",
+         "id_presidente": 5,
+         "asambleista": 0,
+         "paralamento_andino": 0
+      },
+      {}
+   ],
+   "dignidades": [
+      {
+         "id": 0,
+         "nombre": "Presidente"
+      },
+      {
+         "id": 1,
+         "nombre": "Vicepresidente"
+      },
+      {
+         "id": 2,
+         "nombre": "Asambleista"
+      },
+      {
+         "id": 3,
+         "nombre": "Otro"
+      }
+   ],
+   "votante": [
+      {
+         "cedula": " ",
+         "id_presidente": "",
+         "id_asa_partido": ""
+      },
+      {
+         "cedula": "333",
+         "presidente": 0,
+         "asambleista": 0
+      },
+      {
+         "cedula": "222",
+         "presidente": 0,
+         "asambleista": 0
+      },
+      {
+         "cedula": "2223",
+         "presidente": 0,
+         "asambleista": 1
+      },
+      {
+         "cedula": "7777777",
+         "presidente": 1,
+         "asambleista": 0
+      },
+      {},
+      {},
+      {
+         "cedula": "88888",
+         "presidente": 1,
+         "asambleista": 2
+      }
+   ],
+   "candidato": {
+      "presidente": [
+         {
+            "id_presidente": 0,
+            "id_partido": 0,
+            "cedula": "09089372832",
+            "foto": "/image/guillermo-laso.jpg",
+            "nombre": "Guillermo",
+            "apellido": "Lasso",
+            "edad": 61,
+            "campaña": "Vamos por el Cambio",
+            "nro_votos": 2,
+            "vicepresidente": {
+               "cedula": "09089372832",
+               "foto": "/image/andres-paez.jpg",
+               "nombre": "Andres",
+               "apellido": "Paez",
+               "edad": 50
+            }
+         },
+         {
+            "id_presidente": 1,
+            "id_partido": 1,
+            "cedula": "09089372032",
+            "foto": "/image/paco-moncayo.jpg",
+            "nombre": "Paco",
+            "apellido": "Moncayo",
+            "edad": 76,
+            "campaña": "Paco Presidente",
+            "nro_votos": 4,
+            "vicepresidente": {
+               "cedula": "09089310832",
+               "foto": "/image/monserratt-bustamante.jpg",
+               "nombre": "Monserratt",
+               "apellido": "Bustamante",
+               "edad": 40
+            }
+         },
+         {
+            "id_presidente": 2,
+            "id_partido": 2,
+            "cedula": "09081272032",
+            "foto": "/image/cynthia-viteri.jpg",
+            "nombre": "Cy",
+            "apellido": "Viteri",
+            "edad": "51",
+            "campaña": "Cambio Positivo",
+            "nro_votos": 1,
+            "vicepresidente": {
+               "cedula": "09089310832",
+               "foto": "/image/mauricio-pozo.jpg",
+               "nombre": "Mauricio",
+               "apellido": "Pozo",
+               "edad": 57
+            }
+         },
+         {
+            "id_presidente": 3,
+            "id_partido": 3,
+            "cedula": "09081102032",
+            "foto": "/image/lenin-moreno.jpg",
+            "nombre": "Lenín",
+            "apellido": "Moreno",
+            "edad": 63,
+            "campaña": "Nuevos Sueños por Alcanzar",
+            "nro_votos": 1,
+            "vicepresidente": {
+               "cedula": "09089311032",
+               "foto": "/image/jorge-glass.jpg",
+               "nombre": "Jorge",
+               "apellido": "Glas",
+               "edad": 47
+            }
+         },
+         {
+            "id_presidente": 4,
+            "id_partido": 4,
+            "cedula": "09010272032",
+            "foto": "/image/washington-pesantez.jpg",
+            "nombre": "Porito",
+            "apellido": "Pesántez",
+            "edad": "60",
+            "campaña": "Tercera Vía",
+            "nro_votos": 0,
+            "vicepresidente": {
+               "cedula": "09089311032",
+               "foto": "/image/alex-alcivar.jpg",
+               "nombre": "Alex",
+               "apellido": "Alcivar",
+               "edad": 45
+            }
+         },
+         {
+            "id_presidente": 5,
+            "id_partido": 5,
+            "cedula": "09010372032",
+            "foto": "/image/abdala-bucaram.jpg",
+            "nombre": "Abdala",
+            "apellido": "Holaa",
+            "campaña": "Dalo y Ramiro presidentes",
+            "nro_votos": 1,
+            "vicepresidente": {
+               "cedula": "09089310832",
+               "foto": "/image/ramiro-aguilar.jpg",
+               "nombre": "Ramiro",
+               "apellido": "Aguilar",
+               "edad": 48
+            },
+            "edad": "36"
+         },
+         {
+            "id_presidente": 6,
+            "cedula": "1333333",
+            "foto": "",
+            "nombre": "Juan ",
+            "id_partido": 0,
+            "apellido": "Pueblo",
+            "edad": "58",
+            "campaña": "sdadad",
+            "nro_votos": 0,
+            "vicepresidente": {
+               "cedula": "99999999999",
+               "foto": "",
+               "nombre": "dsada",
+               "apellido": "asda",
+               "edad": "56"
+            }
+         }
+      ],
+      "asambleista": [
+         {
+            "id_asambleista": 0,
+            "cedula": "ddwqe",
+            "nombre": "dasdsa",
+            "apellido": "sadad",
+            "edad": "asdas"
+         },
+         {
+            "id_asambleista": 1,
+            "cedula": "2321321",
+            "nombre": "dasdads",
+            "apellido": "adasdasd",
+            "edad": "adasdas"
+         },
+         {
+            "id_asambleista": 2,
+            "cedula": "213123",
+            "nombre": "ssa|ad",
+            "apellido": "sdasd",
+            "edad": "asdsad"
+         },
+         {
+            "cedula": "444444444444444",
+            "nombre": "Pedro",
+            "apellido": "Fuentes",
+            "edad": "34",
+            "id_asambleista": 3
+         },
+         {
+            "cedula": "45555555555555555",
+            "nombre": "dadad",
+            "apellido": "asdasd",
+            "edad": "98",
+            "id_asambleista": 4
+         }
+      ],
+      "asamblea": [
+         {
+            "partido": 0,
+            "logo": "/image/21.jpg",
+            "nro_votos": 7
+         },
+         {
+            "partido": 1,
+            "logo": "/image/2.jpg",
+            "nro_votos": 8
+         },
+         {
+            "partido": 2,
+            "logo": "/image/6.jpg",
+            "nro_votos": 0
+         },
+         {
+            "partido": 3,
+            "logo": "/image/35.jpg",
+            "nro_votos": 0
+         },
+         {
+            "partido": 4,
+            "logo": "/image/19.jpg",
+            "nro_votos": 0
+         },
+         {
+            "partido": 5,
+            "logo": "/image/10.jpg",
+            "nro_votos": 1
+         }
+      ]
+   },
+   "elecciones": [
+      {
+         "id": 0,
+         "fecha": "17 de febrero del 2016",
+         "dignidades": [
+            {
+               "id": 0
+            },
+            {
+               "id": 1
+            },
+            {
+               "id": 2
+            }
+         ],
+         "representantes": [
+            {
+               "id_partido": 0,
+               "id_asambleista": 0
+            },
+            {
+               "id_partido": 1,
+               "id_asambleista": 1
+            },
+            {
+               "id_partido": 2,
+               "id_asambleista": 2
+            },
+            {
+               "id_partido": 3,
+               "id_asambleista": 3
+            }
+         ]
+      }
+   ]
+}

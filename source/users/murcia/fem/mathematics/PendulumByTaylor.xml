@@ -1,0 +1,319 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Taylor method for a simple pendulum]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia, Spain]]></Author>
+<Keywords><![CDATA[ODE, Pendulum, Taylor method]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[We have implemented the Taylor algorithm and plotted the approximated solution of a simple, undriven pendulum for the algorithm including first, second, and third order derivative terms of the Taylor expansion, using the same value of h=0.1.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./PendulumByTaylor/PendulumByTaylor.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Taylor method for the pendulum</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Taylor method for a simple pendulum
+    </h1>
+    <p>
+      This simulation implements the Taylor algorithm and plots the 
+      approximated solution for a simple, undriven pendulum for the algorithm 
+      including first, second, and third order derivative terms of the Taylor 
+      expansion, using the same value of h=0.1.
+    </p>
+    <p>
+      The simulation shows the typical behavior of Taylor methods. The first 
+      order method (the red plot), also known as Euler method, provides a very 
+      poor approximation to the solution. Second order terms (the blue plot) 
+      do a better job, but still not perfect. The solution which includes 
+      third order terms (the black one) is almost indistinguishable from the 
+      true solution.
+    </p>
+    <p align="center">
+      <img src="./PendulumByTaylor/PendulumByTaylor.gif">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Pendulum</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[m]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[l]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[alpha0]]></Name>
+<Value><![CDATA[Math.PI/3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[h]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxTime]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k1]]></Name>
+<Value><![CDATA[g/l]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k2]]></Name>
+<Value><![CDATA[b/(m*l*l)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Sequences</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[v1]]></Name>
+<Value><![CDATA[alpha0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w1]]></Name>
+<Value><![CDATA[omega0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v2]]></Name>
+<Value><![CDATA[alpha0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w2]]></Name>
+<Value><![CDATA[omega0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v3]]></Name>
+<Value><![CDATA[alpha0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w3]]></Name>
+<Value><![CDATA[omega0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Taylor</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double h2 = h*h/2, h3 = h*h*h/6;
+
+double aux1 = -k1*Math.sin(v1) - k2*w1;
+double v = v1 + h*w1;
+double w = w1 + h*aux1;
+v1 = v;
+w1 = w;
+
+aux1 = -k1*Math.sin(v2) - k2*w2;
+double aux2 = -k1*Math.cos(v2)*w2 + k1*k2*Math.sin(v2) + k2*k2*w2;
+v = v2  + h*w2    + h2 * aux1;
+w = w2 + h*aux1 + h2 * aux2;
+v2 = v;
+w2 = w;
+
+aux1 = -k1*Math.sin(v3) - k2*w3;
+aux2 = -k1*Math.cos(v3)*w3 + k1*k2*Math.sin(v3) + k2*k2*w3;
+double aux3 = k1*Math.sin(v3)*w3*w3
+                    + k1*k1*Math.sin(v3)*Math.cos(v3)
+                    + 2*k1*k2*Math.cos(v3)*w3
+                     - k1*k2*k2*Math.sin(v3)
+                     - k2*k2*k2*w3;
+v = v3 + h*w3     + h2 * aux1 + h3 * aux2;
+w = w3 + h*aux1 + h2 * aux2 + h3*aux3;
+v3 = v;
+w3 = w;
+
+t = t + h;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Time</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if (t>maxTime) _pause();
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Simple Pendulum]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="size"><![CDATA["600,300"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[maxTime]]></Property>
+<Property name="minimumY"><![CDATA[-3]]></Property>
+<Property name="maximumY"><![CDATA[3]]></Property>
+<Property name="title"><![CDATA["Taylor approximations"]]></Property>
+<Property name="titleX"><![CDATA["t"]]></Property>
+<Property name="titleY"><![CDATA["Order 1 (red), 2 (blue), and 3 (black)"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">firstOrderTrail</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[t]]></Property>
+<Property name="inputY"><![CDATA[v1]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">secondOrderTrail</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[t]]></Property>
+<Property name="inputY"><![CDATA[v2]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">thirdOrderTrail</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[t]]></Property>
+<Property name="inputY"><![CDATA[v3]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

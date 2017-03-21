@@ -1,0 +1,27 @@
+    <% include menu %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+       <h2>Actualizar Asambleista</h2>
+        <form>
+            <div class="form-group">
+                <label>Cedula:</label>
+                <input class="form-control" id="act_id_asam" name="cedula" value="<%=perfil.cedula%>"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="act_name_asam" name="nombre" value="<%=perfil.nombre%>"><br>
+                <label>Apellido:</label>
+                <input class="form-control" id="act_last_asam" name="apellido" value="<%=perfil.apellido%>"><br>
+                <label>Edad:</label>
+                <input class="form-control" id="act_age_asam" name="edad" value="<%=perfil.edad%>"><br>
+               
+              
+            </div>
+            
+            <input type="button" class="btn btn-default" id="modificar_asamb" value="Actualizar Asambleista" onclick="ActualizarAsambleista('<%=perfil.id_asambleista%>')">
+          </form>
+    </div>
+
+
+            </div>
+            </div>

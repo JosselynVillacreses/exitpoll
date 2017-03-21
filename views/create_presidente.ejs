@@ -1,0 +1,53 @@
+
+
+
+    <div class="container containerCreate">
+       <h2>Crear Presidente</h2>
+        <form method="POST" action="/admin/presidente">
+            <div class="form-group">
+                
+
+               
+                <label>Subir la imagen (localmente)</label>
+                <input type="text" id="img-local" name="imgP" placeholder="Ingrese el link local de la imagen"/>
+                
+
+                <label>Cedula:</label>
+                
+                <input class="form-control" id="id_pres" name="cedulaP" placeholder="Ingrese la cedula del candidato" required><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="last_pres" name="nombreP" placeholder="Ingrese el nombre del candidato" required><br>
+                <label>Apellidos:</label>
+                <input class="form-control" id="name_pres" name="apellidoP" placeholder="Ingrese el apellido del candidato" required><br>
+                <label>Edad:</label>
+                <input class="form-control" id="age_pres" name="edadP" placeholder="Ingrese la edad del candidato" required><br>
+                <label>Campaña:</label>
+                <textarea class="form-control" id="camp_pres" rows="5" name="campaniaP" placeholder="Ingrese la campaña del candidato" required></textarea><br>
+                
+           
+             
+            </div>
+            
+
+       <h2>Crear VicePresidente</h2>
+
+            <div class="form-group">
+                <label>Subir la imagen (localmente)</label>
+                <input type="text" id="img_vice_local" name="imgV" placeholder="Ingrese el link local de la imagen del vicepresidentte"/>
+                
+                <label>Cedula:</label>
+                <input class="form-control" id="vice_id" name="cedulaV" placeholder="Ingrese la cedula del vicepresidente" required><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="vice_name" name="nombreV" placeholder="Ingrese el nombre del vicepresidente" required><br>
+                <label>Apellido:</label>
+                <input class="form-control" id="vice_ap" name="apellidoV" placeholder="Ingrese el apellido del vicepresidente" required><br>
+                <label>Edad:</label>
+                <input class="form-control" id="vice_edad" name="edadV" placeholder="Ingrese la edad del vicepresidente" required><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" onclick="guardarPresidente()" value="Crear Presidente">
+            <input type="button" class="btn btn-default" onclick="ocultarCreate()" value="Cancelar :(">
+          </form>
+    </div>

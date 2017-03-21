@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title> Energy Eigenfunctions</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css">
+  </head>
+  <body > 
+    <h1>
+      Energy Eigenfunctions and the Shooting Method
+    </h1>
+    <p>
+      The Shooting Method&nbsp; model solves the time independent Schrödinger equation with potential energy V(x) when the energy 
+      E is changed.</p><p align="center">
+      <img border="0" src="schroedinger.gif" width="290" height="55"></p><p>
+      Not all solutions this differential equation are valid.&nbsp; We seek solutions <font face="Symbol">y</font>(x) that are 
+      zero outside of a finite spatial region [x<sub>min</sub>, x<sub>max</sub>] and we require that the solution be zero at the 
+      boundaries in order to avoid a discontinuous jump in <font face="Symbol">y</font>(x).&nbsp; A solution to the time 
+      independent Schrödinger equation that satisfies these conditions is known as an energy eigenfunction.
+    </p><p>
+      Adjust the energy E to find the energy eigenfunctions for various potential energies. The differential equation is solved 
+      starting at the left boundary when the slider is moved. (Plank's constant h and mass m are one.)&nbsp; The error in
+      <font face="Symbol">y</font>(x) at the right boundary is shown as a red 
+      line. The computation is automatically terminated if the solution becomes 
+      larger than 10<sup>9 </sup>because a valid eigenfunction must be finite 
+      and normalizable.</p>
+    <h2>
+      Reference:
+    </h2>
+    <p>
+      Gould, Tobochnik, and Christian <i>An Introduction to Computer 
+      Simulation Methods </i>3ed page 677.
+    </p>
+
+    <h3>
+      Note:
+    </h3>
+    <p>
+      This simulation was created using the Easy Java Simulations (Ejs) 
+      modeling tool. You can modify this simulation if you have Ejs installed 
+      by right-clicking within a plot and selecting &quot;Open Ejs Model&quot; from the 
+      pop-up menu item. Information about Ejs is available at: &lt; <b>http://www.um.es/fem/Ejs/</b> 
+      &gt;
+    </p>
+  
+  </body>
+</html>

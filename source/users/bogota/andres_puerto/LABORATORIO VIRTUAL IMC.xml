@@ -1,0 +1,2485 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+<Import><![CDATA[org.opensourcephysics.numerics.*]]></Import>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./IMAGENES/FOTO2.JPG;./IMAGENES/PENDULO MEDIDAS.JPG;./IMAGENES/EQBRAZOENSS.JPG;./IMAGENES/controlador.JPG;./IMAGENES/probustez.JPG;./IMAGENES/iidentificacion.JPG;./IMAGENES/NOMBRE.JPG;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./IMAGENES/EQBRAZOENSS.JPG;./IMAGENES/FOTO2.JPG;./IMAGENES/NOMBRE.JPG;./IMAGENES/PENDULO MEDIDAS.JPG;./IMAGENES/controlador.JPG;./IMAGENES/iidentificacion.JPG;./IMAGENES/probustez.JPG;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>CONTROL ROBUSTO POR MODELO INTERNO</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p align="center" style="margin-top: 0">
+      <font color="#000000" size="5">APLICACION DEL METODO DE CONTROL ROBUSTO 
+      POR MODELO INTERNO EN EL SISTEMA DENOMINADO PENDULO MOTORIZADO </font>
+    </p>
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <hr>
+    <hr>
+    <font color="#000000">DISTRIBUCION DE LAS VARIABLES EN EL PENDULO 
+    MOTORIZADO</font><img src="./IMAGENES/PENDULO MEDIDAS.JPG"><hr>EL 
+    MODELO DE LA PLANTA ESTA DADO POR: &#160; <img src="./IMAGENES/EQBRAZOENSS.JPG"><hr>PARA 
+    LA CUAL DESCRIBIREMOS EL CONTROLADOR COMO: <img src="./IMAGENES/controlador.JPG"><hr>Con 
+    esta simulacion podemos tomar datos y realizar pruebas de Robustez como: <img src="./IMAGENES/probustez.JPG"><hr><font color="#000000">Tambien 
+    usando la simulacion podemos tomar datos y realizar la identificacion del 
+    sistema con el fin de realizar Dise&#241;os de <b>Controladores</b> 
+    Robustos Por <b>Modelo&#160; Interno</b> alternos al propuesto en esta 
+    seccion debido a que el controlador puede cambiar en su forma a causa de 
+    las variaciones del sistema a controlar, tambien es posible Dise&#241;ar otros 
+    metodos de control con el fin de comparalos con la respuesta del 
+    controlador IMC aqui ya implementado, las opciones de trabajo son muchas 
+    asi que adelante </font><img src="./IMAGENES/iidentificacion.JPG"><hr><hr>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>ACERCA DEL AUTOR</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p align="center" style="margin-top: 0">
+      <b><font face="Times New Roman" size="6"><sub>JORGE ANDR&#201;S PUERTO ACOSTA</sub></font></b>
+    </p>
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <hr>
+    
+
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      <img src="./IMAGENES/FOTO2.JPG">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <hr>
+    
+
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      <font color="#000000">&#8730; INGENIERO EN CONTROL ELECTR&#211;NICO E 
+      INSTRUMENTACION </font>
+    </p>
+    <p align="center" style="margin-top: 0">
+      <font color="#000000">&#8730; TECNOLOGO EN ELECTR&#211;NICA </font>
+    </p>
+    <p align="center" style="margin-top: 0">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      <font color="#000000">UNIVERSIDAD DISTRITAL DE COLOMBIA</font>
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables planta</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[anguloBrazo]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[J]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[m]]></Name>
+<Value><![CDATA[1.1629]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[C]]></Name>
+<Value><![CDATA[0.0389]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dc]]></Name>
+<Value><![CDATA[0.9450]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d1]]></Name>
+<Value><![CDATA[1.89]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables controlador</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[u2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[c1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[c2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dc1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dc2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>theta_torqe</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[tt1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tt2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dtt1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dtt2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[T3]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y3]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[F]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>setpoint</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[u3]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[an]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[al]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[e]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[in]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[aHelice]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables helices</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[h1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yh]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[uh]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dh1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[anguloHelices]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[h2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>helices</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[f]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[j]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[theta1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[theta2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dtheta]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[YH]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[T2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d2]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mH]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>motor</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[km]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[lf]]></Name>
+<Value><![CDATA[0.0020]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[rf]]></Name>
+<Value><![CDATA[2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[M1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dm1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[My]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vf]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>brazo</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[d1b]]></Name>
+<Value><![CDATA[1.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Jb]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Cb]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mb]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dcb]]></Name>
+<Value><![CDATA[0.6]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[B1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dB1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[B2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dB2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[T]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Página Inicio</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>planta</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.1</Increment>
+<Rate state="x1">dx1(x1,x2,u1,m,g,dc,d1,C,J)</Rate>
+<Rate state="x2">x1</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>helices</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.1</Increment>
+<Rate state="h2">h1</Rate>
+<Rate state="h1">dh1(h1,uh)</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>controlador</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.1</Increment>
+<Rate state="c1">dc1(c1,u2)</Rate>
+<Rate state="c2">c1</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>brazo</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.001</Increment>
+<Rate state="B1">B2</Rate>
+<Rate state="B2">dB2(Jb,T,d1b,Cb,mb,g,dcb,B2,B1)</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>motor</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.001</Increment>
+<Rate state="M1">dM1(rf,lf,M1,km,vf)</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>helices 2</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.001</Increment>
+<Rate state="theta1">theta2</Rate>
+<Rate state="theta2">dtheta2(f,j,theta2,T2)</Rate>
+<Rate state=""></Rate>
+<Method>MidPoint</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Ligaduras controlado imc</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+Matrix3DTransformation transfBrazo  = Matrix3DTransformation.rotationX(-anguloBrazo);
+Matrix3DTransformation transfHelice1 = Matrix3DTransformation.rotationY(anguloHelices);
+Matrix3DTransformation transfHelice2 = Matrix3DTransformation.rotationY(anguloHelices+Math.PI/2);
+
+_view.helice1.setTransformation(transfHelice1);
+_view.helice2.setTransformation(transfHelice2);
+_view.grupoBrazo.setTransformation(transfBrazo);
+
+
+u2=u3-y1;
+
+y1= d1*x2;
+
+y2= -1.0376*c1 + (m*g*dc/d1)*c2 + (J/d1)*u2;
+
+yh= h2;
+
+u1 = y2;
+
+anguloBrazo = y1;
+
+anguloHelices = yh;
+
+uh=y1;
+
+
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Ligaduras para ident</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+aHelice=10000*YH;
+
+Matrix3DTransformation transfBrazo3  = Matrix3DTransformation.rotationX(-y);
+Matrix3DTransformation transfHelice13 = Matrix3DTransformation.rotationY(aHelice);
+Matrix3DTransformation transfHelice23 = Matrix3DTransformation.rotationY(aHelice+Math.PI/2);
+
+_view.helice13.setTransformation(transfHelice13);
+_view.helice23.setTransformation(transfHelice23);
+_view.grupoBrazo3.setTransformation(transfBrazo3);
+
+
+Jb=mb*(dcb*dcb);
+j=mH*d2*d2;
+dcb=d1b/2;
+
+
+y=B1;
+YH=theta1;
+My=M1;
+
+e=in-y;
+
+vf=e;
+
+F=km*vf/(rf*d2*Math.sin(YH+0.01));
+
+T=F;
+T2=My;
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Página Propia</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double dx1(double x11,double x21,double u11,double m,double g,double dc,double d1,double C,double J) {
+	
+	double sal1 = -(m*g*dc/J)*x21 - (C/J)*x11 + (d1/J)*u11;
+
+	return sal1;
+}
+
+public double dc1(double c,double u) {
+	
+	double sal2 = -2*c + u;
+
+	return sal2;
+}
+
+public double dh1(double h11,double uh11) {
+	
+	double sal2 = -0.2*h11 + uh11;
+
+	return sal2;
+}
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>brazo</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double dB2(double J1,double T1,double d11,double C1,double m1,double g1,double dc1,double B21,double B11) {
+	
+	double sal = ((T1*d11)/J1)-((C1/J1)*B21)-((m1*g1*dc1)/J1)*B11;
+	return sal;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>motor</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double dM1(double rf1,double lf1,double M11,double km1,double vf1) {
+	
+	double sal1 = -(rf1/lf1)*M11 +(1/lf)*vf1;
+	return sal1;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>helicees</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double dtheta2(double f1,double j1,double theta21,double T21){
+	
+	double sal2 = -(f1/j1)*theta21 + (1/j1)*T21;
+	return sal2;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">pemdulo22</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[pendulo_motorizado]]></Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["-32,67"]]></Property>
+<Property name="size"><![CDATA["620,608"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel5</Property>
+<Property name="parent">pemdulo22</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[BORDER:0,0]]></Property>
+<Property name="border"><![CDATA[0,0,0,0]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+<Property name="foreground"><![CDATA[BLACK]]></Property>
+<Property name="font"><![CDATA[Baskerville Old Face,PLAIN,16]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel4</Property>
+<Property name="parent">panel5</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Display3DPanel</Type>
+<Property name="name">PanelDisplay3D2</Property>
+<Property name="parent">panel4</Property>
+<Property name="position">center</Property>
+<Property name="minimumX"><![CDATA[-1.0]]></Property>
+<Property name="maximumX"><![CDATA[1.0]]></Property>
+<Property name="minimumY"><![CDATA[-1.0]]></Property>
+<Property name="maximumY"><![CDATA[1.0]]></Property>
+<Property name="minimumZ"><![CDATA[-1]]></Property>
+<Property name="maximumZ"><![CDATA[1]]></Property>
+<Property name="cameraX"><![CDATA[3.441445797421506]]></Property>
+<Property name="cameraY"><![CDATA[2.3405964221453757]]></Property>
+<Property name="cameraZ"><![CDATA[-0.522394675382525]]></Property>
+<Property name="cameraAzimuth"><![CDATA[25.73]]></Property>
+<Property name="cameraAltitude"><![CDATA[-0.0342]]></Property>
+<Property name="cameraFocusX"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusY"><![CDATA[0.039999999999999994]]></Property>
+<Property name="cameraFocusZ"><![CDATA[-0.56]]></Property>
+<Property name="cameraRotation"><![CDATA[0.0]]></Property>
+<Property name="cameraDistanceToScreen"><![CDATA[4.6000000000000005]]></Property>
+<Property name="decorationType"><![CDATA[AXES]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral12</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral12</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral1_12</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral22</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral22</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral2_12</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_superior2</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[1.7]]></Property>
+<Property name="sizeY"><![CDATA[0.13]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="lineColor"><![CDATA[black]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+<Property name="drawingLines"><![CDATA[true]]></Property>
+<Property name="drawingFill"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union12</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="radius"><![CDATA[0.13]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupoBrazo2</Property>
+<Property name="parent">PanelDisplay3D2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">brazo2</Property>
+<Property name="parent">grupoBrazo2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.06]]></Property>
+<Property name="sizeY"><![CDATA[0.06]]></Property>
+<Property name="sizeZ"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="closedTop"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">contra_peso2</Property>
+<Property name="parent">grupoBrazo2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union22</Property>
+<Property name="parent">grupoBrazo2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Ellipsoid3D</Type>
+<Property name="name">centro_de_giro2</Property>
+<Property name="parent">grupoBrazo2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.15]]></Property>
+<Property name="sizeY"><![CDATA[0.3]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+<Property name="transformation"><![CDATA[c]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupomotor2</Property>
+<Property name="parent">grupoBrazo2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">motor22</Property>
+<Property name="parent">grupomotor2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.09]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.25]]></Property>
+<Property name="sizeY"><![CDATA[0.25]]></Property>
+<Property name="sizeZ"><![CDATA[0.09]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">rotor2</Property>
+<Property name="parent">grupomotor2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.16]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[0.23]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">cuerpo_helice2</Property>
+<Property name="parent">grupomotor2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.21]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.23]]></Property>
+<Property name="sizeY"><![CDATA[0.23]]></Property>
+<Property name="sizeZ"><![CDATA[0.06]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,1.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice12</Property>
+<Property name="parent">grupomotor2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{3.1,1.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice22</Property>
+<Property name="parent">grupomotor2</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{0.0,0.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel6</Property>
+<Property name="parent">panel5</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="size"><![CDATA["200,240"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel7</Property>
+<Property name="parent">panel6</Property>
+<Property name="layout"><![CDATA[flow:right,1,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">panelDibujo</Property>
+<Property name="parent">panel7</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1]]></Property>
+<Property name="maximumX"><![CDATA[1]]></Property>
+<Property name="minimumY"><![CDATA[-1]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Image</Type>
+<Property name="name">imagen</Property>
+<Property name="parent">panelDibujo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="trueSize"><![CDATA[false]]></Property>
+<Property name="sizex"><![CDATA[1.6]]></Property>
+<Property name="sizey"><![CDATA[1.2]]></Property>
+<Property name="scalex"><![CDATA[1.4]]></Property>
+<Property name="scaley"><![CDATA[1.]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="image"><![CDATA[./IMAGENES/NOMBRE.JPG]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel8</Property>
+<Property name="parent">panel6</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">IDENTIFICAR_PLANTA2</Property>
+<Property name="parent">panel8</Property>
+<Property name="variable"><![CDATA[UNO1]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[IDENTIFICAR_PLANTA]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">PLANTA_CONTROLADA_CON_IMC</Property>
+<Property name="parent">panel8</Property>
+<Property name="variable"><![CDATA[DOS1]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[PLANTA_CONTROLADA_CON_IMC]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">GRAFICAS2</Property>
+<Property name="title"><![CDATA[ventanaDialogo3]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showDialog]]></Property>
+<Property name="location"><![CDATA["7,694"]]></Property>
+<Property name="size"><![CDATA["673,72"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">selector</Property>
+<Property name="parent">GRAFICAS2</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">ESTIMULO</Property>
+<Property name="parent">selector</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[showDialog1]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[ESTIMULO]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">R_IMC</Property>
+<Property name="parent">selector</Property>
+<Property name="position">west</Property>
+<Property name="variable"><![CDATA[showDialog2]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[RESPUESTA IMC]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">RHELICE</Property>
+<Property name="parent">selector</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[showDialog3]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[RESPUESTA HELICES]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">PARAMETROS</Property>
+<Property name="parent">selector</Property>
+<Property name="position">west</Property>
+<Property name="variable"><![CDATA[UNO]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[PARAMETROS]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">SELECTOR</Property>
+<Property name="title"><![CDATA[ventanaDialogo4]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showDialog1]]></Property>
+<Property name="location"><![CDATA["2,621"]]></Property>
+<Property name="size"><![CDATA["679,73"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">ESTIMULO2</Property>
+<Property name="parent">SELECTOR</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico</Property>
+<Property name="parent">ESTIMULO2</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[u3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">U3</Property>
+<Property name="parent">ESTIMULO2</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[u3]]></Property>
+<Property name="value"><![CDATA[0.2942699999999998]]></Property>
+<Property name="minimum"><![CDATA[-1.5]]></Property>
+<Property name="maximum"><![CDATA[1.5]]></Property>
+<Property name="format"><![CDATA[PUNTO DE REFERENCIA = 0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">HELICE</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showDialog3]]></Property>
+<Property name="location"><![CDATA["323,285"]]></Property>
+<Property name="size"><![CDATA["359,336"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">PLANTA_HELICES</Property>
+<Property name="parent">HELICE</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">panelConEjes2</Property>
+<Property name="parent">PLANTA_HELICES</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[an]]></Property>
+<Property name="autoscaleY"><![CDATA[al]]></Property>
+<Property name="title"><![CDATA[RESPUESTA HELICES]]></Property>
+<Property name="titleX"><![CDATA[TIEMPO]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traza2</Property>
+<Property name="parent">panelConEjes2</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[yh]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">BRAZO</Property>
+<Property name="title"><![CDATA[IMC]]></Property>
+<Property name="visible"><![CDATA[showDialog2]]></Property>
+<Property name="location"><![CDATA["2,285"]]></Property>
+<Property name="size"><![CDATA["321,337"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">RESPUESTA_IMC</Property>
+<Property name="parent">BRAZO</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">CONTROLADOR_IMC</Property>
+<Property name="parent">RESPUESTA_IMC</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[an]]></Property>
+<Property name="autoscaleY"><![CDATA[al]]></Property>
+<Property name="title"><![CDATA[RESPUESTA CONTROLADOR IMC]]></Property>
+<Property name="axesType"><![CDATA[Cartesian1]]></Property>
+<Property name="titleX"><![CDATA[TIEMPO]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Y1</Property>
+<Property name="parent">CONTROLADOR_IMC</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[y1]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">parametros</Property>
+<Property name="title"><![CDATA[parametros]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[UNO]]></Property>
+<Property name="location"><![CDATA["6,-2"]]></Property>
+<Property name="size"><![CDATA["285,289"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">PLANTA</Property>
+<Property name="parent">parametros</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">MASA2</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[m]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">MASA</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[m]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[3.0]]></Property>
+<Property name="format"><![CDATA[MASA= 0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">LARGO_BRAZO2</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[d1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">LARGO_BRAZO</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[d1]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[2.0]]></Property>
+<Property name="format"><![CDATA[largo brazo=0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">MOMENTOINERCIA</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[J]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">MOMENTO_DE_INERCIA</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[J]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[Momento inercial=0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">CONSTANTE_ROZAMIENTO</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[C]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">CONSTANTE_DE_ROZAMIENTO</Property>
+<Property name="parent">PLANTA</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[C]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[CTE Rozamiento=0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">IDENTIFICACION</Property>
+<Property name="title"><![CDATA[IDENTIFICACION]]></Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+<Property name="visible"><![CDATA[UNO1]]></Property>
+<Property name="location"><![CDATA["632,-8"]]></Property>
+<Property name="size"><![CDATA["650,765"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">panelConEjes22</Property>
+<Property name="parent">IDENTIFICACION</Property>
+<Property name="position">south</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA[RESPUESTA  PLANTA PENDULO]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traza</Property>
+<Property name="parent">panelConEjes22</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">panelConEjes</Property>
+<Property name="parent">IDENTIFICACION</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA[RESPUESTA  DEL MOTOR]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">salidamot</Property>
+<Property name="parent">panelConEjes</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[My]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">panelConEjes3</Property>
+<Property name="parent">IDENTIFICACION</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA[RESPUESTA HELICES]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">salidaHE</Property>
+<Property name="parent">panelConEjes3</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[YH]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel3</Property>
+<Property name="parent">IDENTIFICACION</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico2</Property>
+<Property name="parent">panel3</Property>
+<Property name="variable"><![CDATA[e]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">in</Property>
+<Property name="parent">panel3</Property>
+<Property name="variable"><![CDATA[in]]></Property>
+<Property name="value"><![CDATA[-0.0024600000000001288]]></Property>
+<Property name="minimum"><![CDATA[-1.5]]></Property>
+<Property name="maximum"><![CDATA[1.5]]></Property>
+<Property name="format"><![CDATA[stetpoint=0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico11</Property>
+<Property name="parent">panel3</Property>
+<Property name="variable"><![CDATA[in]]></Property>
+<Property name="value"><![CDATA[0.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">panelConEjes222</Property>
+<Property name="parent">panel3</Property>
+<Property name="position">south</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="title"><![CDATA[FUERZA]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traza22</Property>
+<Property name="parent">panelConEjes222</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[F]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">editor_p</Property>
+<Property name="parent">panel3</Property>
+<Property name="variable"><![CDATA[SHOWDIALOG3]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[EDITAR PARAMETROS DE LA PLANTA]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBoxMenuItem</Type>
+<Property name="name">VISUALIZAR_LA_PLANTA__SIN_CONTROLADOR</Property>
+<Property name="parent">panel3</Property>
+<Property name="variable"><![CDATA[TRES]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[VISUALIZAR_LA_PLANTA__SIN_CONTROLADOR]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">PLANTA_PARA_IDEN</Property>
+<Property name="title"><![CDATA[PLANTA_PARA_IDEN]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[TRES]]></Property>
+<Property name="location"><![CDATA["313,2"]]></Property>
+<Property name="size"><![CDATA["320,694"]]></Property>
+<Property name="background"><![CDATA[255,255,192]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Display3DPanel</Type>
+<Property name="name">PanelDisplay3D3</Property>
+<Property name="parent">PLANTA_PARA_IDEN</Property>
+<Property name="position">center</Property>
+<Property name="minimumX"><![CDATA[-1.0]]></Property>
+<Property name="maximumX"><![CDATA[1.0]]></Property>
+<Property name="minimumY"><![CDATA[-1.0]]></Property>
+<Property name="maximumY"><![CDATA[1.0]]></Property>
+<Property name="minimumZ"><![CDATA[-1.0]]></Property>
+<Property name="maximumZ"><![CDATA[1.0]]></Property>
+<Property name="cameraAzimuth"><![CDATA[19.74000000000047]]></Property>
+<Property name="cameraAltitude"><![CDATA[0.030796326794896706]]></Property>
+<Property name="cameraFocusX"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusY"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusZ"><![CDATA[0.0]]></Property>
+<Property name="cameraRotation"><![CDATA[0.0]]></Property>
+<Property name="cameraDistanceToScreen"><![CDATA[5.5]]></Property>
+<Property name="decorationType"><![CDATA[AXES]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral13</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral13</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral1_13</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral23</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral23</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral2_13</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_superior3</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[1.7]]></Property>
+<Property name="sizeY"><![CDATA[0.13]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="lineColor"><![CDATA[black]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+<Property name="drawingLines"><![CDATA[true]]></Property>
+<Property name="drawingFill"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union13</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="radius"><![CDATA[0.13]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupoBrazo3</Property>
+<Property name="parent">PanelDisplay3D3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">brazo3</Property>
+<Property name="parent">grupoBrazo3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.06]]></Property>
+<Property name="sizeY"><![CDATA[0.06]]></Property>
+<Property name="sizeZ"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="closedTop"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">contra_peso3</Property>
+<Property name="parent">grupoBrazo3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union23</Property>
+<Property name="parent">grupoBrazo3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Ellipsoid3D</Type>
+<Property name="name">centro_de_giro3</Property>
+<Property name="parent">grupoBrazo3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.15]]></Property>
+<Property name="sizeY"><![CDATA[0.3]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+<Property name="transformation"><![CDATA[c]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupomotor3</Property>
+<Property name="parent">grupoBrazo3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">motor23</Property>
+<Property name="parent">grupomotor3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.09]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.25]]></Property>
+<Property name="sizeY"><![CDATA[0.25]]></Property>
+<Property name="sizeZ"><![CDATA[0.09]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">rotor3</Property>
+<Property name="parent">grupomotor3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.16]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[0.23]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">cuerpo_helice3</Property>
+<Property name="parent">grupomotor3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.21]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.23]]></Property>
+<Property name="sizeY"><![CDATA[0.23]]></Property>
+<Property name="sizeZ"><![CDATA[0.06]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,1.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice13</Property>
+<Property name="parent">grupomotor3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{3.1,1.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice23</Property>
+<Property name="parent">grupomotor3</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{0.0,0.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">respuesta</Property>
+<Property name="title"><![CDATA[PARAMETRO]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[SHOWDIALOG3]]></Property>
+<Property name="location"><![CDATA["312,696"]]></Property>
+<Property name="size"><![CDATA["322,70"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">respuesta</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">motor2</Property>
+<Property name="parent">panel</Property>
+<Property name="variable"><![CDATA[showdialog]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[motor]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">helices</Property>
+<Property name="parent">panel</Property>
+<Property name="variable"><![CDATA[showdialog1]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[helices]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">pendulo</Property>
+<Property name="parent">panel</Property>
+<Property name="variable"><![CDATA[showdialog2]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[pendulo]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">ppendulo</Property>
+<Property name="title"><![CDATA[ppendulo]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showdialog2]]></Property>
+<Property name="location"><![CDATA["8,3"]]></Property>
+<Property name="size"><![CDATA["304,307"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">selector_p_Motor2</Property>
+<Property name="parent">ppendulo</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel23</Property>
+<Property name="parent">selector_p_Motor2</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">MASA22</Property>
+<Property name="parent">panel23</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[mb]]></Property>
+<Property name="value"><![CDATA[0.100005]]></Property>
+<Property name="minimum"><![CDATA[0.00]]></Property>
+<Property name="maximum"><![CDATA[1.00]]></Property>
+<Property name="format"><![CDATA[MASA=0.10]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico8</Property>
+<Property name="parent">panel23</Property>
+<Property name="variable"><![CDATA[mb]]></Property>
+<Property name="value"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">CONSTANTE_R2</Property>
+<Property name="parent">panel23</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[Cb]]></Property>
+<Property name="value"><![CDATA[0.07568]]></Property>
+<Property name="minimum"><![CDATA[0]]></Property>
+<Property name="maximum"><![CDATA[1]]></Property>
+<Property name="format"><![CDATA[CTE DE ROZAMIENTO=0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico9</Property>
+<Property name="parent">panel23</Property>
+<Property name="variable"><![CDATA[Cb]]></Property>
+<Property name="value"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">LARGO2</Property>
+<Property name="parent">panel23</Property>
+<Property name="variable"><![CDATA[d1b]]></Property>
+<Property name="value"><![CDATA[1.3081]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[2.0]]></Property>
+<Property name="format"><![CDATA[largo de brazo]]></Property>
+<Property name="ticks"><![CDATA[5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico10</Property>
+<Property name="parent">panel23</Property>
+<Property name="variable"><![CDATA[d1b]]></Property>
+<Property name="value"><![CDATA[1.2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">phelices</Property>
+<Property name="title"><![CDATA[phelices]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showdialog1]]></Property>
+<Property name="location"><![CDATA["12,2"]]></Property>
+<Property name="size"><![CDATA["302,281"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">selector_p_Helices</Property>
+<Property name="parent">phelices</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel22</Property>
+<Property name="parent">selector_p_Helices</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">largo_helices</Property>
+<Property name="parent">panel22</Property>
+<Property name="variable"><![CDATA[d2]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.1]]></Property>
+<Property name="format"><![CDATA[largo helices=0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico5</Property>
+<Property name="parent">panel22</Property>
+<Property name="variable"><![CDATA[d2]]></Property>
+<Property name="value"><![CDATA[1.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">masaHelice</Property>
+<Property name="parent">panel22</Property>
+<Property name="variable"><![CDATA[mH]]></Property>
+<Property name="value"><![CDATA[0.99998]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[masa Helices=0.2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico6</Property>
+<Property name="parent">panel22</Property>
+<Property name="variable"><![CDATA[mH]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">CONSTANTE_DE_FRICCION</Property>
+<Property name="parent">panel22</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[f]]></Property>
+<Property name="value"><![CDATA[0.07568]]></Property>
+<Property name="minimum"><![CDATA[0]]></Property>
+<Property name="maximum"><![CDATA[1]]></Property>
+<Property name="format"><![CDATA[CONSTANTE DE FRICCION=0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico7</Property>
+<Property name="parent">panel22</Property>
+<Property name="variable"><![CDATA[f]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">pmotor</Property>
+<Property name="title"><![CDATA[pmotor]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showdialog]]></Property>
+<Property name="location"><![CDATA["8,3"]]></Property>
+<Property name="size"><![CDATA["304,267"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">selector_p_Motor</Property>
+<Property name="parent">pmotor</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel2</Property>
+<Property name="parent">selector_p_Motor</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">CTE_MECANICA</Property>
+<Property name="parent">panel2</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[km]]></Property>
+<Property name="minimum"><![CDATA[-1.5]]></Property>
+<Property name="maximum"><![CDATA[1.5]]></Property>
+<Property name="format"><![CDATA[CTE MECANICA=0.0]]></Property>
+<Property name="orientation"><![CDATA[HORIZONTAL]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico22</Property>
+<Property name="parent">panel2</Property>
+<Property name="variable"><![CDATA[km]]></Property>
+<Property name="value"><![CDATA[0.5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">INDUCTACIA_DE_CAMPO</Property>
+<Property name="parent">panel2</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[lf]]></Property>
+<Property name="value"><![CDATA[0.100005]]></Property>
+<Property name="minimum"><![CDATA[0.0020]]></Property>
+<Property name="maximum"><![CDATA[0.1]]></Property>
+<Property name="format"><![CDATA[INDUCTANCIA DE CAMPO=0.10]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico3</Property>
+<Property name="parent">panel2</Property>
+<Property name="variable"><![CDATA[lf]]></Property>
+<Property name="value"><![CDATA[0.0020]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">RESISTENCIA_DE_CAMPO</Property>
+<Property name="parent">panel2</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[rf]]></Property>
+<Property name="value"><![CDATA[2.0115]]></Property>
+<Property name="minimum"><![CDATA[1]]></Property>
+<Property name="maximum"><![CDATA[6]]></Property>
+<Property name="format"><![CDATA[RESISTENCIA DE CAMPO=0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">campoNumerico4</Property>
+<Property name="parent">panel2</Property>
+<Property name="variable"><![CDATA[rf]]></Property>
+<Property name="value"><![CDATA[2.0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">PLANTA_CONTROLADA</Property>
+<Property name="title"><![CDATA[PLANTA_CONTROLADA]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[DOS1]]></Property>
+<Property name="location"><![CDATA["681,2"]]></Property>
+<Property name="size"><![CDATA["601,763"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Panel</Property>
+<Property name="parent">PLANTA_CONTROLADA</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Display3DPanel</Type>
+<Property name="name">PanelDisplay3D</Property>
+<Property name="parent">Panel</Property>
+<Property name="position">center</Property>
+<Property name="minimumX"><![CDATA[-1.0]]></Property>
+<Property name="maximumX"><![CDATA[1.0]]></Property>
+<Property name="minimumY"><![CDATA[-1.0]]></Property>
+<Property name="maximumY"><![CDATA[1.0]]></Property>
+<Property name="minimumZ"><![CDATA[-1.0]]></Property>
+<Property name="maximumZ"><![CDATA[1.0]]></Property>
+<Property name="cameraAzimuth"><![CDATA[0.5972587712821162]]></Property>
+<Property name="cameraAltitude"><![CDATA[0.12137931812032457]]></Property>
+<Property name="cameraFocusX"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusY"><![CDATA[-1.0408340855860843E-17]]></Property>
+<Property name="cameraFocusZ"><![CDATA[-0.5399999999999999]]></Property>
+<Property name="cameraRotation"><![CDATA[0.0]]></Property>
+<Property name="cameraDistanceToScreen"><![CDATA[4.0]]></Property>
+<Property name="decorationType"><![CDATA[AXES]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral1</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral1</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral1_1</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">lateral2</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-0.8]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[1.7]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral2</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.7]]></Property>
+<Property name="sizeX"><![CDATA[0.2]]></Property>
+<Property name="sizeY"><![CDATA[0.2]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_lateral2_1</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[-0.8]]></Property>
+<Property name="z"><![CDATA[-1.8]]></Property>
+<Property name="sizeX"><![CDATA[0.7]]></Property>
+<Property name="sizeY"><![CDATA[0.7]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">base_superior</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[1.7]]></Property>
+<Property name="sizeY"><![CDATA[0.13]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="lineColor"><![CDATA[black]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+<Property name="drawingLines"><![CDATA[true]]></Property>
+<Property name="drawingFill"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union1</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="radius"><![CDATA[0.13]]></Property>
+<Property name="fillColor"><![CDATA[gray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupoBrazo</Property>
+<Property name="parent">PanelDisplay3D</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">brazo</Property>
+<Property name="parent">grupoBrazo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.06]]></Property>
+<Property name="sizeY"><![CDATA[0.06]]></Property>
+<Property name="sizeZ"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="closedTop"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">contra_peso</Property>
+<Property name="parent">grupoBrazo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Sphere3D</Type>
+<Property name="name">union2</Property>
+<Property name="parent">grupoBrazo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="radius"><![CDATA[0.12]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Ellipsoid3D</Type>
+<Property name="name">centro_de_giro</Property>
+<Property name="parent">grupoBrazo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.15]]></Property>
+<Property name="sizeY"><![CDATA[0.3]]></Property>
+<Property name="sizeZ"><![CDATA[0.3]]></Property>
+<Property name="transformation"><![CDATA[c]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Group3D</Type>
+<Property name="name">grupomotor</Property>
+<Property name="parent">grupoBrazo</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">motor</Property>
+<Property name="parent">grupomotor</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.09]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.25]]></Property>
+<Property name="sizeY"><![CDATA[0.25]]></Property>
+<Property name="sizeZ"><![CDATA[0.09]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">rotor</Property>
+<Property name="parent">grupomotor</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.16]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.09]]></Property>
+<Property name="sizeY"><![CDATA[0.09]]></Property>
+<Property name="sizeZ"><![CDATA[0.23]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,01.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">cuerpo_helice</Property>
+<Property name="parent">grupomotor</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.21]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[0.23]]></Property>
+<Property name="sizeY"><![CDATA[0.23]]></Property>
+<Property name="sizeZ"><![CDATA[0.06]]></Property>
+<Property name="transformation"><![CDATA[new double[]{1.57,1.0,0.0,0.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice1</Property>
+<Property name="parent">grupomotor</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{3.1,1.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cone3D</Type>
+<Property name="name">helice2</Property>
+<Property name="parent">grupomotor</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.2]]></Property>
+<Property name="z"><![CDATA[-1]]></Property>
+<Property name="sizeX"><![CDATA[1.2]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="sizeZ"><![CDATA[0.1]]></Property>
+<Property name="transformation"><![CDATA[new double[]{0.0,0.0,0.0,1.0}]]></Property>
+<Property name="fillColor"><![CDATA[64,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">GRAFICAS</Property>
+<Property name="parent">Panel</Property>
+<Property name="variable"><![CDATA[showDialog]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[SETPOINT  Y GRAFICAS]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

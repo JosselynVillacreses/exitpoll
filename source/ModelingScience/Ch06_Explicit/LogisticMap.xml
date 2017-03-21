@@ -1,0 +1,375 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[Logistic Map]]></Title>
+<Author><![CDATA[Wolfgang Christian and Francisco Esquembre]]></Author>
+<Keywords><![CDATA[chaos, logistic map, nonlinear dynamics, population biology]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      The logistic map
+    </h1>
+    <p>
+      The logistic equation was first proposed by <b>Robert May</b> as a 
+      simple model of population dynamics. This equation can be written as a 
+      one-dimensional difference equation that transforms the population in 
+      one generation, p<i><sub>n</sub></i>, into a succeeding generation, p<i><sub>n+1</sub></i>.
+    </p>
+    <p align="center">
+      <i>p<sub>n+1 </sub>= r p<sub>n</sub> (1-p<sub>n</sub>)</i>
+    </p>
+    <p>
+      Because the population is scaled so that the maximum value is one, the 
+      domain of <i>x</i> falls on the interval<i> [0; 1]</i>.
+    </p>
+    <p>
+      The behavior of the logistic equation depends on the value of the growth 
+      parameter, <i>r</i>. If the growth parameter is less than a critical 
+      value <i>r&lt;3</i>., then <i>x</i> approaches a stable fixed value. 
+      Above this value for <i>r</i>, the behavior of <i>x</i> begins to 
+      change. First the population begins to oscillate between two values. If <i>r</i> 
+      increases further, then <i>x</i> oscillates between four values. Then 
+      eight values. This doubling ends when <i>r &gt; 3.57..</i>. after which 
+      almost any <i>x</i> value is possible.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Logistic Map Variables</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>rmin</Name>
+<Value><![CDATA[2.8]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[growth parameter at start of scan]]></Comment>
+</Variable>
+<Variable>
+<Name>rmax</Name>
+<Value><![CDATA[4.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[growth parameter at end of scan]]></Comment>
+</Variable>
+<Variable>
+<Name>r</Name>
+<Value><![CDATA[rmin]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[current growth parameter]]></Comment>
+</Variable>
+<Variable>
+<Name>dr</Name>
+<Value><![CDATA[0.001]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[scan increment for biburcation diagram]]></Comment>
+</Variable>
+<Variable>
+<Name>ymin</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[vertical axis minimum]]></Comment>
+</Variable>
+<Variable>
+<Name>ymax</Name>
+<Value><![CDATA[1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[vertical axis maximum]]></Comment>
+</Variable>
+<Variable>
+<Name>nTransients</Name>
+<Value><![CDATA[400]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of transient generations to be discarded]]></Comment>
+</Variable>
+<Variable>
+<Name>nPlot</Name>
+<Value><![CDATA[800]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of generations to plot after transients have died out]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initialize</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+r=rmin;  // resets the starting value of r for a new scan
+_view.bifurcationDataRaster.setColor(0, new java.awt.Color(64,64,64));
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double p=Math.random();   // random initial population 
+for(int i=0;i<nTransients; i++){ 
+  p = map(p);             // iterate to remove transients
+}
+for(int i=0;i<nPlot; i++){ 
+  p = map(p);             // iterate to collect data
+  _view.bifurcationDataRaster.append(0,r,p);
+}
+r += dr;                  // increases growth rate
+if(r>=rmax) _pause();     // stops the simulation
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Map</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double map(double p) {
+  return r*p*(1-p);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">bifrucationFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Logistic Map]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["-693,335"]]></Property>
+<Property name="size"><![CDATA["353,372"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">bifrucationPlottingPanel</Property>
+<Property name="parent">bifrucationFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[rmin]]></Property>
+<Property name="maximumX"><![CDATA[rmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="titleX"><![CDATA[r]]></Property>
+<Property name="titleY"><![CDATA[p]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.DataRaster</Type>
+<Property name="name">bifurcationDataRaster</Property>
+<Property name="parent">bifrucationPlottingPanel</Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">rMarker</Property>
+<Property name="parent">bifrucationPlottingPanel</Property>
+<Property name="x"><![CDATA[r+dr]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[1]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">paramPanel</Property>
+<Property name="parent">bifrucationFrame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">rminPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">rminLabel</Property>
+<Property name="parent">rminPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[     rmin =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">rminField</Property>
+<Property name="parent">rminPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[rmin]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[50,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">rmaxPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">rmaxLabel</Property>
+<Property name="parent">rmaxPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[     rmax =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">rmaxField</Property>
+<Property name="parent">rmaxPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[rmax]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[50,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">drPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">drLabel</Property>
+<Property name="parent">drPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[     dr =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">drField</Property>
+<Property name="parent">drPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[dr]]></Property>
+<Property name="format"><![CDATA[0.0000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[50,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">bifrucationFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Scan]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Step]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA[Advances by one step.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the simulation.]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,914 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Coin]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[rigid body;velocity field;sliding;rolling;friction]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[A spinning disk is gently placed on a rough horizontal surface. Initially there will be sliding, but gradually the center of mass accelerates. The simulation will display the velocity filed in the disk perimeter and, optionally, the time evolution of the angular velocity and the velocities of the center and the contact point.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Rolling with and without sliding</title>
+    
+  </head>
+  <body>
+    <h1>
+      Rolling with and without sliding
+    </h1>
+    A spinning disk is gently placed on a rough horizontal surface. Initially 
+    there will be sliding, but gradually the center of mass accelerates, while 
+    the angular velocity and the velocity of the point on the floor decrease 
+    until the latter and sliding dissapear.
+
+    <ul>
+      <li>
+        The unit length is the disk radius <i>R</i> and the unit time (<i>R</i>/<i>g</i>)<sup>1/2</sup>, 
+        so that in these units <i>g</i> = <i>R</i> = 1.
+      </li>
+      <li>
+        Below you may select the initial angular velocity <i>&#969;</i><sub>0</sub> 
+        = <font color="#008000">&#969;</font>, as well as the friction 
+        coefficient between disk and floor: <i>&#956;</i>. It is also possible 
+        to select the disk initial position by dragging its center with the 
+        mouse.
+      </li>
+      <li>
+        If <b>Graph</b> is pressed a new window displays the time evolution of 
+        the angular velocity <font color="#008000"><i>&#969;</i></font> and 
+        the velocities of the center (<font color="#ff00ff"><i>V</i></font>) 
+        and the contact point (<font color="#ff0000"><i>v</i></font>).
+      </li>
+      <li>
+        <font color="#ff0000"><b>N</b></font> is the number (from 0 to 32) of 
+        periphery points that will have their velocity shown as a vector. 
+        Checking <font color="#ff00ff"><b>V</b></font> you will also see the 
+        velocity of the center of mass. All velocities in display (including 
+        that of the platform or the laboratory) are relative to the currently 
+        selected reference frame. If the velocity vectors are too long or too 
+        short, change <font color="#ff0000">scale</font>.
+      </li>
+      <li>
+        To get information on an element, put over it the mouse pointer to see 
+        the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ol>
+      <li>
+        Make sure you understand the relationship among angular velocity, the 
+        velocities of the center and the contact point and the disk radius <i>R</i>:<br><font color="#ff00ff"><i>V</i></font> 
+        = <font color="#ff0000"><i>v</i></font> + <font color="#008000"><i>&#969;</i></font> 
+        <i>R</i>.
+      </li>
+      <li>
+        By using the friction force and its momentum around the disk center, 
+        write and solve the evolution equations for the center-of-mass and the 
+        angular velocity.
+      </li>
+      <li>
+        How will change with time the angular velocity and the velocities of 
+        the center and the contact point?
+      </li>
+      <li>
+        When will start rolling without sliding?
+      </li>
+      <li>
+        Use the simulation to check your calculations.
+      </li>
+    </ol>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[2.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of the center-of-mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[R]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Cylinder radius]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[R]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of the center-of-mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x0]]></Name>
+<Value><![CDATA[-2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial value for the x coordinate of the center-of-mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position when sliding dissapears]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Center-of-mass velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v0]]></Name>
+<Value><![CDATA[-0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial value for center-of-mass velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Final velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Angular velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega0]]></Name>
+<Value><![CDATA[3.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial angular velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Final angular velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[D]]></Name>
+<Value><![CDATA[2.0*R]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Cylinder diameter]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mu]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Friction coefficient]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Sliding stops when t = t1]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Velocity field</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[maxPoints]]></Name>
+<Value><![CDATA[32]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum number of points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nPoints]]></Name>
+<Value><![CDATA[8]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Actual number of points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Orientation of first point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Angular position when sliding dissapears]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xp]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxPoints]]]></Dimension>
+<Comment><![CDATA[x coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yp]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxPoints]]]></Dimension>
+<Comment><![CDATA[y coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[up]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxPoints]]]></Dimension>
+<Comment><![CDATA[x component of velocity field]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vp]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxPoints]]]></Dimension>
+<Comment><![CDATA[y component of velocity field]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[scaleV]]></Name>
+<Value><![CDATA[0.3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Scale for velocity vectors]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.02]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Animation step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-4.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum displayed coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[4.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum displayed coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[depth]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Platform depth]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[2.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showV]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show center-of-mass velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[graphics]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show time evolution in separate window]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[PI2]]></Name>
+<Value><![CDATA[2.0*Math.PI]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[2 pi]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[setInitial]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Setting initial cylender position?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set initial values]]></Comment>
+<Code><![CDATA[
+t = 0.0;
+x = x0;
+_view.resetTraces();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Set greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("Omega").setProperty("format","\u03c9 = 0.###");
+_view.getElement("Mu").setProperty("format","\u03bc = 0.###");
+_view.getElement("dt").setProperty("format","\u0394t = 0.###");
+_view.getElement("Angular").setProperty("text","\u03c9 R");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update time]]></Comment>
+<Code><![CDATA[
+t += dt;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Cylinder</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Cylinder is always on the platform]]></Comment>
+<Code><![CDATA[
+y = R;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Motion</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update everything]]></Comment>
+<Code><![CDATA[
+omega1 = omega0/3;		// Final values
+v1 = omega1*R;
+t1 = v1/mu;	
+x1 = x0+0.5*mu*t1*t1;
+phi1 = omega0*t1-mu*t1*t1/R;
+
+omega = (t >= t1) ? omega1 : omega0-2.0*mu*t/R;
+v = (t >= t1) ? v1 : mu*t;
+if (!setInitial)
+x = (t >= t1) ? x1+v1*(t-t1) : x0+0.5*mu*t*t;
+phi = (t >= t1) ? phi1+omega1*(t-t1) : omega0*t-mu*t*t/R;
+
+if (nPoints == 0) {			// Radius
+  xp[0] = x+R*Math.sin(phi);
+  yp[0] = y+R*Math.cos(phi);
+}
+else
+for (int i = 0; i < nPoints; i++)  {                      	// Velocity fields
+  double f = phi+PI2/nPoints*i;
+  xp[i] = x+R*Math.sin(f);
+  yp[i] = y+R*Math.cos(f);
+  up[i] = v+R*omega*Math.cos(f);
+  vp[i] = -R*omega*Math.sin(f);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Stop</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Stop conditions]]></Comment>
+<Code><![CDATA[
+if (x > 1.5*xmax || x < 1.5*xmin) _pause();
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Coin]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["2,0"]]></Property>
+<Property name="size"><![CDATA["640,320"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Space</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-depth]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="tooltip"><![CDATA[Use mouse to change coin position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Floor</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[2.0*xmin]]></Property>
+<Property name="y"><![CDATA[-depth]]></Property>
+<Property name="sizex"><![CDATA[2.0*(xmax-xmin)]]></Property>
+<Property name="sizey"><![CDATA[depth]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH_WEST]]></Property>
+<Property name="secondaryColor"><![CDATA[orange]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Coin</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[D]]></Property>
+<Property name="sizey"><![CDATA[D]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="pressaction"><![CDATA[setInitial = true;
+t = 0.0]]></Property>
+<Property name="dragaction"><![CDATA[x0 = x]]></Property>
+<Property name="action"><![CDATA[setInitial = false]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="angle"><![CDATA[-phi]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[green]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">VField</Property>
+<Property name="parent">Space</Property>
+<Property name="elementnumber"><![CDATA[nPoints]]></Property>
+<Property name="x"><![CDATA[xp]]></Property>
+<Property name="y"><![CDATA[yp]]></Property>
+<Property name="sizex"><![CDATA[up]]></Property>
+<Property name="sizey"><![CDATA[vp]]></Property>
+<Property name="scalex"><![CDATA[scaleV]]></Property>
+<Property name="scaley"><![CDATA[scaleV]]></Property>
+<Property name="visible"><![CDATA[nPoints > 0 && t > 0.0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">V</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[v]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="scalex"><![CDATA[scaleV]]></Property>
+<Property name="visible"><![CDATA[showV]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+<Property name="secondaryColor"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">Sliding</Property>
+<Property name="parent">Space</Property>
+<Property name="y"><![CDATA[ymax]]></Property>
+<Property name="visible"><![CDATA[t > 0 && t < t1]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[Sliding]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Down</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[VBOX]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Values</Property>
+<Property name="parent">Controls</Property>
+<Property name="layout"><![CDATA[GRID:1,7,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Omega</Property>
+<Property name="parent">Values</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[omega0]]></Property>
+<Property name="format"><![CDATA["$\omega$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[Initial angular velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Mu</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[mu]]></Property>
+<Property name="format"><![CDATA["$\mu$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Friction coefficient]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">nPoints</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[nPoints]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[if (nPoints < 0) nPoints = 0;
+else if (nPoints > maxPoints) nPoints = maxPoints;
+_initialize();]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Number of points in velocity field]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Scale</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[scaleV]]></Property>
+<Property name="format"><![CDATA[scale = 0.###]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Velocity scale]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">dt</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.####"]]></Property>
+<Property name="tooltip"><![CDATA[Animation step length]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowV</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[showV]]></Property>
+<Property name="text"><![CDATA["Center V"]]></Property>
+<Property name="mnemonic"><![CDATA[v]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+<Property name="tooltip"><![CDATA[Show center velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowGraphics</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[graphics]]></Property>
+<Property name="text"><![CDATA["V Graph"]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="tooltip"><![CDATA[Show evolution of velocities in another window]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Buttons</Property>
+<Property name="parent">Controls</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_initialize(); 
+_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">continueButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/continue.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["c"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+<Property name="tooltip"><![CDATA["Continue previous simulation"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">Graphics</Property>
+<Property name="title"><![CDATA[Evolution]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[graphics]]></Property>
+<Property name="location"><![CDATA["650,0"]]></Property>
+<Property name="size"><![CDATA["480,324"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Evolution</Property>
+<Property name="parent">Graphics</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="xMarginPercentage"><![CDATA[10]]></Property>
+<Property name="yMarginPercentage"><![CDATA[10]]></Property>
+<Property name="title"><![CDATA[Velocities]]></Property>
+<Property name="titleX"><![CDATA[t]]></Property>
+<Property name="titleY"><![CDATA["v,   $\omega$ R,   V"]]></Property>
+<Property name="xFormat"><![CDATA[t=0.###]]></Property>
+<Property name="yFormat"><![CDATA[v=0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">vContact</Property>
+<Property name="parent">Evolution</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[v-omega*R]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">OmegaR</Property>
+<Property name="parent">Evolution</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[omega*R]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">vCenter</Property>
+<Property name="parent">Evolution</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[v]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">ControlsD</Property>
+<Property name="parent">Graphics</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[GRID:1,4,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">Contact</Property>
+<Property name="parent">ControlsD</Property>
+<Property name="text"><![CDATA[v at contact point]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Velocity at contact point]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">Angular</Property>
+<Property name="parent">ControlsD</Property>
+<Property name="text"><![CDATA["$\omega$ R"]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,12]]></Property>
+<Property name="tooltip"><![CDATA[Angular velocity times radius]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">Center</Property>
+<Property name="parent">ControlsD</Property>
+<Property name="text"><![CDATA[V at center]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+<Property name="tooltip"><![CDATA[Velocity of center-of-mass]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Erase</Property>
+<Property name="parent">ControlsD</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/erase.gif]]></Property>
+<Property name="mnemonic"><![CDATA[e]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="tooltip"><![CDATA[Erase graphics (Alt+E)]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

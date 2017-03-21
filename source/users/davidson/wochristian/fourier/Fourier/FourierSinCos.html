@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<link href="../../../../../_ejs_library/css/ejsPage.css" rel="stylesheet" type="text/css" />
+<title>Molecular Dynamics</title>
+</head>
+
+<body>
+
+<p align="center"><img border="0" src="sawtooth.jpg"><br>
+[Screen shot of a reconstructed sawtooth wave function using 9 Fourier coefficients.]</p>
+<h1>Fourier Sin/Cos Series </h1>
+<p>A Fourier series is a sum of sinusoidal (sine and cosine) functions with harmonic frequencies {&#969;<sub>m</sub>= m&#969;<sub>0 </sub>} where <i>m</i> in an integer and 
+&#969;<sub>0</sub> = 2&#960;f<sub>0</sub> is the fundamental frequency. It is a useful mathematical tool because it can be used to analyze periodic functions with period 
+T = 1/f<sub>0</sub> by decomposing such a function into sinusoidal components with constant (Fourier) coefficients <i>a</i><sub>m</sub> and <i>b</i><sub>m</sub>.
+</p>
+<p align="center"><img src="fourier_sincos_series.gif"> </p>
+<p align="left">We refer to each term as having a certain (angular) frequency {&#969;<sub>m</sub>= m&#969;<sub>0 </sub>} because the independent variable is often time. However, 
+Fourier analysis is very general and the independent variable can, in fact, be anything including position so we write the unknown function in the generic form 
+f(x). </p>
+<p align="left"><i>Note:</i> In order to simplify the model, the domain of the independent variable has been set to [0, 2&#960;]. The domain can be changed in the Ejs model. 
+Also, the Ejs model is inefficient because it sine and cosine functions are evaluated repeatedly with the same argument. A more efficient implementation would create 
+an array of sin/cos values after the number of sample points has been set. A much more efficient implementation that uses the Fast Fourier Transformation (FFT) 
+in the OSP numerics library is available.</p>
+<h2>Functions to try: </h2>
+<ul>
+	<li>Gaussian: f(x) = exp(-4*(x-pi)^2)</li>
+	<li>sawtooth: f(x) = x</li>
+	<li>square wave: 1-2*step(x-pi)</li><li>centered square wave: f(x) = step(x-0.5*pi)-step(x-1.5*pi)</li>
+</ul>
+
+<font SIZE="3">
+
+    <h3>
+      References:
+    </h3>
+    <ul>
+        <li><em>Numerical Recipes </em>(3<em>ed</em>)
+        by William Press, Saul Teukolsky, William Vetterling, and Brian Flannery page 600.</li>
+    </ul>
+
+    <h3>
+      Credits:</h3>
+    <p>
+      The Fourier sine-cosine series simulation was created by Wolfgang Christian using the Easy Java Simulations (EJS) modeling tool.&nbsp; You can examine and modify the 
+		simulation's 
+		model if you have Ejs installed by right-clicking within the plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; 
+		Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP ComPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+    </font>
+  
+    </body>
+
+</body>
+
+</html>

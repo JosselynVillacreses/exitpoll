@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>First Law</title>
+</head>
+
+<body>
+    <h1>
+    Newton's First Law
+    </h1>
+
+    <p>
+      <i>Lex I: Corpus omne perseverare in statu suo quiescendi vel movendi 
+      uniformiter in directum, nisi quatenus a viribus impressis cogitur 
+      statum illum mutare.</i>&nbsp;
+      <i>(Isaac Newton 1687)</i>
+    </p>
+    <p>
+      In 1687 Isaac Newton wrote in the Principia Mathematica &quot;An object at 
+      rest will remain at rest unless acted upon by an external and unbalanced 
+      force. An object in motion will remain in motion unless acted upon by an 
+      external and unbalanced force.&quot;&#160; This law implies that it is possible to 
+      select a reference frame, called an inertial reference frame, in which a 
+      free particle moves without any change in velocity. The First Law is 
+      often simplified as follows: <i>&#160;</i>An object in motion will 
+      remain in motion unless acted upon by another force.
+    </p>
+    <p>
+      What&#160; is interesting about this Ejs model is that dragging the on-screen 
+      ball or the arrow automatically change the model's variables.&#160; Double 
+      click on the green arrow in the Launcher table of contents tree to run 
+      the First Law model.&#160; You can drag the particle to set its position and 
+      you can drag the arrow to set the particle's velocity.</p><p>
+      The Ejs implementation of Newton's first law is very simple.&#160; The 
+      Evolution workpanel merely advances the position and time.
+    </p>
+    <blockquote>
+      <pre>x = x + vx*dt;
+y = y + vy*dt;
+t = t + dt;</pre>
+    </blockquote>
+    <p>Note that the equals sign does not represent mathematical equality when used in Java code.&nbsp; The equals sign is a 
+    replacement operation that says:&nbsp; &quot;Replace the value on the left hand side with the value of the expression on the right 
+    hand side.&quot; </p>
+    <h2>
+      References:
+    </h2>
+	<p>
+      The First Laws model is&nbsp; a designed to teach Ejs modeling.&nbsp; 
+	  Right click within the simulation to examine this model in the Ejs 
+	  modeling and authoring tool.&nbsp; See:
+    </p><ul>
+      <li>&quot;Modeling Physics with Easy Java Simulations&quot; by Wolfgang Christian and Francisco Esquembre, The Physics Teacher, 
+      November 2007, <b>45</b> (8), pp. 475-480.</li>
+    </ul><p>The Easy Java Simulations (EJS) manual can be downloaded from the ComPADRE Open Source Physics collection and from the 
+    Ejs website.</p>
+    <h3>
+      Note:
+    </h3>
+    <p>
+      This simulation was created by Wolfgang Christian using the Easy Java 
+		Simulations (Ejs) modeling tool.&nbsp;You can examine and modify this 
+		simulation if you have Ejs installed by right-clicking within a plot and 
+		selecting &quot;Open Ejs Model&quot; from the pop-up menu. </p><p>
+      Information about 
+		Ejs is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+
+</body>
+
+</html>

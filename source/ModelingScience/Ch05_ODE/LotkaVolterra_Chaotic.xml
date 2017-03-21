@@ -1,0 +1,662 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>24</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Parameters</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>a</Name>
+<Value><![CDATA[0.172]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>a2</Name>
+<Value><![CDATA[0.25]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>f</Name>
+<Value><![CDATA[0.3]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>b</Name>
+<Value><![CDATA[0.156]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>c</Name>
+<Value><![CDATA[0.05]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>d</Name>
+<Value><![CDATA[0.2]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xmin</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xmax</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>ymin</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>ymax</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>solution</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>tmax</Name>
+<Value><![CDATA[800.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>h</Name>
+<Value><![CDATA[0.2]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>y</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>x0</Name>
+<Value><![CDATA[0.46501]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Delet the last 1 to get a different trajectory]]></Comment>
+</Variable>
+<Variable>
+<Name>y0</Name>
+<Value><![CDATA[0.40811]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>fastSpeed</Name>
+<Value><![CDATA[false]]></Value>
+<Type>boolean</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>color_index</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>lastT</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xM1</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>xM2</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>yM1</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>yM2</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name></Name>
+<Value><![CDATA[]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t = 0;
+x = xM1 = xM2 = x0;
+y = yM1 = yM2 = y0;
+color_index++;
+_view.solution.setConnected(false);
+_view.txPlot.setConnected(false);
+_view.tyPlot.setConnected(false);
+_view.solution.addPoint(x,y);
+_view.txPlot.addPoint(t,x);
+_view.tyPlot.addPoint(t,y);
+_view.solution.setConnected(true);
+_view.txPlot.setConnected(true);
+_view.tyPlot.setConnected(true);
+if (fastSpeed) {
+  _setUpdateView(false);
+  _setDelay(0);
+}
+else _setDelay(10);
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>differential equation</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>h</Increment>
+<Rate state="x">(a+a2*Math.cos(f*t))*x-b*x*y</Rate>
+<Rate state="y">-c*y+d*x*y</Rate>
+<Method>RungeKutta</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events></Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>pause</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if ((y-yM1)*(yM1-yM2)<0) {
+  _view.dataRaster.append(color_index,x,y);
+}
+if (t>tmax) {
+  _pause();
+  _setUpdateView(true);
+}
+xM2 = xM1;
+xM1 = x;
+yM2 = yM1;
+yM1 = y;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">plottingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Lotka Volterra]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,0"]]></Property>
+<Property name="size"><![CDATA["662,644"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">centerPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:0,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">topCenterPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">topCenterPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="action"><![CDATA[if (_view.plottingPanel.getMouseButton()!=1) return;
+x0 = _view.plottingPanel.getMouseX(); // Initial conditions
+y0 = _view.plottingPanel.getMouseY(); 
+initialize (); 
+_play();]]></Property>
+<Property name="title"><![CDATA[Phase-space plot]]></Property>
+<Property name="titleX"><![CDATA[prey]]></Property>
+<Property name="titleY"><![CDATA[predators]]></Property>
+<Property name="square"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">solution</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel3</Property>
+<Property name="parent">topCenterPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="action"><![CDATA[if (_view.plottingPanel.getMouseButton()!=1) return;
+x0 = _view.plottingPanel.getMouseX(); // Initial conditions
+y0 = _view.plottingPanel.getMouseY(); 
+initialize (); ]]></Property>
+<Property name="title"><![CDATA[Poincaré section]]></Property>
+<Property name="titleX"><![CDATA[prey]]></Property>
+<Property name="titleY"><![CDATA[predators]]></Property>
+<Property name="square"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.DataRaster</Type>
+<Property name="name">dataRaster</Property>
+<Property name="parent">plottingPanel3</Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel2</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[tmax]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="title"><![CDATA[Time plots]]></Property>
+<Property name="titleX"><![CDATA[time]]></Property>
+<Property name="titleY"><![CDATA[predators (r) and prey (b)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">txPlot</Property>
+<Property name="parent">plottingPanel2</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">tyPlot</Property>
+<Property name="parent">plottingPanel2</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">firstPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">firstPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+<Property name="border"><![CDATA[0,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset();
+_initialize();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Clear]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces();
+_view.dataRaster.clear();
+]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Plot trajectory]]></Property>
+<Property name="action"><![CDATA[_initialize();
+_play();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">fastSpeedBox</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[fastSpeed]]></Property>
+<Property name="text"><![CDATA[Fast Speed]]></Property>
+<Property name="actionon"><![CDATA[_setUpdateView(false);
+_setDelay(0);]]></Property>
+<Property name="actionoff"><![CDATA[_setUpdateView(true);
+_setDelay(10);]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">rightPanel</Property>
+<Property name="parent">firstPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">tmaxPanel</Property>
+<Property name="parent">rightPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">tmaxLabel</Property>
+<Property name="parent">tmaxPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[ t max=]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">tmaxField</Property>
+<Property name="parent">tmaxPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[tmax]]></Property>
+<Property name="format"><![CDATA[0.###]]></Property>
+<Property name="size"><![CDATA[50,25]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">hPanel</Property>
+<Property name="parent">rightPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">hLabel</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[ h =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">hField</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[h]]></Property>
+<Property name="format"><![CDATA[0.###]]></Property>
+<Property name="size"><![CDATA[50,25]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">x0Panel</Property>
+<Property name="parent">rightPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">x0Label</Property>
+<Property name="parent">x0Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[ x0 =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">x0Field</Property>
+<Property name="parent">x0Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[x0]]></Property>
+<Property name="format"><![CDATA[0.######]]></Property>
+<Property name="size"><![CDATA[50,25]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">y0Panel</Property>
+<Property name="parent">rightPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">y0Label</Property>
+<Property name="parent">y0Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[ y0 =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">y0Field</Property>
+<Property name="parent">y0Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[y0]]></Property>
+<Property name="format"><![CDATA[0.######]]></Property>
+<Property name="size"><![CDATA[50,25]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">parametersPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,3,0,0]]></Property>
+<Property name="border"><![CDATA[3,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderA</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[a = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderB</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[b = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderC</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[c]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[c = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderD</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[d]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[d = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderA2</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[a2]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[a2 = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderF</Property>
+<Property name="parent">parametersPanel</Property>
+<Property name="variable"><![CDATA[f]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[0.5]]></Property>
+<Property name="format"><![CDATA[f = 0.###]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,446 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Brusselator]]></Title>
+<Author><![CDATA[Francisco Esquembre (Universidad de Murcia) and Wolfgang Christian (Davidson College)	]]></Author>
+<Keywords><![CDATA[ODE, chemical reactions]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The Brusselator is a model, proposed in 1968 by R. Lefever and the Nobel Prize winner I. Prigogine, for an autocatalytic, oscillating chemical reaction.
+The simulation plots a set of sample trajectories in phase-space, which start from different initial conditions, for the same values of the parameters.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./Brusselator/BrusselatorEqn.gif;./Brusselator/BrusselatorImage.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Brusselator</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            The Brusselator
+          </h1>
+          <p>
+            The Brusselator is a model, proposed in 1968 by R. Lefever and the 
+            Nobel Prize winner I. Prigogine, for an autocatalytic, oscillating 
+            chemical reaction. The mechanism for the reaction is given by:
+          </p>
+          <p align="center">
+            <img src="./Brusselator/BrusselatorEqn.gif">
+            
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./Brusselator/BrusselatorImage.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+      We will assume that the concentration of the reactants a=[A] and b=[B] 
+      is kept artificially constant and are interested in the evolution of the 
+      intermediate products, x = [X] and y = [Y]. This system can exhibit, for 
+      appropriate values of the parameters, unexpected oscillatory behavior. 
+      (Hint: Increase the value of k<sub>2</sub>.)
+    </p>
+    <p>
+      The simulation plots a set of sample trajectories in phase-space, which 
+      start from different initial conditions, for the same values of the 
+      parameters.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Basic Variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The increment for the time in each evolution step]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k1]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[k1 constant]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k2]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[k2 constant]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k3]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[k3 constant]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k4]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[k4 constant]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[fixed concentration of A]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[fixed concentration of B]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[max]]></Name>
+<Value><![CDATA[5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[phase space side]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[5]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[number of trajectories to compute in each direction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nTraj]]></Name>
+<Value><![CDATA[4*n]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The number of trajectories]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nTraj]]]></Dimension>
+<Comment><![CDATA[concentration of X]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nTraj]]]></Dimension>
+<Comment><![CDATA[concentration of Y]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init x and y</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Initial conditions of the trajectories
+int k = 0;
+for (int i=0; i<=n; i++) {
+  x[k] = i*max/n; y[k] = 0;   k++;
+  x[k] = i*max/n; y[k] = max; k++;
+}
+for (int i=1; i<n; i++) {
+  x[k] = 0;   y[k] = i*max/n; k++;
+  x[k] = max; y[k] = i*max/n; k++;
+}
+// clear traces
+_view.resetTraces(); 
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Equations</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x[i]">k1*a - k2*b*x[i] + k3*x[i]*x[i]*y[i] - k4*x[i]</Rate>
+<Rate state="y[i]">k2*b*x[i] - k3*x[i]*x[i]*y[i]</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[Brusselator differential equations]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Brusselator"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,22"]]></Property>
+<Property name="size"><![CDATA["333,400"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">fieldsPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">k1Panel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">k1Label</Property>
+<Property name="parent">k1Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" k1 = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">k1Field</Property>
+<Property name="parent">k1Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[k1]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">k2Panel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">k2Label</Property>
+<Property name="parent">k2Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" k2 = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">k2Field</Property>
+<Property name="parent">k2Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[k2]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">k3Panel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">k3Label</Property>
+<Property name="parent">k3Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" k3 = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">k3Field</Property>
+<Property name="parent">k3Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[k3]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">k4Panel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">k4Label</Property>
+<Property name="parent">k4Panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" k4 = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">k4Field</Property>
+<Property name="parent">k4Panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[k4]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">aPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">aLabel</Property>
+<Property name="parent">aPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" a  = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">aField</Property>
+<Property name="parent">aPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">bPanel</Property>
+<Property name="parent">fieldsPanel</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">bLabel</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" b  = "]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">bField</Property>
+<Property name="parent">bPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="format"><![CDATA["0.###"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderK2</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">south</Property>
+<Property name="variable"><![CDATA[k2]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[3]]></Property>
+<Property name="format"><![CDATA["k2 = 0.000"]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="action"><![CDATA[_initialize();
+_play();]]></Property>
+<Property name="foreground"><![CDATA[BLACK]]></Property>
+<Property name="font"><![CDATA[Monospaced,PLAIN,14]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[max]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[max]]></Property>
+<Property name="title"><![CDATA["Brusselator's phase space"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">traceSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[nTraj]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

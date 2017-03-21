@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../_ejs_library/css/ejsPage.css"/>
+    <title>Ejs QM Models: Dirac delta function scattering</title>
+  </head>
+<body>
+    <p align="center">
+      <img border="0" src="TimeDependendentFunction.gif" width="404" height="161"><br>
+		[The Time Dependent Function Plotter displays data that is generated at a constant rate.]</p>
+	<h1>
+      Time Dependent Function Plotter</h1>
+    <p>To convey a sense of time development, the Time Dependent Function Plotter displays a function u = f(t)&nbsp; in real time 
+    by generating data at a constant (fixed) rate a shown in the screen shot.&nbsp; The data is generate in the Evolution 
+    workpanel with the following code:</p>
+    <p><font face="Courier New">t += dt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // advance time<br>
+    u = _view.analyticFunction.evaluate(t); // evaluate function</font></p>
+    <p>The independent variable t and the dependent variable u are computed 20 times per second and this data is displayed in a 
+    Trace within the model's plotting panel because the t and u variables are connected (bound) the X and Y Trace properties.</p>
+    <p>Note that the Time Dependent Function buttons.&nbsp; The reset button <img border="0" src="reset.gif" width="34" 
+    height="21">&nbsp; rests the 
+    simulation to its default state by invoking the model's <font face="Courier New">_reset() </font>method whereas the time reset 
+    button <img border="0" src="timereset.gif" width="34" height="22"> invokes the code within the initialization workpanel.&nbsp; 
+    Open the model and EJS and examine the buttons in the Tree of Elements to see how easy is is to perform these actions.</p>
+
+
+    <h2>Related Models</h2><p>The following EJS models demonstrate how to plot functions in EJS.&nbsp; These models are listed in order of complexity.</p><ul>
+		<li>Fixed Function Plotter model</li>
+		<li>Analytic Function Plotter model</li>
+		<li>Time Dependent Function Plotter model</li>
+		<li>Wave Function Plotter model</li>
+	</ul>
+	<h3>
+      Credits:</h3>
+    <p>
+      The Time Dependent Function Plotter model was created by Wolfgang Christian and Francisco Esquembre using the Easy Java Simulations (EJS) 
+      version 4.1 authoring and modeling tool.&nbsp; You can examine and modify a compiled EJS model if you run the model (double click on 
+      the model's jar file), right-click within a plot, and select &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; You 
+      must, of course, have EJS installed on your computer.&nbsp; Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP ComPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+  </body>
+</html>

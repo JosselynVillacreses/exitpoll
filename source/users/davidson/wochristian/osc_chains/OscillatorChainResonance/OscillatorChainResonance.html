@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Oscillator Chain Resonance</title>
+</head>
+
+<body>
+    <h1>
+      Oscillator Chain Resonance
+    </h1>
+    <p>
+      The Oscillator Chain Resonance model displays the total mechanical 
+      energy as a function of frequency in a chain of coupled 
+      oscillators. The chain is driven at one end&nbsp; by a sinusoidal force
+      F<sub>drive</sub> =sin(&#969;t) and the total energy is measured after skipping a large number 
+      of drive cycles to allow the system to reach steady state. Particles are also subject to&nbsp; a small damping force F<sub>Stokes</sub>= - bv 
+      to remove transients and to limit the amplitude of the oscillation.
+    </p><p>
+      For a simple one-dimensional 
+      Hooke's Law model with spring constant k, the kinetic energy of the <i>i</i>-th 
+      particle is K<sub>i</sub>= (1/2)Mv<sub>i</sub><sup>2</sup> and potential 
+      energy of each spring is U<sub>i</sub>= (1/2) k&#916;y<sub>i</sub><sup>2</sup>. 
+      The total energy E = U + K for a lattice of N molecules is the sum of 
+      these energies.
+    </p>
+    <p align="center">
+      <img src="lattice_energy.gif" width="266" height="60">
+    </p>
+
+    <p align="left">Note that the first particle (i=0) is not used when computing energy because its motion is not governed by 
+    Newton's second law.</p>
+
+    <h2>
+      References:
+    </h2><ul>
+      <li><i>Vibration and Wave Physics 3 ed </i>by Iain G. Main, Cambridge (1993).&nbsp; See Chapter 9 for a discussion of power 
+      and input impedance.</li>
+    </ul>
+
+    <h3>
+      Note:
+    </h3>
+    <p>
+      This simulation was created by Wolfgang Christian using the Easy Java 
+		Simulations (Ejs) modeling tool.&nbsp;You can modify this 
+		simulation if you have Ejs installed by right-clicking within a plot and 
+		selecting &quot;Open Ejs Model&quot; from the pop-up menu. Information about 
+		Ejs is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+    
+</body>
+
+</html>

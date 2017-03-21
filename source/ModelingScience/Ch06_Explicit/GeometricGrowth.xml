@@ -1,0 +1,274 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Geometric Growth</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Geometric Growth
+    </h1>
+    Imagine an insect population that lays eggs in the summer that hatch the 
+    following spring. The population <em>P</em> during the second summer is<br><br><em>P</em><sub>1</sub> 
+    = r <em>P</em><span style="width: 0; height: 0"><sub>0</sub></span><br><br>where 
+    r represents the average number of surviving offspring for each insect. 
+    The population increases or decreases if r &gt; 1 or r &lt; 1, respectively. The 
+    special, and highly unlikely, condition r=1 produces a stable population. 
+    The population after n years is and is an example of geometric growth or 
+    decay. Geometric growth refers to the situation where successive changes 
+    in a variable over a discrete period differ by a constant ratio and is 
+    closely related to exponential growth where growth is continuous.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>2</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamical Vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[dynamical variables for a simple growth model]]></PageComment>
+<Variable>
+<Name>P</Name>
+<Value><![CDATA[1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[the population]]></Comment>
+</Variable>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[counter]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Constants</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[constant parameters]]></PageComment>
+<Variable>
+<Name>r</Name>
+<Value><![CDATA[0.1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[the growth rate for the population]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Exponential (geometric) growth</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+P += r*P;               // advance the population
+n++;                    // advance the time
+
+/*
+The ++ operator increments the variable by one.
+
+The += operator is equivalent to:
+P = P + r*P;
+
+The += operator is Java shorthand for adding a number
+to the current variable value.  This operator is
+equivalent to the addition operator + followed by
+the assignment operator =.  Note that assignment = is
+not the same as mathematical equality.
+*/
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">DataTableFame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Geometric Growth]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["-422,152"]]></Property>
+<Property name="size"><![CDATA["272,466"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.DataTable</Type>
+<Property name="name">dataTable</Property>
+<Property name="parent">DataTableFame</Property>
+<Property name="position">center</Property>
+<Property name="input"><![CDATA[{n,P}]]></Property>
+<Property name="maxPoints"><![CDATA[1000]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="showRowNumber"><![CDATA[false]]></Property>
+<Property name="columnNames"><![CDATA["n,P(n)"]]></Property>
+<Property name="columnFormat"><![CDATA["0, 0.000"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">paramPanel</Property>
+<Property name="parent">DataTableFame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">PopulationPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">PopulationLabel</Property>
+<Property name="parent">PopulationPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[     P =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">PopulationField</Property>
+<Property name="parent">PopulationPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[P]]></Property>
+<Property name="format"><![CDATA[0.000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+<Property name="tooltip"><![CDATA[Population]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">rPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">rLabel</Property>
+<Property name="parent">rPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[     r =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">rField</Property>
+<Property name="parent">rPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[r]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">DataTableFame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Play]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Step]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA[Advances by one step.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the simulation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="text"><![CDATA[Clear]]></Property>
+<Property name="action"><![CDATA[_view.dataTable.clear();]]></Property>
+<Property name="tooltip"><![CDATA[Clears the data table.]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

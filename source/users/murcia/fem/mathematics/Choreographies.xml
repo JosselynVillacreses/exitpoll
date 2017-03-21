@@ -1,0 +1,589 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Choreographies of N bodies]]></Title>
+<Author><![CDATA[Francisco Esquembre (Universidad de Murcia) and Wolfgang Christian (Davidson College)]]></Author>
+<Keywords><![CDATA[N-body problem]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This is a simulation of a planar N-body problem with initial conditions that result into all bodies following the same curve (at different times), in a sort of dance in the plane.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./Choreographies/Choreo7_4.gif;./Choreographies/Choreo7_6.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Choreographies of N bodies</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Choreographies of N bodies
+          </h1>
+          <p>
+            This is a simulation of a planar N-body problem with initial 
+            conditions that result into all bodies following the same curve 
+            (at different times), in a sort of dance in the plane.
+          </p>
+          <p>
+            The resulting trajectories are unstable, and sooner or later, the 
+            choreography will brake.
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./Choreographies/Choreo7_4.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p align="center">
+      <img src="./Choreographies/Choreo7_6.gif">
+      
+    </p>
+    <p>
+      The initial data has been kindly provided by Carles Sim&#243;. UAB. Spain.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Problem set</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[options]]></Name>
+<Value><![CDATA[""]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dataSet]]></Name>
+<Value><![CDATA["3.1 Three bodies"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[problem]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[1]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[nBodies]]></Name>
+<Value><![CDATA[11]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[h]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[1.0e-15]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[state]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[4*nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[rate]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[4*nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[force]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[2*nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[zeros]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[2*nBodies]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Options</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+options =
+  "3.1 Three bodies;"+
+  "6.1 Six bodies;"+
+  "6.2 Six bodies;"+
+  "6.3 Six bodies;"+
+  "6.4 Six bodies;"+
+  "6.5 Six bodies;"+
+  "7.1 Seven bodies;"+
+  "7.2 Seven bodies;"+
+  "7.3 Seven bodies;"+
+  "7.4 Seven bodies;"+
+  "7.5 Seven bodies;"+
+  "7.6 Seven bodies;"+
+  "7.7 Seven bodies;"+
+  "11.1 Eleven bodies";
+
+if (dataSet.startsWith("6.1")) problem = bodies6_1;
+else if (dataSet.startsWith("6.2")) problem = bodies6_2;
+else if (dataSet.startsWith("6.3")) problem = bodies6_3;
+else if (dataSet.startsWith("6.4")) problem = bodies6_4;
+else if (dataSet.startsWith("6.5")) problem = bodies6_5;
+else if (dataSet.startsWith("7.1")) problem = bodies7_1;
+else if (dataSet.startsWith("7.2")) problem = bodies7_2;
+else if (dataSet.startsWith("7.3")) problem = bodies7_3;
+else if (dataSet.startsWith("7.4")) problem = bodies7_4;
+else if (dataSet.startsWith("7.5")) problem = bodies7_5;
+else if (dataSet.startsWith("7.6")) problem = bodies7_6;
+else if (dataSet.startsWith("7.7")) problem = bodies7_7;
+else if (dataSet.startsWith("11.1")) problem = bodies11_1;
+else problem = bodies3_1;
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init data</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+nBodies = problem.length/4;
+for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {
+  state[iindex  ] = problem[iindex];    // x
+  state[iindex+1] = problem[iindex+2];  // vx
+  state[iindex+2] = problem[iindex+1];  // y
+  state[iindex+3] = problem[iindex+3];  // vy
+}
+t=0;
+_view.resetTraces();
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evol Page</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>h</Increment>
+<Increment>h</Increment>
+<Rate state="state[]">acc(state)</Rate>
+<Method>Dopri853</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Cons Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {
+  x[i] = state[iindex  ];
+  y[i] = state[iindex+2];
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Accelerations</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+void computeForce(double[] state) {
+  System.arraycopy(zeros,0,force,0,force.length);
+  for(int i=0; i<nBodies; i++){
+    for(int j=i+1; j<nBodies; j++){
+      double dx = state[4 * i] - state[4 * j];
+      double dy = state[4 * i+2] - state[4 * j+2];
+      double r2=dx*dx+dy*dy;
+      double r3=r2*Math.sqrt(r2);
+      double fx=dx/r3;
+      double fy=dy/r3;
+      force[2*i] -= fx;
+      force[2*i + 1] -= fy;
+      force[2*j] += fx;
+      force[2*j + 1] += fy;
+    }
+  }
+}
+
+public double[] acc (double state[]) {
+  computeForce(state); // force array alternates fx and fy
+  for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {   
+    rate[iindex  ] = state[iindex+1];  // x rate is vx
+    rate[iindex+1] = force[2*i];   // vx rate is fx
+    rate[iindex+2] = state[iindex+3];  // y rate is vy
+    rate[iindex+3] = force[2*i+1]; // vy rate is fy
+  }
+  return rate;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Data1</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+    static final double[] bodies3_1 = {
+       0.1076143733510925E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.4682662184090647E+00,
+      -0.5380718667554619E+00,  0.3437068277582447E+00, -0.1099603752075198E+01,  0.2341331092045306E+00,
+      -0.5380718667554627E+00, -0.3437068277582447E+00,  0.1099603752075198E+01,  0.2341331092045340E+00
+    };
+
+    static final double[] bodies6_1 = {
+        0.1796289440089772E+01,  0.0000000000000000E+00,  0.0000000000000000E+00,  0.5120585587726362E+00,
+        0.7157803733361924E+00, -0.2956810321410133E+00, -0.1419406653263160E+01, -0.5876141755194206E+00,
+       -0.7638777190420936E+00,  0.3161122031871951E+00, -0.1428837151476176E+01,  0.8198582770567758E+00,
+       -0.1700094748678056E+01, -0.3943043914252958E-13,  0.5992313272845023E-13, -0.9765467618474458E+00,
+       -0.7638777190420307E+00, -0.3161122031871754E+00,  0.1428837151476145E+01,  0.8198582770569258E+00,
+        0.7157803733362160E+00,  0.2956810321410331E+00,  0.1419406653263131E+01, -0.5876141755194714E+00
+    };
+
+    static final double[] bodies6_2 = {
+      0.1887041548253914E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.6352775243189903E+00,
+      0.7978330020060620E+00,  0.1403428386510817E+00, -0.2031522278642923E+01,  0.1006377373170247E+00,
+     -0.7978330020060578E+00,  0.1403428386510800E+00, -0.2031522278642927E+01, -0.1006377373169939E+00,
+     -0.1887041548253914E+01, -0.2888613040592590E-14, -0.1437814359024473E-14,  0.6352775243189901E+00,
+     -0.7978330020060594E+00, -0.1403428386510801E+00,  0.2031522278642923E+01, -0.1006377373170072E+00,
+      0.7978330020060556E+00, -0.1403428386510787E+00,  0.2031522278642927E+01,  0.1006377373169766E+00
+    };
+
+    static final double[] bodies6_3 = {
+      0.7611662864749217E+00,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.1116342504915203E+01,
+     -0.1921852057767216E-01,  0.6843271137533142E+00,  0.1340263850142595E+01,  0.7559895941895264E+00,
+     -0.4190570767302032E+00, -0.1266875575528688E+00, -0.2178298444610473E+01,  0.9027986825619508E+00,
+      0.1153849081407879E+00, -0.9506914312642000E-14, -0.8130480602014056E-14, -0.2201234048587621E+01,
+     -0.4190570767301670E+00,  0.1266875575528699E+00,  0.2178298444610525E+01,  0.9027986825618018E+00,
+     -0.1921852057766732E-01, -0.6843271137533058E+00, -0.1340263850142639E+01,  0.7559895941895451E+00
+    };
+
+  static final double[] bodies6_4 = {
+      0.9463498591835550E+00,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.2755204926308793E-01,
+      0.2679361467588941E+00,  0.8502271069623971E+00, 0.2205650554731257E+00 , 0.4937039566969329E+00,
+     -0.5883797909362943E+00,  0.3839719199333260E+00, -0.9582171648468382E+00,  0.1014271835890320E+01,
+     -0.3054625708287561E+00, -0.3329307774205229E-14, -0.1013428696932587E-13, -0.2988399535911424E+01,
+     -0.5883797909362951E+00, -0.3839719199333216E+00,  0.9582171648468493E+00,  0.1014271835890330E+01,
+      0.2679361467588965E+00, -0.8502271069623983E+00, -0.2205650554731268E+00,  0.4937039566969297E+00
+  };
+
+  static final double[] bodies6_5 = {
+      0.1157191684725808E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.3324858524980426E+00,
+      0.4522834307605945E-02,  0.7045457102784007E+00, -0.9506174623766308E+00,  0.2007957720599668E+01,
+      0.2657429205622538E+00,  0.8135484006398260E+00, -0.1650604223762859E+00, -0.1914139671917080E+01,
+     -0.3827449491533021E+00, -0.1019525963339035E+01,  0.1973556483706816E+00, -0.3296661952469236E+00,
+     -0.7750325873631767E+00, -0.1571369648235994E+00, -0.1316109356519254E+01, -0.1960172413219329E+00,
+     -0.2696799030791889E+00, -0.3414311827555930E+00,  0.2234431592901489E+01,  0.7643512403843112E+00
+  };
+
+    static final double[] bodies7_1 = {
+      0.1892591546963534E+01,  0.0000000000000000E+00,  0.0000000000000000E+00,  0.1025702493309155E+01,
+      0.1042020227584794E+01,  0.2902509224131850E+00, -0.1515446459469375E+01, -0.8358641294757623E+00,
+     -0.3575997563164595E+00, -0.2208245058051155E+00, -0.1727647869983516E+01,  0.7259384944208559E+00,
+     -0.1630716244750078E+01,  0.3598531896513662E+00, -0.1047757188954224E+01, -0.4029256115996795E+00,
+     -0.1630716244750101E+01, -0.3598531896513392E+00,  0.1047757188954194E+01, -0.4029256115997335E+00,
+     -0.3575997563164802E+00,  0.2208245058050907E+00,  0.1727647869983529E+01,  0.7259384944209323E+00,
+      0.1042020227584791E+01, -0.2902509224131871E+00,  0.1515446459469392E+01, -0.8358641294757683E+00
+    };
+
+    static final double[] bodies7_2 = {
+      0.1912254878395450E+01,  0.0000000000000000E+00,  0.0000000000000000E+00,  0.4614996640939195E+00,
+      0.9461407462156074E+00, -0.3602309402526546E+00, -0.1357811158687238E+01, -0.8998635118523952E+00,
+     -0.3163252516983199E+00, -0.3144670912024704E+00, -0.1519644750251688E+01,  0.1033449804016814E+01,
+     -0.1585942933715166E+01,  0.3492045172212634E+00, -0.1061382391395348E+01, -0.3643361242114217E+00,
+     -0.1585942933715017E+01, -0.3492045172214251E+00,  0.1061382391395532E+01, -0.3643361242110737E+00,
+     -0.3163252516982096E+00,  0.3144670912025924E+00,  0.1519644750251582E+01,  0.1033449804016667E+01,
+      0.9461407462156549E+00,  0.3602309402526944E+00,  0.1357811158687160E+01, -0.8998635118525091E+00
+    };
+
+    static final double[] bodies7_3 = {
+      0.2092868634458790E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.6627701701410590E+00,
+      0.1103569561874064E+01,  0.1291654265961585E+00, -0.2131228271477949E+01,  0.1197864026210980E+00,
+     -0.3706242984048063E+00,  0.1522978035038625E+00, -0.2010054165327622E+01,  0.3433763741971424E-01,
+     -0.1779379580698589E+01,  0.2146802334510155E+00, -0.1435092655036655E+01,  0.1772610450300341E+00,
+     -0.1779379580698655E+01, -0.2146802334510045E+00,  0.1435092655036610E+01,  0.1772610450297647E+00,
+     -0.3706242984048688E+00, -0.1522978035038660E+00,  0.2010054165327650E+01,  0.3433763741935991E-01,
+      0.1103569561874065E+01, -0.1291654265961662E+00,  0.2131228271477966E+01,  0.1197864026210881E+00
+    };
+
+   static final double[] bodies7_4 = {
+      0.7739844377959019E+00,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.9437071050380209E+00,
+      0.2371971634311426E+00,  0.6886080112324150E+00,  0.1190966852314747E+01,  0.2623928622796817E+00,
+     -0.4827097972387640E+00,  0.3077055629804231E+00, -0.4442228525352124E+00,  0.2136936973087366E+01,
+     -0.1414795850903343E+00, -0.1604364720644401E+00, -0.1973561840396870E+01, -0.1927476282848021E+01,
+     -0.1414795850903249E+00,  0.1604364720644276E+00,  0.1973561840396872E+01, -0.1927476282848053E+01,
+     -0.4827097972387613E+00, -0.3077055629804119E+00,  0.4442228525352274E+00,  0.2136936973087362E+01,
+      0.2371971634311401E+00, -0.6886080112324137E+00, -0.1190966852314764E+01,  0.2623928622796846E+00
+   };
+
+   static final double[] bodies7_5 = {
+      0.9355202655504633E+00,  0.0000000000000000E+00,  0.0000000000000000E+00,  0.4078380135686665E-01,
+      0.4551652157639959E+00,  0.7781529293557969E+00,  0.2143999818228453E+00,  0.4100297733752442E+00,
+     -0.3939720743229397E+00,  0.6872050611489920E+00, -0.4495533322780123E+00,  0.9399993876487123E+00,
+     -0.5289532742163604E+00, -0.3022642374733452E-01, -0.4426344195010206E+01, -0.1370421061698386E+01,
+     -0.5289532742162300E+00,  0.3022642374733562E-01,  0.4426344195010197E+01, -0.1370421061706428E+01,
+     -0.3939720743229375E+00, -0.6872050611489848E+00,  0.4495533322780257E+00,  0.9399993876487529E+00,
+      0.4551652157640080E+00, -0.7781529293558050E+00, -0.2143999818228486E+00,  0.4100297733752372E+00
+   };
+
+   static final double[] bodies7_6 = {
+     0.1570000823221215E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.1020988487240738E+01,
+     0.5375995520383318E+00, -0.3690947622742329E+00, -0.2565831109738643E+01,  0.3975112028015422E+00,
+    -0.1142082898530740E+01, -0.4222512566142133E+00, -0.1166452823412228E+01,  0.5474041731388952E+00,
+    -0.1467257921284838E+01,  0.4687663467518550E+00,  0.6064692970410878E+00,  0.9988377407013391E+00,
+    -0.4492702909671381E+00,  0.6711120387634054E+00,  0.1351529425831059E+01, -0.6343056412407847E+00,
+     0.2700831914628489E+00, -0.6408905791728378E+00,  0.1616635172340136E+00, -0.9666695303167416E+00,
+     0.6809275440603205E+00,  0.2923582125460235E+00,  0.1612621693044709E+01,  0.6782105421564871E+00
+   };
+
+   static final double[] bodies7_7 = {
+     0.1728438083380545E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.1128936598495419E+01,
+     0.9700431617621790E+00, -0.5703733868921841E+00, -0.1315307251569076E+01,  0.1469461718277061E+00,
+    -0.3338421059262919E+00,  0.3090410518191610E+00, -0.1532705338808684E+01,  0.1128499460079269E+01,
+    -0.1500420097526176E+01,  0.4419727239745655E+00, -0.9494425622188134E+00, -0.7109773326593010E+00,
+    -0.1500420097526168E+01, -0.4419727239745900E+00,  0.9494425622188195E+00, -0.7109773326592703E+00,
+    -0.3338421059262803E+00, -0.3090410518191481E+00,  0.1532705338808669E+01,  0.1128499460079319E+01,
+     0.9700431617621930E+00,  0.5703733868921954E+00,  0.1315307251569085E+01,  0.1469461718276952E+00
+   };
+
+    static final double[] bodies11_1 = {
+      0.1474254808380795E+01,  0.0000000000000000E+00,  0.0000000000000000E+00, -0.1787158921940255E+01,
+      0.1051799177972116E+01, -0.9052606554854750E+00, -0.1409250255868086E+01, -0.1189510130717731E+01,
+      0.1304562780313756E-02, -0.1166264647323056E+01, -0.2118261347510326E+01,  0.4444601554203366E+00,
+     -0.8468723398001949E+00,  0.8542347593646286E-01,  0.2404684626836972E+01,  0.3357810633898112E+01,
+     -0.5655450691779641E+00,  0.1376852778805936E+00,  0.2183508042342725E+01,  0.9057199140481489E+00,
+     -0.3778137359646718E+00,  0.1140046749196492E+00,  0.1741189043941740E+01, -0.2624901111678681E+01,
+     -0.3778137359646687E+00, -0.1140046749196446E+00, -0.1741189043941677E+01, -0.2624901111678708E+01,
+     -0.5655450691779611E+00, -0.1376852778805962E+00, -0.2183508042342766E+01,  0.9057199140481088E+00,
+     -0.8468723398001918E+00, -0.8542347593646554E-01, -0.2404684626836993E+01,  0.3357810633898064E+01,
+      0.1304562780313649E-02,  0.1166264647323055E+01,  0.2118261347510324E+01,  0.4444601554203364E+00,
+      0.1051799177972115E+01,  0.9052606554854759E+00,  0.1409250255868085E+01, -0.1189510130717732E+01
+    };
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Choreographies"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["400,420"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-2.1]]></Property>
+<Property name="maximumX"><![CDATA[2.1]]></Property>
+<Property name="minimumY"><![CDATA[-2.1]]></Property>
+<Property name="maximumY"><![CDATA[2.1]]></Property>
+<Property name="title"><![CDATA["N-body Choreographies"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">traceSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="maxpoints"><![CDATA[500]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">bodies</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[nBodies]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[0.1]]></Property>
+<Property name="sizey"><![CDATA[0.1]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause();]]></Property>
+<Property name="dragaction"><![CDATA[for (int i=0,iindex=0; i<nBodies; i++,iindex+=4) {
+  state[iindex  ] = x[i];  // x
+  state[iindex+2] = y[i];  // y
+}
+_resetSolvers();]]></Property>
+<Property name="action"><![CDATA[_play();]]></Property>
+<Property name="color"><![CDATA[pink]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComboBox</Type>
+<Property name="name">data_Set</Property>
+<Property name="parent">panel</Property>
+<Property name="position">center</Property>
+<Property name="options"><![CDATA[%options%]]></Property>
+<Property name="variable"><![CDATA[%dataSet%]]></Property>
+<Property name="action"><![CDATA[_initialize();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initializeButton</Property>
+<Property name="parent">panel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[Initialize]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">hPanel</Property>
+<Property name="parent">panel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">hLabel</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[" h = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">hField</Property>
+<Property name="parent">hPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[h]]></Property>
+<Property name="format"><![CDATA[0.000]]></Property>
+<Property name="size"><![CDATA[50,20]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

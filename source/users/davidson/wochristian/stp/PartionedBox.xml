@@ -1,0 +1,376 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Box Equlibrium Model]]></Title>
+<Author><![CDATA[W. Christian]]></Author>
+<Keywords><![CDATA[statistical physics, Monte Carlo methods]]></Keywords>
+<Level><![CDATA[introductory]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./partitionedbox/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./partitionedbox/PartitionedBox.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Partitioned Box</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./partitionedbox/PartitionedBox.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Box Model Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[64]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[number of particles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[spd]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[steps per display]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nleft]]></Name>
+<Value><![CDATA[n]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[number in left side of box]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[time]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[number of steps; each step moves a single particle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nsum]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[running sum of particles in left side]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n2sum]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[long]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[running sum of particles in left side squared]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[navg]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[average number of particles in left side]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[sigma]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[r.m.s. deviation of numbers in left side of box from running sum]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evolve Particles</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// generate random number and move particle
+double r = Math.random();
+double ratio = (double) nleft / n;
+if(r <= ratio) {
+  nleft--;
+} else {
+  nleft++;
+}
+time++;           // adds one to time variable
+nsum += nleft;
+n2sum += nleft*nleft;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Averages</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+sigma = (time>1)?Math.sqrt( ((double)time*n2sum-nsum*nsum)/time/(time-1))/time:0;
+navg = (time>0)?(double)nsum/time:0;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Zero Averages</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void zero_averages(){
+  time=0;
+  nsum=0;
+  n2sum=0;
+  _view.resetTraces();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Steps per Display</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void steps_per_Display () {
+   _setStepsPerDisplay(spd);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">modelFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Box Equilibrium Model]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["11,3"]]></Property>
+<Property name="size"><![CDATA["651,359"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">modelFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[3.5]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[Math.max(1,n/10)]]></Property>
+<Property name="titleX"><![CDATA[time]]></Property>
+<Property name="titleY"><![CDATA[n (left)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">nTrace</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[time]]></Property>
+<Property name="y"><![CDATA[nleft]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">modelFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[FLOW:left,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[FLOW:left,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA[Start and stop simulation.]]></Property>
+<Property name="textOn"><![CDATA[""]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[""]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA[Step simulation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Reset simulation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">zeroButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="text"><![CDATA[Zero]]></Property>
+<Property name="action"><![CDATA[zero_averages()]]></Property>
+<Property name="tooltip"><![CDATA[Zeros average values.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">spdPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[flow:left,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">spdLabel</Property>
+<Property name="parent">spdPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["   steps/display = "]]></Property>
+<Property name="tooltip"><![CDATA[Root mean square deviation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">spdField</Property>
+<Property name="parent">spdPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[spd]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[steps_per_Display()]]></Property>
+<Property name="size"><![CDATA[30,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[flow:left,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nLabel</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["  N = " ]]></Property>
+<Property name="tooltip"><![CDATA[The number of particles.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nField</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize();
+_view.resetTraces();
+zero_averages();
+nleft=n;]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nAvgPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[flow:left,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nAvgLabel</Property>
+<Property name="parent">nAvgPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA["  <n> = " ]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nAvgField</Property>
+<Property name="parent">nAvgPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[navg]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">sigmaPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="layout"><![CDATA[flow:left,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">sigmaLabel</Property>
+<Property name="parent">sigmaPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[" sigma = "]]></Property>
+<Property name="tooltip"><![CDATA[Root mean square deviation.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">sigmaField</Property>
+<Property name="parent">sigmaPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[sigma]]></Property>
+<Property name="format"><![CDATA[0.00]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

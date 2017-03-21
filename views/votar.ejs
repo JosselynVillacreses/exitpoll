@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <link rel="stylesheet" href="/estilo/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <script src="/js/script.js"></script>
+    <script src="/js/callback.js"></script>
+</head>
+<body>
+
+<div id="inicio" class="centro">
+    <h2>Sistema de ExitPoll</h2>
+    <h3>Elecciones Nacionales<br>Ecuador - 2017</h3>
+    
+</div>
+
+
+<div class="container-fluid">
+
+<div id="screen_encuestador">
+  
+    <a  id="cerrar_sesion_">Salir</a>
+  
+      
+    <h2>Votante: <%= cedula %></h2>
+      <br><br>
+      
+      
+ <div name="tablePresidentes" class="tablePresidentes">
+   <h1>Presidentes</h1>    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Lista</th>
+          <th>Logo</th>
+          <th colspan="2">Presidente</th>
+          <th colspan="2">Vicepresidente</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          <% 
+            var arrPresi = presidentes;
+            var arrPartido = partidos;
+            for(var i in arrPresi){%>
+                <tr>
+                  <td><%=arrPartido[arrPresi[i].id_partido].lista%></td>
+                  <td><img class="foto" src="<%=arrPartido[arrPresi[i].id_partido].logo%>"></td>
+                  <td><img class="foto" src="<%=arrPresi[i].foto%>"></td>
+                  <td><%= arrPresi[i].nombre + " " + arrPresi[i].apellido%></td>
+                  <td><img class="foto" src="<%=arrPresi[i].vicepresidente.foto%>"></td>
+                  <td><%= arrPresi[i].vicepresidente.nombre + " " + arrPresi[i].vicepresidente.apellido%></td>
+                  <td><input type="button" name="" value="Votar" onclick="votarPresidente('<%= arrPresi[i].id_presidente%>','<%=cedula%>');mostrarAsam();"></td>
+                </tr>
+
+           
+            <% }%> 
+      </tbody>
+    </table> 
+</div> 
+       
+<div name="tableAsambleistas" class="tableAsambleistas">      
+<h2>Asambleistas</h2>
+       
+    <table class="table table-hover" id='tabla_votar_asam'>
+        <thead>
+            <tr>
+                <th>Lista</th>
+                <th>Logo</th>
+                <th>Nombre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id='body_votar_asam'>
+    <% 
+        var arrAsam = partidos;
+
+        for(var i in arrAsam){%>
+            <tr>
+              <td><%=arrAsam[i].lista%></td>
+              <td><img class="foto" src="<%= arrAsam[i].logo%>"></td>
+              <td><%=arrAsam[i].nombre%></td>
+              <td><input type="button" name="" value="Votar" onclick="votarAsambleistas('<%= arrAsam[i].id_partido %>','<%=cedula%>')"></td>
+            </tr>
+
+        <% }%>       
+        </tbody>
+        </table>
+        
+        
+</div>
+  
+ </div>       
+</div>
+
+</body>
+</html>
+

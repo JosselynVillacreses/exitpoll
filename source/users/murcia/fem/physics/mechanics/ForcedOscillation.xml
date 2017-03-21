@@ -1,0 +1,401 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Forced oscillation]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[From an original idea from Taiwan Workshop on Ejs. March 2002.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Forced Oscillation</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Forced Oscillation
+    </h1>
+    <p>
+      In this simulation, an object that oscillates due to the action of a 
+      spring is also the subject of an external periodic force. In this 
+      situation, one would expect that the oscillation becomes the sum of both 
+      forces, the one resulting from the spring and the external one.
+    </p>
+    <h2>
+      Experience
+    </h2>
+    <p>
+      Leave all other parameters as in the initial setting and play with the 
+      frequency <em>w</em>. Try the values <em>0.0</em>, <em>2.0</em>, <em>0.5</em> 
+      and <em>0.85</em>, in this order.
+    </p>
+    <p>
+      What happens when the frequency of the external force approaches <em>1</em>? 
+      ... The oscillation grows beyond what would be reasonable!
+    </p>
+    <h2>
+      Explain it!
+    </h2>
+    <p>
+      We'll give it a name: <b>resonance</b>, but you should try to explain 
+      why it happens.
+    </p>
+    <p>
+      The final (non-trivial) question is : <b>how does the critical value of <em>w</em> 
+      depends on the other parameters: <em>mass</em>, <em>k</em> and <em>A</em>?</b>
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Oscilator</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[mass]]></Name>
+<Value><![CDATA[1.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[k]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[time]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Force</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[w]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[A]]></Name>
+<Value><![CDATA[0.7]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[force]]></Name>
+<Value><![CDATA[0.2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Oscilator</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>time</IndependentVariable>
+<Increment>0.03</Increment>
+<Increment>0.03</Increment>
+<Rate state="x">v</Rate>
+<Rate state="v">(-k*x+force)/mass</Rate>
+<Method>MidPoint</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Force</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+force = A*Math.sin (w*time);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Forced oscillation"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["388,474"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">playButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Play]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">pauseButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Pause]]></Property>
+<Property name="enabled"><![CDATA[_isPlaying]]></Property>
+<Property name="action"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">centerPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[BORDER:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">north</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-4.0]]></Property>
+<Property name="maximumX"><![CDATA[4.0]]></Property>
+<Property name="minimumY"><![CDATA[-1]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["300,70"]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">force</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0.0]]></Property>
+<Property name="y"><![CDATA[0.4]]></Property>
+<Property name="sizex"><![CDATA[force]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[ARROW]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[x]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">shape</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[0.4]]></Property>
+<Property name="sizeY"><![CDATA[0.4]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">forceArrow</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0.4]]></Property>
+<Property name="sizeX"><![CDATA[force]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+<Property name="fillColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">centerPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[-6.0]]></Property>
+<Property name="maximumY"><![CDATA[6.0]]></Property>
+<Property name="title"><![CDATA["x and force vs time"]]></Property>
+<Property name="titleX"><![CDATA[time]]></Property>
+<Property name="xaxisPos"><![CDATA[0.0]]></Property>
+<Property name="titleY"><![CDATA["x and force"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trailX</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[time]]></Property>
+<Property name="inputY"><![CDATA[x]]></Property>
+<Property name="maximumPoints"><![CDATA[400]]></Property>
+<Property name="skippoints"><![CDATA[3]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trail2D</Type>
+<Property name="name">trailForce</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="inputX"><![CDATA[time]]></Property>
+<Property name="inputY"><![CDATA[force]]></Property>
+<Property name="maximumPoints"><![CDATA[400]]></Property>
+<Property name="skippoints"><![CDATA[3]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">slidersPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[GRID:2,2,0,0]]></Property>
+<Property name="size"><![CDATA["400,150"]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderM</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="variable"><![CDATA[mass]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[2.0]]></Property>
+<Property name="format"><![CDATA[Mass = 0.00]]></Property>
+<Property name="ticks"><![CDATA[9]]></Property>
+<Property name="ticksFormat"><![CDATA[0.#]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderK</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="variable"><![CDATA[k]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[2.0]]></Property>
+<Property name="format"><![CDATA[K = 0.00]]></Property>
+<Property name="ticks"><![CDATA[9]]></Property>
+<Property name="ticksFormat"><![CDATA[0.#]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderA</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="variable"><![CDATA[A]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[1.0]]></Property>
+<Property name="format"><![CDATA[A = 0.00]]></Property>
+<Property name="ticks"><![CDATA[9]]></Property>
+<Property name="ticksFormat"><![CDATA[0.#]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">sliderW</Property>
+<Property name="parent">slidersPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[w]]></Property>
+<Property name="minimum"><![CDATA[0.0]]></Property>
+<Property name="maximum"><![CDATA[2.0]]></Property>
+<Property name="format"><![CDATA[W = 0.00]]></Property>
+<Property name="ticks"><![CDATA[9]]></Property>
+<Property name="ticksFormat"><![CDATA[0.#]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

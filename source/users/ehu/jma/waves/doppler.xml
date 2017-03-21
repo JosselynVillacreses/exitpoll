@@ -1,0 +1,855 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Doppler effect]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[Doppler effect;sound;wave]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[Every period a wave front leaves a moving sound source and travels with velocity c with respect to a medium (say air), which may be still or move. The detector may be fixed or moving. The times at which each wave front is emitted and detected are displayed, so that one can check the influence of the different parameters on the Doppler effect.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Doppler effect</title>
+    
+  </head>
+  <body>
+    <h1>
+      Doppler effect
+    </h1>
+    A <font color="#ff0000">sound source</font> is moving with velocity <i>v</i> 
+    along the horizontal axis. Every period <i>T</i> a wave front leaves the 
+    source and travels with velocity <i>c</i> with respect to a medium (say 
+    air), which may be still or move with velocity (<i>V<sub>x</sub></i>, <i>V<sub>y</sub></i>) 
+    = (<b>Vx</b>, <b>Vy</b>). A <font color="#008000">detector</font> is 
+    located at position (<i>x</i>, <i>y</i>) and may move with velocity (<i>dx/dt</i>, 
+    <i>dy/dt</i>).
+
+    <ul>
+      <li>
+        You may edit the values of the aforementioned quantities, as well as 
+        the time interval <i>dt</i> between animation frames.
+      </li>
+      <li>
+        The detector position may also be chosen by means of the mouse.
+      </li>
+      <li>
+        Press <b>Initial</b> to set t = 0 and the source at its initial 
+        position.
+      </li>
+      <li>
+        Press <b>Continue</b> to start or continue the animation.
+      </li>
+      <li>
+        Press <b>Stop</b> to pause the animation, and <b>Reset</b> to recover 
+        the default settings.
+      </li>
+    </ul>
+    In the graphics window below the animation a vertical <font color="#ff0000">red</font> 
+    (<font color="#008000">green</font>) bar is displayed each time a wave 
+    front <font color="#ff0000">leaves the source</font> (<font color="#008000">reaches 
+    the detector</font>).
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ol>
+      <li>
+        With the default values you may see (in the animation and in the 
+        graphics) the Doppler effect at work: when source and detector are <font color="#000080">approaching</font> 
+        (<font color="#800080">moving away</font>) the time interval is <font color="#000080">shorter</font> 
+        (<font color="#800080">larger</font>) between detections than between 
+        emissions, i.e., the detected frequency is <font color="#000080">higher</font> 
+        (<font color="#800080">lower</font>).
+      </li>
+      <li>
+        Click over the bars corresponding to consecutive <font color="#ff0000">emissions</font> 
+        (<font color="#008000">detections</font>) to see the corresponding 
+        times. Use the latter to check that the periods agree with the 
+        theoretical result for the detected period:<br><font color="#000080"><i>T</i>' 
+        = (1-<i>v</i>/<i>c</i>) <i>T</i> </font>and <font color="#800080"><i>T</i>' 
+        = (1+<i>v</i>/<i>c</i>) <i>T</i></font>.
+      </li>
+      <li>
+        Repeat the previous check when the detector moves with a positive 
+        (negative) horizontal velocity <i>dx/dt</i>.
+      </li>
+      <li>
+        Repeat the previous checks when the medium moves with a positive 
+        (negative) horizontal velocity <i>V<sub>x</sub></i>.
+      </li>
+      <li>
+        (You may also be curious about what happens when <i>dy/dt</i> and/or <i>V<sub>y</sub></i> 
+        are non zero.)
+      </li>
+      <li>
+        Use the mouse to put the detector out of the source trajectory, press <b>Initial</b> 
+        and then <b>Continue</b>. You should observe that when the wave front 
+        reaches the source in a direction perpendicular to the source motion 
+        the <b>transverse</b> Doppler effect is nil (but not in special 
+        relativity: recall the <font color="#ff00ff">Ives-Stilwell experiment</font>).
+      </li>
+      <li>
+        Check that in the supersonic case (<i>v</i> &#8805; <i>c</i>) a shock 
+        wave develops. Press <b>Stop</b> and click the mouse at different 
+        points of the shock to check the theoretical angle.
+      </li>
+    </ol>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[50]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of wavefronts]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[x coordinate of the centers of wavefronts]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[Diameters of wavefronts]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vd]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[Velocity of diameter increase]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[c]]></Name>
+<Value><![CDATA[340.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Phase velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[T]]></Name>
+<Value><![CDATA[2.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Period]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[170.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Source velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Vx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x component of wind velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Vy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y component of wind velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[6000.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ux]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x component of detector velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[uy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y component of detector velocity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-2000.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum x displayed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[15000.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum x displayed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[-5000.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum y displayed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[5000.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum y displayed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nDetected]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Last detected frontwave]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nEmitted]]></Name>
+<Value><![CDATA[50]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of already emitted wavefronts]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tDetected]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[Detection times]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tEmitted]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[Emission times]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[bDetected]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[Whether each frontwave has been detected]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yaxis]]></Name>
+<Value><![CDATA["y"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Just to avoid displaying one axis title]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Start</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set initial values]]></Comment>
+<Code><![CDATA[
+t = 0.0;
+nDetected = 0;
+nEmitted = 1;
+for(int i = 0; i < n; i++){
+ x0[i]        =
+ y0[i]        =
+ d[i]         =
+ vd[i]        = 
+ tEmitted [i] =
+ tDetected[i] = 0.0;
+ bDetected[i] = false;
+}
+vd[0] = 2.0*c;
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+_view.getElement("dt").setProperty("format","\u0394t = 0.####");
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x">ux</Rate>
+<Rate state="y">uy</Rate>
+<Rate state=""></Rate>
+<Method>Euler</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[Equations of motion for detector]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Detection</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Check whether the next wave front has reached the detector]]></Comment>
+<ZeroCondition><![CDATA[
+double min = 0.001;
+if (nDetected > nEmitted) return min;
+double distance = hypot(x-x0[nDetected],y-y0[nDetected])-c*(t-nDetected*T);
+if (distance < min) min = distance;
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[0.001]]></Tolerance>
+<Action><![CDATA[
+bDetected[nDetected] = true;
+tDetected[nDetected++] = t;
+]]></Action>
+<StopAtEvent>true</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Velocities</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Make sure velocities are in the right range]]></Comment>
+<Code><![CDATA[
+if (c < 0.0) c = -c;		// Sound speed
+
+while (hypot(Vx,Vy) >= c) {	// Medium speed
+  Vx *= 0.5;
+  Vy *= 0.5;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Wavefronts</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set wavefront centers and diameters]]></Comment>
+<Code><![CDATA[
+for (int i = 0; i < n; i++)
+  if (i*T-0.5*dt < t) {
+    double t0 = i*T;
+    x0[i] = Vx*(t-t0)+v*t0;
+    y0[i] = Vy*(t-t0);
+    d[i]  = 2.0*c*(t-t0);
+    tEmitted[nEmitted = i] = t0; 
+  }
+  else {
+    x0[i] = v*t;
+  } 
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Stop</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Stop when last wavefront reached destination]]></Comment>
+<Code><![CDATA[
+if (nDetected >= n) _pause();
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Supply hypot for Java 1.4--]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Doppler effect]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["640,480"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Top</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Up</Property>
+<Property name="parent">Top</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="size"><![CDATA[0,400]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Space</Property>
+<Property name="parent">Up</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+<Property name="tooltip"><![CDATA[Use the mouse to move the detector]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">Waves</Property>
+<Property name="parent">Space</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x0]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="sizex"><![CDATA[d]]></Property>
+<Property name="sizey"><![CDATA[d]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[CIRCLE]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[NULL]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Source</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[v*t]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[200]]></Property>
+<Property name="sizey"><![CDATA[200]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Detector</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[300]]></Property>
+<Property name="sizey"><![CDATA[300]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Top</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="size"><![CDATA[0,200]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Times</Property>
+<Property name="parent">Down</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[-1.25]]></Property>
+<Property name="maximumY"><![CDATA[1.25]]></Property>
+<Property name="title"><![CDATA[Emissions and detections]]></Property>
+<Property name="axesType"><![CDATA[Cartesian2]]></Property>
+<Property name="titleX"><![CDATA[t]]></Property>
+<Property name="titleY"><![CDATA[%yaxis%]]></Property>
+<Property name="majorTicksY"><![CDATA[false]]></Property>
+<Property name="xFormat"><![CDATA[t = 0.###]]></Property>
+<Property name="yFormat"><![CDATA[%yaxis%]]></Property>
+<Property name="background"><![CDATA[240,240,240,255]]></Property>
+<Property name="tooltip"><![CDATA[Times at which emissions and detections happen]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">EmissionTimes</Property>
+<Property name="parent">Times</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[tEmitted]]></Property>
+<Property name="y"><![CDATA[-1.0]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[.75]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">DetectionTimes</Property>
+<Property name="parent">Times</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[tDetected]]></Property>
+<Property name="y"><![CDATA[.25]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[.75]]></Property>
+<Property name="visible"><![CDATA[bDetected]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Time</Property>
+<Property name="parent">Times</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[t]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Bottom</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Cursors</Property>
+<Property name="parent">Bottom</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[grid:1,7,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">c</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[c]]></Property>
+<Property name="format"><![CDATA[c = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[blue]]></Property>
+<Property name="tooltip"><![CDATA[Sound speed]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">v</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[v]]></Property>
+<Property name="format"><![CDATA[v = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Source velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">T</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[T]]></Property>
+<Property name="format"><![CDATA[T = 0.##]]></Property>
+<Property name="tooltip"><![CDATA[Period (in the source system)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[x]]></Property>
+<Property name="format"><![CDATA[x = 0.##]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[x coordinate of the detector]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">y</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[y]]></Property>
+<Property name="format"><![CDATA[y = 0.##]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[y coordinate of the detector]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">ux</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[ux]]></Property>
+<Property name="format"><![CDATA[dx/dt = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[x component of the detector velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">uy</Property>
+<Property name="parent">Cursors</Property>
+<Property name="variable"><![CDATA[uy]]></Property>
+<Property name="format"><![CDATA[dy/dt = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[y component of the detector velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Buttons</Property>
+<Property name="parent">Bottom</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,6,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Vx</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[Vx]]></Property>
+<Property name="format"><![CDATA[Vx = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+<Property name="tooltip"><![CDATA[x component of the wind velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Vy</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[Vy]]></Property>
+<Property name="format"><![CDATA[Vy = 0.##]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="foreground"><![CDATA[magenta]]></Property>
+<Property name="tooltip"><![CDATA[y component of the wind velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">dt</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.###"]]></Property>
+<Property name="tooltip"><![CDATA[Animation step length]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">initButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/initial.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["i"]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA["Set t = 0 and select initial conditions"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

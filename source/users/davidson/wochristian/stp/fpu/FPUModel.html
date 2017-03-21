@@ -1,0 +1,36 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+</head>
+
+<body>
+
+<h1>FPU Model </h1>
+<p>Let y<sub>i</sub>= y(x<sub>i</sub>,t) represent the displacement of a particle with horizontal position x<sub>i</sub> along a one-dimensional 
+crystal lattice. Because it is assumed that the particles do not move in the <i>x</i>-direction, we need only consider forces in the 
+vertical direction. The force F<sub>i</sub> on the i-th particle depends on the relative vertical displacement between that particle 
+and its nearest neighbors and can be written as </p>
+<p align="center"><img src="fpu_force.gif" alt="" width="245" height="96"> . </p>
+<p align="left">where k is the Hook&#39;s law constant and the nonlinear quadratic and cubic parameters are &#945; and &#946;, respectively. Because 
+the first and last particles in the lattice are fixed, we compute particle accelerations starting with the second particle and continuing 
+through the lattice until we reach the next-to-last particle. </p>
+<p align="left">One way of understanding a lattice of N coupled oscillators of length L and mass M is to express the displacement 
+of the <i>i</i>-th oscillator y<sub>i</sub>(t) at location x<sub>i</sub> as a sum of harmonic functions with angular frequency &#969;<sub>m</sub> 
+and phase angle &#981;<sub>m</sub> </p>
+<p align="center"><img src="fpu_wavefunction.gif" alt=""> </p>
+<p align="left">where the amplitudes {A<sub>m </sub>: m=1 ...N-1} are constant if the nonlinear parameters are zero and slowly varying 
+functions of time if these parameters are not too large. The spacial dependence is expressed in terms of the mode (eigen-) functions 
+&#934;<sub>m </sub>. The <i>m</i>-th mode &#934;<sub>m </sub>is </p>
+<p align="center"><img src="fpu_mode.gif"> . </p>
+<p align="left">The N-1 amplitude coefficients {A<sub>m </sub>: m=1 ...N-1} and phase angles {&#981;<sub>m </sub>: m =1 ...N-1} can be 
+chosen to produce an arbitrary initial configuration as shown in the Ejs <i>Coupled Oscillator</i> model. </p>
+<p align="center"><img src="fpu_frequency.gif"> </p>
+<p align="left">The system stays in a single mode and every particle on the lattice oscillates with constant angular frequency &#969;<sub>m</sub> 
+if the lattice is initialized in a single mode and the nonlinear parameters &#945; and &#946; are set equal to zero. The lattice will not stay 
+in a single mode if &#945; and &#946; are not zero. The FPU model initializes the system into a single-mode state by setting all but one amplitude 
+to zero and the simulation plots the time evolution of the first six modes when the play button is pressed. </p>
+
+</body>
+
+</html>

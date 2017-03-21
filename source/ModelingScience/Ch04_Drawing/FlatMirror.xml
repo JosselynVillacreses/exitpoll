@@ -1,0 +1,352 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Flat Mirror]]></Title>
+<Author><![CDATA[Wolfgang Christian - Davidson College]]></Author>
+<Keywords><![CDATA[optics, mirror, light]]></Keywords>
+<Level><![CDATA[beginner]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[wochristian@davidson.edu]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./tiger.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Intro Page</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Reflection on a flat (plane) mirror
+    </h2>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Variables for the scene]]></PageComment>
+<Variable>
+<Name><![CDATA[maxX]]></Name>
+<Value><![CDATA[8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[maximum X positive coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxY]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[maximum Y positive coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[imageWidth]]></Name>
+<Value><![CDATA[-3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Width of the image (negative so that the source tiger looks left)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[imageHeight]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Height of the image]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xSource]]></Name>
+<Value><![CDATA[maxX/2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[X position of the source image. Positive (source to the right of the mirror)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ySource]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Y position of the source image. Should be zero]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showRays]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Whether to show the virtual rays]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xSelected]]></Name>
+<Value><![CDATA[xSource]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[X coordinate of the point from which to cast rays]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ySelected]]></Name>
+<Value><![CDATA[imageHeight]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Y coordinate of the point from which to cast rays]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Evol Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// empty code page starts the animation 
+// so that the gif displays a walking tiger
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">drawingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Reflection by a flat mirror"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA[0,0]]></Property>
+<Property name="size"><![CDATA[680,375]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-maxX]]></Property>
+<Property name="maximumX"><![CDATA[maxX]]></Property>
+<Property name="minimumY"><![CDATA[-maxY]]></Property>
+<Property name="maximumY"><![CDATA[maxY]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="x"><![CDATA[xSelected]]></Property>
+<Property name="y"><![CDATA[ySelected]]></Property>
+<Property name="aliasing"><![CDATA[true]]></Property>
+<Property name="BRmessage"><![CDATA["Drag the source image to change its position"]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cursor</Type>
+<Property name="name">cursor</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[CROSSHAIR]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Image2D</Type>
+<Property name="name">sourceImage</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xSource]]></Property>
+<Property name="y"><![CDATA[ySource]]></Property>
+<Property name="sizeX"><![CDATA[imageWidth]]></Property>
+<Property name="sizeY"><![CDATA[imageHeight]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[ySource = 0;
+xSource = Math.max(xSource,maxX*0.2);
+xSource = Math.min(xSource,maxX*0.9);]]></Property>
+<Property name="imageFile"><![CDATA[./tiger.gif]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Image2D</Type>
+<Property name="name">reflectedImage</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-xSource]]></Property>
+<Property name="y"><![CDATA[ySource]]></Property>
+<Property name="sizeX"><![CDATA[-imageWidth]]></Property>
+<Property name="sizeY"><![CDATA[imageHeight]]></Property>
+<Property name="imageFile"><![CDATA[./tiger.gif]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">captionText</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-maxX/2]]></Property>
+<Property name="y"><![CDATA[maxY*0.8]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA["Reflection by a flat mirror"]]></Property>
+<Property name="font"><![CDATA[Palatino Linotype,BOLD,22]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="fillColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">sourceText</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xSource]]></Property>
+<Property name="y"><![CDATA[-0.3]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["source"]]></Property>
+<Property name="font"><![CDATA[Palatino Linotype,PLAIN,16]]></Property>
+<Property name="elementposition"><![CDATA[NORTH]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="fillColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">imageText</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-xSource]]></Property>
+<Property name="y"><![CDATA[-0.3]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["reflected image"]]></Property>
+<Property name="font"><![CDATA[Palatino Linotype,PLAIN,16]]></Property>
+<Property name="elementposition"><![CDATA[NORTH]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="fillColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">instructionsText</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[maxX/2+0.4]]></Property>
+<Property name="y"><![CDATA[maxY*0.8]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="text"><![CDATA["Click on the source image to position the virtual rays"]]></Property>
+<Property name="font"><![CDATA[Dialog,BOLD,12]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">pointToOrigin</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[Math.abs(xSelected)]]></Property>
+<Property name="sizeY"><![CDATA[ySelected]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+<Property name="lineWidth"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">reflection</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[maxX*0.9]]></Property>
+<Property name="sizeY"><![CDATA[- maxX*0.9*ySelected/Math.abs(xSelected)]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+<Property name="fillColor"><![CDATA[BLUE]]></Property>
+<Property name="lineWidth"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">reflectionExtension</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[-Math.abs(xSelected)]]></Property>
+<Property name="sizeY"><![CDATA[ySelected]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow2D</Type>
+<Property name="name">normalReflection</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[ySelected]]></Property>
+<Property name="sizeX"><![CDATA[maxX*0.9]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+<Property name="fillColor"><![CDATA[BLUE]]></Property>
+<Property name="lineWidth"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">normalExtension</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[ySelected]]></Property>
+<Property name="sizeX"><![CDATA[-Math.abs(xSelected)]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[GRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[FLOW:center,10,0]]></Property>
+<Property name="border"><![CDATA[5,0,5,0]]></Property>
+<Property name="borderType"><![CDATA[EMPTY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">checkBoxRays</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[showRays]]></Property>
+<Property name="text"><![CDATA["Show virtual rays"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">buttonReset</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Resets the simulation to its initial conditions."]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

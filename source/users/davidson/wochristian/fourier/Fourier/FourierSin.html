@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<link href="../../../../../_ejs_library/css/ejsPage.css" rel="stylesheet" type="text/css" />
+<title>Molecular Dynamics</title>
+</head>
+
+<body>
+
+<font FACE="Verdana"><font FACE="Courier"><p align="center"><img SRC="sin_series_basis.gif" border="1"></p>
+</font>
+<p align="center">[First three basis functions of a Fourier sine series.]</p>
+</font>
+
+<p>&nbsp;</p>
+<h1>Fourier Sin Series </h1>
+<p>A Fourier sine series uses only sine functions in the interval [0, 2&#960;] whereas the standard Fourier series uses both sines and cosines with half as many 
+coefficients of each.&nbsp; As is the case for the sine-cosine series, a sine series is a sum of harmonic frequencies {&#969;<sub>m</sub>= m&#969;<sub>0 </sub>} where <i>m</i> in an integer and 
+&#969;<sub>0</sub> = &#960;f<sub>0</sub> is the fundamental frequency.</p>
+<p align="center"><img src="fourier_sin_series.gif" width="145" height="45"> </p>
+<p align="left">The sine series is often used to solve differential equations that have the value zero at the boundaries and does a poor job fitting functions that do not satisfy this condition. (For example, try 
+f(x)=x.) Note also that the period of the sine series is 4&#960; (not 2&#960;). The shaded portions of the graph shows the extrapolation if the series is evaluated beyond the [0, 2&#960;] interval.</p>
+<p align="left">See the EJS Fourier sine-cosine series mdel and the EJS FFT model for additional Fourier analysis simulations.</p>
+<h2>Functions to try: </h2>
+<ul>
+	<li>Gaussian: f(x) = exp(-4*(x-pi)^2)</li>
+	<li>sawtooth: f(x) = x+2*step(x-pi)*(pi-x)</li>
+	<li>square wave: f(x) = 1-2*step(x-pi)</li><li>centered square wave: f(x) = step(x-0.5*pi)-step(x-1.5*pi</li>
+</ul>
+
+<font SIZE="3">
+
+    <h3>
+      References:</h3>
+    <ul>
+        <li><em>Numerical Recipes </em>(3<em>ed</em>)
+        by William Press, Saul Teukolsky, William Vetterling, and Brian Flannery, page 600.</li>
+    </ul>
+
+    <h3>
+      Credits:</h3>
+    <p>
+      The Fourier sine series simulation was created by Wolfgang Christian using the Easy Java Simulations (EJS) modeling tool.&nbsp; You can examine and modify the 
+		mathematical 
+		model for this simulation if you have Ejs installed by right-clicking within the plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; 
+		Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP ComPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+    </font>
+  
+    </body>
+
+</body>
+
+</html>

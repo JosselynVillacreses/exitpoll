@@ -1,0 +1,35 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css" />
+<title>Simulations for Statistical and Thermal Physics</title>
+</head>
+
+<body>
+<h1>Simulation of Lennard-Jones interactions</h1>
+<p>A molecular dynamics simulation of molecules in two dimensions interacting 
+via the Lennard-Jones potential. The output shows the velocity distribution. </p>
+<h2>Algorithm </h2>
+<p>The algorithm for simulating the evolution of the particles can be summarized 
+by the following steps: </p>
+<ol>
+	<li>Compute the forces on all the particles due to the other particles. By 
+	Newton's second law the acceleration of each particle is given by the total 
+	force on the particle divided by its mass which we set to unity. </li>
+	<li>Use a numerical algorithm to update the positions and velocities of all 
+	the particles at a time t + &#916;t later. The program uses the Verlet algorithm.
+	</li>
+	<li>Accumulate data in the speed histogram. </li>
+</ol>
+<h2>Reference: </h2>
+<p>Gould and Tobochnik <i>Statistic and Thermal Physics </i>to be published by Princeton 
+University Press (2010).&nbsp; Draft chapters are available online at &lt;<b>http://stp.clarku.edu/</b>&gt;.</p>
+<h3>Note: </h3>
+<p>This simulation was created by Wolfgang Christian using the Easy Java Simulations 
+(Ejs) modeling tool.&nbsp; It is based on a Java program from the Statistical and 
+Thermal Physics Project. You can modify this simulation if you have Ejs installed 
+by right-clicking within a plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu 
+item. Information about Ejs is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+
+</body>
+
+</html>

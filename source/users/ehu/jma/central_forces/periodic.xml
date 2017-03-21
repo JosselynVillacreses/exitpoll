@@ -1,0 +1,650 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Periodic]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[N-body problem;periodic solution]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[N equal masses are moving in the same plane under the action of the mutual gravitational attraction. If the initial conditions are chosen in the right way, some periodic solutions of a very special kind may be found: all particles move along the same orbit and the total angular momentum vanishes in the center-of-mass system. One can see some examples in this simulation.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Periodic orbits</title>
+    
+  </head>
+  <body>
+    <h1>
+      <b>Periodic orbits in the <i>N</i>-body plane problem</b>
+    </h1>
+    <i>N</i> equal masses are moving in the same plane under the action of the 
+    mutual gravitational attraction. If the initial conditions are chosen in 
+    the right way, some periodic solutions of a very special kind may be 
+    found: all particles move along the same orbit and the total angular 
+    momentum vanishes in the center-of-mass system. One can see some examples 
+    in this simulation.
+
+    <ul>
+      <li>
+        To get information on an element, put over it the mouse pointer to see 
+        the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Check that the first example (due to Chris Moore: see <a href="http://count.ucsc.edu/~rmont/Nbdy.html">http://count.ucsc.edu/~rmont/Nbdy.html</a>) 
+        is stable: stop the simulation, use the mouse to move one particle <i>a 
+        bit</i> and press <b>Continue</b>.
+      </li>
+      <li>
+        Check that the remaining examples (due to Carles Sim&#243;: see <a href="http://www.maia.ub.es/dsg/nbody.html">http://www.maia.ub.es/dsg/nbody.html</a> 
+        and <a href="http://burtleburtle.net/bob/physics/index.html">http://burtleburtle.net/bob/physics/index.html</a>) 
+        are unstable: just wait long enough to see the particles out of the 
+        periodic orbit due to the errors in initial conditions and integration 
+        method.
+      </li>
+      <li>
+        To check dependence on the integration method, try one unstable 
+        example with different values for the tolerance (<b>tol</b>) and 
+        compare the values of time <b>t</b> at which the particles start 
+        leaving the common orbit.
+      </li>
+      <li>
+        More examples (even in three dimensions!) can be found in the 
+        aforementioned links.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Model</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[nmax]]></Name>
+<Value><![CDATA[5]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum number of particles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[3]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Current number of particles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax]]]></Dimension>
+<Comment><![CDATA[Abscissae]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax]]]></Dimension>
+<Comment><![CDATA[Ordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax]]]></Dimension>
+<Comment><![CDATA[x components of velocities]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax]]]></Dimension>
+<Comment><![CDATA[y components of velocities]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Integration</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[1.0E-10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum relative error]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[orbits]]></Name>
+<Value><![CDATA[200]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of orbit points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[type]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Orbit type]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[colors]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[Object]]></Type>
+<Dimension><![CDATA[[nmax]]]></Dimension>
+<Comment><![CDATA[Color for each orbit]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum x on screen]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[norbits]]></Name>
+<Value><![CDATA[24]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of orbit types]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Start</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Default values]]></Comment>
+<Code><![CDATA[
+start();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+_view.getElement("bdt").setProperty("format","\u0394t = 0.###");
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x[i]">u[i]</Rate>
+<Rate state="y[i]">v[i]</Rate>
+<Rate state="u[i]">ax(i,x,y)</Rate>
+<Rate state="v[i]">ay(i,x,y)</Rate>
+<Rate state=""></Rate>
+<Method>Dopri853</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[Newtonian equations of motion]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Acceleration</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Acceleration components]]></Comment>
+<Code><![CDATA[
+public double ax(int i,double x[],double y[]) {
+  if (i >= n) return 0.0;
+  double a = 0.0;
+  for (int j = 0; j < n; j++)
+    if (i != j) {
+      double r = hypot(x[i]-x[j],y[i]-y[j]);
+      a += -(x[i]-x[j])/(r*r*r);
+    }
+  return a;
+}
+
+public double ay(int i,double x[],double y[]) {
+  if (i >= n) return 0.0;
+  double a = 0.0;
+  for (int j = 0; j < n; j++)
+    if (i != j) {
+      double r = hypot(x[i]-x[j],y[i]-y[j]);
+      a += -(y[i]-y[j])/(r*r*r);
+    }
+  return a;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Data</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Select orbit and the corresponding data]]></Comment>
+<Code><![CDATA[
+String names[] = {      // Orbit names
+"Moore", "Simó 1", "Simó 2", "Simó 3", "Simó 4", "Simó 5", "Simó 6", "Simó 7", "Simó 8", "Simó 9", "Simó 10", 
+"Simó 11", "Simó 12", "Simó 13", "Simó 14", "Simó 15", "Simó 16", "Simó 17", "Simó 18", "Simó 19", "Simó 20", 
+"Simó 21", "Simó 22", "Simó 23"
+};
+
+int npart[] = {          // Number of particles
+3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
+};
+
+double xdim[] = {       // Initial screen size
+0.65, 0.8, 0.8, 1.0, 0.65, 0.9, 1.0, 0.85, 1.1, 0.65, 0.8, 1.2, 0.9, 0.9, 1.0, 0.8, 0.8, 0.9, 0.75, 0.75, 0.65, 0.8, 0.65, 0.85
+};
+
+double xyuv[] = {       // Initial positions and velocities
+-0.97000436, 0.24308753, -0.466203685, -0.43236573, 0.97000436, -0.24308753, -0.466203685, -0.43236573, 0, 0, 0.93240737, 0.86473146, 0, 0, 0, 0, 0, 0, 0, 0,
+1.38285684361842, 0, 0, 0.584872630814873, 0, -0.157029922281218, -1.87193524587868, 0, -1.38285684361842, 0, 0, -0.584872630814873, 0, 0.157029922281218, 1.87193524587868, 0, 0, 0, 0, 0,
+1.3084722916743, 0, 0, 0.411944964735883, -0.0533985772189845, -0.475560020307925, -1.09011640423887, -0.64931992050408, -1.20167513723633, 0, 0, 0.886694876272276, -0.053398577218983, 0.475560020307924, 1.09011640423887, -0.649319920504079, 0, 0, 0, 0,
+1.00231488346205, 0, 0, -0.29379027773203, -0.528694094023631, 0.567125954067238, -0.175826619093917, 1.02361310165053, 0.05507330458521, 0, 0, -1.75343592556901, -0.528694094023634, -0.567125954067236, 0.175826619093916, 1.02361310165052, 0, 0, 0, 0,
+1.2077101785817, 0, 0, 0.590541176087202, -0.530503227535756, 0.051543724217618, -3.50865335142232, 0.267232711784397, -0.146703723510176, 0, 0, -1.12500659965584, -0.530503227535764, -0.0515437242176267, 3.5086533514223, 0.267232711784241, 0, 0, 0, 0,
+1.65766601254927, 0, 0, 0.593785277963254, 0.439775050426293, -0.169716862319624, -1.82278548762725, -0.12824800560005, -1.26860805670092, -0.267650773258184, -1.2715639365749, -0.168644633381599, -1.26860805670093, 0.267650773258185, 1.2715639365749, -0.168644633381582, 0.439775050426291, 0.169716862319622, 1.82278548762726, -0.128248005600023,
+0.955063306934644, 0, 0, 0.224477866326988, 0.017138123273294, -0.799614781300969, 0.315099534183334, -0.816298861454279, -0.160691656488542, 0.268624002435672, -1.07570772248831, 2.33259087218768, 0.057619315003466, 0.477031466082465, 0.0519610447239324, -1.95999321288874, -0.869129088722862, 0.0539593127828328, 0.708647143581039, 0.219223335828347,
+1.44868675914712, 0, 0, -0.921498443845218, 0.400382201553443, -0.345221534979449, -1.33515781276618, 0.80950945912197, -1.124725581127, 0.448292482373979, -0.919118216276916, -0.34876023719937, -1.124725581127, -0.448292482373982, 0.919118216276916, -0.348760237199364, 0.400382201553442, 0.345221534979452, 1.33515781276618, 0.809509459121982,
+0.964424372298569, 0, 0, -0.138501846852103, -0.0464908629716353, 0.862620205201214, 0.18438340873985, 0.69976747831906, -0.435721323177649, -0.103616707577587, -2.4934538659574, -0.630516554893019, -0.435721323177649, 0.103616707577587, 2.4934538659574, -0.630516554892999, -0.0464908629716352, -0.862620205201214, -0.184383408739851, 0.699767478319061,
+0.367302752558756, 0, 0, 2.13480823891351, 0.676023172122292, -0.185202363961882, -2.13811566358165, -0.731148298714056, -0.85967454840167, -0.389735175088206, 0.536585453050207, -0.336255820742697, -0.85967454840167, 0.389735175088206, -0.536585453050207, -0.336255820742696, 0.676023172122292, 0.185202363961882, 2.13811566358165, -0.731148298714056,
+0.479973011541914, 0, 0, 1.64418280644252, 0.862931274392285, -0.261036578940572, -1.6851294569332, -0.726179532385241, -1.10291778016324, -0.28981014826966, -1.21994203708136, -0.0959118708360201, -1.10291778016324, 0.28981014826966, 1.21994203708136, -0.0959118708360197, 0.862931274392285, 0.261036578940572, 1.6851294569332, -0.726179532385241,
+0.229752981150401, 0, 0, 1.82152669120022, 0.652919352041286, 0.943822318931204, 0.222393460422703, -0.499724468743892, -0.767795842616486, -0.199686600822279, -1.60766862056937, -0.411038876856216, -0.767795842616486, 0.199686600822279, 1.60766862056937, -0.411038876856216, 0.652919352041286, -0.943822318931204, -0.222393460422703, -0.499724468743892,
+1.59207262037658, 0, 0, -0.46942218187551, 0.389466915571531, 0.36065915957754, -1.26264216272448, 0.60421490722545, -1.18550322575982, -0.211611493757751, -1.48942547710392, -0.369503816287694, -1.18550322575982, 0.211611493757751, 1.48942547710392, -0.369503816287694, 0.38946691557153, -0.36065915957754, 1.26264216272448, 0.604214907225449,
+0.279485121988217, 0, 0, 1.85154361733484, 0.809587586714766, 0.523073055668605, -0.18075022943322, -1.0043912998909, -0.949330147708874, 0.288770486793459, -1.2727680433866, 0.0786194912234789, -0.949330147708874, -0.288770486793459, 1.2727680433866, 0.0786194912234788, 0.809587586714765, -0.523073055668605, 0.18075022943322, -1.0043912998909,
+1.30006628836077, 0, 0, -1.03771382624752, 0.4053376209213, -0.790402927074579, -1.10617978939022, 0.0492495013395566, -1.05537076510169, 0.182038008157031, -1.6331196223237, 0.469607411784203, -1.05537076510169, -0.182038008157031, 1.6331196223237, 0.469607411784203, 0.4053376209213, 0.790402927074579, 1.10617978939022, 0.0492495013395571,
+0.46103349847604, 0, 0, 0.823980459899597, 0.790972112297408, -0.50233441600913, -1.39616694584661, -0.827082667677868, -1.02148886153543, 0.194917542033323, -1.58325802530293, 0.415092437728069, -1.02148886153543, -0.194917542033323, 1.58325802530293, 0.415092437728069, 0.790972112297407, 0.50233441600913, 1.39616694584661, -0.827082667677868,
+-0.834708539203028, 0, 0, -0.780052021484255, 0.538501218059577, -0.740764150905026, 0.726353258991694, -0.292844106384734, -0.121146948458063, 0.270645434544015, -1.84254797086549, 0.682870117126862, -0.121146948458064, -0.270645434544015, 1.84254797086549, 0.682870117126862, 0.538501218059578, 0.740764150905026, -0.726353258991694, -0.292844106384734,
+1.46609419062561, 0, 0, 0.957169879458415, 0.463756947083572, 0.456404943314326, -1.20309522086643, -0.567563747993467, -1.19680404239638, 0.291210084715472, -1.20313942009359, 0.0889788082642593, -1.19680404239638, -0.291210084715471, 1.20313942009359, 0.088978808264259, 0.463756947083572, -0.456404943314326, 1.20309522086643, -0.567563747993467,
+1.27331797699375, 0, 0, 0.935906997601736, 0.167859951287217, 0.397113483819735, -1.55295316533167, -0.639769143573721, -0.804518939784093, -0.605280210045722, 0.576440530593894, 0.171815644772852, -0.804518939784093, 0.605280210045722, -0.576440530593894, 0.171815644772853, 0.167859951287217, -0.397113483819735, 1.55295316533167, -0.639769143573722,
+0.454400905334618, 0, 0, 2.04850135744239, 0.801491528492255, -0.190675239435961, -1.96215212315072, -0.678912805484384, -1.02869198115956, 0.44656991113219, -0.942840944983148, -0.34533787323681, -1.02869198115956, -0.44656991113219, 0.942840944983148, -0.34533787323681, 0.801491528492255, 0.190675239435961, 1.96215212315072, -0.678912805484384,
+0.304876860847547, 0, 0, 1.86942146977325, 0.591401737447669, -0.22788379413711, -2.1479413772137, -0.819937186134399, -0.743840167871443, 0.594118645844994, 0.458834364268103, -0.114773548752226, -0.743840167871443, -0.594118645844994, -0.458834364268103, -0.114773548752226, 0.591401737447669, 0.22788379413711, 2.1479413772137, -0.819937186134398,
+0, 0.680143058705622, 0.386999249719695, 0, -0.976186915603812, 0.0557379964949676, -1.4789442006436, -0.237641042474749,  -0.833723500796569, -0.395809525847778, 1.28544457578375, 0.704950366904967, 0.833723500796569, -0.395809525847778, 1.28544457578375, -0.704950366904967, 0.976186915603812, 0.0557379964949675, -1.4789442006436, 0.237641042474749,
+1.21303547193979, 0, 0, -0.345565012495286, -0.491977378408856, 0.213119532619359, -1.67694933083659, -1.41924967902346, -0.114540357561042, 0.23231510036761, -1.45367306214402, 1.59203218527109, -0.114540357561039, -0.232315100367609, 1.453673062144, 1.5920321852711, -0.491977378408852, -0.213119532619361, 1.67694933083661, -1.41924967902345,
+1.01608644852489, 0, 0, -1.27341955244126, -0.477139902874087, -0.519543510518068, -1.26481603440589, 1.49132267326896, -0.0309033213883552, -0.354523832495802, -0.703027919091853, -0.854612897048339, -0.0309033213883551, 0.354523832495804, 0.703027919091857, -0.854612897048337, -0.477139902874088, 0.519543510518067, 1.26481603440589, 1.49132267326897
+};
+
+int NN[] = {            // Number of orbit points
+200, 150, 150, 150, 150, 120, 120, 120, 120, 120, 120, 
+120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+120, 120  
+};
+
+public void start() {
+ _clearView();
+ _view.resetTraces();
+ colors[0] = new java.awt.Color(255,0,0);
+ colors[1] = new java.awt.Color(0,128,0);
+ colors[2] = new java.awt.Color(0,0,255);
+ colors[3] = new java.awt.Color(0,128,128);
+ colors[4] = new java.awt.Color(128,0,128);
+ set_name();
+  t = 0.0;
+  orbits = NN[type];
+  n    = npart[type];
+  xmax = xdim[type];
+  int j = 20*type;
+  for (int i = 0; i < n; i++) {
+    x[i] = xyuv[j++];
+    y[i] = xyuv[j++];
+    u[i] = xyuv[j++];
+    v[i] = xyuv[j++];
+  }
+  _resetSolvers();
+}
+
+public void set_name() {
+ _view.getElement("NameLabel").setProperty("text",names[type]);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Supply Math.hypot function for Java 1.4--]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Periodic orbits]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["600,400"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Down</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,3,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">bdt</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.###"]]></Property>
+<Property name="tooltip"><![CDATA[Integration step length]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">btol</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[tol]]></Property>
+<Property name="format"><![CDATA[tol = 0.0E0]]></Property>
+<Property name="tooltip"><![CDATA[Maximum relative error]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">bOrbits</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[orbits]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="tooltip"><![CDATA[Number of points in each orbit]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Single step the simulation"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the initial conditions.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Types</Property>
+<Property name="parent">Down</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">NameLabel</Property>
+<Property name="parent">Types</Property>
+<Property name="position">south</Property>
+<Property name="text"><![CDATA["More particles."]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="tooltip"><![CDATA[Orbit selected above]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">Type</Property>
+<Property name="parent">Types</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[type]]></Property>
+<Property name="minimum"><![CDATA[0]]></Property>
+<Property name="maximum"><![CDATA[norbits-1]]></Property>
+<Property name="ticks"><![CDATA[norbits]]></Property>
+<Property name="closest"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="dragaction"><![CDATA[set_name()]]></Property>
+<Property name="action"><![CDATA[start()]]></Property>
+<Property name="tooltip"><![CDATA[Select here an orbit]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Graph</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-xmax]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-xmax]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="pressaction"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="title"><![CDATA[Plane of motion]]></Property>
+<Property name="titleX"><![CDATA[X]]></Property>
+<Property name="titleY"><![CDATA[Y]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="BRmessage"><![CDATA["t="+_format(t,"0.000")]]></Property>
+<Property name="tooltip"><![CDATA[Click to erase]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">Orbits</Property>
+<Property name="parent">Graph</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="maxpoints"><![CDATA[orbits]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[orbits > 0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[colors]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">Particles</Property>
+<Property name="parent">Graph</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="action"><![CDATA[_resetSolvers()]]></Property>
+<Property name="secondaryColor"><![CDATA[null]]></Property>
+<Property name="color"><![CDATA[colors]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">bZoom</Property>
+<Property name="parent">Main</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[xmax]]></Property>
+<Property name="minimum"><![CDATA[.5]]></Property>
+<Property name="maximum"><![CDATA[2.5]]></Property>
+<Property name="orientation"><![CDATA[VERTICAL]]></Property>
+<Property name="tooltip"><![CDATA[Zoom]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

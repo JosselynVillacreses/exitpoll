@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/callback.js"></script>
+    <link rel="stylesheet" href="estilo/style.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <script src="js/script.js"></script>
+    <script src="js/callback.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+      
+
+<!--PANTALLA DE INICIO-->
+<div id="inicio" class="centro">
+    <h2>Sistema de ExitPoll</h2>
+    <h3>Elecciones Nacionales<br>Ecuador - 2017</h3>
+    
+</div>
+
+<div class="centro" id="btnIngresar">
+    <input type="button" class="btn btn-success" onclick="aparecer()" value="Ingresar">
+</div>
+
+<!--PANTALLA DE LOGIN-->
+<div class="login">
+
+
+<div id="id01" class="modal">
+  
+  <form id="log" class="modal-content animate">
+   
+    <div class="container">
+      <label><b>Usuario:</b></label>
+      <input type="text" placeholder="Ingrese su usuario" name="usuario" id="user" required>
+
+      <label><b>Contraseña:</b></label>
+      <input type="password" placeholder="Ingrese su contraseña" name="clave" id="pass" required>
+        
+      <input class="btn btn-primary" type="button" onclick="inicio_sesion()" value="Iniciar sesion"><br>
+      
+    </div>
+
+    <div class="container">
+      <input type="button" onclick="window.location.reload()" class="btn btn-danger" value="Cancelar">
+      
+    </div>
+    
+  </form>
+</div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

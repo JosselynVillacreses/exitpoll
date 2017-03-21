@@ -1,0 +1,462 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Cart pulled by a string]]></Title>
+<Author><![CDATA[Francisco Esquembre, Universidad de Murcia, Spain]]></Author>
+<Keywords><![CDATA[Newton's Laws]]></Keywords>
+<Level><![CDATA[Beginner]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[A cart is tied to a weight that falls. This produced a combined motion of the whole set.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./CartPulledByString/CartForces.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Cart pulled by a string</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Cart pulled by a string
+    </h1>
+    <p>
+      This is a simulation of a classical problem, that of a cart pulled by a 
+      string from which a second object hangs. The mass of the string (which 
+      is homogeneous) is not negligible.
+    </p>
+    <img src="./CartPulledByString/CartForces.gif">
+    
+
+    <p>
+      Simulation adapted from the book (in Spanish)
+    </p>
+    <p>
+      <b>Creaci&#243;n de Simulaciones Interactivas en Java.</b><br><b><i> 
+      Aplicaci&#243;n para la Ense&#241;anza de las Ciencias.<br></i>F. 
+      Esquembre</b>
+    </p>
+    <p>
+      (C) Pearson Educaci&#243;n 2004.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Bodies</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[m1]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[mass of the cart]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cartWidth]]></Name>
+<Value><![CDATA[2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[cart width]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wheelRadius]]></Name>
+<Value><![CDATA[0.35]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[wheel radius]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wheelAngle]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[angle of rotation of the wheels]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[m2]]></Name>
+<Value><![CDATA[0.3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[mass of the hanging body]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ms]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[mass of the string]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[L]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[string length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mp]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[mass of the pulley]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pulleyRadius]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[radius of the pulley]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[fr]]></Name>
+<Value><![CDATA[0.3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[friction in the pulley]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pulleyInertia]]></Name>
+<Value><![CDATA[mp*pulleyRadius*pulleyRadius/2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[pulley inertia]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[pulleyAngle]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[angleof rotation of the pulley]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Dynamics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[increment of time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[gravity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[TM]]></Name>
+<Value><![CDATA[m1+m2+pulleyInertia/(pulleyRadius*pulleyRadius) + ms]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[constant of total mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x position of the cart]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[1.1*L]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y position of the cart (constant)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[v]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x velocity of the cart]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="x">v</Rate>
+<Rate state="v">ms*g/(TM*L) * x + (m2*g-fr)/TM</Rate>
+<Method>MidPoint</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[Differential equations of motion]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Limit</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Check for the end of the simulation]]></Comment>
+<Code><![CDATA[
+if (x>L-cartWidth/2) _pause();
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Angles</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[angles of rotations]]></Comment>
+<Code><![CDATA[
+pulleyAngle = -x/pulleyRadius;
+wheelAngle = -x/wheelRadius;
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Interactions</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[interacci�n del usuario con el carro]]></Comment>
+<Code><![CDATA[
+public void moveTheCart () {
+  y = 1.1*L;
+  if (x<0) x = 0;
+  else if (x>L-cartWidth/2) x = L-cartWidth/2;
+  v = 0;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Cart pulled by string"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["371,420"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,5,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">twoStateButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-0.1*L]]></Property>
+<Property name="maximumX"><![CDATA[1.2*L]]></Property>
+<Property name="minimumY"><![CDATA[-0.1*L]]></Property>
+<Property name="maximumY"><![CDATA[1.2*L]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">table</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-0.1*L ]]></Property>
+<Property name="y"><![CDATA[-0.1*L ]]></Property>
+<Property name="sizex"><![CDATA[1.1*L ]]></Property>
+<Property name="sizey"><![CDATA[1.1*L ]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH_WEST]]></Property>
+<Property name="color"><![CDATA[lightGray]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">cart</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[cartWidth]]></Property>
+<Property name="sizey"><![CDATA[1]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="dragaction"><![CDATA[y = 1.1*L;
+if (x<0) x = 0;
+else if (x>L-cartWidth/2) x = L-cartWidth/2;
+v = 0;]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="color"><![CDATA[128,192,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">wheel1</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x -cartWidth/4 ]]></Property>
+<Property name="y"><![CDATA[y - 0.65 ]]></Property>
+<Property name="sizex"><![CDATA[2*wheelRadius]]></Property>
+<Property name="sizey"><![CDATA[2*wheelRadius]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="angle"><![CDATA[wheelAngle]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">wheel2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x + cartWidth/4]]></Property>
+<Property name="y"><![CDATA[y - 0.65]]></Property>
+<Property name="sizex"><![CDATA[2*wheelRadius]]></Property>
+<Property name="sizey"><![CDATA[2*wheelRadius]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="angle"><![CDATA[wheelAngle]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">mass</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[1.1*L ]]></Property>
+<Property name="y"><![CDATA[L-x ]]></Property>
+<Property name="sizex"><![CDATA[0.7]]></Property>
+<Property name="sizey"><![CDATA[1]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[NORTH]]></Property>
+<Property name="color"><![CDATA[128,192,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">pulley</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[L+pulleyRadius]]></Property>
+<Property name="y"><![CDATA[L+pulleyRadius]]></Property>
+<Property name="sizex"><![CDATA[2*pulleyRadius]]></Property>
+<Property name="sizey"><![CDATA[2*pulleyRadius]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[WHEEL]]></Property>
+<Property name="angle"><![CDATA[pulleyAngle]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">pulleySupport</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[L]]></Property>
+<Property name="y"><![CDATA[L]]></Property>
+<Property name="sizex"><![CDATA[pulleyRadius]]></Property>
+<Property name="sizey"><![CDATA[pulleyRadius]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">horString</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x+cartWidth/2 ]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[L-x-0.05*L ]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">verString</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[1.1*L ]]></Property>
+<Property name="y"><![CDATA[1.05*L ]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[-0.05*L-x ]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

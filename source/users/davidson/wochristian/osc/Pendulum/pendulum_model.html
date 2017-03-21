@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<link href="../../../../../_ejs_library/css/ejsPage.css" rel="stylesheet" type="text/css" />
+<title>Simple Pendulum Model</title>
+</head>
+
+<body>
+
+<h1>Pendulum Model</h1>
+<p align="center"><img border="0" src="pendulum_constraints.jpg"></p>
+<p>The Pendulum model uses polar coordinates to compute the displacement angle
+<font face="Times New Roman">&#952; </font>but the pendulum bob in the simulation&#39;s view is positioned using Cartesian 
+coordinates.&nbsp; We create <i>x</i> and <i>y</i> auxiliary variables to synchronize objects in the view with 
+the model.&nbsp; These Cartesian coordinates are computed from the displacement angle when they are defined and 
+after every animation step using an Ejs Constraints page.</p>
+<p align="center"><img border="0" src="pendulum_custom_method.jpg"></p>
+<p>Because mouse actions are enabled on the bob&#39;s properties page and because the model&#39;s <i>x</i> 
+and <i>y</i> variables are bound to the bob&#39;s x and y properties, the model&#39;s x and y variables change when the 
+bob is dragged.&nbsp; This binding of on-screen properties to a model&#39;s internal variables encourages us to define 
+a custom method <font face="Courier">newPosition</font> that computes the displacement angle
+<font face="Times New Roman">&#952;</font> from the bob&#39;s Cartesian coordinates.&nbsp; The <font face="Courier">newPosition</font> 
+method also sets the bob&#39;s velocity components to zero and insures that the final coordinates are the correct 
+distance L from the pivot point.&nbsp; The <font face="Courier">newPosition</font> method is called in response 
+to a mouse drag by entering the method name as the drag action in the bob&#39;s properties page.</p>
+
+</body>
+
+</html>

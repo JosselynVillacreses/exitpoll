@@ -1,0 +1,592 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Arenstorf orbits]]></Title>
+<Author><![CDATA[Francisco Esquembre (Universidad de Murcia) and Wolfgang Christian (Davidson College)]]></Author>
+<Keywords><![CDATA[ODE, Arenstorf orbits, three-body problem]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[Arenstorf orbits are closed trajectories of the restricted three-body problem. That is, two bodies of masses m and 1-m moving in a circular rotation, and a third body of negligible mass moving in the same plane.
+
+The computation of these orbits is very sensible to small errors and are a good test for the accuracy of numerical methods for solving Ordinary Differential Equations.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./ArenstorfOrbit/paco_wc.jpg;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./ArenstorfOrbit/Arenstorf.gif;./ArenstorfOrbit/Authors.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Arenstorf Orbits</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>
+            Arenstorf orbits
+          </h1>
+          <p>
+            Arenstorf orbits are closed trajectories of the restricted 
+            three-body problem. That is, two bodies of masses &#181; and 1-&#181; moving 
+            in a circular rotation, and a third body of negligible mass moving 
+            in the same plane.
+          </p>
+          <p>
+            The computation of these orbits is very sensible to small errors 
+            and are a good test for the accuracy of numerical methods for 
+            solving Ordinary Differential Equations.
+          </p>
+        </td>
+        <td>
+          <p align="center">
+            <img src="./ArenstorfOrbit/Arenstorf.gif">
+            
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+      This simulation compares the solution of two of these orbits using both 
+      a 4th-order fixed step and a 5(4) variable step Runge-Kutta algorithm. 
+      The adaptive solver uses an event to find the period of the orbit and 
+      stop there. Both the computations of the adaptive solver and the event 
+      are done with the step size and the tolerance indicated.
+    </p>
+    <p>
+      The middle row of fields at the bottom of the window shows the computed 
+      values, while the lower one shows the expected values.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Authors</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./ArenstorfOrbit/Authors.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Common</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[mu]]></Name>
+<Value><![CDATA[0.012277471]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mup]]></Name>
+<Value><![CDATA[1.0-mu]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ext]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[period]]></Name>
+<Value><![CDATA[11.124340337266085134999734047]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[h]]></Name>
+<Value><![CDATA[period/3000.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[skip]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[0.00000001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[orbit]]></Name>
+<Value><![CDATA[" 2 Loops Orbit"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1Init]]></Name>
+<Value><![CDATA[0.994]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2Init]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Adaptive step</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[showAdaptive]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[x1Init]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[x2Init]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx2]]></Name>
+<Value><![CDATA[-2.0317326295573368357302057924]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Fixed step</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[showFixed]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[fx1]]></Name>
+<Value><![CDATA[x1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[fvx1]]></Name>
+<Value><![CDATA[vx1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[fx2]]></Name>
+<Value><![CDATA[x2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[fvx2]]></Name>
+<Value><![CDATA[vx2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ft]]></Name>
+<Value><![CDATA[t]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t = 0.0;
+x1 = x1Init;
+vx1 = 0.0;
+x2 = x2Init;
+if (orbit.trim().startsWith("2")) {
+  period = 11.124340337266085134999734047;
+  vx2 =  -2.0317326295573368357302057924;
+}
+else {
+  period = 17.0652165601579625588917206249;
+  vx2 =  -2.00158510637908252240537862224;
+}
+// Init Fixed RK variables
+ft = t;
+fx1 = x1; fvx1 = vx1;
+fx2 = x2; fvx2 = vx2;
+
+// Clear the traces
+_view.resetTraces();
+_view.traceAdaptive.addPoint(x1,x2);
+_view.traceFixed.addPoint(x1,x2);
+
+// computes many steps but displays only one!
+_setStepsPerDisplay((int) (period/h/300.0));
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>ODEs</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>h</Increment>
+<Rate state="x1">vx1</Rate>
+<Rate state="vx1">x1+2*vx2-mup*(x1+mu)/D1(x1,x2)-mu*(x1-mup)/D2(x1,x2)</Rate>
+<Rate state="x2">vx2</Rate>
+<Rate state="vx2">x2-2*vx1-mup*x2/D1(x1,x2)-mu*x2/D2(x1,x2)</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Event</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[]]></Comment>
+<ZeroCondition><![CDATA[
+if (t>10.0 && x1>0.9) return x2;
+return 1.0;
+]]></ZeroCondition>
+<Tolerance><![CDATA[tol]]></Tolerance>
+<Action><![CDATA[
+  _pause();
+  _view.flush();
+
+]]></Action>
+<StopAtEvent>true</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Fixed ODEs</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>ft</IndependentVariable>
+<Increment>h</Increment>
+<Rate state="fx1">fvx1</Rate>
+<Rate state="fvx1">fx1 + 2*fvx2 - mup*(fx1+mu)/D1(fx1,fx2) - mu*(fx1-mup)/D2(fx1,fx2)</Rate>
+<Rate state="fx2">fvx2</Rate>
+<Rate state="fvx2">fx2-2*fvx1-mup*fx2/D1(fx1,fx2)-mu*fx2/D2(fx1,fx2)</Rate>
+<Method>RungeKutta</Method>
+<Tolerance></Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events></Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Ds</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public double D1 (double a1, double a2) {
+  return Math.pow((a1+mu)*(a1+mu) + a2*a2,1.5);
+}
+public double D2 (double a1, double a2) {
+  return Math.pow((a1-mup)*(a1-mup) + a2*a2,1.5);
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Arenstorf Orbits]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["400,460"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-ext]]></Property>
+<Property name="maximumX"><![CDATA[ext]]></Property>
+<Property name="minimumY"><![CDATA[-ext]]></Property>
+<Property name="maximumY"><![CDATA[ext]]></Property>
+<Property name="printTarget"><![CDATA[ArenstorfOrbits]]></Property>
+<Property name="title"><![CDATA["Arenstorf Orbits"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traceFixed</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[fx1]]></Property>
+<Property name="y"><![CDATA[fx2]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showFixed]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traceAdaptive</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[x2]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showAdaptive]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComboBox</Type>
+<Property name="name">comboBox</Property>
+<Property name="parent">panel</Property>
+<Property name="position">center</Property>
+<Property name="options"><![CDATA[" 2 Loops Orbit; 3 Loops Orbit"]]></Property>
+<Property name="variable"><![CDATA[orbit]]></Property>
+<Property name="action"><![CDATA[_initialize(); _play();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panelRight</Property>
+<Property name="parent">panel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">adaptiveCheckbox</Property>
+<Property name="parent">panelRight</Property>
+<Property name="variable"><![CDATA[showAdaptive]]></Property>
+<Property name="text"><![CDATA[Adaptive]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">fixedCheckbox</Property>
+<Property name="parent">panelRight</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[showFixed]]></Property>
+<Property name="text"><![CDATA[Fixed]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">PanelDown</Property>
+<Property name="parent">frame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:0,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Panel2</Property>
+<Property name="parent">PanelDown</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">h</Property>
+<Property name="parent">Panel2</Property>
+<Property name="variable"><![CDATA[h]]></Property>
+<Property name="format"><![CDATA[h = 0.########]]></Property>
+<Property name="action"><![CDATA[_initialize(); _play();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">tolerance</Property>
+<Property name="parent">Panel2</Property>
+<Property name="variable"><![CDATA[tol]]></Property>
+<Property name="format"><![CDATA[Tol = 0.########]]></Property>
+<Property name="action"><![CDATA[_initialize(); _play();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Reset</Property>
+<Property name="parent">Panel2</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Panel3</Property>
+<Property name="parent">PanelDown</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">t</Property>
+<Property name="parent">Panel3</Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="format"><![CDATA[T = 0.############]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x1</Property>
+<Property name="parent">Panel3</Property>
+<Property name="variable"><![CDATA[x1]]></Property>
+<Property name="format"><![CDATA[x1 = 0.############]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x2</Property>
+<Property name="parent">Panel3</Property>
+<Property name="variable"><![CDATA[x2]]></Property>
+<Property name="format"><![CDATA[x2 = 0.############]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Panel4</Property>
+<Property name="parent">PanelDown</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">period</Property>
+<Property name="parent">Panel4</Property>
+<Property name="variable"><![CDATA[period]]></Property>
+<Property name="format"><![CDATA[P = 0.############]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x1Init</Property>
+<Property name="parent">Panel4</Property>
+<Property name="variable"><![CDATA[x1Init]]></Property>
+<Property name="format"><![CDATA[X1 = 0.############]]></Property>
+<Property name="editable"><![CDATA[true]]></Property>
+<Property name="action"><![CDATA[_initialize(); _play();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">x2Init</Property>
+<Property name="parent">Panel4</Property>
+<Property name="variable"><![CDATA[x2Init]]></Property>
+<Property name="format"><![CDATA[X2 = 0.############]]></Property>
+<Property name="editable"><![CDATA[true]]></Property>
+<Property name="action"><![CDATA[_initialize(); _play();]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

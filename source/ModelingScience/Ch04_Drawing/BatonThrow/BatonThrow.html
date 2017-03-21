@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title> Energy Eigenfunctions</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css">
+    <style type="text/css">
+.style1 {
+    font-size: xx-small;
+}
+.style4 {
+    text-align: center;
+}
+</style>
+  </head>
+  <body > 
+    <p align="center">
+      <img border="0" src="baton_group_inspector.jpg"><br>
+      [The baton group inspector panel binds the model's dynamical variables to the group's position.]</p><h1>
+      Baton Throw and 2D Center of Mass</h1><p>
+      The baton throw<font SIZE="3"> simulation shows the motion of two unequal masses joined by a massless rod.&nbsp; 
+      Trajectories of the center of mass and of one of the masses are displayed.&nbsp; The baton is thrown with a fixed initial 
+      velocity and an angular velocity about the center of mass that can be set.&nbsp; The ratio of the masses can also be set 
+      using a slider.</font></p>
+    <p>
+          The 2D baton throw is a very simple model because the translational (<font size="2">X<sub>cm</sub>, Y</font><sub><font size="2">cm</font></sub><font 
+          face="Times New Roman">) </font> and rotational <font 
+          face="Times New Roman">&#952;</font>&nbsp; dynamical variables are independent.&nbsp; The center of mass behaves like a point 
+          particle acted on by a constant gravitation force in the downward direction.&nbsp; The horizontal motion is uniform and 
+          the vertical motion is described by the kinematics of constant acceleration.&nbsp; As the translational motion evolves, 
+          the baton spins about its center of mass with constant angular velocity <font face="Verdana">&#969;</font>. </p><p>
+          [Give CM formulas here.]</p><font SIZE="3"><p>
+          EJS makes it straightforward to simulate combined rotational and translational motion.&nbsp; The baton (rigid body) is 
+          modeled as a collection of elements within an EJS group.&nbsp; The 
+          only mathematical difficulty is the computation of the red ball's trajectory as seen by a stationary observer.&nbsp; 
+          This computation is easy because EJS elements have an internal coordinate system known as the Element's body frame.&nbsp; 
+          The center of the red ball is at location (0,0) in its own internal body frame and we can transform this coordinates 
+          into the external space frame using in the Evolution workpanel as follows:</p><p>
+          ballPos=_view.redBall.toSpaceFrame(new double[]{0,0});</p><p>
+          Transforming 
+          between the space and body frames is a convenient trick in 2D but will become an essential mathematical tool in 3D.</p>
+    <h2>
+      References:
+    </h2><p>
+      &nbsp;Center or mass coordinates and rotational dynamics are discussed in the following texts:
+    </p><ul>
+      <li><i>Analytical Mechanics 5 ed</i> by Grant R. Fowles and George L. Cassiday, Saunders College Publishing (1993) chapter 
+      XXX. </li><li>XXX</li>
+    </ul>
+
+    <h3>
+      Credits:</h3>
+    <p>
+      The baton throw simulation was created by Wolfgang Christian using the Easy Java Simulations (EJS) modeling tool.&nbsp; You can examine and modify the physical 
+		model for this simulation if you have Ejs installed by right-clicking within the wave function plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; 
+		Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP 
+      comPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+    </font>
+  
+  </body>
+</html>

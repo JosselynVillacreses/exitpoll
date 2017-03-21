@@ -1,0 +1,23 @@
+    <% include menu %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+       <h2>Actualizar Partido</h2>
+        <form>
+            <div class="form-group">
+                <label>Lista:</label>
+                <input class="form-control" id="act_id_asam" name="lista" value="<%=perfil.lista%>"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="act_name_asam" name="nombre" value="<%=perfil.nombre%>"><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="modificar_asamb" value="Actualizar Partido" onclick="actualizarPartido('<%=perfil.id_partido%>')">
+          </form>
+    </div>
+
+
+            </div>
+            </div>

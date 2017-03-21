@@ -1,0 +1,775 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Balls and Walls]]></Title>
+<Author><![CDATA[Francisco Esquembre]]></Author>
+<Keywords><![CDATA[Collisions, Events]]></Keywords>
+<Level><![CDATA[Advanced]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This simulation implements multiple collisions of balls among themselves and against arbitrary walls. The motion is not accelerated so that Zeno' effect doesn't appear.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./BallsAndWalls/BallsAndWalls.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Balls and Walls
+    </h1>
+    <p style="margin-top: 0">
+      This simulation implements multiple collisions of balls among themselves 
+      and against arbitrary walls. The motion is not accelerated so that Zeno' 
+      effect doesn't appear.
+    </p>
+    <p align="center" style="margin-top: 0">
+      <img src="./BallsAndWalls/BallsAndWalls.gif">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>General</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Balls</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[15]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[minDiameter]]></Name>
+<Value><![CDATA[0.25]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxDiameter]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[density]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vx]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vy]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[diameter]]></Name>
+<Value><![CDATA[0.25]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mass]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[color]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[Object]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Walls</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[nWalls]]></Name>
+<Value><![CDATA[20]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxWalls]]></Name>
+<Value><![CDATA[50]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxWalls]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxWalls]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxWalls]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxWalls]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mod]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[maxWalls]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Events</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[TOLERANCE]]></Name>
+<Value><![CDATA[0.001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[horizontalRebound]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ballRebounded]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[collision1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[collision2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wallCollisionBall]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wallCollisionWall]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vertexCollisionOrigin]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vertexCollisionWall]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[vertexCollisionBall]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Random walls</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+for (int i=0; i<nWalls; i++) {
+  x1[i] = xmin + Math.random()*(xmax-xmin);
+  y1[i] = ymin + Math.random()*(ymax-ymin);
+  double angle = 2*Math.random()*Math.PI;
+  u1[i] = Math.cos(angle)*(xmax-xmin)/7;
+  u2[i] = Math.sin(angle)*(ymax-ymin)/7;
+}
+
+for (int i=0; i<nWalls; i++) 
+  mod[i] = Math.sqrt(u1[i]*u1[i] + u2[i]*u2[i]);
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Random balls</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+int counter = 0;
+do {
+  // Randomize the balls
+  for (int i=0; i<n; i++) {
+    diameter[i] = minDiameter + Math.random()*(maxDiameter-minDiameter);
+    x[i]  = xmin+diameter[i]/2 + (xmax-xmin-diameter[i])*Math.random();
+    y[i]  = ymin+diameter[i]/2 + (ymax-ymin-diameter[i])*Math.random();
+  }
+  if (legalState()) break;
+  counter++;
+} while (counter<500);
+if (counter>=500) _println("Warning: the system starts in an illegal state");
+
+// Initialize the velocities, masses, and colors
+for (int i=0; i<n; i++) {
+  vx[i] = 0.5*(xmax-xmin)*(Math.random()-0.5);
+  vy[i] = 0.5*(ymax-ymin)*(Math.random()-0.5);
+  mass[i] = Math.PI*diameter[i]*diameter[i]/4*density;
+  int randomNumber = (int) (Math.random()*5);
+  switch (randomNumber % 5) {
+    default :
+    case 0 : color[i] = java.awt.Color.RED; break;
+    case 1 : color[i] = java.awt.Color.MAGENTA; break;
+    case 2 : color[i] = java.awt.Color.BLUE; break;
+    case 3 : color[i] = java.awt.Color.GREEN; break;
+    case 4 : color[i] = java.awt.Color.CYAN; break;
+  }
+}
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Free fall</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Increment>dt</Increment>
+<Rate state="x[i]">vx[i]</Rate>
+<Rate state="vx[i]">0</Rate>
+<Rate state="y[i]">vy[i]</Rate>
+<Rate state="vy[i]">0</Rate>
+<Method>RungeKutta</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Bouncing</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Bouncing with the walls]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  double radius = diameter[i]/2;
+  if (vy[i]<0) {
+    double d = y[i]-ymin-radius;
+    if (d<min) { horizontalRebound = false; ballRebounded = i; min=d; }
+  }
+  else if (vy[i]>0) {
+    double d = ymax-radius-y[i];
+    if (d<min) { horizontalRebound = false; ballRebounded = i; min=d; }
+  }
+  if (vx[i]<0) {
+    double d = x[i]-xmin-radius;
+    if (d<min) { horizontalRebound = true; ballRebounded = i; min=d; }
+  }
+  else if (vx[i]>0) {
+    double d = xmax-radius-x[i];
+    if (d<min) { horizontalRebound = true; ballRebounded = i; min=d; }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+if (horizontalRebound) vx[ballRebounded] = -vx[ballRebounded];
+else vy[ballRebounded] = -vy[ballRebounded];
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+<Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Collision</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Collision among balls]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=i+1; j<n; j++) {
+    double deltax  = x[j]-x[i],   deltay  = y[j]-y[i];
+    double deltaVx = vx[j]-vx[i], deltaVy = vy[j]-vy[i];
+    if (deltax*deltaVx+deltay*deltaVy<0) {
+      double allowed = (diameter[i]+diameter[j])/2;
+      double distance = Math.sqrt(deltax*deltax+deltay*deltay)-allowed;
+      if (distance<min) { collision1 = i; collision2 = j; min = distance; }
+    }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+double deltax = x[collision2]-x[collision1];
+double deltay = y[collision2]-y[collision1];
+double distance = Math.sqrt(deltax*deltax+deltay*deltay);
+
+double rx=deltax/distance, ry=deltay/distance; // Unit vector joining centers
+double sx=-ry, sy=rx; // Vector ortogonal to the previous one
+
+double vr1=(vx[collision1]*rx+vy[collision1]*ry), vs1=(vx[collision1]*sx+vy[collision1]*sy); // Projections for disk 1
+double vr2=(vx[collision2]*rx+vy[collision2]*ry), vs2=(vx[collision2]*sx+vy[collision2]*sy); // Projections for disk 2
+
+double vr1d=( 2*mass[collision2]*vr2 + (mass[collision1]-mass[collision2])*vr1 )/(mass[collision1]+mass[collision2]); // New velocity for disk 1
+double vr2d=( 2*mass[collision1]*vr1 + (mass[collision2]-mass[collision1])*vr2 )/(mass[collision1]+mass[collision2]); // New velocity for disk 2
+// Undo the projections
+vx[collision1]=vr1d*rx+vs1*sx; vy[collision1]=vr1d*ry+vs1*sy;
+vx[collision2]=vr2d*rx+vs2*sx; vy[collision2]=vr2d*ry+vs2*sy;
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+<Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Walls</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Collision between wall and ball]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=0; j<nWalls; j++) {
+    double dx = x[i]-x1[j], dy = y[i]-y1[j];
+    double signedDistance = (-dx*u2[j]+dy*u1[j])/mod[j]; 
+    double allowed = diameter[i]/2;
+    double distance1 = Math.abs(signedDistance)-allowed;
+    if (distance1>min) continue; // Not close enough
+    double distance2 = (dx*u1[j]+dy*u2[j])/mod[j];
+    if (distance2>0 && distance2<mod[j]) { // Within the segment
+      if (signedDistance*(-vx[i]*u2[j]+vy[i]*u1[j])>0) continue; // velocity does NOT point in the collision direction
+      wallCollisionBall = i; wallCollisionWall = j; min = distance1;
+    }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+int i = wallCollisionBall, j = wallCollisionWall;
+double va = (vx[i]*u1[j]+vy[i]*u2[j])/mod[j],   // Projection along wall
+       vb =  (-vx[i]*u2[j]+vy[i]*u1[j])/mod[j]; // Normal to wall
+vb = -vb; // Effect of the ellastic collision towards a fixed wall
+vx[i] = (va*u1[j] - vb*u2[j])/mod[j]; // Rebuild the new velocity
+vy[i] = (va*u2[j] + vb*u1[j])/mod[j];
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+<Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Vertex</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Collision among a vertex and a ball]]></Comment>
+<ZeroCondition><![CDATA[
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=0; j<nWalls; j++) {
+    double deltax = x[i]-x1[j], deltay = y[i]-y1[j];
+    double allowed = diameter[i]/2;
+    double distance = Math.sqrt(deltax*deltax+deltay*deltay)-allowed;
+    if (distance<min) {
+      if (deltax*vx[i]+deltay*vy[i]<0) {
+        vertexCollisionBall = i; vertexCollisionWall = j; min = distance; vertexCollisionOrigin = true;
+      }
+    }
+    deltax = x[i]-x1[j]-u1[j]; deltay = y[i]-y1[j]-u2[j];
+    distance = Math.sqrt(deltax*deltax+deltay*deltay)-allowed;
+    if (distance<min) {
+      if (deltax*vx[i]+deltay*vy[i]<0) {
+        vertexCollisionBall = i; vertexCollisionWall = j; min = distance; vertexCollisionOrigin = false;
+      }
+    }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+int i = vertexCollisionBall, j = vertexCollisionWall;
+double deltax, deltay;
+if (vertexCollisionOrigin) { deltax = x[i]-x1[j]; deltay = y[i]-y1[j]; }
+else { deltax = x[i]-x1[j]-u1[j]; deltay = y[i]-y1[j]-u2[j];}
+double distance = Math.sqrt(deltax*deltax+deltay*deltay);
+
+double rx=deltax/distance, ry=deltay/distance; // Unit vector joining centers
+double sx=-ry, sy=rx; // Vector ortogonal to the previous one
+
+double vr1=(vx[i]*rx+vy[i]*ry), vs1=(vx[i]*sx+vy[i]*sy); // Projections for the disk
+vr1 = -vr1; // Rebound
+// Undo the projections
+vx[i]=vr1*rx+vs1*sx; 
+vy[i]=vr1*ry+vs1*sy;
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Legal State</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Whether the current state is legal
+public boolean legalState () {
+  // Check if two balls overlap
+  for (int i=0; i<n; i++) {
+    for (int j=i+1; j<n; j++) {
+      double dx = x[j]-x[i], dy = y[j]-y[i];
+      double allowed = (diameter[i]+diameter[j])/2;
+      if (dx*dx+dy*dy < allowed*allowed) return false; 
+    }
+  }
+  // Check if a ball overlaps a line
+  for (int i=0; i<n; i++) {
+    for (int j=0; j<nWalls; j++) {
+      double dx = x[i]-x1[j], dy = y[i]-y1[j];
+      double allowed = diameter[i]/2, signedDistance = (-dx*u2[j]+dy*u1[j])/mod[j];
+      double distance1 = Math.abs(signedDistance)-allowed;
+      if (distance1<0) { // Close enough
+        double distance2 = (dx*u1[j]+dy*u2[j])/mod[j];
+        if (distance2>0 && distance2<mod[j]) return false; 
+      }
+    }
+  }
+  // Check if a ball covers a vertex
+  for (int i=0; i<n; i++) {
+    for (int j=0; j<nWalls; j++) {
+      // first vertex
+      double deltax = x[i]-x1[j], deltay = y[i]-y1[j];
+      double allowed = diameter[i]/2;
+      double distance = deltax*deltax+deltay*deltay-allowed*allowed;
+      if (distance<0) return false; 
+      // second vertex
+      deltax = x[i]-x1[j]-u1[j]; deltay = y[i]-y1[j]-u2[j];
+      distance = deltax*deltax+deltay*deltay-allowed*allowed;
+      if (distance<0) return false;
+    }
+  }
+  return true;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">mainFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Balls and walls]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["4,22"]]></Property>
+<Property name="size"><![CDATA["413,445"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="aliasing"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">boxShape</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[xmin]]></Property>
+<Property name="y"><![CDATA[ymin]]></Property>
+<Property name="sizeX"><![CDATA[xmax-xmin]]></Property>
+<Property name="sizeY"><![CDATA[ymax-ymin]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH_WEST]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="drawingFill"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ShapeSet2D</Type>
+<Property name="name">shapeSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="numberOfElements"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizeX"><![CDATA[diameter]]></Property>
+<Property name="sizeY"><![CDATA[diameter]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="fillColor"><![CDATA[color]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.SegmentSet2D</Type>
+<Property name="name">segmentSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="numberOfElements"><![CDATA[nWalls]]></Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[y1]]></Property>
+<Property name="sizeX"><![CDATA[u1]]></Property>
+<Property name="sizeY"><![CDATA[u2]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="enabledSize"><![CDATA[true]]></Property>
+<Property name="releaseAction"><![CDATA[for (int i=0; i<nWalls; i++) 
+  mod[i] = Math.sqrt(u1[i]*u1[i] + u2[i]*u2[i]);
+]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">mainFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[FLOW:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playPauseButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/stepforward.gif"]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

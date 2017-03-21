@@ -1,0 +1,1363 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Simultaneity]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[special relativity;simultaneity]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[A wave source and two equidistant detectors are at rest in reference frame S', which moves with constant velocity v in frame S, along the common axis X. 
+ At the same time a wave front quits the source and is eventually detected. We consider simultaneity in two cases: sound (i.e., non-relativistic mechanics) and light (i.e., special relativity).]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Simultaneity</title>
+    
+  </head>
+  <body>
+    <h1>
+      Simultaneity
+    </h1>
+    <p style="margin-top: 0">
+      A <font color="#ff8000">wave source</font> and two equidistant <font color="#ff00ff">detectors</font> 
+      are at rest in reference frame <font color="#008000"><i>S'</i></font>, 
+      which moves with constant velocity <i>v </i>in frame <font color="#ff0000"><i>S</i></font>, 
+      along the common axis <font color="#000080"><i>X</i></font>. Clocks are 
+      synchronized so that at <font color="#ff0000"><i>t</i></font> = <font color="#008000"><i>t'</i></font> 
+      = 0 the origins of coordinates coincide: <font color="#ff0000"><i>O</i></font> 
+      = <font color="#008000"><i>O'</i></font>. At the same time a wave front 
+      quits the source and is eventually detected. We consider two cases:
+    </p>
+    <ul>
+      <li>
+        <b>Sound</b>: air is at rest in reference frame <font color="#008000"><i>S'</i></font>, 
+        where the velocity of sound is <i>c</i>. Galilean relativity can be 
+        used and we consider only the subsonic case <i>v</i> &lt; <i>c</i>.
+      </li>
+      <li>
+        <b>Light</b>: <i>c</i> is the speed of light in vacuum and special 
+        relativity must be used.
+      </li>
+    </ul>
+    <table border="1">
+      <tr>
+        <td>
+          <i>By choosing/setting</i>
+        </td>
+        <td>
+          <i>you may</i>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>S system / S' system</b>
+        </td>
+        <td>
+          select the reference frame in which source and detectors move with 
+          velocity <i>v </i>/ are at rest
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Light / Sound</b>
+        </td>
+        <td>
+          choose the special relativistic / Galilean case
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>v/c</b>
+        </td>
+        <td>
+          set the dimensionless velocity: the Lorentz factor <b>&#947;</b> is 
+          automatically set (to 1 in the Galilean case)
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>&#8710;t</b>
+        </td>
+        <td>
+          set the animation step length
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Events</b>
+        </td>
+        <td>
+          choose whether to stop when a door is closed or removed
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Minkowski</b>
+        </td>
+        <td>
+          select whether to show Minkowski's diagram
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Show simultaneous</b>
+        </td>
+        <td>
+          choose whether to show the events simultaneous with detections
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Go</b>
+        </td>
+        <td>
+          start the simulation from the emission time
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Stop</b>
+        </td>
+        <td>
+          stop the simulation
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Continue</b>
+        </td>
+        <td>
+          continue a simulation stopped at an event
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Reset</b>
+        </td>
+        <td>
+          recover all initial settings
+        </td>
+      </tr>
+    </table>
+    Units are chosen so that the speed of sound / light in vacuum <i>c</i> is 
+    unity.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities<br>
+    </h2>
+    <ul>
+      <li>
+        With the default settings and <u>before you run the simulation</u>: 
+        what will be the evolution of the wave front? Can you sketch the world 
+        lines of source and detectors in the Minkowski diagram?
+      </li>
+      <li>
+        Run the animation and check your previous answers.
+      </li>
+      <li>
+        Enable <b>S system</b>: what will change in the evolution and the 
+        Minkowski diagram?
+      </li>
+      <li>
+        Run the animation and check your prediction.
+      </li>
+      <li>
+        Enable <b>Light</b>: what will happen now?
+      </li>
+      <li>
+        Check your answer by running the simulation.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[beta]]></Name>
+<Value><![CDATA[0.6]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Dimensionless velocity = v/c]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[gamma]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Lorentz factor]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d]]></Name>
+<Value><![CDATA[0.75]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Proper distance between adjacent objects]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Detection in left detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position of left detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Detection on right detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position of right detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Position of source]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>World lines</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[wr]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x' coordinate of S frame origin]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wg]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of S' frame origin]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of source]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of left detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of right detector]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of left wave]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[u2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of rigth wave]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[showRed]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Display red reference frame at rest]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showDiagram]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show Minkowski diagram]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showAxes]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show event time in other frame]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showLight]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Wave is relativistic]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Animation step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[3.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[-0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum ordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[1.]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[hvert]]></Name>
+<Value><![CDATA[0.9]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Length of vertical axes]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xx0]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Abscissa of source in green frame]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y0]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Ordinate of source and detectors]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[stopEvent]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Stop at events]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[stopped1]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Has already stopped at event 1?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[stopped2]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Has already stopped at event 2?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[stoppedd]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[sina]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[sinus alpha]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cosa]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[cosinus alpha]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Wavefront</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xw]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Abscissa of the wavefront center]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+initial();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("Gamma").setProperty("format","\u03B3 = 0.###");
+_view.getElement("StepLength").setProperty("format","\u0394t = 0.###");
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Update time</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+update(t+dt);
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Derived magnitudes</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set velocity and Lorentz factor]]></Comment>
+<Code><![CDATA[
+// Velocity
+if (beta <= 0.0 || beta >= 1.0) beta = 0.6;
+
+// Lorentz factor
+gamma = (showLight) ? 1.0/Math.sqrt(1-beta*beta) : 1.0;
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set velocity</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set velocity and Lorentz factor]]></Comment>
+<Code><![CDATA[
+public void set_velocity() {
+  // Velocity
+  if (beta <= 0.0 || beta >= 1.0) beta = 0.6;
+
+  // Lorentz factor
+  gamma = (showLight) ? 1.0/Math.sqrt(1-beta*beta) : 1.0;
+
+  // alpha angle os simultaneity plane
+  sina = beta;
+  if (!showRed) sina = -sina;
+  cosa = 1.0/Math.sqrt(1.0+sina*sina);
+  sina *= cosa;
+  sina *= 4.0;
+  cosa *= 4.0;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Events</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set events coordinates]]></Comment>
+<Code><![CDATA[
+public void events() {
+  if (showRed) {			// Moving frame
+    if (showLight) {		// Relativity
+      x0 = xx0/gamma;
+      x1 = x0-d/gamma/(1.0+beta);
+      x2 = x0+d/gamma/(1.0-beta);
+      t1 = d/gamma/(1.0+beta);
+      t2 = d/gamma/(1.0-beta);
+      u1 = u2 = xx0/gamma+t;
+    }
+    else {			// Galilean transformation
+      x0 = xx0;
+      x1 = x0-d+beta*d;
+      x2 = x0+d+beta*d;
+      t1 = t2 = d;
+      u1 = u2 = x0;
+    }
+  }
+  else {				// Proper system of source and detectors
+    x0 = xx0;
+    x1 = x0-d;
+    x2 = x0+d;
+    t1 = t2 = d;
+    u1 = u2 = x0;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set initial values]]></Comment>
+<Code><![CDATA[
+public void initial() {
+  set_velocity();
+  events();
+  _view.resetTraces();
+//  _view.getElement("Continue").setProperty("enabled",false);
+  stopped1 = stopped2 = stoppedd = false;
+  update(0.0);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Stop at events</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void checkEvents() {
+  boolean stop = false;
+  if (Math.abs(t-t1) < 0.5*dt && !stopped1)
+    stopped1 = stop = true;
+  if (Math.abs(t-t2) < 0.5*dt && !stopped2)
+    stopped2 = stop = true;
+  if (Math.abs(t) < 0.5*dt && !stoppedd)
+    stoppedd = stop = true;
+  if (stop)
+    _pause();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Update values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update values]]></Comment>
+<Code><![CDATA[
+public void update(double tt) {
+  t = tt;		// Time  
+  if (showRed) {		// S frame
+    wr = 0.0;
+    wg = beta*t;
+    w0 = x0+beta*t;
+    if (showLight) {
+      w1 = w0-d/gamma;
+      w2 = w0+d/gamma;
+      u1 = xx0/gamma-t;
+      u2 = xx0/gamma+t;
+    }
+    else {
+      w1 = w0-d;
+      w2 = w0+d;
+      u1 = x0-(1.0-beta)*t;
+      u2 = x0+(1.0+beta)*t;
+    }
+  }
+  else {			// S' frame
+    wr = -beta*t;
+    wg = 0.0;
+    w0 = x0;
+    w1 = x1;
+    w2 = x2;
+    u1 = x0-t;
+    u2 = x0+t;
+  }
+  xw = (showRed) ? ((showLight) ? x0 : xx0+beta*t) : xx0;  	// Wavefront center
+  if (stopEvent) checkEvents(); 				// Event?
+  if (wr < -xmax || wg > xmax) { 				// Out of screen -> stop
+    stopped1 = stopped2 = stoppedd = false;
+    _pause();
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Continue</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public boolean tobeContinued() {
+  return _isPaused() && (stopped1 || stopped2);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Simultaneity]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["691,276"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Upper</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">Space</Property>
+<Property name="parent">Upper</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="background"><![CDATA[white]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">XRedAxis</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wr]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[wg-wr]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[wr < wg]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">RedAxis</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wr]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[hvert]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">GreenAxis</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wg]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[hvert]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Xaxis</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wg]]></Property>
+<Property name="sizex"><![CDATA[xmax-wg]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[ARROW]]></Property>
+<Property name="color"><![CDATA[0,0,128,255]]></Property>
+<Property name="secondaryColor"><![CDATA[0,0,128,255]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">RedLabel</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wr-.1]]></Property>
+<Property name="y"><![CDATA[hvert]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[Y]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,18]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">GreenLabel</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wg+.1]]></Property>
+<Property name="y"><![CDATA[hvert]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[Y']]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,18]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">RedOrigin</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wr-.1]]></Property>
+<Property name="y"><![CDATA[.075]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[O]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,18]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">GreenOrigin</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[wg+.1]]></Property>
+<Property name="y"><![CDATA[.075]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[O']]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,18]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">Xlabel</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[xmax-.3]]></Property>
+<Property name="y"><![CDATA[.075]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[X = X']]></Property>
+<Property name="color"><![CDATA[0,0,128,255]]></Property>
+<Property name="font"><![CDATA[Dialog,ITALIC,18]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Source</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[w0]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">LeftDetector</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[w1]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">RightDetector</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[w2]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Wavefront</Property>
+<Property name="parent">Space</Property>
+<Property name="x"><![CDATA[xw]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="sizex"><![CDATA[2.0*t]]></Property>
+<Property name="sizey"><![CDATA[2.0*t]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[null]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Lower</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Radio</Property>
+<Property name="parent">Lower</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[hbox]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Systems</Property>
+<Property name="parent">Radio</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">Ssystem</Property>
+<Property name="parent">Systems</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[S system]]></Property>
+<Property name="mnemonic"><![CDATA[y]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="actionon"><![CDATA[showRed = true; initial();]]></Property>
+<Property name="actionoff"><![CDATA[showRed = false; initial();]]></Property>
+<Property name="foreground"><![CDATA[RED]]></Property>
+<Property name="tooltip"><![CDATA[In this system source and detectors are in motion]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">Sprime</Property>
+<Property name="parent">Systems</Property>
+<Property name="position">north</Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[S' system]]></Property>
+<Property name="mnemonic"><![CDATA[m]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="actionon"><![CDATA[showRed = false; initial();]]></Property>
+<Property name="actionoff"><![CDATA[showRed = true; initial();]]></Property>
+<Property name="foreground"><![CDATA[0,128,0,255]]></Property>
+<Property name="tooltip"><![CDATA[In this system source and detectors are at rest]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Waves</Property>
+<Property name="parent">Radio</Property>
+<Property name="layout"><![CDATA[grid:2,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">Argia</Property>
+<Property name="parent">Waves</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Light]]></Property>
+<Property name="mnemonic"><![CDATA[l]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="actionon"><![CDATA[showLight = true; initial();]]></Property>
+<Property name="actionoff"><![CDATA[showLight = false; initial();]]></Property>
+<Property name="foreground"><![CDATA[BLUE]]></Property>
+<Property name="tooltip"><![CDATA[Choose the relativistic case with light]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">Sound</Property>
+<Property name="parent">Waves</Property>
+<Property name="position">north</Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[Sound]]></Property>
+<Property name="mnemonic"><![CDATA[o]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="actionon"><![CDATA[showLight = false; initial();]]></Property>
+<Property name="actionoff"><![CDATA[showLight = true; initial();]]></Property>
+<Property name="foreground"><![CDATA[BLUE]]></Property>
+<Property name="tooltip"><![CDATA[Choose the Galilean case]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Control</Property>
+<Property name="parent">Lower</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,6,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Velocity</Property>
+<Property name="parent">Control</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[beta]]></Property>
+<Property name="format"><![CDATA[v/c = 0.##]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[initial()]]></Property>
+<Property name="tooltip"><![CDATA[Dimensionless velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">StepLength</Property>
+<Property name="parent">Control</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.###"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="tooltip"><![CDATA[Animation step]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">StopEvents</Property>
+<Property name="parent">Control</Property>
+<Property name="variable"><![CDATA[stopEvent]]></Property>
+<Property name="text"><![CDATA[Events]]></Property>
+<Property name="mnemonic"><![CDATA[e]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="tooltip"><![CDATA[Pause after detection]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowDiagrama</Property>
+<Property name="parent">Control</Property>
+<Property name="variable"><![CDATA[showDiagram]]></Property>
+<Property name="text"><![CDATA[Minkowski]]></Property>
+<Property name="mnemonic"><![CDATA[m]]></Property>
+<Property name="tooltip"><![CDATA[Show Minkowski's diagram]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Gamma</Property>
+<Property name="parent">Control</Property>
+<Property name="variable"><![CDATA[gamma]]></Property>
+<Property name="format"><![CDATA["$\gamma$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="tooltip"><![CDATA[Lorentz factor]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Control</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_initialize();
+_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">continueButton</Property>
+<Property name="parent">Control</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/continue.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["c"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+<Property name="tooltip"><![CDATA["Continue the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Control</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">Minkowski</Property>
+<Property name="title"><![CDATA[Minkowski]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showDiagram]]></Property>
+<Property name="location"><![CDATA["648,0"]]></Property>
+<Property name="size"><![CDATA["300,340"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Diagram</Property>
+<Property name="parent">Minkowski</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-0.5]]></Property>
+<Property name="maximumX"><![CDATA[-0.5+xmax-xmin]]></Property>
+<Property name="minimumY"><![CDATA[-0.5]]></Property>
+<Property name="maximumY"><![CDATA[-0.5+xmax-xmin]]></Property>
+<Property name="title"><![CDATA[(ct,x)]]></Property>
+<Property name="axesType"><![CDATA[Cartesian3]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="majorTicksX"><![CDATA[false]]></Property>
+<Property name="titleY"><![CDATA[ct]]></Property>
+<Property name="majorTicksY"><![CDATA[false]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="xFormat"><![CDATA[x = 0.##]]></Property>
+<Property name="yFormat"><![CDATA[ct = 0.##]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">SourceWL</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[w0]]></Property>
+<Property name="y"><![CDATA[t]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">LeftWL</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[w1]]></Property>
+<Property name="y"><![CDATA[t]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">RightWL</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[w2]]></Property>
+<Property name="y"><![CDATA[t]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">BackWL</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[u1]]></Property>
+<Property name="y"><![CDATA[t]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">ForwardWL</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[u2]]></Property>
+<Property name="y"><![CDATA[t]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time1</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x1-cosa]]></Property>
+<Property name="y"><![CDATA[t1-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && !showRed && t >= t1+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time2</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x2-cosa]]></Property>
+<Property name="y"><![CDATA[t2-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && !showRed && t >= t2+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time3</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x0-cosa]]></Property>
+<Property name="y"><![CDATA[-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && !showRed && t >= 0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time4</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x1-cosa]]></Property>
+<Property name="y"><![CDATA[t1-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && showRed && t >= t1+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time5</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x2-cosa]]></Property>
+<Property name="y"><![CDATA[t2-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && showRed && t >= t2+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">time6</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x0-cosa]]></Property>
+<Property name="y"><![CDATA[-sina]]></Property>
+<Property name="sizex"><![CDATA[2.0*cosa]]></Property>
+<Property name="sizey"><![CDATA[2.0*sina]]></Property>
+<Property name="visible"><![CDATA[showAxes && showLight && showRed && t >= 0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Event1</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[t1]]></Property>
+<Property name="sizex"><![CDATA[.15]]></Property>
+<Property name="sizey"><![CDATA[.15]]></Property>
+<Property name="visible"><![CDATA[t >= t1+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Event2</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[t2]]></Property>
+<Property name="sizex"><![CDATA[.15]]></Property>
+<Property name="sizey"><![CDATA[.15]]></Property>
+<Property name="visible"><![CDATA[t >= t2+0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[magenta]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Event0</Property>
+<Property name="parent">Diagram</Property>
+<Property name="x"><![CDATA[x0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[.15]]></Property>
+<Property name="sizey"><![CDATA[.15]]></Property>
+<Property name="visible"><![CDATA[t >= 0.5*dt]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Status</Property>
+<Property name="parent">Minkowski</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowAxes</Property>
+<Property name="parent">Status</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[showAxes]]></Property>
+<Property name="text"><![CDATA[Show simultaneous]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="enabled"><![CDATA[showLight]]></Property>
+<Property name="tooltip"><![CDATA[Show the events simultaneous in the other frame]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

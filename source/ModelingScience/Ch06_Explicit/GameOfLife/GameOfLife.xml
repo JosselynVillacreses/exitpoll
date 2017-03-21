@@ -1,0 +1,426 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[John Conway' s Game of Life]]></Title>
+<Author><![CDATA[Francisco Esquembre and Wolfgang Christian]]></Author>
+<Keywords><![CDATA[Life, Cellular automata]]></Keywords>
+<Level><![CDATA[Beginner]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This is a simple implementation of Conway's Game of Life cellular automata popularized by Martin Gardner in Scientific American.]]></Abstract>
+<AuxiliaryFiles><![CDATA[./Game_of_life_glider.png;./Game_of_life_diehard.png;./Game_of_life_methuselah.png;]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      John Conway&#8217;s Game of Life
+    </h1>
+    <p>
+      Description taken from <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia, 
+      the free encyclopedia</a>.
+    </p>
+    <p>
+      
+    </p>
+    The <b>Game of Life</b> is a cellular automaton devised by the British 
+    mathematician <b>John Horton Conway</b> in 1970. It is the best-known 
+    example of a cellular automaton. The &quot;game&quot; is actually a zero-player 
+    game, meaning that its evolution is determined by its initial state, 
+    needing no input from human players. One interacts with the Game of Life 
+    by creating an initial configuration and observing how it evolves. A 
+    variant exists where two players compete. <b>Rules:</b> The universe of 
+    the Game of Life is an infinite two-dimensional orthogonal grid of square 
+    cells, each of which is in one of two possible states, live or dead. Every 
+    cell interacts with its eight neighbours, which are the cells that are 
+    directly horizontally, vertically, or diagonally adjacent. At each step in 
+    time, the following transitions occur:
+
+    <ul>
+      <li>
+        Any live cell with fewer than two live neighbors dies, as if by 
+        loneliness.
+      </li>
+      <li>
+        Any live cell with more than three live neighbors dies, as if by 
+        overcrowding.
+      </li>
+      <li>
+        Any live cell with two or three live neighbors lives, unchanged, to 
+        the next generation.
+      </li>
+      <li>
+        Any dead cell with exactly three live neighbors comes to life.
+      </li>
+    </ul>
+    The initial pattern constitutes the 'seed' of the system. The next 
+    generation is created by applying the above rules simultaneously to every 
+    cell in the seed - births and deaths happen simultaneously, and the 
+    discrete moment at which this happens is sometimes called a tick. (In 
+    other words, each generation is a pure function of the one before.) The 
+    rules continue to be applied repeatedly to create further generations.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>Configurations</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Some special configurations
+    </h2>
+    <p style="margin-top: 0">
+      
+    </p>
+    <p style="margin-top: 0">
+      Glider = <img src="./Game_of_life_glider.png"> 
+      , Diehard =&#160; <img src="./Game_of_life_diehard.png">, 
+      Acorn = <img src="./Game_of_life_methuselah.png">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>5</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Var Table</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[Variables for the Game of Life]]></PageComment>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[128]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>cells</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension>[n][n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>tmpCells</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension>[n][n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial state</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[Selectin the seed]]></Comment>
+<Code><![CDATA[
+n=Math.max(3,n); // insures a 3x3 grid
+cells = new int[n][n];
+tmpCells = new int[n][n];
+for(int i=0; i<n; i++){
+  for(int j=0; j<n; j++){
+    cells[i][j]=(Math.random()<0.5)?0:1;
+  }
+}
+t = 0;  // resets the time
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Evol Page</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[Rules of the Game of Life]]></Comment>
+<Code><![CDATA[
+// Copy current state
+for (int i=0; i<n; i++) 
+  System.arraycopy(cells[i],0,tmpCells[i],0,n);
+for(int i = 0; i<n; i++) {
+   for(int j = 0; j<n; j++) {
+      switch(computeNeighbors(i, j)) {    // apply the rules of Life
+         case 0 :
+         case 1 :
+            cells[i][j] = 0;              //dies
+            break;
+         case 2 :
+            cells[i][j] = tmpCells[i][j]; //life goes on
+            break;
+         case 3 :
+            cells[i][j] = 1;              //condition for birth
+            break;
+         default :
+            cells[i][j] = 0;              // dies of overcrowding if >3
+      }  // end of switch
+   }  // end of j loop
+}  //end of i loop
+t++;  // increment generation
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Compute Neighbors</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public int computeNeighbors(int row, int col) {
+  int neighbors = -tmpCells[row][col]; // do not count self
+  row += n; // add the size so that the mod operator works for row 0
+  col += n;
+  for(int i = -1; i<=1; i++) {
+    for(int j = -1; j<=1; j++) {
+      neighbors += tmpCells[(row+i)%n][(col+j)%n];
+    }
+  }
+  return neighbors;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Toggle Life</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void toggleLife() {
+  // gets the mouse pressed coordinates
+  int ix = (int) _view.lifeDrawingPanel.getMouseX();
+  int iy = (int)_view.lifeDrawingPanel.getMouseY();
+  // switches the state of the cell
+  cells[ix][iy] = 1 - cells[ix][iy];
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Clear Life</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void clearLife() {
+for(int i=0; i<n; i++){
+  for(int j=0; j<n; j++){
+    cells[i][j]=0;
+  }
+}
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">lifeDrawingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Game of Life]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["331,55"]]></Property>
+<Property name="size"><![CDATA["431,433"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">lifeDrawingPanel</Property>
+<Property name="parent">lifeDrawingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="pressaction"><![CDATA[toggleLife()]]></Property>
+<Property name="square"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Lattice</Type>
+<Property name="name">lifeLattice</Property>
+<Property name="parent">lifeDrawingPanel</Property>
+<Property name="data"><![CDATA[cells]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[n]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[n]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">lifeDrawingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:left,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Play]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Step]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA[Clear]]></Property>
+<Property name="action"><![CDATA[clearLife()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">paramPanel</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nLabel</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[    n =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nField</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">tPanel</Property>
+<Property name="parent">paramPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">tLabel</Property>
+<Property name="parent">tPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[    t =]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+<Property name="tooltip"><![CDATA[number of particles]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">tField</Property>
+<Property name="parent">tPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[t]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[false]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+<Property name="tooltip"><![CDATA[Population]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

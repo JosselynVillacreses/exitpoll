@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title> Energy Eigenfunctions</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css">
+    <style type="text/css">
+.style1 {
+    font-size: xx-small;
+}
+.style4 {
+    text-align: center;
+}
+</style>
+  </head>
+  <body > 
+    <p align="center">
+      &nbsp;</p>
+    <p align="center">
+      <img border="1" src="rigid_bdoy_group.gif"><br>
+      [The rigid body group can be transformed as a unit using an affine transformation.]<br>
+&nbsp;</p>
+    <h1>
+      Rigid Body Motion in 2D</h1>
+    <p>
+      The <font SIZE="3">rotation and translation simulation shows a disk with an attached rocket engine. You can drag the engine 
+      to change its distance from the center of the disk and you can adjust the thrust of the rocket engine set using a slider.&nbsp; 
+      The mass of the rocket and its connecting rod are assumed to be negligible.&nbsp;
+  
+    </font></p>
+    <p>
+      <font SIZE="3">Before you run the simulation, predict the trajectory of the disk.&nbsp; Can you give a reason for the 
+      observed motion?</font></p>
+    <h1>
+      Decoupling Rotation and Translation</h1>
+    <p>
+          The general motion of a rigid body can be decoupled into translational and rotational motion problems that can be solved 
+          independently.&nbsp; If the body is free to translate and rotate, the translation is described by the position of its 
+          center of mass (<font size="2">X<sub>cm</sub>, Y</font><sub><font size="2">cm</font></sub>) and the rotation is 
+          described by an angular displacement <font face="Times New Roman">&#952;</font> about the center of mass.&nbsp; The three 
+          dynamical coordinates (<font size="2">X<sub>cm</sub>, Y</font><sub><font size="2">cm</font></sub><font 
+          face="Times New Roman">, &#952; )</font> each obey their own second order differential equations.</p><p>
+          [Give equations here and the describe torque and Newton's second law for rotation.]</p><font SIZE="3"><p>
+          EJS makes it straightforward to simulate the rocket-disk motion.&nbsp; The rigid body is modeled as a collection of 
+          elements and the group's position (<font size="2">X<sub>cm</sub>, Y</font><sub><font size="2">cm</font></sub>) and 
+          orientation <font face="Times New Roman">&#952;</font> are computed by solving the dynamical equations of motion.&nbsp; The 
+          only mathematical difficulty is the computation of the x and y component of the rocket thrust. Because the rocket thrust 
+          is always directed along the x-direction in the rigid body group, we merely transform the thrust vector (force vector) 
+          from the body group to the space (inertial) reference frame to solve for the center of mass motion.&nbsp; Transforming 
+          between the space and body frames is a convenient trick in 2D but will become an essential mathematical tool in 3D.</p>
+    <p>
+          Note:&nbsp; If the rotation axis is fixed about an axis of rotation, rotation must occur about that axis and only the 
+          differential equation for the angular displacement <font face="Times New Roman">&#952; </font>must be solved.</p>
+    <h2>
+      References:
+    </h2><p>
+      &nbsp;Center or mass coordinates and rotational dynamics are discussed in the following texts:
+    </p><ul>
+      <li><i>Analytical Mechanics 5 ed</i> by Grant R. Fowles and George L. Cassiday, Saunders College Publishing (1993) chapter 
+      XXX. </li><li>XXX</li>
+    </ul>
+
+    <h3>
+      Credits:</h3>
+    <p>
+      The rotation and translation simulation was created by Wolfgang Christian using the Easy Java Simulations (EJS) modeling tool.&nbsp; You can examine and modify the physical 
+		model for this simulation if you have Ejs installed by right-clicking within the wave function plot and selecting &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; 
+		Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP 
+      comPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+    </font>
+  
+  </body>
+</html>

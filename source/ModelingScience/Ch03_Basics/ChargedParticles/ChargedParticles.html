@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../_ejs_library/css/ejsPage.css"/>
+    <title>Ejs QM Models: Dirac delta function scattering</title>
+  </head>
+<body>
+    <p align="center">
+      <img border="0" src="QuadField.gif"></p><p align="center">
+      [Four charged particles produce a quadrupole electrostatic potential.]</p>
+	<h1>
+      Multiple Charged Particles Potential</h1>
+    <p>The analytic expression for an electrostatic dipole is simple because there are only two charges. What happens if we have multiple pairs of equal and 
+	opposite charges? Although it is possible to find an analytic expression for such a configuration using a multipole expansion, the resulting mathematical 
+	expression is cumbersome. A more direct way to obtain the electrostatic potential energy is to compute the scalar field by directly summing the contribution 
+	from each charge at each point on a spatial grid. The resulting approximation to a scalar field is shown in the Charged Particles model. This model uses a 
+	Scalar Field element and requires that we compute the electrostatic potential energy from the known the locations of the charges and the locations of the 
+	grid points.</p><p>The electrostatic potential energy is computed at the grid points in the Fixed Relation workpanel with the following code:</p>
+	<blockquote>
+		<pre>for(int i=0; i&lt;m; i++){                       // loop over grid x
+  double xi= _view.scalarField.indexToX(i);   // x-coordinate of grid point
+  for(int j=0; j&lt;m; j++){                     // loop over grid y
+    double yj= _view.scalarField.indexToY(j); // y-coordinate of grid point
+    potential[i][j]=0;                        // zero potential value
+    for(int p=0; p&lt;n; p++){                   // loop over charged particles
+      double dx=xi-x[p];                      // grid point to charge x-separation
+      double dy=yj-y[p];                      // grid point to charge y-separation
+      double r=Math.sqrt(dx*dx+dy*dy);        // charge to grid point distance
+      if(r!=0){                               // check for singularity
+        potential[i][j] += q[p]/r;            // add potential due to charge
+      }
+    }                                         // end of charge loop
+  }                                           // end of y loop
+}                                             // end of x loop</pre>
+	</blockquote>
+    <p>
+      The Fixed Relation code has three nested loops. The <i>i</i>-loop iterates through the grid's <i>x</i>-values and the<i> j</i>-loop iterates through the 
+		grid's <i>y</i>-values. The inner loop iterates over the charged particles q<sub>a</sub> with position (<i>x</i><sub>a</sub>, <i>y</i><sub>a</sub>), 
+		computes the distant to the grid point <i>r</i>, and sums the point-charge electrostatic potential energy q<sub>a</sub>/r at the (<i>x</i><sub>i</sub>,
+		<i>y</i><sub>j</sub>) grid point. Run the model to see the field from other point charge configurations.&nbsp; Note that you can drag the charges.</p>
+	<h2>Related Models</h2><p>The following EJS models demonstrate how to display two-dimensional scalar and vector fields using elements on the fields and 
+	plots tab on the EJS 2D Drawables palette.</p><ul>
+		<li>Dipole Potential model</li>
+		<li>Charged Particles model</li>
+		<li>Analytic Vector Field model</li>
+	</ul>
+	<h3>
+      Credits:</h3>
+    <p>
+      The Charged Particles model was created by Wolfgang Christian and Francisco Esquembre using the Easy Java Simulations (EJS) version 4.1 
+      authoring and modeling tool.&nbsp; You can examine and modify a compiled EJS model if you run the model (double click on 
+      the model's jar file), right-click within a plot, and select &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; You 
+      must, of course, have EJS installed on your computer.&nbsp; Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP ComPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+  </body>
+</html>

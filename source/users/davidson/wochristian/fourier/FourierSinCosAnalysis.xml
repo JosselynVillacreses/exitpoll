@@ -1,0 +1,845 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Fourier Analysis]]></Title>
+<Author><![CDATA[W. Christian]]></Author>
+<Keywords><![CDATA[Fourier series, Fourier analysis, numerical analysis]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[./Fourier/;]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./Fourier/FourierSinCos.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Fourier Series</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./Fourier/FourierSinCos.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Function Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[11]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[number of data points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[x values where data is taken]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[leftX]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[x values in zone to left of domain]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[rightX]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[x values in zone to right of domain]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[values of function corresponding to x[i] values]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[domain]]></Name>
+<Value><![CDATA[2*Math.PI]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[domain of x values over which analysis is performed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dx]]></Name>
+<Value><![CDATA[domain/n]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[deparation between sample points in x domain]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Transform Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[df]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[frequency separation between modes]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Fourier constant coefficient]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[sinCoef]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n/2]]]></Dimension>
+<Comment><![CDATA[Fourier sine coefficients]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cosCoef]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n/2]]]></Dimension>
+<Comment><![CDATA[Fourier cosine coefficients]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[outputTable]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n/2][4]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[freqs]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n/2]]]></Dimension>
+<Comment><![CDATA[frequencies of each mode]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[displayedCoef]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n/2]]]></Dimension>
+<Comment><![CDATA[graph coefficients]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Auxiliary Vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[coefficientMsg]]></Name>
+<Value><![CDATA[""]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[functionMsg]]></Name>
+<Value><![CDATA["f(x) ="]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[functionString]]></Name>
+<Value><![CDATA["exp(-4*(x-pi)^2)"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the fucntion to be analyzed]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showCos]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[analysisTitle]]></Name>
+<Value><![CDATA["Cosine Coefficients"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[title on analysis plot]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[synthesize]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[enables Fourier synthesis by dragging sin or cos coefficients]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[synthesizeColor]]></Name>
+<Value><![CDATA[java.awt.Color.BLUE]]></Value>
+<Type><![CDATA[Object]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[color for Forier synthesis graph]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[arrowDx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x-size of arrows;  always set to zero during drag]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[arrowColor]]></Name>
+<Value><![CDATA[java.awt.Color.GRAY]]></Value>
+<Type><![CDATA[Object]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[arrow color; shows if coefficients can be dragged]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initialize Variables</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[initializes variables and arrays]]></Comment>
+<Code><![CDATA[
+n = Math.max(2,n);  // at least two data points to compute coefficients
+// number of samples may have changed so reallocate
+dx =domain/n;
+x = new double[n];
+leftX = new double[n];
+rightX = new double[n];
+y = new double[n];
+sinCoef = new double[n/2];
+cosCoef = new double[n/2];
+freqs = new double[n/2];
+outputTable= new double[n/2][4];
+sampleFunction();
+displayedCoef=cosCoef;
+analysisTitle="Cosine Coefficients";
+arrowColor = java.awt.Color.GRAY;
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Synthesize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Synthesis graph is up to date if variables change.]]></Comment>
+<Code><![CDATA[
+_view.synthesizeTrace.clear();
+if(true){
+  double x=-domain, dx = 3*domain/1000;
+  for(int i=0; i<1000; i++){
+    double y=a0;
+    for(int j=0, len=sinCoef.length;j<len;j++){
+      y += sinCoef[j]*Math.sin((j+1)*x);
+      y += cosCoef[j]*Math.cos((j+1)*x);
+    }
+    _view.synthesizeTrace.addPoint(x,y);
+    x+=dx;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Sample Function</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Evaluates the function at the x[i] values and stores the result.]]></Comment>
+<Code><![CDATA[
+public void sampleFunction() {
+  double x0=dx/2;
+  for(int i=0, len=x.length; i<len; i++){
+    x[i]=x0;
+    leftX[i]=x0-domain;
+    rightX[i]=x0+domain;
+    y[i] = _view.function.evaluate(x0);
+    x0+=dx;
+  }
+  for(int i=0, len=freqs.length; i<len; i++){
+    outputTable[i][0]=freqs[i]=i+1;
+  }
+  computeCoefficients();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Compute Coefficients</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Computes the Fourier sine and cosine coefficients.]]></Comment>
+<Code><![CDATA[
+public void computeCoefficients(){
+  for(int i=0, len=sinCoef.length; i<len; i++){
+    outputTable[i][1]=sinCoef[i]=getSinCoef(i+1);
+    outputTable[i][2]=cosCoef[i]=getCosCoef(i+1);
+    outputTable[i][3]=Math.sqrt(outputTable[i][1]*outputTable[i][1]+outputTable[i][2]*outputTable[i][2]);
+  }
+  a0=getConstantCoef();
+}
+
+
+// Computes the sine coefficient in the m-th harmonic.
+public double getSinCoef(int m) {
+  double ak=0;
+  double omega=m*2*Math.PI/domain;
+  for(int i=0, n=x.length; i<n; i++){
+    ak += y[i]*Math.sin(omega*x[i]);
+  }
+  if(2*m==n) return ak*dx/domain;
+  return 2*ak*dx/domain;
+}
+
+// Computes the cosine coefficient in the m-th harmonic.
+public double getCosCoef(int m) {
+  double ak=0;
+  double omega=m*2*Math.PI/domain;
+  for(int i=0, n=x.length; i<n; i++){
+    ak += y[i]*Math.cos(omega*x[i]);
+  }
+  return 2*ak*dx/domain;
+}
+
+// Computes the constant coefficient.
+public double getConstantCoef() {
+  double a0=0;
+  for(int i=0, n=x.length; i<n; i++){
+    a0 += y[i];
+  }
+  return a0*dx/domain;
+}
+
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Update Coefficients</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void updateCoefficients() {
+  for(int i=0, len=sinCoef.length; i<len; i++) {
+    sinCoef[i]=outputTable[i][1];
+    cosCoef[i]=outputTable[i][2];
+    outputTable[i][3]=Math.sqrt(outputTable[i][1]*outputTable[i][1]+outputTable[i][2]*outputTable[i][2]);
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Radio Button Actions</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Radio button and check box response methods.]]></Comment>
+<Code><![CDATA[
+public void set_sinCoefficients() {
+  analysisTitle="Sine Coefficients";
+  displayedCoef=sinCoef;
+  showCos=false;
+}
+
+public void set_cosCoefficients() {
+  analysisTitle="Cosine Coefficients";
+  displayedCoef=cosCoef;
+  showCos=true;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Synthesize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void setSynthesizeMode() {
+  if(synthesize) {
+    _view.coefPlotFrame.setVisible(true);
+    _view.coefTableFrame.setVisible(true);
+    coefficientMsg="Synthesize by dragging coefficients.";
+    arrowColor = java.awt.Color.BLUE;
+  } else {  //coefficients are determined by function
+    sampleFunction();
+    functionMsg="f(x) = ";
+    coefficientMsg="";
+    arrowColor = java.awt.Color.GRAY;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Change Number of Samples</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void changeN() {
+  n = Math.max(2,n);  // at least two data points to compute coefficients
+  // number of samples may have changed so reallocate arrays
+  dx =domain/n;
+  x = new double[n];
+  leftX = new double[n];
+  rightX = new double[n];
+  y = new double[n];
+  sinCoef = new double[n/2];
+  cosCoef = new double[n/2];
+  freqs = new double[n/2];
+  displayedCoef=new double[n/2];
+  outputTable= new double[n/2][4];
+  sampleFunction();
+  if(showCos){
+    displayedCoef=cosCoef;
+  }else{
+    displayedCoef=sinCoef;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">plottingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Fourier Analysis]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["8,0"]]></Property>
+<Property name="size"><![CDATA["797,363"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">plottingPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[-domain/2]]></Property>
+<Property name="maximumX"><![CDATA[1.5*domain]]></Property>
+<Property name="xMarginPercentage"><![CDATA[10]]></Property>
+<Property name="yMarginPercentage"><![CDATA[10]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="titleY"><![CDATA[f(x)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">leftBox</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[1000]]></Property>
+<Property name="sizey"><![CDATA[1000]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[EAST]]></Property>
+<Property name="color"><![CDATA[200,220,208,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">rightBox</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="x"><![CDATA[2*Math.PI]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[1000]]></Property>
+<Property name="sizey"><![CDATA[1000]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[WEST]]></Property>
+<Property name="color"><![CDATA[200,220,208,128]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">particles</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[5]]></Property>
+<Property name="sizey"><![CDATA[5]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="dragaction"><![CDATA[double xp=0;
+for (int i=0; i<n; i++) {
+  x[i] = xp;
+  xp+=dx;
+}]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">leftParticleSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[leftX]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[5]]></Property>
+<Property name="sizey"><![CDATA[5]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[200,220,208]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">rightParticleSet</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="elementnumber"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[rightX]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizex"><![CDATA[5]]></Property>
+<Property name="sizey"><![CDATA[5]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="color"><![CDATA[200,220,208]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">analyticCurve</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="points"><![CDATA[400]]></Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[domain]]></Property>
+<Property name="variable"><![CDATA["x"]]></Property>
+<Property name="functionx"><![CDATA["x"]]></Property>
+<Property name="functiony"><![CDATA[%functionString%]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[BLACK]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">leftAnalyticCurve</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="points"><![CDATA[400]]></Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[domain]]></Property>
+<Property name="variable"><![CDATA[x]]></Property>
+<Property name="functionx"><![CDATA[x-domain]]></Property>
+<Property name="functiony"><![CDATA[%functionString%]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[PINK]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.AnalyticCurve</Type>
+<Property name="name">rightAnalyticCurve</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="points"><![CDATA[400]]></Property>
+<Property name="min"><![CDATA[0]]></Property>
+<Property name="max"><![CDATA[domain]]></Property>
+<Property name="variable"><![CDATA["x"]]></Property>
+<Property name="functionx"><![CDATA[x+domain]]></Property>
+<Property name="functiony"><![CDATA[%functionString%]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[PINK]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">synthesizeTrace</Property>
+<Property name="parent">plottingPanel</Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[synthesizeColor]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+<Property name="border"><![CDATA[0,0,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset();]]></Property>
+<Property name="tooltip"><![CDATA["Resets the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">functionPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border:0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">msgLabel</Property>
+<Property name="parent">functionPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[%functionMsg%]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">panel</Property>
+<Property name="parent">functionPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[!synthesize]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Function</Type>
+<Property name="name">function</Property>
+<Property name="parent">panel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[%functionString%]]></Property>
+<Property name="value"><![CDATA["exp(-4*(x-pi)^2)"]]></Property>
+<Property name="independent"><![CDATA["x"]]></Property>
+<Property name="javaSyntax"><![CDATA[false]]></Property>
+<Property name="action"><![CDATA[sampleFunction();]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">synthesizeCheckBox</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[synthesize]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[Synthesize]]></Property>
+<Property name="action"><![CDATA[setSynthesizeMode()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">upperPanel</Property>
+<Property name="parent">plottingFrame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[BORDER:15,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">nSlider</Property>
+<Property name="parent">upperPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="value"><![CDATA[16]]></Property>
+<Property name="minimum"><![CDATA[2]]></Property>
+<Property name="maximum"><![CDATA[32]]></Property>
+<Property name="dragaction"><![CDATA[changeN()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">nPanel</Property>
+<Property name="parent">upperPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">nLabel</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["   n = "]]></Property>
+<Property name="alignment"><![CDATA[RIGHT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">nField</Property>
+<Property name="parent">nPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[000]]></Property>
+<Property name="editable"><![CDATA[!synthesize]]></Property>
+<Property name="action"><![CDATA[changeN();]]></Property>
+<Property name="size"><![CDATA[40,23]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">coefPlotFrame</Property>
+<Property name="title"><![CDATA[Fourier Coefficients]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["11,396"]]></Property>
+<Property name="size"><![CDATA["793,261"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">coefPanel</Property>
+<Property name="parent">coefPlotFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[10]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[0.1]]></Property>
+<Property name="yMarginPercentage"><![CDATA[10]]></Property>
+<Property name="title"><![CDATA[%analysisTitle%]]></Property>
+<Property name="titleX"><![CDATA[frequency]]></Property>
+<Property name="titleY"><![CDATA[coefficient]]></Property>
+<Property name="TRmessage"><![CDATA[%coefficientMsg%]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">zeroCoefficientsSet</Property>
+<Property name="parent">coefPanel</Property>
+<Property name="x"><![CDATA[freqs]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[5]]></Property>
+<Property name="sizey"><![CDATA[3]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="color"><![CDATA[DARKGRAY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrowSet</Type>
+<Property name="name">coefArrowSet</Property>
+<Property name="parent">coefPanel</Property>
+<Property name="x"><![CDATA[freqs]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[arrowDx]]></Property>
+<Property name="sizey"><![CDATA[displayedCoef]]></Property>
+<Property name="enabled"><![CDATA[synthesize]]></Property>
+<Property name="pressaction"><![CDATA[coefficientMsg="";]]></Property>
+<Property name="dragaction"><![CDATA[arrowDx=0;]]></Property>
+<Property name="style"><![CDATA[BOX]]></Property>
+<Property name="secondaryColor"><![CDATA[arrowColor]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">coefButtonPanel</Property>
+<Property name="parent">coefPlotFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">sinRadioButton</Property>
+<Property name="parent">coefButtonPanel</Property>
+<Property name="variable"><![CDATA[!showCos]]></Property>
+<Property name="text"><![CDATA[Sin]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="action"><![CDATA[set_sinCoefficients()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.RadioButton</Type>
+<Property name="name">cosRadioButton</Property>
+<Property name="parent">coefButtonPanel</Property>
+<Property name="variable"><![CDATA[showCos]]></Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[Cos]]></Property>
+<Property name="alignment"><![CDATA[CENTER]]></Property>
+<Property name="action"><![CDATA[set_cosCoefficients()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">coefTableFrame</Property>
+<Property name="title"><![CDATA["Coefficient Table"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["814,1"]]></Property>
+<Property name="size"><![CDATA["424,207"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ArrayPanel</Type>
+<Property name="name">coefficientArrayPanel</Property>
+<Property name="parent">coefTableFrame</Property>
+<Property name="position">center</Property>
+<Property name="data"><![CDATA[outputTable]]></Property>
+<Property name="static"><![CDATA[true]]></Property>
+<Property name="columnNames"><![CDATA[new String[]{"index ","frequency","sine","cosine","amplitude"}]]></Property>
+<Property name="firstRowIndex"><![CDATA[1]]></Property>
+<Property name="editable"><![CDATA[synthesize]]></Property>
+<Property name="columnsLocked"><![CDATA[new boolean[]{true,false,false,true}]]></Property>
+<Property name="action"><![CDATA[updateCoefficients()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

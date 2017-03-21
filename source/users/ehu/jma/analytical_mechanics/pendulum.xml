@@ -1,0 +1,602 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Pendulum]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (hhtp://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[phase space;analytical mechanics;mathematical pendulum]]></Keywords>
+<Level><![CDATA[Advanced]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The phase space for the mathematical pendulum is displayed in two ways:
+- the usal one as a plane
+- as a cylinder with the angles pi and -pi identified]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Mathematical pendulum's phase space</title>
+    
+  </head>
+  <body>
+    <h1>
+      Mathematical pendulum's phase space
+    </h1>
+    This simulation solves the mathematical pendulum <i>&#966;</i>'' + <i>g</i>/<i>l</i> 
+    sin<i>&#966;</i> = 0 and displays the phase space in two ways:
+
+    <ol>
+      <li>
+        As a plane
+      </li>
+      <li>
+        As a cylinder for -&#960; &lt; <i>&#966;</i> &#8804; &#960;, i.e., the lines <i><font color="#800080">&#966;</font></i><font color="#800080"> 
+        = -&#960;</font> and <font color="#800080">&#966; = &#960;</font> are 
+        identified
+      </li>
+    </ol>
+    <ul>
+      <li>
+        Put the mouse pointer over an element to get information about it.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    Make sure you understand the cylindric phase space by using
+
+    <ul>
+      <li>
+        The point of view of the three-dimensional projection can be changed 
+        with the mouse.
+      </li>
+      <li>
+        The whole image can be moved with the mouse while pressing <font face="Monospaced">Ctrl</font>.
+      </li>
+      <li>
+        To change the zoom in the projection, press <font face="Monospaced">Shift</font> 
+        when moving up or down the mouse pointer.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mteorikoa.html">course 
+    on theoretical mechanics</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Physical variables]]></PageComment>
+<Variable>
+<Name><![CDATA[Norb]]></Name>
+<Value><![CDATA[14]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[# of orbits]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Nl]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[Norbmax]]></Name>
+<Value><![CDATA[14]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum number of orbits]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[phi]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[Norbmax]]]></Dimension>
+<Comment><![CDATA[Angles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[Norbmax]]]></Dimension>
+<Comment><![CDATA[Angular velocities]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[gl]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[g/l]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[Norbmax]]]></Dimension>
+<Comment><![CDATA[x coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[Norbmax]]]></Dimension>
+<Comment><![CDATA[y coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[z]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[Norbmax]]]></Dimension>
+<Comment><![CDATA[z coordinate]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[Presentation and options]]></PageComment>
+<Variable>
+<Name><![CDATA[h]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>initialize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double pi = Math.PI-.01;
+int nl = Nl;
+int N = Norb-2*nl;
+t = 0.0;
+for (int i = 0; i < N/2; i++) {
+  // phi[i] = Math.PI*Math.random();
+  phi[i] = -pi+2.*pi/(N-1)*i;
+}
+for (int i = 0; i < nl; i++) {
+  phi[N+i] = (i < nl/2) ? xmax : -xmax;
+  omega[N+i] = -1.5+3.*i/(nl-1);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>h</Increment>
+<Rate state="phi[i]">omega[i]</Rate>
+<Rate state="omega[i]">-gl*Math.sin(phi[i])</Rate>
+<Rate state=""></Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>0.00001</Tolerance>
+<Comment><![CDATA[Pendulum equations]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Cartesian</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Cartesian coordinates]]></Comment>
+<Code><![CDATA[
+for (int i = 0; i < Norb; i++) {
+  x[i] = Math.cos(phi[i]);
+  y[i] = Math.sin(phi[i]);
+  z[i] = .5*omega[i];
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Mathematical pendulum]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["53,3"]]></Property>
+<Property name="size"><![CDATA["747,436"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">main</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">phaseSpace</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-xmax]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-1.5]]></Property>
+<Property name="maximumY"><![CDATA[1.5]]></Property>
+<Property name="title"><![CDATA[Phase space]]></Property>
+<Property name="titleX"><![CDATA["$\phi$"]]></Property>
+<Property name="titleY"><![CDATA["d$\phi$/dt"]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">ppi</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="x"><![CDATA[Math.PI]]></Property>
+<Property name="y"><![CDATA[-1.5]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[3]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[MAGENTA]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">mpi</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="x"><![CDATA[-Math.PI]]></Property>
+<Property name="y"><![CDATA[-1.5]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[3]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[MAGENTA]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TraceSet</Type>
+<Property name="name">porbits</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="elementnumber"><![CDATA[Norb]]></Property>
+<Property name="x"><![CDATA[phi]]></Property>
+<Property name="y"><![CDATA[z]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">ppoints</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="elementnumber"><![CDATA[Norb]]></Property>
+<Property name="x"><![CDATA[phi]]></Property>
+<Property name="y"><![CDATA[z]]></Property>
+<Property name="sizex"><![CDATA[.1]]></Property>
+<Property name="sizey"><![CDATA[.05]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Yaxis</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="y"><![CDATA[-1.5]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[3]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[RED]]></Property>
+<Property name="secondaryColor"><![CDATA[RED]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">Xaxis</Property>
+<Property name="parent">phaseSpace</Property>
+<Property name="x"><![CDATA[-xmax]]></Property>
+<Property name="sizex"><![CDATA[2*xmax]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Display3DPanel</Type>
+<Property name="name">cylinder</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="position">east</Property>
+<Property name="minimumX"><![CDATA[-1.0]]></Property>
+<Property name="maximumX"><![CDATA[1.0]]></Property>
+<Property name="minimumY"><![CDATA[-1.0]]></Property>
+<Property name="maximumY"><![CDATA[1.0]]></Property>
+<Property name="minimumZ"><![CDATA[-1.0]]></Property>
+<Property name="maximumZ"><![CDATA[1.0]]></Property>
+<Property name="cameraAzimuth"><![CDATA[-0.9399999999999995]]></Property>
+<Property name="cameraAltitude"><![CDATA[0.3800000000000001]]></Property>
+<Property name="cameraFocusX"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusY"><![CDATA[0.0]]></Property>
+<Property name="cameraFocusZ"><![CDATA[0.0]]></Property>
+<Property name="cameraRotation"><![CDATA[0.0]]></Property>
+<Property name="cameraDistanceToScreen"><![CDATA[4.5]]></Property>
+<Property name="releaseAction"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="decorationType"><![CDATA[NONE]]></Property>
+<Property name="background"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">phase</Property>
+<Property name="parent">cylinder</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[0]]></Property>
+<Property name="sizeX"><![CDATA[1.96]]></Property>
+<Property name="sizeY"><![CDATA[1.96]]></Property>
+<Property name="sizeZ"><![CDATA[3]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="closedTop"><![CDATA[false]]></Property>
+<Property name="closedBottom"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[GRAY]]></Property>
+<Property name="fillColor"><![CDATA[null]]></Property>
+<Property name="drawingLines"><![CDATA[true]]></Property>
+<Property name="drawingFill"><![CDATA[false]]></Property>
+<Property name="resolution"><![CDATA[12,12,6]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cylinder3D</Type>
+<Property name="name">xaxis</Property>
+<Property name="parent">cylinder</Property>
+<Property name="sizeX"><![CDATA[2]]></Property>
+<Property name="sizeY"><![CDATA[2]]></Property>
+<Property name="sizeZ"><![CDATA[0]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="closedTop"><![CDATA[false]]></Property>
+<Property name="closedBottom"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="lineWidth"><![CDATA[3]]></Property>
+<Property name="resolution"><![CDATA[20,20,0,]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment3D</Type>
+<Property name="name">YAxis</Property>
+<Property name="parent">cylinder</Property>
+<Property name="x"><![CDATA[1]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[-1.5]]></Property>
+<Property name="sizeX"><![CDATA[0]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="sizeZ"><![CDATA[3]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="enabledSize"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[RED]]></Property>
+<Property name="lineWidth"><![CDATA[5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment3D</Type>
+<Property name="name">Ident</Property>
+<Property name="parent">cylinder</Property>
+<Property name="x"><![CDATA[-1]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="z"><![CDATA[-1.5]]></Property>
+<Property name="sizeX"><![CDATA[0]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="sizeZ"><![CDATA[3]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="enabledSize"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[MAGENTA]]></Property>
+<Property name="lineWidth"><![CDATA[3]]></Property>
+<Property name="resolution"><![CDATA[15,15,5]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TrailSet3D</Type>
+<Property name="name">orbits</Property>
+<Property name="parent">cylinder</Property>
+<Property name="numberOfElements"><![CDATA[Norb]]></Property>
+<Property name="inputX"><![CDATA[x]]></Property>
+<Property name="inputY"><![CDATA[y]]></Property>
+<Property name="inputZ"><![CDATA[z]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="lineColor"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CircleSet3D</Type>
+<Property name="name">points</Property>
+<Property name="parent">cylinder</Property>
+<Property name="numberOfElements"><![CDATA[Norb]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="z"><![CDATA[z]]></Property>
+<Property name="sizeX"><![CDATA[.05]]></Property>
+<Property name="sizeY"><![CDATA[.05]]></Property>
+<Property name="sizeZ"><![CDATA[.05]]></Property>
+<Property name="enabledPosition"><![CDATA[false]]></Property>
+<Property name="fillColor"><![CDATA[RED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[BORDER:0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[grid:1,0,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Reset the initial conditions.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">clearButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/erase.gif]]></Property>
+<Property name="mnemonic"><![CDATA[e]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="tooltip"><![CDATA[Erase the orbits.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">parameterPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">east</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">dtLabel</Property>
+<Property name="parent">parameterPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA["$\Delta$t = "]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">dt</Property>
+<Property name="parent">parameterPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[h]]></Property>
+<Property name="format"><![CDATA["0.#######"]]></Property>
+<Property name="size"><![CDATA[40,20]]></Property>
+<Property name="tooltip"><![CDATA[Time step.]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

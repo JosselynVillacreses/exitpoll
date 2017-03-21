@@ -1,0 +1,883 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Baker map]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[baker map;deterministic chaos;strange attractor;Cantor set;fractal;baker transformation]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This simulation computes a class of generalized baker maps. It is easy to check its fractal structure, since it has a Cantor set structure  in the horizontal direction.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Baker map</title>
+    
+  </head>
+  <body>
+    <h1>
+      Baker map
+    </h1>
+    This simulation computes a class of generalized baker maps defined in the 
+    unit square as follows:<br><i>x<sub>n+1</sub></i> = <i>x<sub>n</sub> / a</i> 
+    + [<i>b</i> <i>y<sub>n</sub></i>] / <i>b </i><br><i>y<sub>n+1</sub></i> = <i>b</i> 
+    <i>y<sub>n</sub></i> mod 1<br>where [<i>y</i>] = <i>y</i> - <i>y</i> mod 1 
+    is the integer part of <i>y</i>, i.e., the largest integre not larger than <i>y</i>.<br>
+
+    <ul>
+      <li>
+        You can select below the integer parameters <i>a</i> and <i>b</i>, as 
+        well as the initial conditions for the <i>x</i> and <i>y</i>.
+      </li>
+      <li>
+        Click and drag the mouse to select a part phase-space to be zoomed in.
+      </li>
+      <li>
+        If <b>Distance</b> is selected a popup window will show the evolution 
+        of the distance between the points of the orbits starting from (<i>x</i><sub>0</sub>,<i>y</i><sub>0</sub>) 
+        and (<i>x</i><sub>0</sub>+&#948;<i>x</i>,<i>y</i><sub>0</sub>+&#948;<i>y</i>).
+      </li>
+      <li>
+        For information on other elements, put over them the mouse pointer to 
+        get a tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ol>
+      <li>
+        Start the simulation by pressing <b>Start</b>. By default the orbit 
+        will be erased after the first 100 steps to skip the transitory until 
+        the system is on the attractor (well, very very close to it).
+      </li>
+      <li>
+        Use different initial values for <i>x</i> and <i>y</i>. Is there any 
+        difference in the displayed section? Discuss your answer.
+      </li>
+      <li>
+        Use the mouse to select smaller and smaller parts of the attractor 
+        section. The increased resolution will show that the attractor has 
+        structure at all magnification levels: it is a fractal, much like a 
+        Cantor set.
+      </li>
+      <li>
+        Notice that at higher magnifications you will have to wait longer to 
+        get a number of solution points high enough to see the attractor.
+      </li>
+      <li>
+        Press <b>Whole space</b> to recover the original magnification.
+      </li>
+      <li>
+        Change the values of the integers <i>a</i> and <i>b</i> and discuss 
+        the shortcomings of computing this kind of maps with finite binary 
+        precision (for instance, when <i>b</i> is even).
+      </li>
+      <li>
+        You can run the example <b>baker</b> of <a href="http://tp.lc.ehu.es/jma/ds/ds.html">Dynamics 
+        Solver</a> for a much faster simulation, which allow exploring the 
+        Cantor set structure of the attractor.
+      </li>
+    </ol>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Index]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xd]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Second x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yd]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Second y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[deltaX]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Distance between x coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[deltaY]]></Name>
+<Value><![CDATA[1.0E-15]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Distance between y coordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[a]]></Name>
+<Value><![CDATA[6]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[a parameter]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[b]]></Name>
+<Value><![CDATA[3]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[b parameter]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[x0]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial x]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y0]]></Name>
+<Value><![CDATA[0.1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial y]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[x10]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial x coordinate of lower left corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y10]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial y coordinate of lower left corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x20]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial x coordinate of upper right corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y20]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Initial y coordinate of upper right corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[x10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of lower left corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y1]]></Name>
+<Value><![CDATA[y10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of lower left corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[x20]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of upper right corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y2]]></Name>
+<Value><![CDATA[y20]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of upper right corner]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[transitory]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Are we computing the transitory?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[skip]]></Name>
+<Value><![CDATA[100]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of transitory cycles]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[distance]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show distance between orbits?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Capture</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[selecting]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Selecting window with mouse started]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[first]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Is this the first point?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Mouse x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[my]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Mouse y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mx1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of first point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[my1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of first point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mx2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of second point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[my2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of second point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wx1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Window minimum x]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wy1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Window minimum y]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wx2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Window maximum x]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[wy2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Window maximum y]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set initial values in polar coordinates]]></Comment>
+<Code><![CDATA[
+n     = 0;
+x     = x0;
+y     = y0;
+xd    = x0+deltaX;
+yd    = y0+deltaY;
+
+selecting = false;
+
+transitory = true;
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Symbols and Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("dx").setProperty("format","\u03B4x = 0.##E00");
+_view.getElement("dy").setProperty("format","\u03B4y = 0.##E00");
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Map</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Baker map]]></Comment>
+<Code><![CDATA[
+n++;
+
+y = b*y;
+x = x/a+Math.floor(y)/b; 
+y -= Math.floor(y);
+
+yd = b*yd;
+xd = xd/a+Math.floor(yd)/b; 
+yd -= Math.floor(yd);
+
+if (transitory && n >= skip) {
+  transitory = false;
+  clear();
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Clear</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Clear section]]></Comment>
+<Code><![CDATA[
+public void clear() {
+_view.getElement("Points").reset();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Full size</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Recover initial window]]></Comment>
+<Code><![CDATA[
+public void full_size() {
+  x1 = x10;
+  y1 = y10;
+  x2 = x20;
+  y2 = y20;
+  clear();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Window</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+public void startCapture() {
+  selecting = first = true;
+}
+
+public void mouseMove() {
+  if (selecting) {
+    if (first) {
+      wx1 = wx2 = mx2 = mx1 = mx;
+      wy1 = wy2 = my2 = my1 = my;
+      first = false;
+    }
+    else {
+      mx2 = mx;
+      my2 = my;
+      wx1 = (mx1 < mx2) ? mx1 : mx2;
+      wx2 = (mx1 < mx2) ? mx2 : mx1;
+      wy1 = (my1 < my2) ? my1 : my2;
+      wy2 = (my1 < my2) ? my2 : my1;
+    }
+  }
+}
+
+public void endCapture() {
+  if (!selecting) return;
+  selecting = false;
+  if (mx1 == mx2 || my1 == my2) return;   
+  x1 = wx1;
+  x2 = wx2;
+  y1 = wy1;
+  y2 = wy2;
+  clear();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[hypot function for old Java releases]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Baker map]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["0,0"]]></Property>
+<Property name="size"><![CDATA["567,493"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Left</Property>
+<Property name="parent">Main</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[grid:13,1,0,1]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">aa</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[a]]></Property>
+<Property name="format"><![CDATA[a = 0]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[a parameter]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">bb</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[b]]></Property>
+<Property name="format"><![CDATA[b = 0]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[b parameter]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">xx</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[x0]]></Property>
+<Property name="format"><![CDATA[x = 0.##]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Initial x coordinate]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">vv</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[y0]]></Property>
+<Property name="format"><![CDATA[y = 0.##]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Initial y coordinate]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">dx</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[deltaX]]></Property>
+<Property name="format"><![CDATA["$\delta$x = 0.##E00"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Horizontal distance between initial conditions]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">dy</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[deltaY]]></Property>
+<Property name="format"><![CDATA["$\delta$y = 0.0E00"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[_initialize()]]></Property>
+<Property name="tooltip"><![CDATA[Vertical distance between initial conditions]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Skip</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[skip]]></Property>
+<Property name="format"><![CDATA[skip 0 step(s)]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="tooltip"><![CDATA[How many initial steps must be ignored]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">evol</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[distance]]></Property>
+<Property name="text"><![CDATA[Distance?]]></Property>
+<Property name="mnemonic"><![CDATA[d]]></Property>
+<Property name="tooltip"><![CDATA[Show evolution of distance between orbits]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Left</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_initialize();
+_view.resetTraces();
+clear();
+_play()]]></Property>
+<Property name="imageOff"><![CDATA["/org/opensourcephysics/resources/controls/images/pause.gif"]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">continueButton</Property>
+<Property name="parent">Left</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/continue.gif"]]></Property>
+<Property name="mnemonic"><![CDATA["c"]]></Property>
+<Property name="enabled"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[_play()]]></Property>
+<Property name="tooltip"><![CDATA["Continue previous simulation"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Left</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[r]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the initial conditions.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Clear</Property>
+<Property name="parent">Left</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/erase.gif]]></Property>
+<Property name="mnemonic"><![CDATA[c]]></Property>
+<Property name="action"><![CDATA[clear()]]></Property>
+<Property name="tooltip"><![CDATA[Clear window]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">FullSize</Property>
+<Property name="parent">Left</Property>
+<Property name="text"><![CDATA[Whole space]]></Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/window.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[w]]></Property>
+<Property name="enabled"><![CDATA[x1 != x10 || x2 != x20 || y1 != y10 || y2 != y20]]></Property>
+<Property name="action"><![CDATA[full_size()]]></Property>
+<Property name="tooltip"><![CDATA[Recover initial window]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Section</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[x1]]></Property>
+<Property name="maximumX"><![CDATA[x2]]></Property>
+<Property name="minimumY"><![CDATA[y1]]></Property>
+<Property name="maximumY"><![CDATA[y2]]></Property>
+<Property name="x"><![CDATA[mx]]></Property>
+<Property name="y"><![CDATA[my]]></Property>
+<Property name="pressaction"><![CDATA[startCapture()]]></Property>
+<Property name="dragaction"><![CDATA[mouseMove()]]></Property>
+<Property name="action"><![CDATA[endCapture()]]></Property>
+<Property name="title"><![CDATA["Phase space"]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="majorTicksX"><![CDATA[false]]></Property>
+<Property name="titleY"><![CDATA[y]]></Property>
+<Property name="majorTicksY"><![CDATA[false]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="xFormat"><![CDATA[x = 0.###]]></Property>
+<Property name="yFormat"><![CDATA[y = 0.###]]></Property>
+<Property name="tooltip"><![CDATA[Use the mouse to select the window]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.DataRaster</Type>
+<Property name="name">Points</Property>
+<Property name="parent">Section</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="index"><![CDATA[0]]></Property>
+<Property name="minimumX"><![CDATA[x1]]></Property>
+<Property name="maximumX"><![CDATA[x2]]></Property>
+<Property name="minimumY"><![CDATA[y1]]></Property>
+<Property name="maximumY"><![CDATA[y2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Window</Property>
+<Property name="parent">Section</Property>
+<Property name="x"><![CDATA[wx1]]></Property>
+<Property name="y"><![CDATA[wy1]]></Property>
+<Property name="sizex"><![CDATA[wx2-wx1]]></Property>
+<Property name="sizey"><![CDATA[wy2-wy1]]></Property>
+<Property name="visible"><![CDATA[selecting && !first && (wx1 != wx2 || wy1 != wy2)]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH_WEST]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="color"><![CDATA[255,255,0,64]]></Property>
+<Property name="stroke"><![CDATA[1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text</Type>
+<Property name="name">Transitory</Property>
+<Property name="parent">Section</Property>
+<Property name="x"><![CDATA[.5]]></Property>
+<Property name="y"><![CDATA[.5]]></Property>
+<Property name="visible"><![CDATA[transitory && _isPlaying()]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA[Transitory solution]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">Distance</Property>
+<Property name="title"><![CDATA[Distance between orbits]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[distance]]></Property>
+<Property name="location"><![CDATA["568,0"]]></Property>
+<Property name="size"><![CDATA["640,299"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Evolution</Property>
+<Property name="parent">Distance</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[1.3]]></Property>
+<Property name="pressaction"><![CDATA[_view.getElement("traceDist").reset();]]></Property>
+<Property name="title"><![CDATA[Evolution of distance]]></Property>
+<Property name="titleX"><![CDATA[n]]></Property>
+<Property name="xFormat"><![CDATA[n = 0.###]]></Property>
+<Property name="yFormat"><![CDATA[d = 0.###]]></Property>
+<Property name="tooltip"><![CDATA["Click to erase"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">traceDist</Property>
+<Property name="parent">Evolution</Property>
+<Property name="x"><![CDATA[n]]></Property>
+<Property name="y"><![CDATA[hypot(x-xd,y-yd)]]></Property>
+<Property name="maxpoints"><![CDATA[200]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[BLUE]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

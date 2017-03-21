@@ -1,0 +1,21 @@
+
+<div class="container containerCreate">
+       <h2>Crear Partido</h2>
+        <form method="POST" action="/admin/partido">
+            <div class="form-group">
+                <label>Subir la imagen (localmente, escribir la lista del partido)</label>
+                <input type="text" id="img_prt_local" name="" placeholder="Ingrese el link local de la imagen del partido"/>
+                
+                <label>Lista:</label>
+                <input class="form-control" id="lista_part" placeholder="Ingrese la lista del partido" name="lista_prt"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="nombre_part" placeholder="Ingrese el nombre del partido" name="nombre_prt"><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" value="Crear Partido" onclick="guardarPartido()">
+            <input type="button" class="btn btn-default" onclick="ocultarCreate()" value="Cancelar :(">
+          </form>
+    </div>
+ 

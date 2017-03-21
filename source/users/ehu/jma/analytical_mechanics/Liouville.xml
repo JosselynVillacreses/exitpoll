@@ -1,0 +1,900 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Liouville's theorem]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[analytical mechanics;phase space;Liouville's theorem;hamiltonian flux;friction]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[The simulation displays the evolution of a set of points in the phase space for the pendulum and the harmonic oscillator. One can check Liouville's theorem and how it fails when friction is added to the dynamical system, making it non conservative.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Introduction</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Liouville's theorem</title>
+    
+  </head>
+  <body>
+    <h1>
+      Liouville's theorem
+    </h1>
+    This animation draws the phase space for the <b>mathematical pendulum</b><br><i>d<sup>2</sup>&#966;</i>/<i>dt</i><sup>2</sup> 
+    + <i>g</i>/<i>L</i> sin <i>&#966;</i> = 0<br>or the <b>harmonic oscillator</b><br><i>d<sup>2</sup>x</i>/<i>dt</i><sup>2</sup> 
+    + <i>&#969;</i><sup>2</sup> <i>x</i> = 0, (<i>x</i> = <i>&#966;</i>, <i>&#969;</i> 
+    = (<i>g</i>/<i>L</i>)<sup>1/2</sup>).<br>
+
+    <ul>
+      <li>
+        The unit time is (<i>L</i>/<i>g</i>)<sup>1/2</sup>, so that <i>&#969;</i> 
+        = 1.
+      </li>
+      <li>
+        One can add a friction term proportional to the (angular) velocity.
+      </li>
+      <li>
+        The simulation computes the evolution of a set of phase points around 
+        the red center. The latter's position can be selected with the mouse 
+        or by entering its coordinates. One can also choose the number of 
+        points, as well as the initial form and the diameter of the set of 
+        points.
+      </li>
+      <li>
+        It is also possible to draw the phase trajectory of the center point.
+      </li>
+      <li>
+        To get information on the other elements, rest the mouse on the 
+        Element to see the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ul>
+      <li>
+        Check that without friction the phase surface is conserved.
+      </li>
+      <li>
+        Check that <i>with</i> friction the phase surface is always decreasing.
+      </li>
+      <li>
+        In the harmonic oscillator all phase trajectories have the same period 
+        (they are isochronous). As a consequence, the set of points moves 
+        without deformation, only orientation changes.
+      </li>
+      <li>
+        With the full pendulum, however, the period depends on the amplitude 
+        and different points need different times to complete a full 
+        revolution: some points lag behind others and the set of points 
+        stretches continuously.
+      </li>
+      <li>
+        (With the pendulum you should check <b>Cylinder</b> to make sure the 
+        program keeps the angle between -&#960; and &#960;.)
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>. I thank Wolfgang Christian and Francisco Esquembre for their help.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[nmax]]></Name>
+<Value><![CDATA[31]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Max number of points in each direction]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[q]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax*nmax]]]></Dimension>
+<Comment><![CDATA[Abscissae]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[qd]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[nmax*nmax]]]></Dimension>
+<Comment><![CDATA[Ordinates]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[gamma]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Damping coefficient]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[q0]]></Name>
+<Value><![CDATA[1]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Center abscissa]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[qd0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Center ordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[harmonic]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Use the harmonic oscillator instead of the pendulum?]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[x coordinate of mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y0]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[y coordinate of mass]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[17]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Square of number of points]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[-4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum x on screen]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum x on screen]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[-3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Minimum y on screen]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Maximum y on screen]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.05]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Integration step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[tol]]></Name>
+<Value><![CDATA[1e-6]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Tolerance in numerical method]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[type]]></Name>
+<Value><![CDATA["Square"]]></Value>
+<Type><![CDATA[String]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Type of set]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[d]]></Name>
+<Value><![CDATA[0.3]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Diameter]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[n0]]></Name>
+<Value><![CDATA[2]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Index of center point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[cylinder]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Identify -pi and pi]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[traj]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show trajectory of center point]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[npoints]]></Name>
+<Value><![CDATA[256]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of points in trajectory]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showSpace]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show pendulum evolution in true space]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Initial</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set default values]]></Comment>
+<Code><![CDATA[
+set_type();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("Kq").setProperty("format","\u03C6 = 0.###");
+_view.getElement("Kqd").setProperty("format","d\u03C6/dt = 0.###");
+_view.getElement("Gamma").setProperty("format","\u03B3 = 0.###");
+_view.getElement("Kdt").setProperty("format","\u0394t = 0.###");
+_view.getElement("PhaseSpace").setProperty("titleX","\u03C6");
+_view.getElement("PhaseSpace").setProperty("titleY","d\u03C6/dt");
+_view.getElement("PhaseSpace").setProperty("xFormat","\u03C6=0.###");
+_view.getElement("PhaseSpace").setProperty("yFormat","d\u03C6/dt=0.###");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<IndependentVariable>t</IndependentVariable>
+<Increment>dt</Increment>
+<Rate state="q[i]">vel(i,q[i],qd[i])</Rate>
+<Rate state="qd[i]">acc(i,q[i],qd[i])</Rate>
+<Method>RungeKuttaFehlberg</Method>
+<Tolerance>tol</Tolerance>
+<Comment><![CDATA[Velocity and acceleration]]></Comment>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Normalize</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Make sure -pi < q <= pi]]></Comment>
+<Code><![CDATA[
+if (cylinder) {
+  _view.getElement("Trajectory").setProperty("connected",
+              (q[n0] < -Math.PI || q[n0] > Math.PI)  ? "false" : "true");
+  for (int i = 0; i < npoints; i++) {
+    if      (q[i] < -Math.PI) q[i] += 2.*Math.PI;
+    else if (q[i] >   Math.PI) q[i] -= 2.*Math.PI;
+  }
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Center point</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set coordinate and velocity of center point]]></Comment>
+<Code><![CDATA[
+q0 = q[n0];
+qd0 = qd[n0];
+x0 = Math.sin(q0);
+y0 = -Math.cos(q0);
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Points</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Maximum number of points]]></Comment>
+<Code><![CDATA[
+if (n <= 0) n = 1;
+if (n % 2 == 0) n++;
+if  (type.equals("Square") || type.equals("Disk")) {
+    if (n > nmax) n = nmax;
+    npoints = n*n;
+    n0 = npoints/2;
+}
+else if  (type.equals("Hollow")) {
+    if (4*n-3 > nmax*nmax) n = (nmax*nmax+3)/4;
+    n0 = 4*(n-1);
+    npoints = n0+1;
+}
+else {
+    if (2*n-1 > nmax*nmax) n = (nmax*nmax+1)/2;
+    n0 = 2*(n-1);
+    npoints = n0+1;
+}
+x0 = Math.sin(q[n0]);
+y0 = -Math.cos(q[n0]);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set type</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Set initial coordinates for every point]]></Comment>
+<Code><![CDATA[
+public void set_type () {
+  _pause();
+  t=0;
+  n=Math.min(n,nmax);
+  _view.getElement("Trajectory").reset();
+  if      (type.equals("Square")) set_sqdi(false);
+  else if (type.equals("Disk"))   set_sqdi(true);
+  else if (type.equals("Hollow")) set_void();
+  else if (type.equals("Circle")) set_circ();
+}
+
+public void set_sqdi(boolean disk) {       // Full square or disk
+  q[n0] = q0;
+  qd[n0] = qd0;
+  if (n >= 3) {
+    int k = n/2;
+    double dd = d/(double)k;
+     for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+             if (disk && hypot((i-k)*dd,(j-k)*dd) > d) {
+                 q[i*n+j]   = 0.;
+                 qd[i*n+j] = 0.; 
+                 continue;
+             }
+            q[i*n+j]  = q0+(i-k)*dd;
+            qd[i*n+j] = qd0+(j-k)*dd;
+        }
+    }
+  }
+}
+
+public void set_void() {                    // Void square
+  q[n0] = q0;
+  qd[n0] = qd0;
+  if (n >= 3) {
+    int k = n/2;
+    double dd = d/(double)k;
+     for (int i = 0; i < n-1; i++) {
+          q[i]  = q0+(i-k)*dd;
+          qd[i] = qd0+(n-1-k)*dd;
+          q[i+n-1]  = q0+(n-1-k)*dd;
+          qd[i+n-1] = qd0-(i-k)*dd;
+          q[i+2*(n-1)]  = q0-(i-k)*dd;
+          qd[i+2*(n-1)] = qd0-k*dd;
+          q[i+3*(n-1)]  = q0-k*dd;
+          qd[i+3*(n-1)] = qd0+(i-k)*dd;
+    }
+  }
+}
+
+public void set_circ() {                    // Void disk
+  q[n0] = q0;
+  qd[n0] = qd0;
+  if (n >= 3) {
+    double r = d,
+               a = Math.PI/(n-1);
+     for (int i = 0; i < 2*n-2; i++) {
+          q[i]  = q0+r*Math.cos(i*a);
+          qd[i] = qd0+r*Math.sin(i*a);
+    }
+  }
+}
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Dynamics</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Velocity and acceleration]]></Comment>
+<Code><![CDATA[
+public double vel(int i,double x,double v) {
+  return (i >= npoints) ? 0 : v;
+}
+
+public double acc(int i,double x,double v) {
+  if (i >= npoints) return 0;
+  return (harmonic) ? -gamma*v-x : -gamma*v-Math.sin(x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Supply Math.hypot function for Java 1.4--]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Liouville's theorem]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["666,480"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">PhaseSpace</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="pressaction"><![CDATA[_pause()]]></Property>
+<Property name="title"><![CDATA[Phase-space]]></Property>
+<Property name="titleX"><![CDATA["$\phi$"]]></Property>
+<Property name="titleY"><![CDATA["d$\phi$/dt"]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="xFormat"><![CDATA["$\phi$=0.### /"]]></Property>
+<Property name="yFormat"><![CDATA["d$\phi$/dt=0.###"]]></Property>
+<Property name="tooltip"><![CDATA[Use mouse to change center's position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParticleSet</Type>
+<Property name="name">PointSet</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="elementnumber"><![CDATA[n*n]]></Property>
+<Property name="x"><![CDATA[q]]></Property>
+<Property name="y"><![CDATA[qd]]></Property>
+<Property name="sizex"><![CDATA[0.01]]></Property>
+<Property name="sizey"><![CDATA[0.01]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Trajectory</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="x"><![CDATA[q0]]></Property>
+<Property name="y"><![CDATA[qd0]]></Property>
+<Property name="active"><![CDATA[traj]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[traj]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Center</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="x"><![CDATA[q0]]></Property>
+<Property name="y"><![CDATA[qd0]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Origin</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[black]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">mpi</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="x"><![CDATA[-Math.PI]]></Property>
+<Property name="y"><![CDATA[ymin]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[ymax-ymin]]></Property>
+<Property name="visible"><![CDATA[cylinder]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[green]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">ppi</Property>
+<Property name="parent">PhaseSpace</Property>
+<Property name="x"><![CDATA[Math.PI]]></Property>
+<Property name="y"><![CDATA[ymin]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[ymax-ymin]]></Property>
+<Property name="visible"><![CDATA[cylinder]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[green]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Controls</Property>
+<Property name="parent">Down</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:2,7,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Kq</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[q0]]></Property>
+<Property name="format"><![CDATA["$\phi$ = 0.##"]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Center point's angular position]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Kqd</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[qd0]]></Property>
+<Property name="format"><![CDATA["d$\phi$/dt = 0.##"]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="foreground"><![CDATA[red]]></Property>
+<Property name="tooltip"><![CDATA[Center point's angular velocity]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Gamma</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[gamma]]></Property>
+<Property name="format"><![CDATA["$\gamma$ = 0.###"]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="tooltip"><![CDATA[Double of the damping coefficient]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Harmonics</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[harmonic]]></Property>
+<Property name="text"><![CDATA["SHO"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[if (harmonic) {
+  cylinder =false; 
+  //showPendulum = false;
+}
+set_type();]]></Property>
+<Property name="tooltip"><![CDATA[Simple harmonic oscillator instead of pendulum]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Kn</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[n]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="tooltip"><![CDATA[Number of points along a diameter]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Kd</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[d]]></Property>
+<Property name="format"><![CDATA[d = 0.##]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="tooltip"><![CDATA[Set diameter]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComboBox</Type>
+<Property name="name">Type</Property>
+<Property name="parent">Controls</Property>
+<Property name="options"><![CDATA[Square;Hollow;Disk;Circle]]></Property>
+<Property name="variable"><![CDATA[%type%]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="tooltip"><![CDATA[Geometrical form]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Kdt</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA["$\Delta$t = 0.##"]]></Property>
+<Property name="tooltip"><![CDATA[Integration step length]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Cylinder</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[cylinder]]></Property>
+<Property name="text"><![CDATA[Cylinder]]></Property>
+<Property name="mnemonic"><![CDATA[c]]></Property>
+<Property name="enabled"><![CDATA[!harmonic]]></Property>
+<Property name="action"><![CDATA[set_type()]]></Property>
+<Property name="tooltip"><![CDATA[The angle goes from -pi to pi]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">Traj</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[traj]]></Property>
+<Property name="text"><![CDATA[Trajectory]]></Property>
+<Property name="mnemonic"><![CDATA[a]]></Property>
+<Property name="action"><![CDATA[_view.getElement("Trajectory").reset();]]></Property>
+<Property name="tooltip"><![CDATA[Draw center point's phase-trajectory]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">showSpace</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[showSpace]]></Property>
+<Property name="text"><![CDATA["Space View"]]></Property>
+<Property name="mnemonic"><![CDATA[p]]></Property>
+<Property name="tooltip"><![CDATA[Show pendulum true evolution?]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and Stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Controls</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Dialog</Type>
+<Property name="name">Pendulum</Property>
+<Property name="title"><![CDATA["Space view"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[showSpace]]></Property>
+<Property name="location"><![CDATA["610,0"]]></Property>
+<Property name="size"><![CDATA[300,300]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">DrawingPanel</Property>
+<Property name="parent">Pendulum</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-1.1]]></Property>
+<Property name="maximumX"><![CDATA[1.1]]></Property>
+<Property name="minimumY"><![CDATA[-1.1]]></Property>
+<Property name="maximumY"><![CDATA[1.1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">String</Property>
+<Property name="parent">DrawingPanel</Property>
+<Property name="sizex"><![CDATA[x0]]></Property>
+<Property name="sizey"><![CDATA[y0]]></Property>
+<Property name="visible"><![CDATA[!harmonic]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">pendulumMass</Property>
+<Property name="parent">DrawingPanel</Property>
+<Property name="x"><![CDATA[x0]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="visible"><![CDATA[!harmonic]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Spring</Type>
+<Property name="name">spring</Property>
+<Property name="parent">DrawingPanel</Property>
+<Property name="x"><![CDATA[-1.1]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="sizex"><![CDATA[x0+1.1]]></Property>
+<Property name="sizey"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[harmonic]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">shoMass</Property>
+<Property name="parent">DrawingPanel</Property>
+<Property name="x"><![CDATA[x0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[harmonic]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../_ejs_library/css/ejsPage.css"/>
+    <title>Ejs QM Models: Dirac delta function scattering</title>
+  </head>
+<body>
+    <p align="center">
+      <img border="0" src="WaveFunction.gif" width="382" height="194"><br>
+		[The Wave Function Plotter shows a wave function u(x,t) which varies in space and time.]</p>
+	<h1>
+      Wave Function Plotter</h1>
+    <p>A wave is a disturbance, such as sound, that propagates through space. For a wave propagating in one dimension, we use a 
+    wave function u(x,t) to represent the wave at position x and time t as shown in the screen shot.&nbsp; Although a sinusoidal 
+    wave function is a very common type type of disturbance, we should remember that there are many other wave functions, such as 
+    shock waves, that do not fit this functional form. </p><p>The model's fixed relations workpanel computes the data by 
+    evaluating the parser in the EJS Function element the using the following code:</p><p><font face="Courier New">double dx = (xmax-xmin)/n;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // sample interval<br>
+    double x=xmin+dx/2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // position<br>
+    _view.trail.clear();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // clear old data<br>
+    for(int i=0; i&lt;n; i++) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // loop to create new data<br>
+&nbsp; double u = _view.waveFunction.evaluate(x,t);&nbsp;&nbsp; // evaluate wave function<br>
+&nbsp; _view.trail.addPoint(x,u);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // add data to trace<br>
+&nbsp; x += dx; // increment position<br>
+    }</font></p>
+
+
+    <h2>Related Models</h2><p>The following EJS models demonstrate how to plot functions in EJS.&nbsp; These models are listed in order of complexity.</p><ul>
+		<li>Fixed Function Plotter model</li>
+		<li>Analytic Function Plotter model</li>
+		<li>Time Dependent Function Plotter model</li>
+		<li>Wave Function Plotter model</li>
+	</ul>
+    <h3>
+      Credits:</h3>
+    <p>
+      The Wave Function Plotter model was created by Wolfgang Christian and Francisco Esquembre using the Easy Java Simulations (EJS) 
+      version 4.1 authoring and modeling tool.&nbsp; You can examine and modify a compiled EJS model if you run the model (double click on 
+      the model's jar file), right-click within a plot, and select &quot;Open Ejs Model&quot; from the pop-up menu.&nbsp; You 
+      must, of course, have EJS installed on your computer.&nbsp; Information about Ejs is available at: &lt;<b><a href="http://www.um.es/fem/Ejs/">http://www.um.es/fem/Ejs/</a></b>&gt; and in the OSP ComPADRE collection &lt;<b><a href="http://www.compadre.org/OSP/">http://www.compadre.org/OSP/</a></b>&gt;.</p>
+  
+  </body>
+</html>

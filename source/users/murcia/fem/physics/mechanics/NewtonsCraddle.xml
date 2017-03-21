@@ -1,0 +1,478 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[Newton's Craddle]]></Title>
+<Author><![CDATA[Francisco Esquembre]]></Author>
+<Keywords><![CDATA[Collisions, Events]]></Keywords>
+<Level><![CDATA[Medium]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[This is a simulation of the classical executive's toy. Multiple collisions among the balls are simulated using a single event with arrays.
+]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./NewtonsCraddle/NetwonsCraddle.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Newton's Craddle</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Newton's Craddle
+    </h1>
+    <p style="margin-top: 0">
+      This is a simulation of the classical executive's toy. Multiple 
+      collisions among the balls are simulated using a single event with 
+      arrays.
+    </p>
+    <p style="margin-top: 0">
+      
+    </p>
+    <p align="center" style="margin-top: 0">
+      <img src="./NewtonsCraddle/NetwonsCraddle.gif">
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Global variables</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[xmin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The minimum x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[14]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The maximum x coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymin]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The minimum y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ymax]]></Name>
+<Value><![CDATA[8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The maximum y coordinate]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[yTop]]></Name>
+<Value><![CDATA[3*ymax/4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[l]]></Name>
+<Value><![CDATA[2*ymax/5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The common rod length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[g]]></Name>
+<Value><![CDATA[9.8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Acceleration caused by gravity]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.01]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Increment of time]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Balls</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[n]]></Name>
+<Value><![CDATA[7]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the number of balls]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[radius]]></Name>
+<Value><![CDATA[0.4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[the common radius]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xTop]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The coordinates at the top]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[alpha]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The angle of each pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[omega]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The angular velocity of each pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The X coordinate of each pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The Y coordinate of each pendulum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dx]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The X length of the rods]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[dy]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[n]]]></Dimension>
+<Comment><![CDATA[The Y length of the rods]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Events</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[TOLERANCE]]></Name>
+<Value><![CDATA[0.001]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Tolerance for the events]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ball1]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[One of the balls which collided]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ball2]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[The other ball which collided]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ballMoved]]></Name>
+<Value><![CDATA[-1]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>P�gina Inicio</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Initial position of the balls]]></Comment>
+<Code><![CDATA[
+double pos = (xmax+xmin)/2 - (n-1)*radius;
+for (int i = 0; i < n; i++) {
+  xTop[i] = pos;
+  pos = pos + 2*radius;
+  x[i] = xTop[i] + l*Math.sin(alpha[i]);
+  y[i] = yTop - l*Math.cos(alpha[i]);
+ }
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>ODE_EDITOR</Type>
+<Name>Free fall</Name>
+<Active>true</Active>
+<Content>
+<PreliminaryCode>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+</PreliminaryCode>
+<IndependentVariable>t</IndependentVariable>
+<Increment>0.01</Increment>
+<Increment>0.01</Increment>
+<Rate state="alpha[i]">omega[i]</Rate>
+<Rate state="omega[i]">-g/l*Math.sin(alpha[i])</Rate>
+<Method>RungeKutta</Method>
+<Tolerance>0.001</Tolerance>
+<Comment><![CDATA[]]></Comment>
+<Events><Event.Page>
+<Type>EVENT_EDITOR</Type>
+<Name>Collision</Name>
+<Active>true</Active>
+<EventContent>
+<Comment><![CDATA[Collision among balls]]></Comment>
+<ZeroCondition><![CDATA[
+for (int i=0; i<n; i++) {  // Update coordinates
+  x[i] = xTop[i] + l*Math.sin(alpha[i]);
+  y[i] = yTop - l*Math.cos(alpha[i]);
+ }
+double min = TOLERANCE;
+for (int i=0; i<n; i++) {
+  for (int j=i+1; j<n; j++) {
+    double deltax = x[j]-x[i], deltay = y[j]-y[i];
+    double allowed = 2*radius;
+    double distance = deltax*deltax+deltay*deltay-allowed*allowed;
+    if (distance<min) {
+      if (deltax*(omega[j]-omega[i])<0) {
+        ball1 = i; ball2 = j; min = distance;
+      }
+    }
+  }
+}
+return min;
+]]></ZeroCondition>
+<Tolerance><![CDATA[TOLERANCE]]></Tolerance>
+<Action><![CDATA[
+double aux = omega[ball1];
+omega[ball1] = omega[ball2];
+omega[ball2] = aux;
+
+]]></Action>
+<StopAtEvent>false</StopAtEvent>
+
+</EventContent>
+</Event.Page>
+</Events>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Energy</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// Notice that x and y are computed at the event
+// Update the length of the rods
+for (int i=0; i<n; i++) {
+  dx[i] = x[i] - xTop[i];
+  dy[i] = y[i] - yTop;
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">frame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Newton's Craddle]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["450,345"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[flow:center]]></Property>
+<Property name="borderType"><![CDATA[RAISED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playPauseButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/stepforward.gif"]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">frame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[xmin]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[ymin]]></Property>
+<Property name="maximumY"><![CDATA[ymax]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="BRmessage"><![CDATA["Drag the balls to create different motions"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Shape2D</Type>
+<Property name="name">topShape</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[(xmin+xmax)/2]]></Property>
+<Property name="y"><![CDATA[yTop]]></Property>
+<Property name="sizeX"><![CDATA[2*n*radius]]></Property>
+<Property name="sizeY"><![CDATA[0.5]]></Property>
+<Property name="style"><![CDATA[RECTANGLE]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="fillColor"><![CDATA[PINK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.SegmentSet2D</Type>
+<Property name="name">segmentSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="numberOfElements"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[xTop]]></Property>
+<Property name="y"><![CDATA[yTop]]></Property>
+<Property name="sizeX"><![CDATA[dx]]></Property>
+<Property name="sizeY"><![CDATA[dy]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ShapeSet2D</Type>
+<Property name="name">ballsShapeSet</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="numberOfElements"><![CDATA[n]]></Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="y"><![CDATA[y]]></Property>
+<Property name="sizeX"><![CDATA[2*radius]]></Property>
+<Property name="sizeY"><![CDATA[2*radius]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="elementSelected"><![CDATA[ballMoved]]></Property>
+<Property name="dragAction"><![CDATA[// Compute new angle and freeze the ball
+alpha[ballMoved] = Math.atan2(x[ballMoved]-xTop[ballMoved],yTop-y[ballMoved]);
+omega[ballMoved] = 0;
+
+// Limit the motion
+double maxAngle = Math.PI/2;
+if (alpha[ballMoved]> maxAngle) alpha[ballMoved] =  maxAngle;
+if (alpha[ballMoved]<-maxAngle) alpha[ballMoved] = -maxAngle;
+
+// Check for one ball moving the others
+for (int i=ballMoved+1; i<n; i++) {
+  if (alpha[ballMoved]>alpha[i]) { alpha[i] = alpha[ballMoved]; omega[i] = 0; }
+}
+for (int i=0; i<ballMoved; i++) {
+  if (alpha[ballMoved]<alpha[i]) { alpha[i] = alpha[ballMoved]; omega[i] = 0; }
+}
+
+// Force constant rod length
+for (int i=0; i<n; i++) {
+  x[i] = xTop[i] + l*Math.sin(alpha[i]);
+  y[i] = yTop - l*Math.cos(alpha[i]);
+}]]></Property>
+<Property name="lineColor"><![CDATA[BLACK]]></Property>
+<Property name="fillColor"><![CDATA[LIGHTGRAY]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

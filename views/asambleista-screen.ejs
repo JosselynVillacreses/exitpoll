@@ -1,0 +1,44 @@
+<% include menu %>
+<br>
+<br>
+ <div class="contenedorCrud">
+  <input type="button" name="" value="Crear" onclick="mostrarCreate()">
+<br>
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Asambleista</th>
+      <th>Edad</th>
+      <th colspan='2'>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% 
+        var arrAsam = asambleista.asambleista;
+
+        for(var i in arrAsam){%>
+            <tr>
+              <td><%=arrAsam[i].cedula%></td>
+
+              <td><%= arrAsam[i].nombre + " " + arrAsam[i].apellido%></td>
+
+              <td><%=arrAsam[i].edad%></td>
+
+              
+              <td><input type="button" name="" value="Borrar" onclick="eliminarAsam('<%= arrAsam[i].id_asambleista %>')"></td>
+
+              <td><input type="button" name="" value="Actualizar" onclick="act_asam('<%= arrAsam[i].id_asambleista %>')"></td>
+              
+
+
+            </tr>
+
+        <% }%> 
+  </tbody>
+</table>
+
+
+</div>
+
+<% include create_asambleista %>

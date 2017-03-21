@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/callback.js"></script>
+    <link rel="stylesheet" href="estilo/style.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <script src="js/script.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+      
+
+<!--PANTALLA DE INICIO-->
+<div id="inicio" class="centro">
+    <h2>Sistema de ExitPoll</h2>
+    <h3>Elecciones Nacionales<br>Ecuador - 2017</h3>
+    
+</div>
+
+
+
+<!--PANTALLA DE LOGIN-->
+<div class="login">
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate">
+   
+    <div class="container">
+      <label><b>Usuario:</b></label>
+      <input type="text" placeholder="Ingrese su usuario" id="user" required>
+
+      <label><b>Contraseña:</b></label>
+      <input type="password" placeholder="Ingrese su contraseña" id="pass" required>
+        
+      <input class="btn btn-primary" type="button" onclick="inicio_sesion()" value="Ingresar"><br>
+      
+    </div>
+
+    <div class="container">
+      <input type="button" onclick="salir()" class="btn btn-danger" value="Cancelar">
+      
+    </div>
+    
+  </form>
+</div>
+</div>
+
+
+<!--PANTALLA DE LOGOUT-->
+<div id="screen_out" class="centro">
+    <h2>¡Gracias por usar nuestro sistema!</h2>
+</div>
+
+<div class="centro" id="btnIngresar">
+    <input type="button" class="btn btn-success" onclick="aparecer()" value="Ingresar">
+</div>
+
+
+<!--PANTALLA ADMINISTRADOR-->
+<div class="container-fluid">
+<div id="screen_admin" class="row menu centro">
+    
+       <div class="col-md-10"></div>
+      <div class="col-md-2">
+        <a  id="cerrar_sesion">Salir</a>
+        <p id="entrada-administrador" class="centro"></p>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"><a id="crear_"><img src="image/botones/crear.PNG"><br>CREAR</a></div>
+    <div class="col-md-2"><a id="eliminar_"><img src="image/botones/eliminar.PNG"><br>ELIMINAR</a></div>
+    <div class="col-md-2"><a id="actualizar_"><img src="image/botones/actualizar.PNG"><br> ACTUALIZAR</a></div>
+    <div class="col-md-2"><a id="mostrar_"><img src="image/botones/mostrar.PNG"><br>MOSTRAR CANDIDATOS</a></div>
+    <div class="col-md-2"></div>
+    
+
+  
+</div>
+</div>
+
+<!--PANTALLA CREAR-->
+<div id="crear_pantalla">
+    <div class="container-fluid">
+        <div class="row">
+            <h3>Seleccione una dignidad a crear</h3>
+            <div class="radio col-md-4" id="create">
+                <select id="combo_dignidades" class="form-control input-lg">
+                
+                </select>
+            </div>
+        </div>
+    </div>
+
+<!--CREAR PRESIDENTE-->
+<div id="create_presidente_screen">
+    <div class="container">
+       <h2>Crear Presidente</h2>
+        <form>
+            <div class="form-group">
+                
+
+               
+                <label>Subir la imagen (localmente)</label>
+                <input type="text" id="img-local" name="" placeholder="Ingrese el link local de la imagen"/>
+                
+                <label>Cedula:</label>
+                
+                <input class="form-control" id="id_pres" placeholder="Ingrese la cedula del candidato" required><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="last_pres" placeholder="Ingrese el nombre del candidato" required><br>
+                <label>Apellidos:</label>
+                <input class="form-control" id="name_pres" placeholder="Ingrese el apellido del candidato" required><br>
+                <label>Edad:</label>
+                <input class="form-control" id="age_pres" placeholder="Ingrese la edad del candidato" required><br>
+                <label>Campaña:</label>
+                <textarea class="form-control" id="camp_pres" rows="5" placeholder="Ingrese la campaña del candidato" required></textarea><br>
+                
+                <label>Partido:</label>
+                <select name="part" id="select_pres" class="form-control">
+                    
+                </select>
+           
+             
+            </div>
+            
+
+       <h2>Crear VicePresidente</h2>
+
+            <div class="form-group">
+                <label>Subir la imagen (localmente)</label>
+                <input type="text" id="img_vice_local" name="" placeholder="Ingrese el link local de la imagen del vicepresidentte"/>
+                
+                <label>Cedula:</label>
+                <input class="form-control" id="vice_id" placeholder="Ingrese la cedula del vicepresidente" required><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="vice_name" placeholder="Ingrese el nombre del vicepresidente" required><br>
+                <label>Apellido:</label>
+                <input class="form-control" id="vice_ap" placeholder="Ingrese el apellido del vicepresidente" required><br>
+                <label>Edad:</label>
+                <input class="form-control" id="vice_edad" placeholder="Ingrese la edad del vicepresidente" required><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="create_president" value="Crear Presidente">
+          </form>
+    </div>
+</div>
+
+
+<!--CREAR ASAMBLEISTA-->
+<div id="create_asam_screen">
+    <div class="container">
+       <h2>Crear Asambleista</h2>
+        <form>
+            <div class="form-group">
+                <label>Cedula:</label>
+                <input class="form-control" id="id_asam" placeholder="Ingrese la cedula del asambleista"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="name_asam" placeholder="Ingrese el nombre del asambleista"><br>
+                <label>Apellido:</label>
+                <input class="form-control" id="last_asam" placeholder="Ingrese el apellido del asambleista"><br>
+                <label>Edad:</label>
+                <input class="form-control" id="age_asam" placeholder="Ingrese la edad del asambleista"><br>
+               
+                <label>Partido:</label>
+                <select name="part_asam" id="selects_" class="form-control">
+                    
+                </select>
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="create_asamb" value="Crear Asambleista">
+          </form>
+    </div>
+</div>
+
+
+<!--CREAR PARTIDO-->
+<div id="create_parti_screen">
+    <div class="container">
+       <h2>Crear Partido</h2>
+        <form>
+            <div class="form-group">
+                <label>Subir la imagen (localmente, escribir la lista del partido)</label>
+                <input type="text" id="img_prt_local" name="" placeholder="Ingrese el link local de la imagen del partido"/>
+                
+                <label>Lista:</label>
+                <input class="form-control" id="lista_part" placeholder="Ingrese la lista del partido"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="nombre_part" placeholder="Ingrese el nombre del partido"><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="create_prt" value="Crear Partido">
+          </form>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+    
+    
+<!------------------PANTALLA ELIMINAR-------------------------->
+<div id="eliminar_pantalla">
+    <div class="container-fluid">
+        <div class="row">
+            <h3>Seleccione una dignidad a eliminar</h3>
+            <div class="radio col-md-4" id="del">
+                <select id="combo_dignidades_eliminar" class="form-control input-lg">
+                </select>
+  
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div id="del_pres_screen">
+    <div class="container-fluid">
+        <div class="row">
+            <label class="col-md-3">Nombre del Presidente a eliminar :</label>
+            <div class="col-md-3">
+                <select id="selects_del_pre" class="form-control">
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+            <input type="button" id="btn_delete_pres" class="btn btn-default col-md-2" value="Eliminar Presidente">
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div id="del_asam_screen">
+    <label>Nombre del Asambleista a eliminar:</label>
+    <select id="selects_del_asam" class="form-control">
+        <option> </option>
+    </select>
+    <input type="button" id="btn_delete_asam" class="btn btn-default" value="Eliminar Asambleista">
+</div>
+
+<div id="del_parti_screen">
+    <label>Nombre del partido a eliminar:</label>
+    <select id="selects_prt_pre" class="form-control">
+        <option> </option>
+    </select>
+    <input type="button" id="btn_delete_prt" class="btn btn-default" value="Eliminar Partido">
+</div>
+    
+</div>
+
+<!------------------PANTALLA ACTUALIZAR-------------------------->
+
+
+    
+<div id="act_pantalla">
+<div id="actualizar_principal">
+    <div class="container-fluid">
+        <div class="row">
+            <h3>Seleccione una dignidad a actualizar</h3>  
+            <div class="radio col-md-4">
+                <select id="combo_dignidades_actualizar" class="form-control input-lg">
+        
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="act_pres_screen">
+    <div class="container-fluid">
+        <div class="row">
+            <label class="col-md-2">Nombre del Presidente actualizar:</label>
+            <div class="col-md-4">
+                <select id="selects_act_pres" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modificar_presidente_form">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+
+            <h2>Actualizar Presidente</h2>
+                <form>
+                    <div class="form-group">
+                    <label>Subir la imagen (localmente)</label>
+                    <input type="text" id="id_img_act_pres"><br>
+                    <image id="imagen_actualizar_presidente" />
+                     <br>
+                    <label>Cedula:</label><input class="form-control" id="act_id_pres"><br>
+                    <label>Nombre:</label>
+                    <input class="form-control" id="act_name_pres"><br>
+                    <label>Apellidos:</label>
+                    <input class="form-control" id="act_last_pres"><br>
+                    <label>Edad:</label>
+                    <input class="form-control" id="act_age_pres"><br>
+                    <label>Campaña:</label>
+                    <textarea class="form-control" id="act_camp_pres" rows="5"></textarea><br>
+                    
+                    <label>Partido:</label>
+                    <select name="part" id="act_select_pres" class="form-control">
+                    
+                    </select>
+           
+             
+                    </div>
+            
+
+           <h2>Actualizar VicePresidente</h2>
+
+                    <div class="form-group">
+                        <label>Subir la imagen (localmente)</label>
+                        <input type="text" id="id_img_act_vice"><br>
+                        <image id="imagen_actualizar_vice" /><br>
+                        <label>Cedula:</label>
+                        <input class="form-control" id="act_vice_id"><br>
+                        <label>Nombre:</label>
+                        <input class="form-control" id="act_vice_name"><br>
+                        <label>Apellido:</label>
+                        <input class="form-control" id="act_vice_ap"><br>
+                        <label>Edad:</label>
+                        <input class="form-control" id="act_vice_edad"><br>
+                
+             
+                    </div>
+            
+                    <input type="button" class="btn btn-default" id="modificar_president" value="Actualizar Presidente">
+             </form>
+            </div>
+            </div>
+            </div>
+</div>
+
+
+
+<div id="act_asam_screen">
+    <div class="container-fluid">
+        <div class="row">
+            <label class="col-md-2">Nombre del Asambleista:</label>
+            <div class="col-md-4">
+                <select id="selects_act_asam" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modificar_asambleista_form">
+    <div class="container">
+       <h2>Actualizar Asambleista</h2>
+        <form>
+            <div class="form-group">
+                <label>Cedula:</label>
+                <input class="form-control" id="act_id_asam"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="act_name_asam"><br>
+                <label>Apellido:</label>
+                <input class="form-control" id="act_last_asam"><br>
+                <label>Edad:</label>
+                <input class="form-control" id="act_age_asam"><br>
+               
+                <label>Partido:</label>
+                <select id="act_part_asam" class="form-control">
+                </select>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="modificar_asamb" value="Actualizar Asambleista">
+          </form>
+    </div>
+</div>
+
+
+<div id="act_parti_screen">
+    <div class="container-fluid">
+        <div class="row">
+            <label class="col-md-2">Nombre del Partido:</label>
+            <div class="col-md-4">
+                <select id="selects_act_pr" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--PANTALLA ACTUALIZAR PARTIDO-->
+
+<div id="modificar_partido_form">
+    <div class="container">
+       <h2>Actualizar Partido</h2>
+        <form>
+            <div class="form-group">
+                <label>Sabir la imagen (localmente)</label>
+                <input type="text" id="id_img_act_prt"><br>
+                <image id="imagen_actualizar_prt" /><br>
+                <label>Lista:</label>
+                <input class="form-control" id="act_lista_part"><br>
+                <label>Nombre:</label>
+                <input class="form-control" id="act_nombre_part"><br>
+                
+             
+            </div>
+            
+            <input type="button" class="btn btn-default" id="modificar_prt" value="Actualizar Partido">
+          </form>
+    </div>
+    
+</div>
+
+
+
+
+</div>
+
+
+<!------------------PANTALLA MOSTRAR-------------------------->
+
+<div id="mostrar_pantalla">
+   
+   <!-- <img src="" id='imagenprueba'></img> -->
+   
+   
+    <table class="table table-hover" id='tabla_mostrar_candidatos'>
+  <thead>
+    <tr>
+      <th >Lista</th>
+      <th >Logo</th>
+      <th>Partido</th> 
+      <th colspan='2'>Presidente</th>
+      <th colspan='2'>Vicepresidente</th>
+      <th>Votos</th> 
+    </tr>
+  </thead>
+  <tbody id='body_candidatos'>
+      
+  </tbody>
+</table>
+
+</div>
+ 
+
+ 
+
+  
+
+
+
+
+<!--PANTALLA ENCUESTADOR-->
+<div id="screen_encuestador">
+    <a  id="cerrar_sesion_">Salir</a>
+    <h4>Cedula: </h4><input type="text" placeholder="Ingrese su cedula" id="cedula_vot">
+    <input id='btn_cedula' type="button" class="btn btn-primary" value="Ingresar">
+    
+        
+    <div id="pantalla_tabla_votar">
+        <table class="table table-hover" id='tabla_votar'>
+                  <thead>
+                    <tr>
+                      <th >Lista</th>
+                      <th >Logo</th>
+                      <th colspan='2'>Presidente</th>
+                      <th colspan='2'>Vicepresidente</th>
+                    </tr>
+                  </thead>
+                  <tbody id='body_votar'>
+                      
+                  </tbody>
+        </table>
+                
+        <h2>Asambleistas</h2>
+        
+            <table class="table table-hover" id='tabla_votar_asam'>
+                  <thead>
+                    <tr>
+                      <th >Lista</th>
+                      <th >Logo</th>
+                    </tr>
+                  </thead>
+                  <tbody id='body_votar_asam'>
+                      
+                  </tbody>
+        </table>
+        
+    </div>
+            
+   
+        
+</div>
+
+
+
+    </<div>
+</<div>
+</body>
+</html>

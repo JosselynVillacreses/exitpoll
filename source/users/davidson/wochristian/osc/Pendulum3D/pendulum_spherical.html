@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../_ejs_library/css/ejsPage.css"/>
+    <title>Spherical Pendulum</title>
+  </head>
+  <body> 
+    <h1>
+      Spherical Pendulum</h1>
+    <p align="center">
+      <img border="0" src="pendulum_spherical.jpg" width="296" height="329"></p><p><b>Spherical Pendulum </b>models a particle under the influence of gravity that is constrained to stay on a spherical surface.&nbsp; 
+	The simplest example is that of a pendulum that is free to swing in any direction.&nbsp; This problem is most conveniently 
+    solved using spherical coordinates (r, <font face="Times New Roman">&#952;</font>, <font face="Times New Roman">&#966;</font>) where r 
+    is the radius, <font face="Times New Roman">&#952;</font> is the angle the pendulum makes with respect to the vertical z-axis, and
+    <font face="Times New Roman">&#966; is the</font> rotation angle about the z-axis.&nbsp; These polar coordinates are converted into 
+    Cartesian (x, y, z) coordinates after every time step to position the pendulum bob in a three-dimensional Ejs world view.</p>
+    <p>Differential equations for (<font face="Times New Roman">&#952;</font>, <font face="Times New Roman">&#966;</font>) are easily 
+    derived using Lagrangian mechanics. The Langranian equation for <font face="Times New Roman">&#952;</font> yields:</p><p align="center"><img border="0" src="spherical_pendulum_ode.gif" 
+    width="241" height="55">.</p><p>Because the angular momentum about the z-axis
+    <font face="Times New Roman">L<sub>z </sub></font>is conserved, we need only solve the
+    <font face="Times New Roman">&#952;</font> equation.&nbsp; The &#966; rate of change for any value of &#952;&nbsp; is computed by 
+    solving for d&#966;/dt using the (fixed) value of L<sub>z</sub>. that is computed from the initial conditions:</p>
+    <p align="center"><img border="0" src="spherical_pendulum_phi.gif" width="151" height="51">.</p>
+    <h2>
+      References:
+    </h2>
+	<p>
+      The Spherical Pendulum model is designed to teach Ejs modeling.&nbsp; Right 
+	  click within the simulation to examine this model in the Ejs modeling and 
+	  authoring tool.&nbsp; See:
+    </p><ul>
+      <li>&quot;Modeling Physics with Easy Java Simulations&quot; by Wolfgang Christian and Francisco Esquembre, The Physics Teacher, 
+      November 2007, <b>45</b> (8), pp. 475-480.</li>
+    </ul><p>The Easy Java Simulations (EJS) documentation can be downloaded from the ComPADRE Open Source Physics collection and from the Ejs website.</p>
+    <h3>
+      Note:
+    </h3>
+    <p>
+      This simulation was created by Wolfgang Christian and Francisco Esquembre using the Easy Java 
+		Simulations (Ejs) modeling tool.&nbsp;You can examine and modify this 
+		simulation if you have Ejs installed by right-clicking within a plot and 
+		selecting &quot;Open Ejs Model&quot; from the pop-up menu. Information about Ejs 
+		is available at: &lt;<b>http://www.um.es/fem/Ejs/</b>&gt;.</p>
+	</body>
+</html>

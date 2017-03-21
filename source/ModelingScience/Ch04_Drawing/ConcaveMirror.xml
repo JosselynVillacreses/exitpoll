@@ -1,0 +1,594 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.1">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./narrow_candle.gif;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Reflection</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Reflection on a concave mirror
+    </h2>
+    <p>
+      Images reflected by a spherical mirror (i.e. a mirror with the form of a 
+      spherical shield) can be constructed by casting rays from points of the 
+      image to the mirror surface and through two points of interest of the 
+      mirror. The first of these points is the <i>center of curvature</i>, 
+      which is located at the center of the sphere that forms the mirror 
+      surface. The second of these points is the <i>focus</i>. The focus is 
+      located along the <i>main axis</i>, which is the line passing through 
+      the center of curvature and through the pole of the spherical surface of 
+      the mirror (in the simulation view, the thinnest part of the mirror), at 
+      a distance <i>f = r/2</i> from the pole. Check the &quot;Show center and 
+      focus&quot; box on the bottom panel of the view to see the location of these 
+      points.
+    </p>
+    <p>
+      To construct a reflected image, one first casts a ray parallel to the 
+      main axis from the top of the image to the mirror. This ray is then 
+      reflected by the mirror and passed through the mirror focus (but see 
+      next page). Then, cast a second ray from the top of the object through 
+      the center of curvature. The point where these two rays cross each other 
+      is the top point of the reflected image. Alternatively (or 
+      complementarily) a third ray can be cast from the top of the object 
+      through the center of curvature and be reflected at the mirror surface. 
+      This third ray crosses the other two exactly at the same intersection 
+      point. With this scheme, if the source image is located at a distance <i>x<sub>1</sub> 
+      </i>from the pole of the mirror, the position <i>x<sub>2</sub> </i>and 
+      size factor <i>M</i> of the reflected image is given by the formulas:
+    </p>
+    <p align="center">
+      <i>1/x<sub>1 </sub>+ 1/x<sub>2</sub> = 1/f </i>and <i>M = - f/(x<sub>1</sub>-f).</i>
+    </p>
+    <p>
+      Note that the size factor is negative for source images located farther 
+      than the focus, which gives an inverted image. Also, if <i>x<sub>1</sub></i> 
+      is smaller than <i>f</i>, then the reflected image is created at the 
+      other side of the mirror surface. The image is then called virtual as it 
+      appears (to an observer) to be located inside the mirror.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Aberrations</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Aberrations
+    </h2>
+    <p>
+      This simple scheme only works if the reflection angles are small. When 
+      the mirror opening is wide and thus reflection angles can be larger, 
+      reflected rays do not necessarily pass through the mirror focus and the 
+      intersection points do not coincide. So called <i>aberrations </i>appear 
+      and reflected images become fuzzy.
+    </p>
+    <p>
+      We make here the assumption that rays actually reflect at a point 
+      located along the plane tangent to the mirror at the pole, which avoids 
+      aberrations and makes the formulas in the previous page valid.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Drawing tip</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h2>
+      Tip for drawing the spherical mirror
+    </h2>
+    <p style="margin-top: 0">
+      This example uses a drawing element of the type Polygon2D. This element 
+      is able to display a closed polygon or an open polyline whose 
+      coordinates are provided in a double[n][2] array. The number of polygon 
+      points is given by the array length (the value of n). Because we want 
+      the polygon to look smooth, we compute an array (<i>mirrorData</i> in 
+      the variables table) with the values of 50 points on a circumference 
+      using an appropriated initialization page and link this array to the 
+      Data property of the element.
+    </p>
+    <p style="margin-top: 0">
+      
+    </p>
+    <blockquote>
+      <b>Tip:</b> Because the initialization page is not executed until the 
+      simulation is run, the mockup of the view would not show any mirror at 
+      all. To avoid having an empty mirror in the design phase, we temporarily 
+      set the Resizable property of the Polygon2D element to true, and used 
+      the mouse to position a few points of the polygon so that it would look 
+      approximately circular. This action provided an initial value for the <i>mirrorData</i> 
+      array that EJS uses at design phase. When the simulation is run, the 
+      initialization code will overwrite these approximate values with 
+      smoother ones.
+    </blockquote>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>true</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Extrema</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[minX]]></Name>
+<Value><![CDATA[-8]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxX]]></Name>
+<Value><![CDATA[4.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[minY]]></Name>
+<Value><![CDATA[-1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[maxY]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Mirror</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[radius]]></Name>
+<Value><![CDATA[4]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[focus]]></Name>
+<Value><![CDATA[-radius/2]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[np]]></Name>
+<Value><![CDATA[50]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[mirrorData]]></Name>
+<Value><![CDATA[new double[][]{{-0.021674140508221917,2.849402092675635},{-1.1053811659192831,2.849402092675635},{-0.5261584454409567,1.8404334828101643},{-0.17115097159940262,0.906203288490284},{-0.002989536621823774,-0.009342301943198628},{-0.28325859491778793,-1.1677877428998502},{-0.6195814648729447,-2.0833333333333335},{-1.180119581464873,-2.849402092675635},{-0.021674140508221917,-2.849402092675635},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0},{0.0,0.0}}]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[[np][2]]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Objects</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[y0]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[minX + (maxX-minX)/10]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[size1]]></Name>
+<Value><![CDATA[1.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[1.0/(1.0/focus-1.0/x1)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[size2]]></Name>
+<Value><![CDATA[focus*size1/(focus-x1)]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[ratio]]></Name>
+<Value><![CDATA[0.5]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showRays]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showCenter]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Init Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double maxAngle = Math.PI/2;
+double minAngle = -maxAngle;
+for (int i=0, n=np-2; i<np; i++) {
+  double angle = minAngle + i*(maxAngle-minAngle)/(n-1);
+  mirrorData[i][0] = -radius + radius*Math.cos(angle);
+  mirrorData[i][1] = radius*Math.sin(angle);
+}
+mirrorData[np-2][0] = mirrorData[np-1][0] = 0.0;
+mirrorData[np-2][1] = mirrorData[np-3][1];
+mirrorData[np-1][1] = mirrorData[0][1];
+
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Página Evolución</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>FixRel Page</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+x2 = 1.0 / (1.0/focus - 1.0/x1); // 1/x1 + 1/x2 = 1/f;
+size2 = focus*size1/(focus-x1);
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">drawingFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA["Reflection by a concave mirror"]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA[680,375]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.DrawingPanel</Type>
+<Property name="name">drawingPanel</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[minX]]></Property>
+<Property name="maximumX"><![CDATA[maxX]]></Property>
+<Property name="minimumY"><![CDATA[minY]]></Property>
+<Property name="maximumY"><![CDATA[maxY]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+<Property name="aliasing"><![CDATA[true]]></Property>
+<Property name="xFormat"><![CDATA[null]]></Property>
+<Property name="yFormat"><![CDATA[null]]></Property>
+<Property name="xyExpression"><![CDATA["-x"]]></Property>
+<Property name="xyFormat"><![CDATA[distance to mirror = 0.00]]></Property>
+<Property name="TLmessage"><![CDATA["Drag the base of the image to change its position"]]></Property>
+<Property name="background"><![CDATA[BLACK]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Cursor</Type>
+<Property name="name">cursor</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="style"><![CDATA[CROSSHAIR]]></Property>
+<Property name="secondaryColor"><![CDATA[WHITE]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Image2D</Type>
+<Property name="name">image2D_source</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="sizeX"><![CDATA[size1*ratio]]></Property>
+<Property name="sizeY"><![CDATA[size1]]></Property>
+<Property name="enabledPosition"><![CDATA[true]]></Property>
+<Property name="dragAction"><![CDATA[y0 = 0;
+double limit = -size1*ratio/2;
+if (x1>limit) x1 = limit;]]></Property>
+<Property name="imageFile"><![CDATA[./narrow_candle.gif]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Image2D</Type>
+<Property name="name">image2D_reflected</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[y0]]></Property>
+<Property name="sizeX"><![CDATA[size2*ratio]]></Property>
+<Property name="sizeY"><![CDATA[size2]]></Property>
+<Property name="imageFile"><![CDATA[./narrow_candle.gif]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Polygon2D</Type>
+<Property name="name">polygon2D_mirror</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="data"><![CDATA[mirrorData]]></Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[0]]></Property>
+<Property name="closed"><![CDATA[true]]></Property>
+<Property name="lineColor"><![CDATA[CYAN]]></Property>
+<Property name="fillColor"><![CDATA[200,220,208]]></Property>
+<Property name="lineWidth"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_ray1</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[size1]]></Property>
+<Property name="sizeX"><![CDATA[x1]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_ray1_2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[size2]]></Property>
+<Property name="sizeX"><![CDATA[x2<0 ? -x2 : -x2+focus]]></Property>
+<Property name="sizeY"><![CDATA[x2<0 ? size1-size2 : -size2]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_ray2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[size2]]></Property>
+<Property name="sizeX"><![CDATA[x2<0 ? x1-x2 : -x2 - radius]]></Property>
+<Property name="sizeY"><![CDATA[x2<0 ? size1-size2 : -size2]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_ray3</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[size2]]></Property>
+<Property name="sizeX"><![CDATA[x2<0 ? x1 : focus]]></Property>
+<Property name="sizeY"><![CDATA[x2<0 ? size1-size2 : -size2]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_ray3_2</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[0]]></Property>
+<Property name="y"><![CDATA[size2]]></Property>
+<Property name="sizeX"><![CDATA[x2]]></Property>
+<Property name="sizeY"><![CDATA[0]]></Property>
+<Property name="visible"><![CDATA[showRays]]></Property>
+<Property name="lineColor"><![CDATA[YELLOW]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">text2D_center</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-radius]]></Property>
+<Property name="y"><![CDATA[0.1]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showCenter]]></Property>
+<Property name="text"><![CDATA["Center"]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+<Property name="lineColor"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_centerTick</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[-radius]]></Property>
+<Property name="y"><![CDATA[-0.05]]></Property>
+<Property name="sizeX"><![CDATA[0]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="visible"><![CDATA[showCenter]]></Property>
+<Property name="lineColor"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">text2D_focus</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[focus]]></Property>
+<Property name="y"><![CDATA[0.1]]></Property>
+<Property name="pixelSize"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showCenter]]></Property>
+<Property name="text"><![CDATA["Focus"]]></Property>
+<Property name="elementposition"><![CDATA[SOUTH]]></Property>
+<Property name="lineColor"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Segment2D</Type>
+<Property name="name">segment2D_focusTick</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[focus]]></Property>
+<Property name="y"><![CDATA[-0.05]]></Property>
+<Property name="sizeX"><![CDATA[0]]></Property>
+<Property name="sizeY"><![CDATA[0.1]]></Property>
+<Property name="visible"><![CDATA[showCenter]]></Property>
+<Property name="lineColor"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Text2D</Type>
+<Property name="name">text2D_caption</Property>
+<Property name="parent">drawingPanel</Property>
+<Property name="x"><![CDATA[(minX+maxX)/2]]></Property>
+<Property name="y"><![CDATA[-2.2]]></Property>
+<Property name="sizeX"><![CDATA[(maxX-minX)*0.6]]></Property>
+<Property name="pixelSize"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["Reflection by a concave mirror"]]></Property>
+<Property name="font"><![CDATA[Dialog,PLAIN,10]]></Property>
+<Property name="elementposition"><![CDATA[CENTERED]]></Property>
+<Property name="lineColor"><![CDATA[WHITE]]></Property>
+<Property name="fillColor"><![CDATA[WHITE]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonsPanel</Property>
+<Property name="parent">drawingFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[FLOW:center,10,0]]></Property>
+<Property name="border"><![CDATA[5,0,5,0]]></Property>
+<Property name="borderType"><![CDATA[EMPTY]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">checkBoxRays</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[showRays]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["Show rays"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">checkBoxCenter</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="variable"><![CDATA[showCenter]]></Property>
+<Property name="selected"><![CDATA[false]]></Property>
+<Property name="text"><![CDATA["Show center and focus"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">buttonReset</Property>
+<Property name="parent">buttonsPanel</Property>
+<Property name="text"><![CDATA["Reset"]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

@@ -1,0 +1,427 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0beta">
+<Osejs.Information>
+<Title><![CDATA[Quantum Mechancis Wave Packet]]></Title>
+<Author><![CDATA[Wolfgang Christian]]></Author>
+<Keywords><![CDATA[Quantum Mechanics, wave function, wave packet, Heisenberg uncertainty]]></Keywords>
+<Level><![CDATA[intermediate]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[./FreeParticleWavepacket/FreeParticleWavepacket.html;]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EXTERNAL_EDITOR</Type>
+<Name>Free Particle Wave Packet</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+./FreeParticleWavepacket/FreeParticleWavepacket.html
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>20</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Wave function vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>displayMode</Name>
+<Value><![CDATA[2]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[complex function display mode]]></Comment>
+</Variable>
+<Variable>
+<Name>n</Name>
+<Value><![CDATA[500]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of grid points]]></Comment>
+</Variable>
+<Variable>
+<Name>xmin</Name>
+<Value><![CDATA[-10]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x axis minimum]]></Comment>
+</Variable>
+<Variable>
+<Name>xmax</Name>
+<Value><![CDATA[10]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[x axis maximum]]></Comment>
+</Variable>
+<Variable>
+<Name>x</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[position]]></Comment>
+</Variable>
+<Variable>
+<Name>rePsi</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[real part of wave function]]></Comment>
+</Variable>
+<Variable>
+<Name>imPsi</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[imaginary part of wave function]]></Comment>
+</Variable>
+<Variable>
+<Name>p</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>rePhi</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>imPhi</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension>[n]</Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[time]]></Comment>
+</Variable>
+<Variable>
+<Name>dt</Name>
+<Value><![CDATA[0.1]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Wavepacket vars</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>m</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[particle mass]]></Comment>
+</Variable>
+<Variable>
+<Name>hbar</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[Plank's constant]]></Comment>
+</Variable>
+<Variable>
+<Name>sigma</Name>
+<Value><![CDATA[1.0]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[initial packet width]]></Comment>
+</Variable>
+<Variable>
+<Name>a</Name>
+<Value><![CDATA[1.0/(2*sigma*sigma)]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[initial wavepacket width]]></Comment>
+</Variable>
+<Variable>
+<Name>beta</Name>
+<Value><![CDATA[2*hbar*a/m]]></Value>
+<Type>double</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[angular frequency]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Increment Time</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t += dt;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>position wave function</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double x0=xmin, dx=(xmax-xmin)/(n-1);
+double norm=Math.pow(2*a/Math.PI, 0.25);
+for(int i=0, n=x.length; i<n; i++){
+  x[i]=x0;
+  double re=a/(1+beta*beta*t*t);
+  double reExp=norm*Math.exp(-x0*x0*re);
+  double theta = -Math.atan2(beta*t,1)/2;
+  double reAmp=reExp*Math.cos(theta)/Math.pow(1+beta*beta*t*t,0.25);
+  double imAmp=reExp*Math.sin(theta)/Math.pow(1+beta*beta*t*t,0.25);
+  double im= re*beta*t*x0*x0;
+  double reCos=Math.cos(im);
+  double imSin=Math.sin(im);
+  rePsi[i]=reAmp*reCos-imAmp*imSin;
+  imPsi[i]=imAmp*reCos+reAmp*imSin;
+  x0+=dx;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>momentum wave function</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+double p0=xmin, dp=(xmax-xmin)/(n-1);
+double norm=Math.pow(2/Math.PI/a, 0.25);
+for(int i=0, n=x.length; i<n; i++){
+  p[i]=p0;
+  rePhi[i]=norm*Math.exp(-p0*p0/a);
+  imPhi[i]=0;
+  p0+=dp;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Change Wavenumber</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// invoked when the packet width changes
+public void changePacketWidth() {
+  t=0;
+  sigma=Math.max(0.05,sigma);  // enforce a minimum value for packet width
+  a=1.0/(2*sigma*sigma);
+  beta=2*hbar*a/m;
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">wavefunctionFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Position Space]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["8,6"]]></Property>
+<Property name="size"><![CDATA["563,376"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">wavefunctionPlottingPanel</Property>
+<Property name="parent">wavefunctionFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumY"><![CDATA[-1]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="title"><![CDATA[Position Space Wave Function]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="titleY"><![CDATA[|$\Psi$|]]></Property>
+<Property name="BRmessage"><![CDATA["t="+_format(t,"0.00")]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComplexDataset</Type>
+<Property name="name">psiDataset</Property>
+<Property name="parent">wavefunctionPlottingPanel</Property>
+<Property name="x"><![CDATA[x]]></Property>
+<Property name="real"><![CDATA[rePsi]]></Property>
+<Property name="imag"><![CDATA[imPsi]]></Property>
+<Property name="markershape"><![CDATA[displayMode]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">wavefunctionFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">sliderPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">north</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Slider</Type>
+<Property name="name">aSlider</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[sigma]]></Property>
+<Property name="minimum"><![CDATA[0.05]]></Property>
+<Property name="maximum"><![CDATA[10]]></Property>
+<Property name="enabled"><![CDATA[_isPaused()]]></Property>
+<Property name="dragaction"><![CDATA[changePacketWidth()]]></Property>
+<Property name="tooltip"><![CDATA[packet width]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ParsedField</Type>
+<Property name="name">aField</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">east</Property>
+<Property name="variable"><![CDATA[sigma]]></Property>
+<Property name="format"><![CDATA[0.000]]></Property>
+<Property name="editable"><![CDATA[_isPaused]]></Property>
+<Property name="action"><![CDATA[changePacketWidth()]]></Property>
+<Property name="size"><![CDATA[40,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Label</Type>
+<Property name="name">aLabel</Property>
+<Property name="parent">sliderPanel</Property>
+<Property name="position">west</Property>
+<Property name="text"><![CDATA[  Initial width = ]]></Property>
+<Property name="tooltip"><![CDATA[packet width]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">buttonPanel</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startStopButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[""]]></Property>
+<Property name="imageOn"><![CDATA[/org/opensourcephysics/resources/controls/images/play.gif]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[""]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/step.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/reset.gif]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">colorCheckBox</Property>
+<Property name="parent">buttonPanel</Property>
+<Property name="selected"><![CDATA[true]]></Property>
+<Property name="text"><![CDATA[phase as color]]></Property>
+<Property name="actionon"><![CDATA[displayMode=2]]></Property>
+<Property name="actionoff"><![CDATA[displayMode=1]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">momentumFrame</Property>
+<Property name="title"><![CDATA[Momentum Space]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["7,383"]]></Property>
+<Property name="size"><![CDATA["563,312"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">momentumPlottingPanel</Property>
+<Property name="parent">momentumFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[true]]></Property>
+<Property name="minimumY"><![CDATA[-1]]></Property>
+<Property name="maximumY"><![CDATA[1]]></Property>
+<Property name="title"><![CDATA[Momentum Space Wave Function]]></Property>
+<Property name="titleX"><![CDATA[p]]></Property>
+<Property name="titleY"><![CDATA[|$\Phi$|]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.ComplexDataset</Type>
+<Property name="name">phiDataset</Property>
+<Property name="parent">momentumPlottingPanel</Property>
+<Property name="x"><![CDATA[p]]></Property>
+<Property name="real"><![CDATA[rePhi]]></Property>
+<Property name="imag"><![CDATA[imPhi]]></Property>
+<Property name="markershape"><![CDATA[displayMode]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

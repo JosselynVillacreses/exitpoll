@@ -1,0 +1,283 @@
+<Osejs version="3.46">
+<Osejs.Information>
+<Title><![CDATA[]]></Title>
+<Author><![CDATA[]]></Author>
+<Keywords><![CDATA[]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[]]></Language>
+<Abstract><![CDATA[]]></Abstract>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>HTML_EDITOR</Type>
+<Name>One-Dimensional Automata</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>
+      Cellular Automata
+    </h1>
+    <p style="margin-top: 0">
+      Although many of laws of nature are local (short range), nature 
+      generates order and patterns on a large scale. How does this happen? 
+      Some of the simplest models that incorporate both space and time 
+      (spatiotemporal models) involve an array of cells interacting with a 
+      small number of neighbors by simple rules.
+    </p>
+    <p style="margin-top: 0">
+      
+    </p>
+    <p style="margin-top: 0">
+      Imagine a circular coral reef divided into cells that supports some type 
+      of life form. Each each cell can be alive or dead and the entire reef 
+      evolves from one year to the next as follows:
+    </p>
+    <ul>
+      <li>
+        If both neighboring cells are alive, the cell becomes (or remains) 
+        dead due to overcrowding.
+      </li>
+      <li>
+        If both neighboring cells are dead, the cell becomes (or remains) dead 
+        due to solitude.
+      </li>
+      <li>
+        If one neighboring cell is dead and the other alive, the cell becomes 
+        (or remains) alive.
+      </li>
+    </ul>
+    <p>
+      How does life evolve on the reef?
+    </p>
+    <h2>
+      References:
+    </h2>
+    <p>
+      Rule 90 in S. Wolfram's <i>A New Kind of Science</i>.
+    </p>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>10</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.AdditionalLibraries>
+</Osejs.Model.AdditionalLibraries>
+<Osejs.Model.ImportStatements>
+</Osejs.Model.ImportStatements>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>dynamical vars</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name>nx</Name>
+<Value><![CDATA[65]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of spatial cells]]></Comment>
+</Variable>
+<Variable>
+<Name>nt</Name>
+<Value><![CDATA[64]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[number of generations]]></Comment>
+</Variable>
+<Variable>
+<Name>spacetimeCells</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension>[nx][nt]</Dimension>
+<Comment><![CDATA[spactime array showing current and past life]]></Comment>
+</Variable>
+<Variable>
+<Name>t</Name>
+<Value><![CDATA[0]]></Value>
+<Type>int</Type>
+<Dimension></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Create Life</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+// set initial life
+spacetimeCells[nx/2][0]=1;  // the center is occupied
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Finite Time Evolution</Name>
+<Active>true</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+t++;           // increment time
+if(t>=nt){     // stop at end of spacetime diagram
+  _pause();
+  return;
+}
+for(int i=0; i<nx; i++){
+  int left=(nx+i-1)% nx;
+  int right=(i+1)% nx;
+  int neighbors = spacetimeCells[left][t-1]+spacetimeCells[right][t-1];
+  if(neighbors==1){
+    spacetimeCells[i][t]=1;  // only one neighbor is occupied
+  }else{
+    spacetimeCells[i][t]=0;
+  }
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+<Osejs.Model.Evolution.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Continuous Time Evolution</Name>
+<Active>false</Active>
+<Visible>true</Visible>
+<Content>
+<Comment><![CDATA[]]></Comment>
+<Code><![CDATA[
+if(t<nt-1){
+  t++;                // increment time counter
+}else{ 
+  for(int i=0; i<nx; i++){  // shift spacetime array up
+    int[] col = spacetimeCells[i];
+    System.arraycopy(col,1,col,0,nt-1);
+  }
+}
+for(int i=0; i<nx; i++){
+  int left=(nx+i-1)% nx;
+  int right=(i+1)% nx;
+  int neighbors = spacetimeCells[left][t-1]+spacetimeCells[right][t-1];
+  if(neighbors==1){
+    spacetimeCells[i][t]=1;  // only one neighbor is occupied
+  }else{
+    spacetimeCells[i][t]=0;
+  }
+}
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">spacetimeFrame</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Spacetime Plot]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="location"><![CDATA["56,465"]]></Property>
+<Property name="size"><![CDATA["611,640"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">spacetimePlottingPanel</Property>
+<Property name="parent">spacetimeFrame</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[nt]]></Property>
+<Property name="maximumY"><![CDATA[0]]></Property>
+<Property name="titleX"><![CDATA[space]]></Property>
+<Property name="titleY"><![CDATA[time]]></Property>
+<Property name="square"><![CDATA[false]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Lattice</Type>
+<Property name="name">spacetimeLattice</Property>
+<Property name="parent">spacetimePlottingPanel</Property>
+<Property name="data"><![CDATA[spacetimeCells]]></Property>
+<Property name="minimumX"><![CDATA[0]]></Property>
+<Property name="maximumX"><![CDATA[nx]]></Property>
+<Property name="minimumY"><![CDATA[0]]></Property>
+<Property name="maximumY"><![CDATA[nt]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">controlPanel</Property>
+<Property name="parent">spacetimeFrame</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[flow:center,0,0]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">playButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="textOn"><![CDATA[Play]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="textOff"><![CDATA[Pause]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Step]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA[Advances by one step.]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">controlPanel</Property>
+<Property name="position">center</Property>
+<Property name="text"><![CDATA[Reset]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA[Resets the simulation.]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>

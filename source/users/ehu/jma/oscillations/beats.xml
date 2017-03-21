@@ -1,0 +1,851 @@
+<!-- This XML file has been created by Easy Java Simulations (Ejs). Visit http://www.um.es/fem/Ejs. -->
+<!-- Please, save the file to your hard disk on your Ejs' user directory and open it with Ejs. -->
+<Osejs version="4.0">
+<Osejs.Information>
+<Title><![CDATA[Beats]]></Title>
+<Author><![CDATA[Juan M. Aguirregabiria (http://tp.lc.ehu.es/jma.html)]]></Author>
+<Keywords><![CDATA[harmonic oscillation;beats;superposition]]></Keywords>
+<Level><![CDATA[]]></Level>
+<Language><![CDATA[English]]></Language>
+<Abstract><![CDATA[Two harmonic oscillations of similar frequencies arise at the same point. The simulation will display the corresponding phasors as well as the full oscillation. One can understand graphically the origin of beats.]]></Abstract>
+<AdditionalLibraries>
+</AdditionalLibraries>
+<ImportStatements>
+</ImportStatements>
+<AuxiliaryFiles><![CDATA[]]></AuxiliaryFiles>
+<DetectedFiles><![CDATA[]]></DetectedFiles>
+</Osejs.Information>
+<Osejs.Description>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Sarrera</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Beats</title>
+    
+  </head>
+  <body>
+    <h1>
+      Beats
+    </h1>
+    Let us asume that we have at the same point two harmonic oscillations (say 
+    two pure sounds):<br><i>x</i> = <i>A</i><sub>1</sub> cos(<i>&#969;</i><sub>1</sub> 
+    <i>t </i>+ <i>&#948;</i><sub>1</sub>) + <i>A</i><sub>2</sub> cos(<i>&#969;</i><sub>2</sub> 
+    <i>t </i>+ <i>&#948;</i><sub>2</sub>) = 2 <i>A</i><sub>2</sub> cos(<i>&#949; t </i>+ 
+    <i>&#956;</i>) cos(<i>&#969;</i> <i>t </i>+ <i>&#958;</i>) + (<i>A</i><sub>1</sub> 
+    - <i>A</i><sub>2</sub>) cos(<i>&#969;</i><sub>1</sub> <i>t </i>+ <i>&#948;</i><sub>1</sub>),<br>where<br><i>&#949; 
+    </i>&#8801; (<i>&#969;</i><sub>1</sub> - <i>&#969;</i><sub>2</sub>)/2,<br><i>&#956; 
+    </i>&#8801; (<i>&#948;</i><sub>1</sub> - <i>&#948;</i><sub>2</sub>)/2,<br><i>&#969; 
+    </i>&#8801; (<i>&#969;</i><sub>1</sub> + <i>&#969;</i><sub>2</sub>)/2,<br><i>&#958; 
+    </i>&#8801; (<i>&#948;</i><sub>1</sub> + <i>&#948;</i><sub>2</sub>)/2.<br>Obviously 
+    an equivalent expression can be obtained by exchanging the indices 1 and 2 
+    in the last expression.<br>
+
+    <ul>
+      <li>
+        In the animation the units of time and length and the time origin are 
+        chosen so that <i>A</i><sub>1</sub> = 1 , <i>&#969;</i><sub>1</sub> = 
+        1 and <i>&#948;</i><sub>1</sub> = 0.
+      </li>
+      <li>
+        You can select below <b>A2/A1</b> = <i>A</i><sub>2</sub>, <b>&#969;2/&#969;1</b> 
+        = <i>&#969;</i><sub>2</sub> and <b>&#948;</b> = <i>&#948;</i><sub>2</sub>.
+      </li>
+      <li>
+        Put the mouse pointer over an element to get the corresponding tooltip.
+      </li>
+    </ul>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Activities</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Activities</title>
+    
+  </head>
+  <body>
+    <h2>
+      Activities
+    </h2>
+    <ol>
+      <li>
+        Check the trigonometry in the two expressions for the superposition of 
+        both oscillations.
+      </li>
+      <li>
+        Check that the angle between both phasors is <i>&#966;</i> = (<i>&#969;</i><sub>1</sub> 
+        <i>t </i>+ <i>&#948;</i><sub>1</sub>) -(<i>&#969;</i><sub>2</sub> <i>t </i>+ 
+        <i>&#948;</i><sub>2</sub>) = 2 <i>&#969; t + </i>2<i> &#956; . </i>
+      </li>
+      <li>
+        First, let us assume both frequencies are equal: <i>&#969;</i><sub>1</sub> 
+        = <i>&#969;</i><sub>2</sub>. Can you write the full oscillation in the 
+        form of a single sinusoid? What will happen with the relative phase <i>&#966;</i>? 
+        Use the simulation to check your answers.
+      </li>
+      <li>
+        Now, let us assume both frequencies are different but very similar: <i>&#969;</i><sub>1</sub> 
+        &#8773; <i>&#969;</i><sub>2</sub>, so that &#949; is small. What will 
+        happen with the amplitude of the first term |2 <i>A</i><sub>2</sub> 
+        cos(<i>&#949; t </i>+ <i>&#956;</i>) |? What about the angle <i>&#966;</i>? 
+        Use the simulation to check your answers.
+      </li>
+      <li>
+        Can you now explain why beats are heard when two very similar 
+        frequencies are excited?
+      </li>
+      <li>
+        Which is the beat frequency, |<i>&#949;</i>| or |<i>&#969;</i><sub>1</sub> 
+        - <i>&#969;</i><sub>2</sub>|? Why?
+      </li>
+    </ol>
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+<Osejs.Description.Page>
+<Type>DESCRIPTION_EDITOR</Type>
+<Name>Author</Name>
+<Active>true</Active>
+<Content>
+<![CDATA[
+<html>
+  <head>
+    <title>Author</title>
+    
+  </head>
+  <body>
+    This is an English translation of the Basque original for a <a href="http://tp.lc.ehu.es/jma/mekanika.html">course 
+    on mechanics, oscillations and waves</a>.<br>It requires <a href="http://www.java.com">Java 
+    1.5 or newer</a> and was created by <a href="http://tp.lc.ehu.es/jma.html">Juan 
+    M. Aguirregabiria</a> with <a href="http://fem.um.es/Ejs/index.html">Easy 
+    Java Simulations</a> (Ejs) by <a href="http://fem.um.es/index.html">Francisco 
+    Esquembre</a>.<br>One may also use <a href="http://tp.lc.ehu.es/jma/ds/ds.html">Dynamics  I thank Wolfgang Christian and Francisco Esquembre for their help.
+    Solver</a> to explore this problem: see this <a href="http://tp.lc.ehu.es/jma/mekanika/oszilazioak/koartikoa.ds">simulation</a>.
+  </body>
+</html>
+
+]]>
+
+</Content>
+</Osejs.Description.Page>
+</Osejs.Description>
+<Osejs.Model>
+<Osejs.Model.FramesPerSecond>25</Osejs.Model.FramesPerSecond>
+<Osejs.Model.StepsPerDisplay>1</Osejs.Model.StepsPerDisplay>
+<Osejs.Model.Autostart>false</Osejs.Model.Autostart>
+<Osejs.Model.Variables>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Physics</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[t]]></Name>
+<Value><![CDATA[0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Time]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Real part of first phasor]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y1]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Imaginary part of first phasor]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Real part of second phasor]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y2]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Imaginary part of second phasor]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[x3]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Real of sum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[y3]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Imaginary part of sum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[A2]]></Name>
+<Value><![CDATA[1.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Second amplitude]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[w2]]></Name>
+<Value><![CDATA[0.9]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Second frequency]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[delta]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Phase difference (in radians)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[deltaDegrees]]></Name>
+<Value><![CDATA[90.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Phase difference (in degrees)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[amp]]></Name>
+<Value><![CDATA[0.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Sum amplitude]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+<Osejs.Model.Variables.Page>
+<Type>VARIABLE_EDITOR</Type>
+<Name>Presentation</Name>
+<Active>true</Active>
+<Content>
+<PageComment><![CDATA[]]></PageComment>
+<Variable>
+<Name><![CDATA[dt]]></Name>
+<Value><![CDATA[0.25]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Animation step length]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[npoints]]></Name>
+<Value><![CDATA[750]]></Value>
+<Type><![CDATA[int]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Number of points in graph]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[xmax]]></Name>
+<Value><![CDATA[2.0]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Phasors screen dimension]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showProj]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show phasor projection]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showAllPhasors]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show both phasors (and their sum)]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showSum]]></Name>
+<Value><![CDATA[true]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Complete the sum rectangle]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showAllGraphs]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show the x(t) evolution for both components and their sum]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[showEnvolvent]]></Name>
+<Value><![CDATA[false]]></Value>
+<Type><![CDATA[boolean]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[Show amplitude evolution]]></Comment>
+</Variable>
+<Variable>
+<Name><![CDATA[]]></Name>
+<Value><![CDATA[]]></Value>
+<Type><![CDATA[double]]></Type>
+<Dimension><![CDATA[]]></Dimension>
+<Comment><![CDATA[]]></Comment>
+</Variable>
+
+</Content>
+</Osejs.Model.Variables.Page>
+</Osejs.Model.Variables>
+<Osejs.Model.Initialization>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Intial values</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Initial values]]></Comment>
+<Code><![CDATA[
+setZero();
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+<Osejs.Model.Initialization.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Greek</Name>
+<Active>false</Active>
+<Content>
+<Comment><![CDATA[Set Greek letters]]></Comment>
+<Code><![CDATA[
+_view.getElement("W2").setProperty("format","\u03C92/\u03C91 = 0.######");
+_view.getElement("Delta").setProperty("format","\u03B4 = 0.##");
+_view.getElement("Step").setProperty("format","\u0394t = 0.##");
+
+]]></Code>
+
+</Content>
+</Osejs.Model.Initialization.Page>
+</Osejs.Model.Initialization>
+<Osejs.Model.Evolution>
+<Osejs.Model.Evolution.Page>
+<Type>EVOLUTION_EDITOR</Type>
+<Name>Eboluzioa</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update all values]]></Comment>
+<Code><![CDATA[
+t += dt;
+]]></Code>
+
+</Content>
+</Osejs.Model.Evolution.Page>
+</Osejs.Model.Evolution>
+<Osejs.Model.Constraints>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Degrees to radians</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[From degrees to radians]]></Comment>
+<Code><![CDATA[
+delta = Math.toRadians(deltaDegrees);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>View</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[View width and height]]></Comment>
+<Code><![CDATA[
+xmax = 1.1*(1.0+A2);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+<Osejs.Model.Constraints.Page>
+<Type>CODE_EDITOR</Type>
+<Name>Evolution</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Update values]]></Comment>
+<Code><![CDATA[
+x1 = Math.cos(t);
+y1 = Math.sin(t);
+x2 = A2*Math.cos(w2*t+delta);
+y2 = A2*Math.sin(w2*t+delta);
+x3 = x1+x2;
+y3 = y1+y2;
+amp = hypot(x3,y3);
+]]></Code>
+
+</Content>
+</Osejs.Model.Constraints.Page>
+</Osejs.Model.Constraints>
+<Osejs.Model.Library>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>hypot</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Supply Math.hypot function for Java 1.4--]]></Comment>
+<Code><![CDATA[
+// In most cases this implementation is overkill; 
+// but let us consider the worst case in finite precision arithmetic
+
+public final double HYPOTMIN = 1.0E-4; // To use Taylor expansion 
+
+public double hypot(double x,double y) {
+  if (x < 0.0) x = -x;		// Non-negative values
+  if (y < 0.0) y = -y; 		
+  if (x > y) {			// x <= y
+    double z = x;
+    x = y;
+    y = z;
+  }
+  x /= y;
+  return (x < HYPOTMIN) ? y+0.5*x*x/y : y*Math.sqrt(1.0+x*x);
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+<Osejs.Model.Library.Page>
+<Type>LIBRARY_EDITOR</Type>
+<Name>Set zero</Name>
+<Active>true</Active>
+<Content>
+<Comment><![CDATA[Initial values]]></Comment>
+<Code><![CDATA[
+public void setZero() {
+t = 0.0;
+_view.resetTraces();
+}
+]]></Code>
+
+</Content>
+</Osejs.Model.Library.Page>
+</Osejs.Model.Library>
+</Osejs.Model>
+<Osejs.View>
+<Osejs.View.Creation>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Frame</Type>
+<Property name="name">Main</Property>
+<Property name="_ejs_mainWindow">true</Property>
+<Property name="title"><![CDATA[Beats]]></Property>
+<Property name="layout"><![CDATA[border]]></Property>
+<Property name="visible"><![CDATA[true]]></Property>
+<Property name="size"><![CDATA["645,429"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Left</Property>
+<Property name="parent">Main</Property>
+<Property name="position">west</Property>
+<Property name="layout"><![CDATA[vbox]]></Property>
+<Property name="borderType"><![CDATA[LOWERED_ETCHED]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Up</Property>
+<Property name="parent">Left</Property>
+<Property name="layout"><![CDATA[grid:1,2,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Values</Property>
+<Property name="parent">Up</Property>
+<Property name="layout"><![CDATA[grid:5,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">A2</Property>
+<Property name="parent">Values</Property>
+<Property name="position">center</Property>
+<Property name="variable"><![CDATA[A2]]></Property>
+<Property name="format"><![CDATA[A2/A1 = 0.###]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[setZero()]]></Property>
+<Property name="tooltip"><![CDATA[Quotient of amplitudes]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">W2</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[w2]]></Property>
+<Property name="format"><![CDATA["$\omega$2/$\omega$1 = 0.######"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[setZero()]]></Property>
+<Property name="tooltip"><![CDATA[Quotient of frequencies]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Delta</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[deltaDegrees]]></Property>
+<Property name="format"><![CDATA["$\delta$ = 0.###"]]></Property>
+<Property name="editable"><![CDATA[_isPaused()]]></Property>
+<Property name="action"><![CDATA[setZero()]]></Property>
+<Property name="tooltip"><![CDATA[Phase difference (in degrees)]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Step</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[dt]]></Property>
+<Property name="format"><![CDATA[dt = 0.##]]></Property>
+<Property name="tooltip"><![CDATA[Time interval between solution points]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Field</Type>
+<Property name="name">Npoints</Property>
+<Property name="parent">Values</Property>
+<Property name="variable"><![CDATA[npoints]]></Property>
+<Property name="format"><![CDATA[N = 0]]></Property>
+<Property name="tooltip"><![CDATA[Number of evolution points]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Buttons</Property>
+<Property name="parent">Up</Property>
+<Property name="layout"><![CDATA[grid:4,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.TwoStateButton</Type>
+<Property name="name">startButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="variable"><![CDATA[_isPaused]]></Property>
+<Property name="tooltip"><![CDATA["Start and stop the simulation."]]></Property>
+<Property name="imageOn"><![CDATA["/org/opensourcephysics/resources/controls/images/play.gif"]]></Property>
+<Property name="mnemonicOn"><![CDATA["g"]]></Property>
+<Property name="actionOn"><![CDATA[_play()]]></Property>
+<Property name="imageOff"><![CDATA[/org/opensourcephysics/resources/controls/images/pause.gif]]></Property>
+<Property name="mnemonicOff"><![CDATA["s"]]></Property>
+<Property name="actionOff"><![CDATA[_pause()]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">stepButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/stepforward.gif]]></Property>
+<Property name="action"><![CDATA[_step()]]></Property>
+<Property name="tooltip"><![CDATA["Step the simulation."]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">resetButton</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA["/org/opensourcephysics/resources/controls/images/reset.gif"]]></Property>
+<Property name="mnemonic"><![CDATA[h]]></Property>
+<Property name="action"><![CDATA[_reset()]]></Property>
+<Property name="tooltip"><![CDATA["Reset initial settings"]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Button</Type>
+<Property name="name">Clear</Property>
+<Property name="parent">Buttons</Property>
+<Property name="image"><![CDATA[/org/opensourcephysics/resources/controls/images/erase.gif]]></Property>
+<Property name="mnemonic"><![CDATA[c]]></Property>
+<Property name="action"><![CDATA[_view.resetTraces()]]></Property>
+<Property name="tooltip"><![CDATA[Erase solution]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Options</Property>
+<Property name="parent">Left</Property>
+<Property name="layout"><![CDATA[grid:5,1,0,0]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowProj</Property>
+<Property name="parent">Options</Property>
+<Property name="variable"><![CDATA[showProj]]></Property>
+<Property name="text"><![CDATA[Projection]]></Property>
+<Property name="mnemonic"><![CDATA[p]]></Property>
+<Property name="tooltip"><![CDATA[Show projection of sum and its real part]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">BothPhasors</Property>
+<Property name="parent">Options</Property>
+<Property name="variable"><![CDATA[showAllPhasors]]></Property>
+<Property name="text"><![CDATA[All phasors]]></Property>
+<Property name="mnemonic"><![CDATA[a]]></Property>
+<Property name="actionoff"><![CDATA[showSum = false]]></Property>
+<Property name="tooltip"><![CDATA[Show the phasors for both oscillations and their sum]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowSum</Property>
+<Property name="parent">Options</Property>
+<Property name="variable"><![CDATA[showSum]]></Property>
+<Property name="text"><![CDATA[Sum paralelogram]]></Property>
+<Property name="mnemonic"><![CDATA[u]]></Property>
+<Property name="tooltip"><![CDATA[Use a paralelogram to show the phasor sum]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">BothGraphs</Property>
+<Property name="parent">Options</Property>
+<Property name="variable"><![CDATA[showAllGraphs]]></Property>
+<Property name="text"><![CDATA[All graphs]]></Property>
+<Property name="mnemonic"><![CDATA[g]]></Property>
+<Property name="tooltip"><![CDATA[Show the time evolution of both oscillations and that of their sum]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.CheckBox</Type>
+<Property name="name">ShowEnvolvent</Property>
+<Property name="parent">Options</Property>
+<Property name="variable"><![CDATA[showEnvolvent]]></Property>
+<Property name="text"><![CDATA[Amplitude evolution]]></Property>
+<Property name="mnemonic"><![CDATA[e]]></Property>
+<Property name="tooltip"><![CDATA[Show the time evolution of amplitude]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>false</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Phasors</Property>
+<Property name="parent">Main</Property>
+<Property name="position">center</Property>
+<Property name="autoscaleX"><![CDATA[false]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumX"><![CDATA[-xmax]]></Property>
+<Property name="maximumX"><![CDATA[xmax]]></Property>
+<Property name="minimumY"><![CDATA[-xmax]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="title"><![CDATA[Phasors]]></Property>
+<Property name="axesType"><![CDATA[Cartesian3]]></Property>
+<Property name="titleX"><![CDATA[x]]></Property>
+<Property name="majorTicksX"><![CDATA[false]]></Property>
+<Property name="titleY"><![CDATA[y]]></Property>
+<Property name="majorTicksY"><![CDATA[false]]></Property>
+<Property name="square"><![CDATA[true]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">f1</Property>
+<Property name="parent">Phasors</Property>
+<Property name="sizex"><![CDATA[x1]]></Property>
+<Property name="sizey"><![CDATA[y1]]></Property>
+<Property name="visible"><![CDATA[showAllPhasors]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">f2</Property>
+<Property name="parent">Phasors</Property>
+<Property name="sizex"><![CDATA[x2]]></Property>
+<Property name="sizey"><![CDATA[y2]]></Property>
+<Property name="visible"><![CDATA[showAllPhasors]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">f3</Property>
+<Property name="parent">Phasors</Property>
+<Property name="sizex"><![CDATA[x3]]></Property>
+<Property name="sizey"><![CDATA[y3]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[3]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">f13</Property>
+<Property name="parent">Phasors</Property>
+<Property name="x"><![CDATA[x1]]></Property>
+<Property name="y"><![CDATA[y1]]></Property>
+<Property name="sizex"><![CDATA[x2]]></Property>
+<Property name="sizey"><![CDATA[y2]]></Property>
+<Property name="visible"><![CDATA[showSum]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+<Property name="secondaryColor"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">f23</Property>
+<Property name="parent">Phasors</Property>
+<Property name="x"><![CDATA[x2]]></Property>
+<Property name="y"><![CDATA[y2]]></Property>
+<Property name="sizex"><![CDATA[x1]]></Property>
+<Property name="sizey"><![CDATA[y1]]></Property>
+<Property name="visible"><![CDATA[showSum]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+<Property name="secondaryColor"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Arrow</Type>
+<Property name="name">x3</Property>
+<Property name="parent">Phasors</Property>
+<Property name="x"><![CDATA[x3]]></Property>
+<Property name="sizex"><![CDATA[0]]></Property>
+<Property name="sizey"><![CDATA[y3]]></Property>
+<Property name="visible"><![CDATA[showProj]]></Property>
+<Property name="enabledSecondary"><![CDATA[false]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="style"><![CDATA[SEGMENT]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="secondaryColor"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Particle</Type>
+<Property name="name">Projection</Property>
+<Property name="parent">Phasors</Property>
+<Property name="x"><![CDATA[x3]]></Property>
+<Property name="visible"><![CDATA[showProj]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Down</Property>
+<Property name="parent">Main</Property>
+<Property name="position">south</Property>
+<Property name="layout"><![CDATA[border]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.Panel</Type>
+<Property name="name">Evolution</Property>
+<Property name="parent">Down</Property>
+<Property name="position">center</Property>
+<Property name="layout"><![CDATA[grid:1,6,0,0]]></Property>
+<Property name="size"><![CDATA[0,160]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Expanded>true</Expanded>
+<Type>Elements.PlottingPanel</Type>
+<Property name="name">Graph</Property>
+<Property name="parent">Evolution</Property>
+<Property name="autoscaleX"><![CDATA[true]]></Property>
+<Property name="autoscaleY"><![CDATA[false]]></Property>
+<Property name="minimumY"><![CDATA[-xmax]]></Property>
+<Property name="maximumY"><![CDATA[xmax]]></Property>
+<Property name="yMarginPercentage"><![CDATA[5]]></Property>
+<Property name="title"><![CDATA[Time evolution]]></Property>
+<Property name="titleX"><![CDATA[t]]></Property>
+<Property name="titleY"><![CDATA[x]]></Property>
+<Property name="xFormat"><![CDATA[t=0.###]]></Property>
+<Property name="yFormat"><![CDATA[x=0.###]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Osc1</Property>
+<Property name="parent">Graph</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x1]]></Property>
+<Property name="maxpoints"><![CDATA[npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showAllGraphs]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[0,128,0,255]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Osc2</Property>
+<Property name="parent">Graph</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x2]]></Property>
+<Property name="maxpoints"><![CDATA[npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showAllGraphs]]></Property>
+<Property name="color"><![CDATA[blue]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Inguratzailea1</Property>
+<Property name="parent">Graph</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[amp]]></Property>
+<Property name="maxpoints"><![CDATA[npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showEnvolvent]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Inguratzailea2</Property>
+<Property name="parent">Graph</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[-amp]]></Property>
+<Property name="maxpoints"><![CDATA[npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="visible"><![CDATA[showEnvolvent]]></Property>
+<Property name="enabled"><![CDATA[false]]></Property>
+<Property name="color"><![CDATA[orange]]></Property>
+</Osejs.View.Creation.Element>
+<Osejs.View.Creation.Element>
+<Type>Elements.Trace</Type>
+<Property name="name">Sum</Property>
+<Property name="parent">Graph</Property>
+<Property name="x"><![CDATA[t]]></Property>
+<Property name="y"><![CDATA[x3]]></Property>
+<Property name="maxpoints"><![CDATA[npoints]]></Property>
+<Property name="norepeat"><![CDATA[true]]></Property>
+<Property name="connected"><![CDATA[true]]></Property>
+<Property name="color"><![CDATA[red]]></Property>
+<Property name="stroke"><![CDATA[2]]></Property>
+</Osejs.View.Creation.Element>
+</Osejs.View.Creation>
+</Osejs.View>
+<Osejs.Experiment>
+</Osejs.Experiment>
+</Osejs>
